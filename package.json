@@ -1,0 +1,66 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "keywords": [
+    "music",
+    "recognition",
+    "social",
+    "network",
+    "acoustic",
+    "fingerprint"
+  ],
+  "description": "MUSICN - Social network for music recognition - React frontend",
+  "homepage": "https://github.com/munsa/musicn-react#readme",
+  "bugs": {
+    "url": "https://github.com/munsa/musicn-react/issues"
+  },
+  "license": "LGPL-3.0-only",
+  "author": "Marc Monserrat Núñez <mmonserrat90@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/munsa/musicn-react.git"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.4.0",
+    "axios": "^0.19.0",
+    "bootstrap": "^4.4.1",
+    "mdbreact": "^4.27.0",
+    "moment": "^2.24.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-moment": "^0.9.2",
+    "react-popper": "^2.2.3",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "react-tooltip": "^4.2.6",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "typescript": "^3.9.3",
+    "uuid": "^3.3.2"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:5000",
+  "private": true
+}
