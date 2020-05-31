@@ -1,11 +1,36 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "private": true,
+  "keywords": [
+    "music",
+    "recognition",
+    "social",
+    "network",
+    "acoustic",
+    "fingerprint"
+  ],
+  "description": "MUSICN - Social network for music recognition - React frontend",
+  "homepage": "https://github.com/munsa/musicn-react#readme",
+  "bugs": {
+    "url": "https://github.com/munsa/musicn-react/issues"
+  },
+  "license": "LGPL-3.0-only",
+  "author": "Marc Monserrat Núñez <mmonserrat90@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/munsa/musicn-react.git"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@popperjs/core": "^2.4.0",
     "axios": "^0.19.0",
     "bootstrap": "^4.4.1",
+    "mdbreact": "^4.27.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -18,13 +43,8 @@
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "typescript": "^3.9.3",
     "uuid": "^3.3.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,5 +61,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000",
+  "private": true
 }
