@@ -1,27 +1,28 @@
-import React, { useEffect, forwardRef } from 'react';
-import { connect } from 'react-redux';
-import {
-  MDBContainer,
-  MDBBtn,
-  MDBModal,
-  MDBModalBody,
-  MDBModalHeader,
-  MDBModalFooter
-} from 'mdbreact';
+import React, {useEffect, forwardRef} from 'react';
+import {connect} from 'react-redux';
+import Modal from "react-bootstrap/Modal";
+import ModalBody from "react-bootstrap/ModalBody";
+import ModalHeader from "react-bootstrap/ModalHeader";
+import ModalFooter from "react-bootstrap/ModalFooter";
+import ModalTitle from "react-bootstrap/ModalTitle";
 
-const RecorderSuccessResultModal = ({ result }) => {
+const RecorderSuccessResultModal = ({recording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   useEffect(() => {
-    if (result) {
-      //setIsOpen(!isOpen);
+    if (recording) {
+      showModal();
     }
-  }, [result]);
+  }, [recording]);
 
-  const toggle = () => {
-    setIsOpen(!isOpen);
+  const showModal = () => {
+    setIsOpen(true);
   };
 
-  const Source = ({ source: { artists, track, album } }) => {
+  const hideModal = () => {
+    setIsOpen(false);
+  };
+
+  const Source = ({source: {artists, track, album}}) => {
     return (
       <div>
         {/* Artists */}
@@ -50,37 +51,46 @@ const RecorderSuccessResultModal = ({ result }) => {
     );
   };
 
-  return result ? (
-    <MDBContainer>
-      <MDBModal isOpen={isOpen} toggle={toggle} centered>
-        <MDBModalHeader toggle={toggle}>
-          <div className='text-right'>FOUND!</div>
-        </MDBModalHeader>
-        <MDBModalBody>
-          <div>
-            {result.metadata.music.map((m, i) => (
-              <div key={i}>
+  return recording.recordingResult ? (
+    <Modal show={isOpen} onHide={hideModal}>
+      <ModalHeader>
+        <div className='text-right'>FOUND!</div>
+      </ModalHeader>
+      <ModalBody>
+        <div>
+          {recording.recordingResult.metadata.music.map((m, i) => (
+            <div key={i}>
+              {m.external_metadata.spotify &&
+              <div>
                 <h1>
-                  <i className='fa fa-spotify'></i> Spotify
+                  <i className='fa fa-spotify'/> Spotify
                 </h1>
-                <Source source={m.external_metadata.spotify} />
-                <hr />
-                <h1>Deezer</h1>
-                <Source source={m.external_metadata.deezer} />
+                <Source source={m.external_metadata.spotify}/>
               </div>
-            ))}
-          </div>
-        </MDBModalBody>
-        <MDBModalFooter>
-          <MDBBtn color='primary' onClick={toggle}>
-            Done
-          </MDBBtn>
-        </MDBModalFooter>
-      </MDBModal>
-    </MDBContainer>
-  ) : (
-    ''
-  );
+              }
+
+              {m.external_metadata.deezer &&
+              <div>
+                <hr/>
+                <h1>Deezer</h1>
+                <Source source={m.external_metadata.deezer}/>
+              </div>
+              }
+            </div>
+          ))}
+        </div>
+      </ModalBody>
+      <ModalFooter>
+        <button className='btn btn-primary btn-lg btn-block' onClick={hideModal}>
+          Done
+        </button>
+      </ModalFooter>
+    </Modal>
+  ) : '';
 };
 
-export default connect()(RecorderSuccessResultModal);
+const mapStateToProps = state => ({
+  recording: state.recording
+});
+
+export default connect(mapStateToProps)(RecorderSuccessResultModal);
