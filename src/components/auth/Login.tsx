@@ -36,7 +36,7 @@ const Login = ({ login, isAuthenticated }) => {
             <div className='login-form'>
               <form onSubmit={e => onSubmit(e)}>
                 <div className='form-group text-center'>
-                  <h1>OwlTown</h1>
+                  <h1>MUSICN</h1>
                 </div>
                 <LoginAlert />
                 <div className='form-group'>

@@ -38,7 +38,7 @@ const Navbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout
   return (
     <nav className='navbar navbar-expand-lg navbar-dark'>
       <Link className='navbar-brand' to='/'>
-        OwlTown
+        MUSICN
       </Link>
       <ul className='navbar-nav mr-auto'/>
 
