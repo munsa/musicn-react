@@ -14,7 +14,7 @@ const Navbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout
     <div>
       <ul className='nav navbar-nav navbar-right'>
         <li className='nav-item dropdown'>
-          <a onClick={logout} href='#!' className='nav-link'>
+          <Link to='/dashboard'>
             <img
               src={
                 !loading && isAuthenticated && user !== null ? user.avatar : ''
@@ -24,8 +24,8 @@ const Navbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout
               width='30'
               height='30'
             />
-            {!loading && isAuthenticated && user !== null ? user.username : ''}
-          </a>
+            {user !== null ? user.username : ''}
+          </Link>
         </li>
         <li className='nav-item dropdown'>
           <a onClick={logout} href='#!' className='nav-link'>
@@ -59,7 +59,8 @@ const Navbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout
 
 Navbar.proTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  developmentMode: PropTypes.bool
 };
 
 const mapStateToProps = state => ({

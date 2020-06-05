@@ -2,17 +2,12 @@ import axios from 'axios';
 import {RecordingType} from './type-enum';
 
 export const sendRecording = (audioBlob) => async dispatch => {
-  const config = {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  };
-
   try {
     dispatch({
       type: RecordingType.SEND_RECORDING
     });
 
+    const config = { headers : { 'Content-Type': 'multipart/form-data' }};
     const res = await axios.post('/api/recording', audioBlob, config);
 
     dispatch({

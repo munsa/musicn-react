@@ -1,9 +1,9 @@
-import axios from 'axios';
+import api from '../utils/api';
 import {ProfileType} from './type-enum';
 
-export const getCurrentProfile = () => async dispatch => {
+export const getProfileByUsername = username => async dispatch => {
   try {
-    const res = await axios.post('/api/profile/me');
+    const res = await api.get(`/profile/${username}`);
 
     dispatch({
       type: ProfileType.GET_PROFILE,

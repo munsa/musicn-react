@@ -7,14 +7,11 @@ import './css/custom.min.css';
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
-import setAuthToken from './utils/AuthUtils';
-
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
-}
+import setAuthToken from './utils/setAuthToken';
 
 const App = () => {
   useEffect(() => {
+    setAuthToken(localStorage.token);
     store.dispatch(loadUser());
   }, []);
 
