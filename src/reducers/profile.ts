@@ -2,7 +2,6 @@ import { ProfileType } from '../actions/type-enum';
 
 const initialState = {
   profile: null,
-  repos: [],
   loading: true,
   error: {}
 };
@@ -25,4 +24,5 @@ export default function (state = initialState, action) {
         profile: null
       };
   }
+  return state;
 }

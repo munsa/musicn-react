@@ -9,9 +9,12 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
+if(localStorage.token) {
+  setAuthToken(localStorage.token)
+}
+
 const App = () => {
   useEffect(() => {
-    setAuthToken(localStorage.token);
     store.dispatch(loadUser());
   }, []);
 

@@ -13,20 +13,20 @@ const Navbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout
   const navbarLinks = (
     <div>
       <ul className='nav navbar-nav navbar-right'>
-        <li className='nav-item dropdown'>
-          <Link to='/dashboard'>
+        { user ?
+          (<li className='nav-item dropdown'>
+          <Link to={'/' + user.username}>
             <img
               src={
-                !loading && isAuthenticated && user !== null ? user.avatar : ''
+                !loading && isAuthenticated ? user.avatar : ''
               }
               className='rounded-circle'
-              alt='Cinque Terre'
               width='30'
               height='30'
             />
-            {user !== null ? user.username : ''}
+            { user.username }
           </Link>
-        </li>
+        </li>) : ''}
         <li className='nav-item dropdown'>
           <a onClick={logout} href='#!' className='nav-link'>
             <i className='fa fa-sign-out' title='Logout'/>

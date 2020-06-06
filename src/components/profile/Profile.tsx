@@ -8,14 +8,11 @@ const Profile = ({ getProfileByUsername, profile, auth, match }) => {
     getProfileByUsername(match.params.username);
   }, [getProfileByUsername, match.params.username]);
 
-  return (
+  return profile.profile ? (
     <div>
-      USER PROFILE
-      {match.params.username}
-
-      {profile && auth.user._id === profile.user._id ? 'THIS IS THE LOGGED USER' : ''}
+      {profile && auth.user._id === profile.profile.user._id ? 'THIS IS THE LOGGED USER' : ''}
     </div>
-  );
+  ) : '';
 };
 
 Profile.propTypes = {
