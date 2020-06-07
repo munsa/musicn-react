@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getProfileByUsername} from '../../actions/profile';
 import PropTypes from 'prop-types';
+import SongTable from "../song/SongTable";
 
 const Profile = ({ getProfileByUsername, profile, auth, match }) => {
   useEffect(() => {
@@ -10,7 +11,8 @@ const Profile = ({ getProfileByUsername, profile, auth, match }) => {
 
   return profile.profile ? (
     <div>
-      {profile && auth.user._id === profile.profile.user._id ? 'THIS IS THE LOGGED USER' : ''}
+      {auth.user._id === profile.profile.user._id ? 'THIS IS THE LOGGED USER' : ''}
+      <SongTable songs={profile.profile.recordings}/>
     </div>
   ) : '';
 };

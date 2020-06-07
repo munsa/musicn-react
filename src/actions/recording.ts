@@ -1,5 +1,5 @@
-import axios from 'axios';
 import {RecordingType} from './type-enum';
+import api from "../utils/api";
 
 export const sendRecording = (audioBlob) => async dispatch => {
   try {
@@ -8,7 +8,7 @@ export const sendRecording = (audioBlob) => async dispatch => {
     });
 
     const config = { headers : { 'Content-Type': 'multipart/form-data' }};
-    const res = await axios.post('/api/recording', audioBlob, config);
+    const res = await api.post('/recording', audioBlob, config);
 
     dispatch({
       type: RecordingType.RECORDING_RESULT_SUCCESS,
