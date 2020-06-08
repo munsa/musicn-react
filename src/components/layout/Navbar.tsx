@@ -13,20 +13,20 @@ const Navbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout
   const navbarLinks = (
     <div>
       <ul className='nav navbar-nav navbar-right'>
-        <li className='nav-item dropdown'>
-          <a onClick={logout} href='#!' className='nav-link'>
+        { user ?
+          (<li className='nav-item dropdown'>
+          <Link to={'/' + user.username}>
             <img
               src={
-                !loading && isAuthenticated && user !== null ? user.avatar : ''
+                !loading && isAuthenticated ? user.avatar : ''
               }
               className='rounded-circle'
-              alt='Cinque Terre'
               width='30'
               height='30'
             />
-            {!loading && isAuthenticated && user !== null ? user.username : ''}
-          </a>
-        </li>
+            { user.username }
+          </Link>
+        </li>) : ''}
         <li className='nav-item dropdown'>
           <a onClick={logout} href='#!' className='nav-link'>
             <i className='fa fa-sign-out' title='Logout'/>
@@ -59,7 +59,8 @@ const Navbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout
 
 Navbar.proTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  developmentMode: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
