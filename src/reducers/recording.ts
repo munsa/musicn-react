@@ -26,7 +26,8 @@ export default function(state = initialState, action) {
         ...state,
         loading: false
       }
-
+    case RecordingType.REMOVE_RECORDING:
+      return initialState
   }
   return state;
 }

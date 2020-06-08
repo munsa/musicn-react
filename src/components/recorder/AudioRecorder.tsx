@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import AudioPlayer from './AudioPlayer';
-import RecorderSuccessResultModal from './RecorderSuccessResultModal';
+import RecorderSuccessResultModal from './RecordingResultModal';
 import devModeResult from './devModeResult.json';
 import {sendRecording} from "../../actions/recording";
 import PropTypes from "prop-types";
