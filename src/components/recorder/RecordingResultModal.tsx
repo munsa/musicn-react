@@ -28,7 +28,7 @@ const RecordingResultModal = ({recording, removeRecording}) => {
       <div>
         {/* Artists */}
         <div className='row'>
-          <b className='col text-right'>Artist</b>
+          <b className='col text-right'>Artists</b>
           <div className='col-9 text-left'>
             {artists.map((a, j) => (
               <a key={j}>
@@ -52,7 +52,7 @@ const RecordingResultModal = ({recording, removeRecording}) => {
     );
   };
 
-  return recording.recordingResult ? (
+  return recording.recordingResult && recording.recordingResult.metadata ? (
     <Modal show={isOpen} onHide={hideModal}>
       <ModalHeader closeButton={true}>
         <div className='text-right'>FOUND!</div>

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import AudioPlayer from './AudioPlayer';
-import RecorderSuccessResultModal from './RecordingResultModal';
+import RecordingResultModal from './RecordingResultModal';
+import RecordingNotFoundModal from "./RecordingNotFoundModal";
 import devModeResult from './devModeResult.json';
 import {sendRecording} from "../../actions/recording";
 import PropTypes from "prop-types";
+
 declare let MediaRecorder: any;
 
 const AudioRecorder = ({sendRecording, recordingResult, developmentMode}) => {
@@ -13,7 +15,7 @@ const AudioRecorder = ({sendRecording, recordingResult, developmentMode}) => {
   const [circles, setCircles] = React.useState(undefined);
 
   const handleRecorder = async () => {
-    if(developmentMode) {
+    if (developmentMode) {
       let blob = await fetch("./static/media/dev-mode-sample.wav").then(r => r.blob());
       sendRecording(blob);
     } else {
@@ -74,27 +76,27 @@ const AudioRecorder = ({sendRecording, recordingResult, developmentMode}) => {
   }
 
   const processRecording = async (stream, audioContext) => {
-      console.log('Stop recording');
+    console.log('Stop recording');
 
-      // Reset circles
-      setCircles(undefined);
+    // Reset circles
+    setCircles(undefined);
 
-      // Stop audio tracks and context
-      stream.getAudioTracks().forEach(track => {
-        track.stop();
-      });
-      audioContext.close();
+    // Stop audio tracks and context
+    stream.getAudioTracks().forEach(track => {
+      track.stop();
+    });
+    audioContext.close();
 
-      // Create Audio Blob and send to server
-      const audioBlob = new Blob(audioChunks, {type: 'audio/x-wav'});
-      sendRecording(audioBlob);
+    // Create Audio Blob and send to server
+    const audioBlob = new Blob(audioChunks, {type: 'audio/x-wav'});
+    sendRecording(audioBlob);
   }
 
   return (
     <div>
-
-      <AudioPlayer circles={circles} onPlayCallback={handleRecorder} />
-      <RecorderSuccessResultModal result={recordingResult}/>
+      <AudioPlayer circles={circles} onPlayCallback={handleRecorder}/>
+      <RecordingResultModal result={recordingResult}/>
+      <RecordingNotFoundModal result={recordingResult}/>
     </div>
   );
 };
