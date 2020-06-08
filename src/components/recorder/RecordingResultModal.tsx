@@ -4,12 +4,12 @@ import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalFooter from "react-bootstrap/ModalFooter";
-import ModalTitle from "react-bootstrap/ModalTitle";
+import {RecordingType} from "../../actions/type-enum";
 
-const RecorderSuccessResultModal = ({recording}) => {
+const RecordingResultModal = ({recording, removeRecording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   useEffect(() => {
-    if (recording) {
+    if (recording && recording.recordingResult && recording.recordingResult.status.code === 0) {
       showModal();
     }
   }, [recording]);
@@ -20,6 +20,7 @@ const RecorderSuccessResultModal = ({recording}) => {
 
   const hideModal = () => {
     setIsOpen(false);
+    removeRecording();
   };
 
   const Source = ({source: {artists, track, album}}) => {
@@ -27,7 +28,7 @@ const RecorderSuccessResultModal = ({recording}) => {
       <div>
         {/* Artists */}
         <div className='row'>
-          <b className='col text-right'>Artist</b>
+          <b className='col text-right'>Artists</b>
           <div className='col-9 text-left'>
             {artists.map((a, j) => (
               <a key={j}>
@@ -51,9 +52,9 @@ const RecorderSuccessResultModal = ({recording}) => {
     );
   };
 
-  return recording.recordingResult ? (
+  return recording.recordingResult && recording.recordingResult.metadata ? (
     <Modal show={isOpen} onHide={hideModal}>
-      <ModalHeader>
+      <ModalHeader closeButton={true}>
         <div className='text-right'>FOUND!</div>
       </ModalHeader>
       <ModalBody>
@@ -93,4 +94,8 @@ const mapStateToProps = state => ({
   recording: state.recording
 });
 
-export default connect(mapStateToProps)(RecorderSuccessResultModal);
+const mapDispatchToProps = dispatch => ({
+  removeRecording: () => dispatch({ type: RecordingType.REMOVE_RECORDING })
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecordingResultModal);
