@@ -1,25 +1,38 @@
-import {RecordingType} from './type-enum';
-import api from "../utils/api";
+import {GeolocationType} from './type-enum';
 
-export const sendRecording = (audioBlob) => async dispatch => {
+export const getGeolocation = () => dispatch => {
   try {
-    dispatch({
-      type: RecordingType.SEND_RECORDING
-    });
+    const geo_success = position => {
+      dispatch({
+        type: GeolocationType.GET_GEOLOCATION,
+        payload: position.coords
+      });
+    }
 
-    const config = { headers : { 'Content-Type': 'multipart/form-data' }};
-    const res = await api.post('/recording', audioBlob, config);
+    const geo_error = err => {
+      dispatch({
+        type: GeolocationType.GEOLOCATION_ERROR,
+        payload: err
+      });
+    }
 
-    dispatch({
-      type: RecordingType.RECORDING_RESULT_SUCCESS,
-      payload: res.data
-    });
+    let geo_options = {
+      enableHighAccuracy: true,
+      maximumAge        : 30000,
+      timeout           : 27000
+    };
+
+    const getGeolocation = () => {
+      navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
+    }
+
+    window.setInterval(getGeolocation, 500, 'Parameter 1', 'Parameter 2');
+
+
   } catch (err) {
-    const errors = err.response.data.errors;
     dispatch({
-      type: RecordingType.RECORDING_RESULT_FAIL,
-      payload: {msg: err.response.statusText, status: err.response.status }
+      type: GeolocationType.GEOLOCATION_ERROR,
+      payload: err
     });
-    console.log(errors);
   }
 };

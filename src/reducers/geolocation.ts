@@ -1,32 +1,19 @@
-import { RecordingType } from '../actions/type-enum';
+import { GeolocationType } from '../actions/type-enum';
 
 export const initialState = {
-  recordingResult: null,
-  loading: false,
-  error: {}
+  latitude: null,
+  longitude: null
 };
 
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case RecordingType.SEND_RECORDING:
+    case GeolocationType.GET_GEOLOCATION:
       return {
-        ...state,
-        recordingResult: null,
-        loading: true
+        latitude: payload.latitude,
+        longitude: payload.longitude
       }
-    case RecordingType.RECORDING_RESULT_SUCCESS:
-      return {
-        ...state,
-        recordingResult: payload,
-        loading: false
-      }
-    case RecordingType.RECORDING_RESULT_FAIL:
-      return {
-        ...state,
-        loading: false
-      }
-    case RecordingType.REMOVE_RECORDING:
+    case GeolocationType.GEOLOCATION_ERROR:
       return initialState
   }
   return state;
