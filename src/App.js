@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
+import getGeolocation from './actions/geolocation'
 
 if(localStorage.token) {
   setAuthToken(localStorage.token)
@@ -16,6 +17,7 @@ if(localStorage.token) {
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
+    getGeolocation();
   }, []);
 
   return (
@@ -30,7 +32,6 @@ const App = () => {
       </Router>
     </Provider>
   );
-
 };
 
 export default App;

@@ -1,6 +1,6 @@
 import {GeolocationType} from './type-enum';
 
-export const getGeolocation = () => dispatch => {
+const getGeolocation = () => dispatch => {
   try {
     const geo_success = position => {
       dispatch({
@@ -36,3 +36,5 @@ export const getGeolocation = () => dispatch => {
     });
   }
 };
+
+export default getGeolocation;

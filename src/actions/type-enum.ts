@@ -30,3 +30,8 @@ export enum ProfileType {
   GET_PROFILE = 'GET_PROFILE',
   PROFILE_ERROR = 'PROFILE_ERROR'
 }
+
+export enum GeolocationType {
+  GET_GEOLOCATION = 'GET_GEOLOCATION',
+  GEOLOCATION_ERROR = 'GEOLOCATION_ERROR'
+}
