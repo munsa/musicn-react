@@ -1,5 +1,6 @@
-import {RecordingType} from './type-enum';
+import { RecordingType } from './type-enum';
 import api from "../utils/api";
+import { loadUser } from './auth';
 
 export const sendRecording = (audioBlob) => async dispatch => {
   try {
@@ -7,21 +8,27 @@ export const sendRecording = (audioBlob) => async dispatch => {
       type: RecordingType.SEND_RECORDING
     });
 
-    const geolocation = {
-      latitude: 784487343,
-      longitude: 28983932
-    }
     const formData = new FormData();
     formData.append('audio', audioBlob, 'blob');
-    formData.append('geolocation', JSON.stringify(geolocation));
 
     const config = { headers : { 'Content-Type': 'multipart/form-data' }};
     const res = await api.post('/recording', formData, config);
 
     dispatch({
-      type: RecordingType.RECORDING_RESULT_SUCCESS,
+      type: RecordingType.GET_RECORDING,
       payload: res.data
     });
+
+    navigator.geolocation.getCurrentPosition(async (position) => {
+        const body = {
+          geolocation: {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          }
+        };
+        await api.put(`/recording/addGeolocation/${res.data.recordingId}`, body);
+    });
+
   } catch (err) {
     console.log(err);
     dispatch({
