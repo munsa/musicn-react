@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { setLoginAlert } from '../../actions/alert';
+import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import LoginAlert from '../layout/LoginAlert';
 import PropTypes from 'prop-types';
@@ -132,5 +132,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setLoginAlert, register }
+  { setAlert, register }
 )(Register);
