@@ -15,7 +15,7 @@ export default function(state = initialState, action) {
         recordingResult: null,
         loading: true
       }
-    case RecordingType.RECORDING_RESULT_SUCCESS:
+    case RecordingType.GET_RECORDING:
       return {
         ...state,
         recordingResult: payload,
