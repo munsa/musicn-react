@@ -1,6 +1,6 @@
-export enum LoginAlertType {
-  SET_LOGIN_ALERT = 'SET_LOGIN_ALERT',
-  REMOVE_LOGIN_ALERT = 'REMOVE_LOGIN_ALERT'
+export enum AlertType {
+  SET_ALERT = 'SET_ALERT',
+  REMOVE_ALERT = 'REMOVE_ALERT'
 }
 
 export enum AuthType {

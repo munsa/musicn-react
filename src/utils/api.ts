@@ -1,6 +1,6 @@
 import axios from 'axios';
 import store from '../store';
-import { AuthType } from '../actions/type-enum';
+import { AuthType, AlertType } from '../actions/type-enum';
 
 const api = axios.create({
   baseURL: '/api',
@@ -19,7 +19,11 @@ api.interceptors.response.use(
   res => res,
   err => {
     if (err.response.data.msg === 'Token is not valid') {
+      // handle token not valid -> logout
       store.dispatch({ type: AuthType.LOGOUT });
+    } else {
+      // handle rest of the errors -> show error popup
+      //store.dispatch({ type: AlertType.SET_ALERT, payload: err.response.body });
     }
     return Promise.reject(err);
   }

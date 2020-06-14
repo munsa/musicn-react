@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setLoginAlert } from '../../actions/login-alert';
+import { setLoginAlert } from '../../actions/alert';
 import LoginAlert from '../layout/LoginAlert';
 import { login } from '../../actions/auth';
 

@@ -1,4 +1,4 @@
-import { LoginAlertType } from '../actions/type-enum';
+import { AlertType } from '../actions/type-enum';
 
 export const initialState: any[] = [];
 
@@ -6,9 +6,9 @@ export default function(state = initialState, action) {
   const { type, payload, msg } = action;
   let hasType: boolean = false;
   switch (type) {
-    case LoginAlertType.SET_LOGIN_ALERT:
-      state.forEach(loginAlert => {
-        if (loginAlert.msg === msg) {
+    case AlertType.SET_ALERT:
+      state.forEach(alert => {
+        if (alert.msg === msg) {
           hasType = true;
           return;
         }
@@ -17,8 +17,8 @@ export default function(state = initialState, action) {
         return [...state, payload];
       }
       break;
-    case LoginAlertType.REMOVE_LOGIN_ALERT:
-      return state.filter(loginAlert => loginAlert.id !== payload);
+    case AlertType.REMOVE_ALERT:
+      return state.filter(alert => alert.id !== payload);
   }
   return state;
 }
