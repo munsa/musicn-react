@@ -10,7 +10,7 @@
     "fingerprint"
   ],
   "description": "MUSICN - Social network for music recognition - React frontend",
-  "homepage": "https://github.com/munsa/musicn-react#readme",
+  "homepage": "/",
   "bugs": {
     "url": "https://github.com/munsa/musicn-react/issues"
   },
@@ -27,24 +27,25 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@popperjs/core": "^2.4.0",
-    "axios": "^0.19.0",
-    "bootstrap": "^4.4.1",
-    "moment": "^2.24.0",
-    "react": "^16.8.6",
+    "@popperjs/core": "^2.4.2",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
+    "mdbreact": "^4.27.0",
+    "moment": "^2.26.0",
+    "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
-    "react-dom": "^16.8.6",
-    "react-moment": "^0.9.2",
+    "react-dom": "^16.13.1",
+    "react-moment": "^0.9.7",
     "react-popper": "^2.2.3",
-    "react-redux": "^7.1.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "react-tooltip": "^4.2.6",
-    "redux": "^4.0.4",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "react-tooltip": "^4.2.7",
+    "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "typescript": "^3.9.3",
-    "uuid": "^3.3.2"
+    "typescript": "^3.9.5",
+    "uuid": "^8.1.0"
   },
   "eslintConfig": {
     "extends": "react-app"

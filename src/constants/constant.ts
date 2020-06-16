@@ -1,7 +1,7 @@
-export const AlertType = {
+export const AlertTypeConst = {
   SUCCESS: 'SUCCESS',
   WARNING: 'WARNING',
-  DANGER: 'DANGER'
+  ERROR: 'ERROR'
 
 }
 

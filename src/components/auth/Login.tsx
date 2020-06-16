@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setLoginAlert } from '../../actions/alert';
+import { setAlert } from '../../actions/alert';
 import LoginAlert from '../layout/LoginAlert';
 import { login } from '../../actions/auth';
 
@@ -38,7 +38,6 @@ const Login = ({ login, isAuthenticated }) => {
                 <div className='form-group text-center'>
                   <h1>MUSICN</h1>
                 </div>
-                <LoginAlert />
                 <div className='form-group'>
                   <div className='inner-addon left-addon'>
                     <i className='fa fa-envelope' />
@@ -103,5 +102,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setLoginAlert, login }
+  { setAlert, login }
 )(Login);

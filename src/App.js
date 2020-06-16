@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Routes from './components/routing/Routes';
 import Navbar from './components/layout/Navbar';
+import AlertModal from './components/layout/AlertModal';
 import './css/custom.min.css';
 // Redux
 import { Provider } from 'react-redux';
@@ -23,6 +24,7 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbar />
+          <AlertModal />
           <Switch>
             <Route component={Routes} />
           </Switch>

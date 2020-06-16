@@ -21,11 +21,6 @@ export default function(state = initialState, action) {
         recordingResult: payload,
         loading: false
       }
-    case RecordingType.RECORDING_RESULT_FAIL:
-      return {
-        ...state,
-        loading: false
-      }
     case RecordingType.REMOVE_RECORDING:
       return initialState
   }

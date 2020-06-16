@@ -19,21 +19,19 @@ export const sendRecording = (audioBlob) => async dispatch => {
       payload: res.data
     });
 
-    navigator.geolocation.getCurrentPosition(async (position) => {
+    if( res.data?.id ) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
         const body = {
           geolocation: {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
           }
         };
-        await api.put(`/recording/addGeolocation/${res.data.recordingId}`, body);
-    });
+        await api.put(`/recording/addGeolocation/${res.data.id}`, body);
+      });
+    }
 
   } catch (err) {
-    console.log(err);
-    dispatch({
-      type: RecordingType.RECORDING_RESULT_FAIL,
-      payload: {msg: err.response.statusText, status: err.response.status }
-    });
+    console.log(err.message);
   }
 };

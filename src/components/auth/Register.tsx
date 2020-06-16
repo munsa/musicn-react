@@ -44,7 +44,6 @@ const Register = ({ setLoginAlert, register, isAuthenticated }) => {
                 <div className='form-group text-center'>
                   <h1>MUSICN</h1>
                 </div>
-                <LoginAlert />
                 <div className='form-group'>
                   <div className='inner-addon left-addon'>
                     <i className='fa fa-user' />
