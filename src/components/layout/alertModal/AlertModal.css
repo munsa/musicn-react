@@ -1,23 +1,18 @@
-.modal-content {
+.alert-modal-content .modal-content {
   background: none !important;
+  border-width: 0 !important;
+  border-radius: 0 !important;
 }
-
-.alert-modal {
+.alert-modal-content .alert-modal {
   max-width: none !important;
   width: 100% !important;
   margin: 0 !important;
   padding: 0.5rem !important;
   opacity: 0.9;
 }
-
-.modal-body {
+.alert-modal-content .modal-body {
   width: 100% !important;
   padding: 0 !important;
-}
-
-.modal-content {
-  border-width: 0 !important;
-  border-radius: 0 !important;
 }
 
 .alert-element {

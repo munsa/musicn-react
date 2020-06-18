@@ -10,7 +10,7 @@ export const setAlert = (alert) => dispatch => {
 
   setTimeout(
     () => dispatch({ type: AlertType.REMOVE_ALERT, payload: id }),
-    6000
+    100000
   );
 };
 

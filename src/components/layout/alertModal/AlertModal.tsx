@@ -30,7 +30,7 @@ const AlertModal = ({alerts, removeAlert}) => {
   }
 
   return (
-    <MDBContainer>
+    <MDBContainer className='alert-modal-content'>
       <MDBModal className='alert-modal' position="top" backdrop={false} frame isOpen={isOpen} toggle={toggle} inline={false} noClickableBodyWithoutBackdrop={false} overflowScroll={true}>
         <MDBModalBody>
           {alerts.map((a, j) => (
