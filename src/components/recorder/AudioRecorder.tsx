@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import AudioPlayer from './AudioPlayer';
 import RecordingResultModal from './RecordingResultModal';
 import RecordingNotFoundModal from "./RecordingNotFoundModal";
-import devModeResult from '../../common/resources/devModeResult.json';
+import devModeResult from '../../shared/resources/devModeResult.json';
 import {sendRecording} from "../../actions/recording";
 import PropTypes from "prop-types";
 

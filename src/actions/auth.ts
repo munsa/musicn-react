@@ -1,8 +1,8 @@
-import api from '../common/utils/api';
+import api from '../shared/utils/api';
 import { ActionAuthType } from './type-enum';
 import { setAlert } from './alert';
-import setAuthToken from '../common/utils/setAuthToken';
-import { AlertTypeConst } from '../common/constants/constants'
+import setAuthToken from '../shared/utils/setAuthToken';
+import { AlertType } from '../shared/constants/constants'
 
 // Load User
 export const loadUser = () => async dispatch => {
@@ -41,7 +41,7 @@ export const register = ({ username, email, password }) => async dispatch => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach(error => dispatch(setAlert({ type: AlertTypeConst.ERROR, msg: error.msg })));
+      errors.forEach(error => dispatch(setAlert({ type: AlertType.ERROR, msg: error.msg })));
     }
     dispatch({ type: ActionAuthType.REGISTER_FAIL });
   }
@@ -64,7 +64,7 @@ export const login = (email, password) => async dispatch => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach(error => dispatch(setAlert({ type: AlertTypeConst.ERROR, msg: error.msg })));
+      errors.forEach(error => dispatch(setAlert({ type: AlertType.ERROR, msg: error.msg })));
     }
     dispatch({ type: ActionAuthType.LOGIN_FAIL });
   }

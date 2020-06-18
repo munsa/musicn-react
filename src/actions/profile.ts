@@ -1,4 +1,4 @@
-import api from '../common/utils/api';
+import api from '../shared/utils/api';
 import {ActionProfileType} from './type-enum';
 
 export const getProfileByUsername = username => async dispatch => {
