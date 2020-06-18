@@ -1,4 +1,4 @@
-@import "../themes/theme";
+@import "theme";
 
 /*-------------------------------------------*/
 /*---------------- Bootstrap-----------------*/
@@ -87,7 +87,7 @@ h1 {
   height: 6vh;
 }
 
-@import '../../node_modules/bootstrap/scss/bootstrap';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 
 /*-------------------------------------------*/
 /*----------------- Custom-------------------*/
