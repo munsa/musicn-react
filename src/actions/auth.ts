@@ -1,8 +1,8 @@
-import api from '../utils/api';
-import { AuthType } from './type-enum';
+import api from '../common/utils/api';
+import { ActionAuthType } from './type-enum';
 import { setAlert } from './alert';
-import setAuthToken from '../utils/setAuthToken';
-import { AlertTypeConst } from '../constants/constant'
+import setAuthToken from '../common/utils/setAuthToken';
+import { AlertTypeConst } from '../common/constants/constants'
 
 // Load User
 export const loadUser = () => async dispatch => {
@@ -14,12 +14,12 @@ export const loadUser = () => async dispatch => {
     const res = await api.get('/auth');
 
     dispatch({
-      type: AuthType.USER_LOADED,
+      type: ActionAuthType.USER_LOADED,
       payload: res.data
     });
   } catch (err) {
     dispatch({
-      type: AuthType.AUTH_ERROR
+      type: ActionAuthType.AUTH_ERROR
     });
   }
 };
@@ -32,7 +32,7 @@ export const register = ({ username, email, password }) => async dispatch => {
     const res = await api.post('/users', body);
 
     dispatch({
-      type: AuthType.REGISTER_SUCCESS,
+      type: ActionAuthType.REGISTER_SUCCESS,
       payload: res.data
     });
 
@@ -43,7 +43,7 @@ export const register = ({ username, email, password }) => async dispatch => {
     if (errors) {
       errors.forEach(error => dispatch(setAlert({ type: AlertTypeConst.ERROR, msg: error.msg })));
     }
-    dispatch({ type: AuthType.REGISTER_FAIL });
+    dispatch({ type: ActionAuthType.REGISTER_FAIL });
   }
 };
 
@@ -55,7 +55,7 @@ export const login = (email, password) => async dispatch => {
     const res = await api.post('/auth', body);
 
     dispatch({
-      type: AuthType.LOGIN_SUCCESS,
+      type: ActionAuthType.LOGIN_SUCCESS,
       payload: res.data
     });
 
@@ -66,11 +66,11 @@ export const login = (email, password) => async dispatch => {
     if (errors) {
       errors.forEach(error => dispatch(setAlert({ type: AlertTypeConst.ERROR, msg: error.msg })));
     }
-    dispatch({ type: AuthType.LOGIN_FAIL });
+    dispatch({ type: ActionAuthType.LOGIN_FAIL });
   }
 };
 
 // Logout
 export const logout = () => dispatch => {
-  dispatch({ type: AuthType.LOGOUT });
+  dispatch({ type: ActionAuthType.LOGOUT });
 };

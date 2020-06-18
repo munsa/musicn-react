@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
-import {RecordingType} from "../../actions/type-enum";
+import {ActionRecordingType} from "../../actions/type-enum";
 
 const RecordingNotFoundModal = ({recording, removeRecording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -41,7 +41,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeRecording: () => dispatch({ type: RecordingType.REMOVE_RECORDING })
+  removeRecording: () => dispatch({ type: ActionRecordingType.REMOVE_RECORDING })
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecordingNotFoundModal);

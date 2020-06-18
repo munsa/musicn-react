@@ -1,11 +1,11 @@
-import { RecordingType } from './type-enum';
-import api from "../utils/api";
+import { ActionRecordingType } from './type-enum';
+import api from "../common/utils/api";
 import { loadUser } from './auth';
 
 export const sendRecording = (audioBlob) => async dispatch => {
   try {
     dispatch({
-      type: RecordingType.SEND_RECORDING
+      type: ActionRecordingType.SEND_RECORDING
     });
 
     const formData = new FormData();
@@ -15,7 +15,7 @@ export const sendRecording = (audioBlob) => async dispatch => {
     const res = await api.post('/recording', formData, config);
 
     dispatch({
-      type: RecordingType.GET_RECORDING,
+      type: ActionRecordingType.GET_RECORDING,
       payload: res.data
     });
 

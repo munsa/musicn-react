@@ -1,9 +1,9 @@
-export enum AlertType {
+export enum ActionAlertType {
   SET_ALERT = 'SET_ALERT',
   REMOVE_ALERT = 'REMOVE_ALERT'
 }
 
-export enum AuthType {
+export enum ActionAuthType {
   REGISTER_SUCCESS = 'REGISTER_SUCCESS',
   REGISTER_FAIL = 'REGISTER_FAIL',
   USER_LOADED = 'USER_LOADED',
@@ -14,18 +14,18 @@ export enum AuthType {
   LOGOUT_FAIL = 'LOGOUT_FAIL'
 }
 
-export enum RecordingType {
+export enum ActionRecordingType {
   SEND_RECORDING = 'SEND_RECORDING',
   GET_RECORDING = 'GET_RECORDING',
   REMOVE_RECORDING = 'REMOVE_RECORDING'
 }
 
-export enum DevelopmentModeType {
+export enum ActionDevelopmentModeType {
   ENABLE_DEVELOPMENT_MODE = 'ENABLE_DEVELOPMENT_MODE',
   DISABLE_DEVELOPMENT_MODE = 'DISABLE_DEVELOPMENT_MODE'
 }
 
-export enum ProfileType {
+export enum ActionProfileType {
   GET_PROFILE = 'GET_PROFILE',
   PROFILE_ERROR = 'PROFILE_ERROR'
 }

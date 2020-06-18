@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {MDBContainer, MDBModal, MDBModalBody} from "mdbreact";
 import './AlertModal.css';
-import {AlertTypeConst} from '../../../constants/constant';
-import classList from '../../../utils/classList';
+import {AlertTypeConst} from '../../../common/constants/constants';
+import classList from '../../../common/utils/classList';
 import { removeAlert } from '../../../actions/alert';
 import PropTypes from "prop-types";
 
