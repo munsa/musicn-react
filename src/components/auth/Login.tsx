@@ -3,7 +3,6 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setAlert } from '../../actions/alert';
-import LoginAlert from '../layout/LoginAlert';
 import { login } from '../../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
@@ -91,7 +90,7 @@ const Login = ({ login, isAuthenticated }) => {
 };
 
 Login.propTypes = {
-  setLoginAlert: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };

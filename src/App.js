@@ -2,8 +2,8 @@ import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Routes from './components/routing/Routes';
 import Navbar from './components/layout/Navbar';
-import AlertModal from './components/layout/AlertModal';
-import './css/custom.min.css';
+import AlertModal from './components/layout/alertModal/AlertModal';
+import './sass/custom.css';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
