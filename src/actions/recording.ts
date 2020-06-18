@@ -1,6 +1,5 @@
 import { ActionRecordingType } from './type-enum';
 import api from "../shared/utils/api";
-import { loadUser } from './auth';
 
 export const sendRecording = (audioBlob) => async dispatch => {
   try {

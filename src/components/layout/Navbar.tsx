@@ -20,6 +20,7 @@ const Navbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout
               src={
                 !loading && isAuthenticated ? user.avatar : ''
               }
+              alt='User Avatar'
               className='rounded-circle'
               width='30'
               height='30'

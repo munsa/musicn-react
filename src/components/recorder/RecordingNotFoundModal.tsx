@@ -1,4 +1,4 @@
-import React, {useEffect, forwardRef} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
@@ -29,7 +29,8 @@ const RecordingNotFoundModal = ({recording, removeRecording}) => {
       </ModalHeader>
       <ModalBody>
         <div>
-          Sorry, seems we couldn't find the song you are listening to. You can try again and hopefully we will have better luck.
+          Sorry, seems we couldn't find the song you are listening to. You can try again and hopefully we will have
+          better luck.
         </div>
       </ModalBody>
     </Modal>
@@ -41,7 +42,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeRecording: () => dispatch({ type: ActionRecordingType.REMOVE_RECORDING })
+  removeRecording: () => dispatch({type: ActionRecordingType.REMOVE_RECORDING})
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecordingNotFoundModal);

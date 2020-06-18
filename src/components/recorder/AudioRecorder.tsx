@@ -1,10 +1,8 @@
-import React, {Fragment} from 'react';
-import axios from 'axios';
+import React from 'react';
 import {connect} from 'react-redux';
 import AudioPlayer from './AudioPlayer';
 import RecordingResultModal from './RecordingResultModal';
 import RecordingNotFoundModal from "./RecordingNotFoundModal";
-import devModeResult from '../../shared/resources/devModeResult.json';
 import {sendRecording} from "../../actions/recording";
 import PropTypes from "prop-types";
 

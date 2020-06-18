@@ -1,4 +1,4 @@
-import React, {useEffect, forwardRef} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
@@ -59,24 +59,24 @@ const RecordingResultModal = ({recording, removeRecording}) => {
       </ModalHeader>
       <ModalBody>
         <div>
+          <div>
+            {recording.recordingResult.spotify &&
             <div>
-              {recording.recordingResult.spotify &&
-              <div>
-                <h1>
-                  <i className='fa fa-spotify'/> Spotify
-                </h1>
-                <Source source={recording.recordingResult.spotify}/>
-              </div>
-              }
-
-              {recording.recordingResult.deezer &&
-              <div>
-                <hr/>
-                <h1>Deezer</h1>
-                <Source source={recording.recordingResult.deezer}/>
-              </div>
-              }
+              <h1>
+                <i className='fa fa-spotify'/> Spotify
+              </h1>
+              <Source source={recording.recordingResult.spotify}/>
             </div>
+            }
+
+            {recording.recordingResult.deezer &&
+            <div>
+              <hr/>
+              <h1>Deezer</h1>
+              <Source source={recording.recordingResult.deezer}/>
+            </div>
+            }
+          </div>
         </div>
       </ModalBody>
       <ModalFooter>
@@ -93,7 +93,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeRecording: () => dispatch({ type: ActionRecordingType.REMOVE_RECORDING })
+  removeRecording: () => dispatch({type: ActionRecordingType.REMOVE_RECORDING})
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecordingResultModal);

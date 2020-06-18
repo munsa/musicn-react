@@ -3,8 +3,7 @@ import { ActionDevelopmentModeType } from '../actions/type-enum';
 export const initialState = false;
 
 export default function(state = initialState, action) {
-  const { type, payload, msg } = action;
-  let hasType: boolean = false;
+  const { type } = action;
   switch (type) {
     case ActionDevelopmentModeType.ENABLE_DEVELOPMENT_MODE:
       return true;

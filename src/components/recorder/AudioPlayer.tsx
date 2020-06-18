@@ -13,7 +13,7 @@ const AudioPlayer = ({ circles, onPlayCallback }) => {
   const draw = () => {
     const canvas = canvasRef.current;
     if (canvas) {
-      var ctx = canvas.getContext('2d');
+      let ctx = canvas.getContext('2d');
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.globalAlpha = 0.2;
       circles.forEach(c => {
@@ -31,7 +31,7 @@ const AudioPlayer = ({ circles, onPlayCallback }) => {
         <button className='audio-player-invisible-button' />
       </div>
       <div className='audio-player-button-container'>
-        <i className='audio-player-button fa fa-2x fa-microphone'></i>
+        <i className='audio-player-button fa fa-2x fa-microphone'/>
       </div>
 
       <canvas
