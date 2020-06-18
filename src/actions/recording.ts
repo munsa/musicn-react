@@ -19,7 +19,7 @@ export const sendRecording = (audioBlob) => async dispatch => {
       payload: res.data
     });
 
-    if( res.data?.id ) {
+    if( res.data?._id ) {
       navigator.geolocation.getCurrentPosition(async (position) => {
         const body = {
           geolocation: {
@@ -27,7 +27,7 @@ export const sendRecording = (audioBlob) => async dispatch => {
             longitude: position.coords.longitude
           }
         };
-        await api.put(`/recording/addGeolocation/${res.data.id}`, body);
+        await api.put(`/recording/addGeolocation/${res.data._id}`, body);
       });
     }
 

@@ -9,7 +9,7 @@ import {RecordingType} from "../../actions/type-enum";
 const RecordingResultModal = ({recording, removeRecording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   useEffect(() => {
-    if (recording && recording.recordingResult) {
+    if (recording && recording.recordingResult && recording.recordingResult.success) {
       showModal();
     }
   }, [recording]);
@@ -52,33 +52,32 @@ const RecordingResultModal = ({recording, removeRecording}) => {
     );
   };
 
-  return recording.recordingResult && recording.recordingResult.metadata ? (
+  return recording.recordingResult ? (
     <Modal show={isOpen} onHide={hideModal}>
       <ModalHeader closeButton={true}>
         <div className='text-right'>FOUND!</div>
       </ModalHeader>
       <ModalBody>
         <div>
-          {recording.recordingResult.metadata.music.map((m, i) => (
-            <div key={i}>
-              {m.external_metadata.spotify &&
+            <div>
+              {recording.recordingResult.spotify &&
               <div>
                 <h1>
                   <i className='fa fa-spotify'/> Spotify
                 </h1>
-                <Source source={m.external_metadata.spotify}/>
+                <Source source={recording.recordingResult.spotify}/>
               </div>
               }
 
-              {m.external_metadata.deezer &&
+              {recording.recordingResult.deezer &&
               <div>
                 <hr/>
                 <h1>Deezer</h1>
-                <Source source={m.external_metadata.deezer}/>
+                <Source source={recording.recordingResult.deezer}/>
               </div>
               }
             </div>
-          ))}
+          ))
         </div>
       </ModalBody>
       <ModalFooter>

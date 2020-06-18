@@ -8,7 +8,7 @@ import {RecordingType} from "../../actions/type-enum";
 const RecordingNotFoundModal = ({recording, removeRecording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   useEffect(() => {
-    if (recording && recording.recordingResult) {
+    if (recording && recording.recordingResult && !recording.recordingResult.success) {
       showModal();
     }
   }, [recording]);

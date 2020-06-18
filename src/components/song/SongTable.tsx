@@ -28,8 +28,8 @@ const SongTable = ({songs}) => {
             <td>{s.track}</td>
             <td>{(new Date(s.date)).toLocaleString()}</td>
             <td>
-              {s.spotifyTrackId ?
-                <a href='#' onClick={() => openSpotifyTrackLink(s.spotifyTrackId)} className='btn-link'>
+              {s.spotify?.track?.id ?
+                <a href='#' onClick={() => openSpotifyTrackLink(s.spotify.track.id)} className='btn-link'>
                   <i className='fa fa-spotify' title='Spotify'/>
                 </a>
                 : ''}
