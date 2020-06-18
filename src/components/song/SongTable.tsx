@@ -24,8 +24,8 @@ const SongTable = ({songs}) => {
         {songs.map((s, i) => (
           <tr key={i}>
             <th scope="row">{i + 1}</th>
-            <td>{s.artists}</td>
-            <td>{s.track}</td>
+            <td>{s.acoustId.artists.map(a => a.name ).toString()}</td>
+            <td>{s.acoustId.track.name}</td>
             <td>{(new Date(s.date)).toLocaleString()}</td>
             <td>
               {s.spotify?.track?.id ?
@@ -39,8 +39,7 @@ const SongTable = ({songs}) => {
         </tbody>
       </table>
     </div>
-  )
-};
+  )};
 
 SongTable.propTypes = {
   songs: PropTypes.array

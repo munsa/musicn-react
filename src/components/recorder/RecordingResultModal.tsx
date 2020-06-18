@@ -77,7 +77,6 @@ const RecordingResultModal = ({recording, removeRecording}) => {
               </div>
               }
             </div>
-          ))
         </div>
       </ModalBody>
       <ModalFooter>

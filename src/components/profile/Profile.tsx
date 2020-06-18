@@ -9,12 +9,12 @@ const Profile = ({ getProfileByUsername, profile, auth, match }) => {
     getProfileByUsername(match.params.username);
   }, [getProfileByUsername, match.params.username]);
 
-  return profile.profile ? (
+  return profile.profile && (
     <div>
       {auth.user._id === profile.profile.user._id ? 'THIS IS THE LOGGED USER' : ''}
       <SongTable songs={profile.profile.recordings}/>
     </div>
-  ) : '';
+  );
 };
 
 Profile.propTypes = {
