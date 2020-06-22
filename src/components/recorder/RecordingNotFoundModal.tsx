@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import {ActionRecordingType} from "../../actions/type-enum";
+import PropTypes from 'prop-types';
 
 const RecordingNotFoundModal = ({recording, removeRecording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -37,8 +38,13 @@ const RecordingNotFoundModal = ({recording, removeRecording}) => {
   ) : '';
 };
 
+RecordingNotFoundModal.PropTypes = {
+  recording: PropTypes.object.isRequired,
+  removeRecording: PropTypes.func.isRequired
+}
+
 const mapStateToProps = state => ({
-  recording: state.recording
+  recording: state.recording,
 });
 
 const mapDispatchToProps = dispatch => ({

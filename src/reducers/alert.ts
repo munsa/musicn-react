@@ -1,9 +1,9 @@
-import { ActionAlertType } from '../actions/type-enum';
+import {ActionAlertType} from '../actions/type-enum';
 
 export const initialState: any[] = [];
 
-export default function(state = initialState, action) {
-  const { type, payload } = action;
+export default function (state = initialState, action) {
+  const {type, payload} = action;
   switch (type) {
     case ActionAlertType.SET_ALERT:
       return [...state, payload];

@@ -1,17 +1,17 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import {Redirect, Route} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 const PrivateRoute = ({
-  component: Component,
-  auth: { isAuthenticated, loading },
-  ...rest
-}) => (
+                        component: Component,
+                        auth: {isAuthenticated, loading},
+                        ...rest
+                      }) => (
   <Route
     {...rest}
     render={props =>
       !isAuthenticated && !loading ? (
-        <Redirect to='/login' />
+        <Redirect to='/login'/>
       ) : (
         <Component {...props} />
       )

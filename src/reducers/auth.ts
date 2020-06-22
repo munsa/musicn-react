@@ -1,4 +1,4 @@
-import { ActionAuthType } from '../actions/type-enum';
+import {ActionAuthType} from '../actions/type-enum';
 
 const initialState = {
   token: localStorage.getItem('token'),
@@ -7,8 +7,8 @@ const initialState = {
   user: null
 };
 
-export default function(state = initialState, action) {
-  const { type, payload } = action;
+export default function (state = initialState, action) {
+  const {type, payload} = action;
 
   switch (type) {
     case ActionAuthType.USER_LOADED:

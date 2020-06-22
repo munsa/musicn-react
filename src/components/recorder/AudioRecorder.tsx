@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 
 declare let MediaRecorder: any;
 
-const AudioRecorder = ({sendRecording, recordingResult, developmentMode}) => {
+const AudioRecorder = ({sendRecording, developmentMode}) => {
   const [audioChunks, setAudioChunks] = React.useState([]);
   const [circles, setCircles] = React.useState(undefined);
 
@@ -93,19 +93,18 @@ const AudioRecorder = ({sendRecording, recordingResult, developmentMode}) => {
   return (
     <div>
       <AudioPlayer circles={circles} onPlayCallback={handleRecorder}/>
-      <RecordingResultModal result={recordingResult}/>
-      <RecordingNotFoundModal result={recordingResult}/>
+      <RecordingResultModal/>
+      <RecordingNotFoundModal/>
     </div>
   );
 };
 
 AudioRecorder.propTypes = {
   sendRecording: PropTypes.func.isRequired,
-  recordingResult: PropTypes.object
+  developmentMode: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  recording: state.recording,
   developmentMode: state.developmentMode
 });
 

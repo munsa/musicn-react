@@ -1,4 +1,4 @@
-import { ActionProfileType } from '../actions/type-enum';
+import {ActionProfileType} from '../actions/type-enum';
 
 const initialState = {
   profile: null,
@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-  const { type, payload } = action;
+  const {type, payload} = action;
 
   switch (type) {
     case ActionProfileType.GET_PROFILE:

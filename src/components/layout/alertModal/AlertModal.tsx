@@ -4,7 +4,7 @@ import {MDBContainer, MDBModal, MDBModalBody} from "mdbreact";
 import './AlertModal.css';
 import {AlertType} from '../../../shared/constants/constants';
 import classList from '../../../shared/utils/classList';
-import { removeAlert } from '../../../actions/alert';
+import {removeAlert} from '../../../actions/alert';
 import PropTypes from "prop-types";
 
 const AlertModal = ({alerts, removeAlert}) => {
@@ -31,7 +31,8 @@ const AlertModal = ({alerts, removeAlert}) => {
 
   return (
     <MDBContainer className='alert-modal-content'>
-      <MDBModal className='alert-modal' position="top" backdrop={false} frame isOpen={isOpen} toggle={toggle} inline={false} noClickableBodyWithoutBackdrop={false} overflowScroll={true}>
+      <MDBModal className='alert-modal' position="top" backdrop={false} frame isOpen={isOpen} toggle={toggle}
+                inline={false} noClickableBodyWithoutBackdrop={false} overflowScroll={true}>
         <MDBModalBody>
           {alerts.map((a, j) => (
             <div key={j} className={classList('alert-element',
@@ -59,12 +60,12 @@ const AlertModal = ({alerts, removeAlert}) => {
 };
 
 AlertModal.propTypes = {
-  removeAlert: PropTypes.func.isRequired,
-  alerts: PropTypes.array
+  alerts: PropTypes.array,
+  removeAlert: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   alerts: state.alert
 });
 
-export default connect(mapStateToProps, { removeAlert })(AlertModal);
+export default connect(mapStateToProps, {removeAlert})(AlertModal);
