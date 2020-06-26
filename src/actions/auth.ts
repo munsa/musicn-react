@@ -11,7 +11,7 @@ export const loadUser = () => async dispatch => {
   }
 
   try {
-    const res = await api.get('/auth');
+    const res = await api.get('/auth/user');
 
     dispatch({
       type: ActionAuthType.USER_LOADED,
@@ -52,7 +52,7 @@ export const login = (email, password) => async dispatch => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await api.post('/auth', body);
+    const res = await api.post('/auth/login', body);
 
     dispatch({
       type: ActionAuthType.LOGIN_SUCCESS,

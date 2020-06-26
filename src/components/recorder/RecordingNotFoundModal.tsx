@@ -26,7 +26,7 @@ const RecordingNotFoundModal = ({recording, removeRecording}) => {
   return recording.recordingResult ? (
     <Modal show={isOpen} onHide={hideModal} size={'sm'}>
       <ModalHeader closeButton={true}>
-        <div className='text-right'>Song not found :(</div>
+        <div className='text-right'>404 Song not found :(</div>
       </ModalHeader>
       <ModalBody>
         <div>
@@ -38,7 +38,7 @@ const RecordingNotFoundModal = ({recording, removeRecording}) => {
   ) : '';
 };
 
-RecordingNotFoundModal.PropTypes = {
+RecordingNotFoundModal.propTypes = {
   recording: PropTypes.object.isRequired,
   removeRecording: PropTypes.func.isRequired
 }

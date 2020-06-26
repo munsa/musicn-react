@@ -15,7 +15,7 @@ const Navbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout
       <ul className='nav navbar-nav navbar-right'>
         { user ?
           (<li className='nav-item dropdown'>
-          <Link to={'/' + user.username}>
+          <Link to={'/profile/' + user.username}>
             <img
               src={
                 !loading && isAuthenticated ? user.avatar : ''

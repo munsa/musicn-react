@@ -89,7 +89,7 @@ const RecordingResultModal = ({recording, removeRecording}) => {
   ) : '';
 };
 
-RecordingResultModal.PropTypes = {
+RecordingResultModal.propTypes = {
   recording: PropTypes.object.isRequired,
   removeRecording: PropTypes.func.isRequired
 }

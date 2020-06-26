@@ -14,7 +14,7 @@ const Routes = () => {
       <section className="container">
         <Switch>
           <PrivateRoute exact path='/' component={Home}/>
-          <PrivateRoute exact path="/:username" component={Profile}/>
+          <PrivateRoute exact path="/profile/:username" component={Profile}/>
         </Switch>
       </section>
     </Fragment>
