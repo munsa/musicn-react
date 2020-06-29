@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import store from '../../store';
 import {ActionAuthType} from '../../actions/type-enum';
 import {setAlert} from '../../actions/alert';
+import {AlertType} from '../constants/constants';
 
 const api = axios.create({
   baseURL: '/api',
@@ -20,12 +21,12 @@ const api = axios.create({
 api.interceptors.response.use(
   res => res,
   err => {
-    if (err.response.data.msg === 'Token is not valid') {
+    if (err.response?.data?.msg === 'Token is not valid') {
       // handle token not valid -> logout
       store.dispatch({type: ActionAuthType.LOGOUT});
-    } else if (err.response.data?.hasOwnProperty('alert')) {
+    } else if (err.response.data?.hasOwnProperty('status') && err.response.data.status === 'error') {
       // handle rest of the errors -> show error message
-      store.dispatch(setAlert(err.response.data.alert));
+      store.dispatch(setAlert({msg: err.response.data.message, type: AlertType.ERROR}));
     }
     return Promise.reject(err);
   }
