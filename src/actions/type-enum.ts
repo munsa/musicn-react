@@ -17,7 +17,7 @@ export enum ActionAuthType {
 export enum ActionRecordingType {
   SEND_RECORDING = 'SEND_RECORDING',
   GET_RECORDING = 'GET_RECORDING',
-  REMOVE_RECORDING = 'REMOVE_RECORDING'
+  CLOSE_RECORDING_RESULT_MODAL = 'CLOSE_RECORDING_RESULT_MODAL'
 }
 
 export enum ActionDevelopmentModeType {

@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 const RecordingResultModal = ({recording, removeRecording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   useEffect(() => {
-    if (recording && recording.recordingResult && recording.recordingResult.success) {
+    if (recording && recording.found) {
       showModal();
     }
   }, [recording]);
@@ -53,7 +53,7 @@ const RecordingResultModal = ({recording, removeRecording}) => {
     );
   };
 
-  return recording.recordingResult ? (
+  return recording.result && (
     <Modal show={isOpen} onHide={hideModal}>
       <ModalHeader closeButton={true}>
         <div className='text-right'>FOUND!</div>
@@ -61,20 +61,20 @@ const RecordingResultModal = ({recording, removeRecording}) => {
       <ModalBody>
         <div>
           <div>
-            {recording.recordingResult.spotify &&
+            {recording.result.spotify &&
             <div>
               <h1>
                 <i className='fa fa-spotify'/> Spotify
               </h1>
-              <Source source={recording.recordingResult.spotify}/>
+              <Source source={recording.result.spotify}/>
             </div>
             }
 
-            {recording.recordingResult.deezer &&
+            {recording.result.deezer &&
             <div>
               <hr/>
               <h1>Deezer</h1>
-              <Source source={recording.recordingResult.deezer}/>
+              <Source source={recording.result.deezer}/>
             </div>
             }
           </div>
@@ -86,7 +86,7 @@ const RecordingResultModal = ({recording, removeRecording}) => {
         </button>
       </ModalFooter>
     </Modal>
-  ) : '';
+  );
 };
 
 RecordingResultModal.propTypes = {
@@ -99,7 +99,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeRecording: () => dispatch({type: ActionRecordingType.REMOVE_RECORDING})
+  removeRecording: () => dispatch({type: ActionRecordingType.CLOSE_RECORDING_RESULT_MODAL})
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecordingResultModal);

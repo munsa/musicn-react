@@ -11,7 +11,7 @@ const Profile = ({getProfileByUsername, profile, auth, match}) => {
 
   return profile.profile && (
     <div>
-      {auth.user._id === profile.profile.user._id ? 'THIS IS THE LOGGED USER' : ''}
+      {auth.user.id === profile.profile.user.id ? 'THIS IS THE LOGGED USER' : ''}
       <SongTable songs={profile.profile.recordings}/>
     </div>
   );

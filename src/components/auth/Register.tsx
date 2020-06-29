@@ -5,7 +5,7 @@ import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-const Register = ({setLoginAlert, register, isAuthenticated}) => {
+const Register = ({register, isAuthenticated}) => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -22,7 +22,7 @@ const Register = ({setLoginAlert, register, isAuthenticated}) => {
   async function onSubmit(event: any) {
     event.preventDefault();
     if (password !== passwordRepeat) {
-      setLoginAlert('Passwords do not match', 'danger');
+      // setLoginAlert('Passwords do not match', 'danger');
     } else {
       register({username, email, password});
     }
@@ -120,7 +120,6 @@ const Register = ({setLoginAlert, register, isAuthenticated}) => {
 };
 
 Register.propTypes = {
-  setLoginAlert: PropTypes.func.isRequired,
   register: PropTypes.array.isRequired
 };
 

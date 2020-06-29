@@ -1,9 +1,9 @@
 import {ActionRecordingType} from '../actions/type-enum';
 
 export const initialState = {
-  recordingResult: null,
-  loading: false,
-  error: {}
+  result: null,
+  found: null,
+  loading: false
 };
 
 export default function (state = initialState, action) {
@@ -12,16 +12,18 @@ export default function (state = initialState, action) {
     case ActionRecordingType.SEND_RECORDING:
       return {
         ...state,
-        recordingResult: null,
+        result: null,
+        found: null,
         loading: true
       }
     case ActionRecordingType.GET_RECORDING:
       return {
         ...state,
-        recordingResult: payload,
+        result: payload,
+        found: payload != null,
         loading: false
       }
-    case ActionRecordingType.REMOVE_RECORDING:
+    case ActionRecordingType.CLOSE_RECORDING_RESULT_MODAL:
       return initialState
   }
   return state;

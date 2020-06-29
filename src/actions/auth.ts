@@ -29,7 +29,7 @@ export const register = ({ username, email, password }) => async dispatch => {
   const body = JSON.stringify({ username, email, password });
 
   try {
-    const res = await api.post('/users', body);
+    const res = await api.post('/auth/register', body);
 
     dispatch({
       type: ActionAuthType.REGISTER_SUCCESS,

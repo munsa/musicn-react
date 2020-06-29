@@ -11,7 +11,8 @@ export const sendRecording = (audioBlob) => async dispatch => {
     formData.append('audio', audioBlob, 'blob');
 
     const config = { headers : { 'Content-Type': 'multipart/form-data' }};
-    const res = await api.post('/recording', formData, config);
+    const res = await api.post('/recording/identify', formData, config);
+
 
     dispatch({
       type: ActionRecordingType.GET_RECORDING,

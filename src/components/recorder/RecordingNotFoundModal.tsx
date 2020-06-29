@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import Modal from "react-bootstrap/Modal";
-import ModalBody from "react-bootstrap/ModalBody";
-import ModalHeader from "react-bootstrap/ModalHeader";
-import {ActionRecordingType} from "../../actions/type-enum";
+import Modal from 'react-bootstrap/Modal';
+import ModalBody from 'react-bootstrap/ModalBody';
+import ModalHeader from 'react-bootstrap/ModalHeader';
+import {ActionRecordingType} from '../../actions/type-enum';
 import PropTypes from 'prop-types';
 
 const RecordingNotFoundModal = ({recording, removeRecording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   useEffect(() => {
-    if (recording && recording.recordingResult && !recording.recordingResult.success) {
+    if (recording && recording.found === false) {
       showModal();
     }
   }, [recording]);
@@ -23,19 +23,18 @@ const RecordingNotFoundModal = ({recording, removeRecording}) => {
     removeRecording();
   };
 
-  return recording.recordingResult ? (
-    <Modal show={isOpen} onHide={hideModal} size={'sm'}>
+  return (
+    <Modal show={isOpen} onHide={hideModal}>
       <ModalHeader closeButton={true}>
         <div className='text-right'>404 Song not found :(</div>
       </ModalHeader>
       <ModalBody>
         <div>
-          Sorry, seems we couldn't find the song you are listening to. You can try again and hopefully we will have
-          better luck.
+          Sorry, seems we couldn't find the song you are listening to.
         </div>
       </ModalBody>
     </Modal>
-  ) : '';
+  );
 };
 
 RecordingNotFoundModal.propTypes = {
@@ -48,7 +47,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeRecording: () => dispatch({type: ActionRecordingType.REMOVE_RECORDING})
+  removeRecording: () => dispatch({type: ActionRecordingType.CLOSE_RECORDING_RESULT_MODAL})
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecordingNotFoundModal);
