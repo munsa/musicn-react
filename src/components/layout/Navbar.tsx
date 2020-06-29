@@ -15,11 +15,12 @@ const Navbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout
       <ul className='nav navbar-nav navbar-right'>
         { user ?
           (<li className='nav-item dropdown'>
-          <Link to={'/' + user.username}>
+          <Link to={'/profile/' + user.username}>
             <img
               src={
                 !loading && isAuthenticated ? user.avatar : ''
               }
+              alt='User Avatar'
               className='rounded-circle'
               width='30'
               height='30'
@@ -60,7 +61,8 @@ const Navbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout
 Navbar.proTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  developmentMode: PropTypes.bool
+  developmentMode: PropTypes.bool,
+  toggleDevelopmentMode: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

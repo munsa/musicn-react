@@ -1,39 +1,37 @@
-import { RecordingType } from './type-enum';
-import api from "../utils/api";
-import { loadUser } from './auth';
+import { ActionRecordingType } from './type-enum';
+import api from "../shared/utils/api";
 
 export const sendRecording = (audioBlob) => async dispatch => {
   try {
     dispatch({
-      type: RecordingType.SEND_RECORDING
+      type: ActionRecordingType.SEND_RECORDING
     });
 
     const formData = new FormData();
     formData.append('audio', audioBlob, 'blob');
 
     const config = { headers : { 'Content-Type': 'multipart/form-data' }};
-    const res = await api.post('/recording', formData, config);
+    const res = await api.post('/recording/identify', formData, config);
+
 
     dispatch({
-      type: RecordingType.GET_RECORDING,
+      type: ActionRecordingType.GET_RECORDING,
       payload: res.data
     });
 
-    navigator.geolocation.getCurrentPosition(async (position) => {
+    if( res.data?._id ) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
         const body = {
           geolocation: {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
           }
         };
-        await api.put(`/recording/addGeolocation/${res.data.recordingId}`, body);
-    });
+        await api.put(`/recording/addGeolocation/${res.data._id}`, body);
+      });
+    }
 
   } catch (err) {
-    console.log(err);
-    dispatch({
-      type: RecordingType.RECORDING_RESULT_FAIL,
-      payload: {msg: err.response.statusText, status: err.response.status }
-    });
+    console.log(err.message);
   }
 };

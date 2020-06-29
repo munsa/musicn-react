@@ -24,12 +24,12 @@ const SongTable = ({songs}) => {
         {songs.map((s, i) => (
           <tr key={i}>
             <th scope="row">{i + 1}</th>
-            <td>{s.artists}</td>
-            <td>{s.track}</td>
+            <td>{s.acoustId.artists.map(a => a.name).toString()}</td>
+            <td>{s.acoustId.track.name}</td>
             <td>{(new Date(s.date)).toLocaleString()}</td>
             <td>
-              {s.spotifyTrackId ?
-                <a href='#' onClick={() => openSpotifyTrackLink(s.spotifyTrackId)} className='btn-link'>
+              {s.spotify?.track?.id ?
+                <a href='#' onClick={() => openSpotifyTrackLink(s.spotify.track.id)} className='btn-link'>
                   <i className='fa fa-spotify' title='Spotify'/>
                 </a>
                 : ''}

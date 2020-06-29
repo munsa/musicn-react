@@ -1,15 +1,16 @@
-import React, {useEffect, forwardRef} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalFooter from "react-bootstrap/ModalFooter";
-import {RecordingType} from "../../actions/type-enum";
+import {ActionRecordingType} from "../../actions/type-enum";
+import PropTypes from "prop-types";
 
 const RecordingResultModal = ({recording, removeRecording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   useEffect(() => {
-    if (recording && recording.recordingResult && recording.recordingResult.status.code === 0) {
+    if (recording && recording.found) {
       showModal();
     }
   }, [recording]);
@@ -52,33 +53,31 @@ const RecordingResultModal = ({recording, removeRecording}) => {
     );
   };
 
-  return recording.recordingResult && recording.recordingResult.metadata ? (
+  return recording.result && (
     <Modal show={isOpen} onHide={hideModal}>
       <ModalHeader closeButton={true}>
         <div className='text-right'>FOUND!</div>
       </ModalHeader>
       <ModalBody>
         <div>
-          {recording.recordingResult.metadata.music.map((m, i) => (
-            <div key={i}>
-              {m.external_metadata.spotify &&
-              <div>
-                <h1>
-                  <i className='fa fa-spotify'/> Spotify
-                </h1>
-                <Source source={m.external_metadata.spotify}/>
-              </div>
-              }
-
-              {m.external_metadata.deezer &&
-              <div>
-                <hr/>
-                <h1>Deezer</h1>
-                <Source source={m.external_metadata.deezer}/>
-              </div>
-              }
+          <div>
+            {recording.result.spotify &&
+            <div>
+              <h1>
+                <i className='fa fa-spotify'/> Spotify
+              </h1>
+              <Source source={recording.result.spotify}/>
             </div>
-          ))}
+            }
+
+            {recording.result.deezer &&
+            <div>
+              <hr/>
+              <h1>Deezer</h1>
+              <Source source={recording.result.deezer}/>
+            </div>
+            }
+          </div>
         </div>
       </ModalBody>
       <ModalFooter>
@@ -87,15 +86,20 @@ const RecordingResultModal = ({recording, removeRecording}) => {
         </button>
       </ModalFooter>
     </Modal>
-  ) : '';
+  );
 };
+
+RecordingResultModal.propTypes = {
+  recording: PropTypes.object.isRequired,
+  removeRecording: PropTypes.func.isRequired
+}
 
 const mapStateToProps = state => ({
   recording: state.recording
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeRecording: () => dispatch({ type: RecordingType.REMOVE_RECORDING })
+  removeRecording: () => dispatch({type: ActionRecordingType.CLOSE_RECORDING_RESULT_MODAL})
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecordingResultModal);

@@ -1,12 +1,11 @@
-import React, { Fragment, useState } from 'react';
-import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
-import { setLoginAlert } from '../../actions/login-alert';
-import { register } from '../../actions/auth';
-import LoginAlert from '../layout/LoginAlert';
+import React, {Fragment, useState} from 'react';
+import {connect} from 'react-redux';
+import {Link, Redirect} from 'react-router-dom';
+import {setAlert} from '../../actions/alert';
+import {register} from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-const Register = ({ setLoginAlert, register, isAuthenticated }) => {
+const Register = ({register, isAuthenticated}) => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -14,24 +13,24 @@ const Register = ({ setLoginAlert, register, isAuthenticated }) => {
     passwordRepeat: ''
   });
 
-  const { username, email, password, passwordRepeat } = formData;
+  const {username, email, password, passwordRepeat} = formData;
 
   function onChange(event: any) {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setFormData({...formData, [event.target.name]: event.target.value});
   }
 
   async function onSubmit(event: any) {
     event.preventDefault();
     if (password !== passwordRepeat) {
-      setLoginAlert('Passwords do not match', 'danger');
+      // setLoginAlert('Passwords do not match', 'danger');
     } else {
-      register({ username, email, password });
+      register({username, email, password});
     }
   }
 
   //Redirect if logged in
   if (isAuthenticated) {
-    return <Redirect to='/' />;
+    return <Redirect to='/'/>;
   }
 
   return (
@@ -44,10 +43,9 @@ const Register = ({ setLoginAlert, register, isAuthenticated }) => {
                 <div className='form-group text-center'>
                   <h1>MUSICN</h1>
                 </div>
-                <LoginAlert />
                 <div className='form-group'>
                   <div className='inner-addon left-addon'>
-                    <i className='fa fa-user' />
+                    <i className='fa fa-user'/>
                     <input
                       type='text'
                       className='form-control text-input'
@@ -60,7 +58,7 @@ const Register = ({ setLoginAlert, register, isAuthenticated }) => {
                 </div>
                 <div className='form-group'>
                   <div className='inner-addon left-addon'>
-                    <i className='fa fa-envelope' />
+                    <i className='fa fa-envelope'/>
                     <input
                       type='email'
                       className='form-control text-input'
@@ -73,7 +71,7 @@ const Register = ({ setLoginAlert, register, isAuthenticated }) => {
                 </div>
                 <div className='form-group'>
                   <div className='inner-addon left-addon'>
-                    <i className='fa fa-unlock-alt' />
+                    <i className='fa fa-unlock-alt'/>
                     <input
                       type='password'
                       className='form-control text-input'
@@ -86,7 +84,7 @@ const Register = ({ setLoginAlert, register, isAuthenticated }) => {
                 </div>
                 <div className='form-group'>
                   <div className='inner-addon left-addon'>
-                    <i className='fa fa-unlock-alt' />
+                    <i className='fa fa-unlock-alt'/>
                     <input
                       type='password'
                       className='form-control text-input'
@@ -98,7 +96,7 @@ const Register = ({ setLoginAlert, register, isAuthenticated }) => {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <input type='checkbox' className='align-middle' />
+                  <input type='checkbox' className='align-middle'/>
                   <div className='d-inline remember-text align-middle'>
                     Remember Me
                   </div>
@@ -122,7 +120,6 @@ const Register = ({ setLoginAlert, register, isAuthenticated }) => {
 };
 
 Register.propTypes = {
-  setLoginAlert: PropTypes.func.isRequired,
   register: PropTypes.array.isRequired
 };
 
@@ -132,5 +129,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setLoginAlert, register }
+  {setAlert, register}
 )(Register);

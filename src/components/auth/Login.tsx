@@ -1,21 +1,19 @@
-import React, { Fragment, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, {Fragment, useState} from 'react';
+import {Link, Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import { setLoginAlert } from '../../actions/login-alert';
-import LoginAlert from '../layout/LoginAlert';
-import { login } from '../../actions/auth';
+import {login} from '../../actions/auth';
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({login, isAuthenticated}) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
 
-  const { email, password } = formData;
+  const {email, password} = formData;
 
   function onChange(event: any) {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setFormData({...formData, [event.target.name]: event.target.value});
   }
 
   async function onSubmit(event: any) {
@@ -25,7 +23,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   //Redirect if logged in
   if (isAuthenticated) {
-    return <Redirect to='/' />;
+    return <Redirect to='/'/>;
   }
 
   return (
@@ -38,10 +36,9 @@ const Login = ({ login, isAuthenticated }) => {
                 <div className='form-group text-center'>
                   <h1>MUSICN</h1>
                 </div>
-                <LoginAlert />
                 <div className='form-group'>
                   <div className='inner-addon left-addon'>
-                    <i className='fa fa-envelope' />
+                    <i className='fa fa-envelope'/>
                     <input
                       type='email'
                       className='form-control text-input'
@@ -55,7 +52,7 @@ const Login = ({ login, isAuthenticated }) => {
                 </div>
                 <div className='form-group'>
                   <div className='inner-addon left-addon'>
-                    <i className='fa fa-unlock-alt' />
+                    <i className='fa fa-unlock-alt'/>
                     <input
                       type='password'
                       className='form-control text-input'
@@ -68,7 +65,7 @@ const Login = ({ login, isAuthenticated }) => {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <input type='checkbox' className='align-middle' />
+                  <input type='checkbox' className='align-middle'/>
                   <div className='d-inline remember-text align-middle'>
                     Remember Me
                   </div>
@@ -92,7 +89,6 @@ const Login = ({ login, isAuthenticated }) => {
 };
 
 Login.propTypes = {
-  setLoginAlert: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };
@@ -103,5 +99,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setLoginAlert, login }
+  {login}
 )(Login);

@@ -1,7 +1,8 @@
-import api from '../utils/api';
-import { AuthType } from './type-enum';
-import { setLoginAlert } from './login-alert';
-import setAuthToken from '../utils/setAuthToken';
+import api from '../shared/utils/api';
+import { ActionAuthType } from './type-enum';
+import { setAlert } from './alert';
+import setAuthToken from '../shared/utils/setAuthToken';
+import { AlertType } from '../shared/constants/constants'
 
 // Load User
 export const loadUser = () => async dispatch => {
@@ -10,15 +11,15 @@ export const loadUser = () => async dispatch => {
   }
 
   try {
-    const res = await api.get('/auth');
+    const res = await api.get('/auth/user');
 
     dispatch({
-      type: AuthType.USER_LOADED,
+      type: ActionAuthType.USER_LOADED,
       payload: res.data
     });
   } catch (err) {
     dispatch({
-      type: AuthType.AUTH_ERROR
+      type: ActionAuthType.AUTH_ERROR
     });
   }
 };
@@ -28,10 +29,10 @@ export const register = ({ username, email, password }) => async dispatch => {
   const body = JSON.stringify({ username, email, password });
 
   try {
-    const res = await api.post('/users', body);
+    const res = await api.post('/auth/register', body);
 
     dispatch({
-      type: AuthType.REGISTER_SUCCESS,
+      type: ActionAuthType.REGISTER_SUCCESS,
       payload: res.data
     });
 
@@ -40,9 +41,9 @@ export const register = ({ username, email, password }) => async dispatch => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach(error => dispatch(setLoginAlert(error.msg, 'danger')));
+      errors.forEach(error => dispatch(setAlert({ type: AlertType.ERROR, msg: error.msg })));
     }
-    dispatch({ type: AuthType.REGISTER_FAIL });
+    dispatch({ type: ActionAuthType.REGISTER_FAIL });
   }
 };
 
@@ -51,10 +52,10 @@ export const login = (email, password) => async dispatch => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await api.post('/auth', body);
+    const res = await api.post('/auth/login', body);
 
     dispatch({
-      type: AuthType.LOGIN_SUCCESS,
+      type: ActionAuthType.LOGIN_SUCCESS,
       payload: res.data
     });
 
@@ -63,13 +64,13 @@ export const login = (email, password) => async dispatch => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach(error => dispatch(setLoginAlert(error.msg, 'danger')));
+      errors.forEach(error => dispatch(setAlert({ type: AlertType.ERROR, msg: error.msg })));
     }
-    dispatch({ type: AuthType.LOGIN_FAIL });
+    dispatch({ type: ActionAuthType.LOGIN_FAIL });
   }
 };
 
 // Logout
 export const logout = () => dispatch => {
-  dispatch({ type: AuthType.LOGOUT });
+  dispatch({ type: ActionAuthType.LOGOUT });
 };

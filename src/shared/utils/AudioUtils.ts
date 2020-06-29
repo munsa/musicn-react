@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 const downloadAudio = (audioBlob: Blob) => {
   const url = window.URL.createObjectURL(audioBlob);
   const a = document.createElement('a');

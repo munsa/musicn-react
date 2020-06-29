@@ -1,24 +1,20 @@
+@import "theme";
+
 /*-------------------------------------------*/
 /*---------------- Bootstrap-----------------*/
 /*-------------------------------------------*/
 
 //Color
-/*$theme-color-1: #eae7dc;
-$theme-color-2: #d8c3a5;
-$theme-color-3: #8e8d8a;
-$theme-color-4: #e98074;
-$theme-color-5: #e85a4f;*/
+$primary: $custom-theme-color-primary;
 
-$theme-color-1: #a4b3b6;
-$theme-color-2: #2a1b3d;
-$theme-color-3: #d83f87;
-$theme-color-4: #8265a7;
-$theme-color-5: #44318d;
+$theme-color-1: $custom-theme-color-1;
+$theme-color-2: $custom-theme-color-2;
+$theme-color-3: $custom-theme-color-3;
+$theme-color-4: $custom-theme-color-4;
+$theme-color-5: $custom-theme-color-5;
 
-$theme-color-white: #f6f5f1;
-$theme-color-black: #1c1c1b;
-
-$primary: $theme-color-5;
+$theme-color-white: $custom-theme-color-white;
+$theme-color-black: $custom-theme-color-black;
 
 // Font
 $theme-font-size-8: 8vw;
@@ -91,7 +87,7 @@ h1 {
   height: 6vh;
 }
 
-@import '../../node_modules/bootstrap/scss/bootstrap';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 
 /*-------------------------------------------*/
 /*----------------- Custom-------------------*/
@@ -101,8 +97,7 @@ h1 {
   height: 94vh;
   /*background: url('../assets/img/photos/index-hands-festival.jpg') no-repeat
     center center/cover;*/
-  background: url('../assets/img/photos/planets.jpg') no-repeat center
-    center/cover;
+  /* background: url('../assets/img/photos/planets.jpg') no-repeat center center/cover; */
   background-repeat: no-repeat;
   background-size: 1920px 1280px;
 }

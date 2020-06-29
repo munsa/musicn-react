@@ -1,32 +1,29 @@
-import { RecordingType } from '../actions/type-enum';
+import {ActionRecordingType} from '../actions/type-enum';
 
 export const initialState = {
-  recordingResult: null,
-  loading: false,
-  error: {}
+  result: null,
+  found: null,
+  loading: false
 };
 
-export default function(state = initialState, action) {
-  const { type, payload } = action;
+export default function (state = initialState, action) {
+  const {type, payload} = action;
   switch (type) {
-    case RecordingType.SEND_RECORDING:
+    case ActionRecordingType.SEND_RECORDING:
       return {
         ...state,
-        recordingResult: null,
+        result: null,
+        found: null,
         loading: true
       }
-    case RecordingType.GET_RECORDING:
+    case ActionRecordingType.GET_RECORDING:
       return {
         ...state,
-        recordingResult: payload,
+        result: payload,
+        found: payload != null,
         loading: false
       }
-    case RecordingType.RECORDING_RESULT_FAIL:
-      return {
-        ...state,
-        loading: false
-      }
-    case RecordingType.REMOVE_RECORDING:
+    case ActionRecordingType.CLOSE_RECORDING_RESULT_MODAL:
       return initialState
   }
   return state;
