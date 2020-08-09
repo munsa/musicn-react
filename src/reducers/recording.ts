@@ -3,7 +3,8 @@ import {ActionRecordingType} from '../actions/type-enum';
 export const initialState = {
   result: null,
   found: null,
-  loading: false
+  loading: false,
+  all: []
 };
 
 export default function (state = initialState, action) {
@@ -25,6 +26,11 @@ export default function (state = initialState, action) {
       }
     case ActionRecordingType.CLOSE_RECORDING_RESULT_MODAL:
       return initialState
+    case ActionRecordingType.GET_ALL_RECORDINGS:
+      return {
+        ...state,
+        all: payload,
+      }
   }
   return state;
 }
