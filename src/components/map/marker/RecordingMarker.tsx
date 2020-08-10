@@ -7,10 +7,11 @@ import './RecordingMarker.css';
 const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) => {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
-    toggleInfoWindowById();
+    closeInfoWindowById();
   }, [openedRecordingId]);
 
   const onMarkerClick = () => {
+    openMarker();
     onMarkerClickCallback(recording);
   }
 
@@ -22,11 +23,9 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
     setIsOpen(false);
   }
 
-  const toggleInfoWindowById = () => {
+  const closeInfoWindowById = () => {
     if(openedRecordingId !== recording._id) {
       closeMarker();
-    } else {
-      openMarker();
     }
   }
 
