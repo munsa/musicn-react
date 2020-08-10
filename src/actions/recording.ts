@@ -35,3 +35,11 @@ export const sendRecording = (audioBlob) => async dispatch => {
     console.log(err.message);
   }
 };
+
+export const getAllRecordings = () => async dispatch => {
+  const res = await api.get('/recording/all');
+  dispatch({
+    type: ActionRecordingType.GET_ALL_RECORDINGS,
+    payload: res.data
+  });
+}
