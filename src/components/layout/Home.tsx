@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux'
 import AudioRecorder from '../recorder/AudioRecorder';
-import RecordingsMap from '../map/RecordingsMap.js';
+import RecordingMap from '../map/RecordingMap';
 import {getAllRecordings} from '../../actions/recording'
 import PropTypes from 'prop-types';
 
@@ -14,7 +14,7 @@ const Home = ({allRecordings, getAllRecordings}) => {
 
   return (
     <div>
-      <RecordingsMap
+      <RecordingMap
         recordingList={allRecordings}
       />
       <AudioRecorder/>

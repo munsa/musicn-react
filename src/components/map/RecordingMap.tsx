@@ -1,16 +1,13 @@
 import React, {useEffect} from 'react';
-import {GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
+import {GoogleMap, LoadScript} from '@react-google-maps/api';
 import {GOOGLE_MAPS_API_KEY, mapStyleTheme} from '../../shared/config/googleMapsConfig';
-import MarkerIcon from '../../assets/icon/icons8-marker-crop.png';
+import './RecordingMap.css';
+import RecordingMarker from './marker/RecordingMarker';
 
-const RecordingsMap = ({recordingList, center, zoom}) => {
+const RecordingMap = ({recordingList, center, zoom}) => {
   useEffect(() => {
     }, [recordingList]
   );
-
-  const onLoad = marker => {
-    console.log('marker: ', marker)
-  }
 
   return (
     <div style={{height: '400px', width: '100%'}}>
@@ -18,28 +15,32 @@ const RecordingsMap = ({recordingList, center, zoom}) => {
         googleMapsApiKey={GOOGLE_MAPS_API_KEY}
       >
         <GoogleMap
-          mapContainerStyle={{ width: '100%', height: '100%' }}
-          options={{ styles: mapStyleTheme }}
+          mapContainerStyle={{width: '100%', height: '100%'}}
+          options={{
+            styles: mapStyleTheme,
+            panControl: false,
+            zoomControl: false,
+            mapTypeControl: false,
+            streetViewControl: false,
+            fullscreenControl: false,
+          }}
           center={center}
           zoom={zoom}
         >
           {recordingList.map((r, j) => (
             r.geolocation &&
-            <Marker
+            <RecordingMarker
               key={j}
-              onLoad={onLoad}
-              position={{lat: Number(r.geolocation.latitude), lng: Number(r.geolocation.longitude)}}
-              icon={MarkerIcon}
+              recording={r}
             />
           ))}
-          <></>
         </GoogleMap>
       </LoadScript>
     </div>
   );
 }
 
-RecordingsMap.defaultProps = {
+RecordingMap.defaultProps = {
   center: {
     lat: 40.46366700000001,
     lng: -3.7492199999999998
@@ -47,4 +48,4 @@ RecordingsMap.defaultProps = {
   zoom: 16
 };
 
-export default RecordingsMap;
+export default RecordingMap;
