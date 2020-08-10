@@ -1,18 +1,33 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {InfoWindow, Marker} from '@react-google-maps/api';
-import MarkerIcon from '../../../assets/icon/icons8-marker-crop.png';
+import MarkerIcon from '../../../shared/assets/icon/icons8-marker-trim.png';
 import {getArtistsString} from '../../../shared/utils/StringUtils';
 import './RecordingMarker.css';
 
-const RecordingMarker = ({recording}) => {
+const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) => {
   const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    toggleInfoWindowById();
+  }, [openedRecordingId]);
 
-  const onMarkerOpen = () => {
+  const onMarkerClick = () => {
+    onMarkerClickCallback(recording);
+  }
+
+  const openMarker = () => {
     setIsOpen(true);
   }
 
-  const onMarkerClose = () => {
+  const closeMarker = () => {
     setIsOpen(false);
+  }
+
+  const toggleInfoWindowById = () => {
+    if(openedRecordingId !== recording._id) {
+      closeMarker();
+    } else {
+      openMarker();
+    }
   }
 
   const Source = source => {
@@ -26,7 +41,7 @@ const RecordingMarker = ({recording}) => {
 
   return (
     <Marker
-      onClick={onMarkerOpen}
+      onClick={onMarkerClick}
       position={{
         lat: Number(recording.geolocation.latitude),
         lng: Number(recording.geolocation.longitude)
@@ -35,7 +50,7 @@ const RecordingMarker = ({recording}) => {
     >
       {isOpen &&
       <InfoWindow
-        onCloseClick={onMarkerClose}
+        onCloseClick={closeMarker}
         // @ts-ignore
         visible={true}
         options={{closeBoxURL: ``, enableEventPropagation: true}}

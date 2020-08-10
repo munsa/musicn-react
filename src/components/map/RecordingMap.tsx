@@ -1,13 +1,18 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {GoogleMap, LoadScript} from '@react-google-maps/api';
 import {GOOGLE_MAPS_API_KEY, mapStyleTheme} from '../../shared/config/googleMapsConfig';
 import './RecordingMap.css';
 import RecordingMarker from './marker/RecordingMarker';
 
 const RecordingMap = ({recordingList, center, zoom}) => {
+  const [openedRecording, setOpenedRecording] = useState(undefined);
   useEffect(() => {
     }, [recordingList]
   );
+
+  const onMarkerClickCallback = (r) => {
+    setOpenedRecording(r)
+  }
 
   return (
     <div style={{height: '400px', width: '100%'}}>
@@ -30,8 +35,10 @@ const RecordingMap = ({recordingList, center, zoom}) => {
           {recordingList.map((r, j) => (
             r.geolocation &&
             <RecordingMarker
-              key={j}
+              key={r.id}
+              openedRecordingId={openedRecording?._id}
               recording={r}
+              onMarkerClickCallback={onMarkerClickCallback}
             />
           ))}
         </GoogleMap>
