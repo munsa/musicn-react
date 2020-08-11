@@ -52,7 +52,7 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
         onCloseClick={closeMarker}
         // @ts-ignore
         visible={true}
-        options={{closeBoxURL: ``, enableEventPropagation: true}}
+        options={{closeBoxURL: '', enableEventPropagation: true}}
       >
         <div className='info-box-container'>
           {recording.spotify ?

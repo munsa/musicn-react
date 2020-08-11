@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Routes from './components/routing/Routes';
-import Navbar from './components/layout/Navbar';
+import AppNavbar from './components/layout/appNavbar/AppNavbar';
 import AlertModal from './components/layout/alertModal/AlertModal';
 import './shared/theme/bootstrap-custom.css';
 // Redux
@@ -23,7 +23,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
-          <Navbar />
+          <AppNavbar />
           <AlertModal />
           <Switch>
             <Route component={Routes} />

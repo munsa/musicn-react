@@ -1,0 +1,14 @@
+.dropdown-menu {
+  right: 0 !important;
+  left: auto !important;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.avatar {
+  margin: 7px;
+}
+
+/*# sourceMappingURL=AppNavbar.css.map */
