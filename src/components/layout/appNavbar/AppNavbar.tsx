@@ -13,7 +13,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
   }
 
   return (
-    <Navbar collapseOnSelect expand="sm" bg="rgba(0,0,0,0.0)" variant="dark">
+    <Navbar collapseOnSelect expand="sm" bg="rgba(0,0,0,0.0)" variant="light">
       <Navbar.Brand href="/">MUSICN</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
       <Navbar.Collapse id="responsive-navbar-nav">
