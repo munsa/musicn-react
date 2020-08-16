@@ -1,32 +1,56 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-const AudioPlayer = ({circles, onPlayCallback}) => {
-  useEffect(() => {
-    draw();
-  }, [circles]);
-
+const AudioPlayer = ({dataFrequencyAmplitudes, playing, onPlayCallback}) => {
   const canvasRef = React.useRef(null);
 
+  useEffect(() => {
+    if(playing) {
+      iterate();
+    }
+  }, [playing]);
+
+  let frame = 0;
+
+  const iterate = () => {
+    let iterations = 100;
+
+    setTimeout(() => {
+      let increase = (Math.PI * 2 / iterations) * frame;
+
+      let amplitude = Math.abs(100 * Math.sin(increase) + 0.01);
+      console.log(frame + ': ' + amplitude);
+
+      draw(amplitude);
+
+      frame++;
+
+      iterate();
+    }, 50);
+  }
+
   // Draw circles
-  const draw = () => {
+  const draw = (amplitude) => {
     const canvas = canvasRef.current;
-    if (canvas) {
-      let ctx = canvas.getContext('2d');
+    let ctx = canvas.getContext('2d');
+
+    if(ctx) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.globalAlpha = 0.2;
-      circles.forEach(c => {
-        ctx.fillStyle = c.colour;
-        ctx.beginPath();
-        ctx.arc(75, 75, 20 + (c.radius / 255) * 50, 0, 2 * Math.PI);
-        ctx.fill();
-      });
+      ctx.fillStyle = 'red';
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 5;
+      ctx.beginPath();
+
+      ctx.arc(75, 75, amplitude, 0, 2 * Math.PI);
+      ctx.fill();
     }
   };
 
   return (
     <div className='audio-player' onClick={() => onPlayCallback()}>
+      {'AQUI: '}
       <div className='audio-player-button-container'>
         <button className='audio-player-invisible-button'/>
       </div>
@@ -65,4 +89,9 @@ AudioPlayer.propTypes = {
   onPlayCallback: PropTypes.func.isRequired
 };
 
-export default connect()(AudioPlayer);
+const mapStateToProps = state => ({
+  dataFrequencyAmplitudes: state.recording.dataFrequencyAmplitudes,
+  playing: state.recording.playing
+})
+
+export default connect(mapStateToProps)(AudioPlayer);
