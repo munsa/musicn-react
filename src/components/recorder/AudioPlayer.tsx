@@ -11,23 +11,25 @@ const AudioPlayer = ({dataFrequencyAmplitudes, playing, onPlayCallback}) => {
     }
   }, [playing]);
 
-  let frame = 0;
+  let frameNumber = 0;
 
   const iterate = () => {
-    let iterations = 100;
+    const frameDuration = 50; // Timeout between frame iterations (ms)
+    const beatDuration = 2000; // Duration of each beat (ms)
+    const beatIterations = (beatDuration * 2) / frameDuration; // Number of iterations in one beat
 
     setTimeout(() => {
-      let increase = (Math.PI * 2 / iterations) * frame;
+      let increase = (Math.PI * 2 / beatIterations) * frameNumber;
 
       let amplitude = Math.abs(100 * Math.sin(increase) + 0.01);
-      console.log(frame + ': ' + amplitude);
+      console.log(frameNumber + ': ' + amplitude);
 
       draw(amplitude);
 
-      frame++;
+      frameNumber++;
 
       iterate();
-    }, 50);
+    }, frameDuration);
   }
 
   // Draw circles
