@@ -35,7 +35,7 @@ const RecordingMap = ({recordingList, center, zoom}) => {
           {recordingList.map((r, j) => (
             r.geolocation &&
             <RecordingMarker
-              key={r.id}
+              key={j}
               openedRecordingId={openedRecording?._id}
               recording={r}
               onMarkerClickCallback={onMarkerClickCallback}

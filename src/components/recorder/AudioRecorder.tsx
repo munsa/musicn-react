@@ -10,6 +10,7 @@ declare let MediaRecorder: any;
 
 const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, developmentMode}) => {
   const [audioChunks, setAudioChunks] = useState([]);
+  const [amplitudes, setAmplitudes] = useState(new Uint8Array());
 
   const handleRecorder = async () => {
     if (developmentMode) {
@@ -52,7 +53,8 @@ const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, development
     const bufferLength = 6;
     const audioFrequencies = new Uint8Array(bufferLength);
     analyser.getByteFrequencyData(audioFrequencies);
-    setRecordingData(audioFrequencies);
+    setRecordingData(audioFrequencies[0]);
+    setAmplitudes(audioFrequencies);
   }
 
   const processRecording = async (stream, audioContext) => {
@@ -72,7 +74,7 @@ const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, development
 
   return (
     <div>
-      <AudioPlayer onPlayCallback={handleRecorder}/>
+      <AudioPlayer amplitudes={amplitudes} onPlayCallback={handleRecorder}/>
       <RecordingResultModal/>
       <RecordingNotFoundModal/>
     </div>

@@ -1,98 +1,133 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {v4 as uuidv4} from 'uuid';
 
-const AudioPlayer = ({dataFrequencyAmplitudes, playing, onPlayCallback}) => {
+const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDuration, minLapse, maxLapse}) => {
+  const [beats, setBeats] = useState([]);
   const canvasRef = React.useRef(null);
 
   useEffect(() => {
-    if(playing) {
-      iterate();
+    if (playing) {
+      play();
+    } else {
+      stop();
     }
   }, [playing]);
 
-  let frameNumber = 0;
+  const addBeat = (amplitude) => {
+    const id = uuidv4();
+    const beat = {
+      amplitude: amplitude,
+      id: id
+    }
+    beats.push(beat);
 
-  const iterate = () => {
-    const frameDuration = 50; // Timeout between frame iterations (ms)
-    const beatDuration = 2000; // Duration of each beat (ms)
-    const beatIterations = (beatDuration * 2) / frameDuration; // Number of iterations in one beat
+    return beat;
+  }
+
+  const deleteBeat = (idBeat) => {
+    setBeats(beats.filter(beat => beat.id !== idBeat));
+  }
+
+  const stop = () => {
+    setBeats([]);
+  }
+
+  const play = () => {
+    const currentBeat = addBeat(amplitudes[0]);
+    simulateBeatFrame(currentBeat, 0);
+
+    const beatLapse = Math.random() * (maxLapse - minLapse) + minLapse; // Lapse between beats (ms)
+    setTimeout(() => {
+      if (playing) {
+        play();
+      }
+    }, beatLapse);
+  }
+
+  const simulateBeatFrame = (beat, frameCounter) => {
+    const beatFrames = beatDuration / frameDuration; // Number of frames in one beat
+
+    frameCounter++;
+
+    let increase = (Math.PI / beatFrames) * frameCounter;
+    let amplitude = Math.abs(100 * Math.sin(increase) + 0.01);
+    beat.amplitude = amplitude / 2;
+
+    draw();
 
     setTimeout(() => {
-      let increase = (Math.PI * 2 / beatIterations) * frameNumber;
-
-      let amplitude = Math.abs(100 * Math.sin(increase) + 0.01);
-      console.log(frameNumber + ': ' + amplitude);
-
-      draw(amplitude);
-
-      frameNumber++;
-
-      iterate();
+      if (frameCounter < beatFrames) {
+        simulateBeatFrame(beat, frameCounter);
+      } else {
+        deleteBeat(beat.id);
+      }
     }, frameDuration);
   }
 
-  // Draw circles
-  const draw = (amplitude) => {
+  const draw = () => {
     const canvas = canvasRef.current;
     let ctx = canvas.getContext('2d');
 
-    if(ctx) {
+    if (ctx && beats.length > 0) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.globalAlpha = 0.2;
-      ctx.fillStyle = 'red';
-      ctx.strokeStyle = 'black';
-      ctx.lineWidth = 5;
-      ctx.beginPath();
+      beats.forEach(b => {
+        ctx.globalAlpha = 0.2;
+        ctx.fillStyle = 'red';
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 5;
+        ctx.beginPath();
 
-      ctx.arc(75, 75, amplitude, 0, 2 * Math.PI);
-      ctx.fill();
+        ctx.arc(75, 75, b.amplitude, 0, 2 * Math.PI);
+        ctx.fill();
+      });
     }
   };
 
   return (
-    <div className='audio-player' onClick={() => onPlayCallback()}>
-      {'AQUI: '}
-      <div className='audio-player-button-container'>
-        <button className='audio-player-invisible-button'/>
-      </div>
-      <div className='audio-player-button-container'>
-        <i className='audio-player-button fa fa-2x fa-microphone'/>
-      </div>
+    <div>
+      <div>{'beat0 amplitude: ' + beats[0]?.amplitude.toString()}</div>
+      <div>{'beat0 id: ' + beats[0]?.id.toString()}</div>
+      <div>{'beat1 amplitude: ' + beats[1]?.amplitude.toString()}</div>
+      <div>{'beat1 id: ' + beats[1]?.id.toString()}</div>
+      <div>{'beat2 amplitude: ' + beats[2]?.amplitude.toString()}</div>
+      <div>{'beat2 id: ' + beats[2]?.id.toString()}</div>
+      <div>{'beat3 amplitude: ' + beats[3]?.amplitude.toString()}</div>
+      <div>{'beat3 id: ' + beats[3]?.id.toString()}</div>
 
-      <canvas
-        className='audio-player-canvas'
-        ref={canvasRef}
-        width='150'
-        height='150'
-      />
+      <div className='audio-player' onClick={() => onPlayCallback()}>
+        <div>{'playing: ' + playing}</div>
+        <div className='audio-player-button-container'>
+          <button className='audio-player-invisible-button'/>
+        </div>
+        <div className='audio-player-button-container'>
+          <i className='audio-player-button fa fa-2x fa-microphone'/>
+        </div>
+
+        <canvas
+          className='audio-player-canvas'
+          ref={canvasRef}
+          width='150'
+          height='150'
+        />
+      </div>
     </div>
   );
 };
 
 AudioPlayer.defaultProps = {
-  circles: [
-    {colour: '#581845', radius: 50},
-    {colour: '#900C3F', radius: 60},
-    {colour: '#C70039', radius: 70},
-    {colour: '#FF5733', radius: 80},
-    {colour: '#FFC300', radius: 90},
-    {colour: '#DAF7A6', radius: 100}
-  ]
+  frameDuration: 50,  // Timeout between frame iterations (ms)
+  beatDuration: 2000, // Duration of each beat (ms)
+  minLapse: 2001,
+  maxLapse: 2002
 };
 
 AudioPlayer.propTypes = {
-  circles: PropTypes.arrayOf(
-    PropTypes.shape({
-      color: PropTypes.string,
-      radius: PropTypes.number
-    })
-  ),
   onPlayCallback: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  dataFrequencyAmplitudes: state.recording.dataFrequencyAmplitudes,
   playing: state.recording.playing
 })
 
