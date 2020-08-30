@@ -53,8 +53,8 @@ const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, development
     const bufferLength = 6;
     const audioFrequencies = new Uint8Array(bufferLength);
     analyser.getByteFrequencyData(audioFrequencies);
-    setRecordingData(audioFrequencies[0]);
     setAmplitudes(audioFrequencies);
+    setRecordingData(audioFrequencies[0]);
   }
 
   const processRecording = async (stream, audioContext) => {
