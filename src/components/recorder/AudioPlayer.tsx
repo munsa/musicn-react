@@ -1,14 +1,29 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {v4 as uuidv4} from 'uuid';
 
-const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDuration, minLapse, maxLapse, stoppedAmplitude}) => {
+/**
+ * TODO: Refactor component.
+ * It works for the moment but we could find another approach. Maybe SVG instead of canvas.
+ * There are some problems that had to be solved with workarounds.
+ * The recursive functions get the value of states an props when it first enters the function.
+ * They don't get updated values.
+ * It is solved using useRef as it always gets re updated values.
+ * Create a totally independent component to publish the package in npm.
+ */
+
+const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDuration, minLapse, maxLapse, stoppedAmplitude, colorPlaying, colorStopped}) => {
   const canvasRef = useRef(null);
   const playingRef = useRef(false); // workaround, using ref as it is updated the whole time
   const beats = useRef([]);
-
+  const amplitude = useRef(0);
   const beatFrames = beatDuration / frameDuration; // Number of frames in one beat
+
+  useEffect(() => {
+    console.log('HERE: ' + amplitudes[0]);
+    amplitude.current = amplitudes[0];
+  }, [amplitudes]);
 
   useEffect(() => {
     playingRef.current = playing;
@@ -19,12 +34,14 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
     }
   }, [playing]);
 
-  const addBeat = (maxAmplitude) => {
+  const addBeat = (maxAmplitude, color) => {
+    console.log('New beat: ' + maxAmplitude);
     const id = uuidv4();
     const beat = {
       id: id,
       maxAmplitude: maxAmplitude,
-      amplitude: 0
+      amplitude: 0,
+      color: color
     }
     beats.current.push(beat);
 
@@ -36,7 +53,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
   }
 
   const stop = () => {
-    const currentBeat = addBeat(stoppedAmplitude);
+    const currentBeat = addBeat(stoppedAmplitude, colorStopped);
     simulateBeatFrame(currentBeat, 0);
     draw();
 
@@ -48,7 +65,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
   }
 
   const play = () => {
-    const currentBeat = addBeat(amplitudes[0]);
+    const currentBeat = addBeat(amplitude.current, colorPlaying);
     simulateBeatFrame(currentBeat, 0);
 
     const beatLapse = Math.random() * (maxLapse - minLapse) + minLapse; // Lapse between beats (ms)
@@ -88,10 +105,11 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
     if (ctx && beats.current.length > 0) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       beats.current.forEach(b => {
+        ctx.strokeStyle = b.color;
+        ctx.lineWidth = 1;
+        ctx.stroke();
         ctx.globalAlpha = 0.2;
-        ctx.fillStyle = 'red';
-        ctx.strokeStyle = 'black';
-        ctx.lineWidth = 5;
+        ctx.fillStyle = b.color;
         ctx.beginPath();
 
         ctx.arc(75, 75, b.amplitude, 0, 2 * Math.PI);
@@ -102,19 +120,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
 
   return (
     <div>
-      <div>{'beat0 amplitude: ' + beats.current[0]?.amplitude.toString()}</div>
-      <div>{'beat0 id: ' + beats.current[0]?.id.toString()}</div>
-      <div>{'beat1 amplitude: ' + beats.current[1]?.amplitude.toString()}</div>
-      <div>{'beat1 id: ' + beats.current[1]?.id.toString()}</div>
-      <div>{'beat2 amplitude: ' + beats.current[2]?.amplitude.toString()}</div>
-      <div>{'beat2 id: ' + beats.current[2]?.id.toString()}</div>
-      <div>{'beat3 amplitude: ' + beats.current[3]?.amplitude.toString()}</div>
-      <div>{'beat3 id: ' + beats.current[3]?.id.toString()}</div>
-
       <div className='audio-player' onClick={() => onPlayCallback()}>
-        <div>{'playing: ' + playing}</div>
-        <div>{'playingRef: ' + playingRef.current}</div>
-        <div>{'a[0]: ' + amplitudes[0]}</div>
         <div className='audio-player-button-container'>
           <button className='audio-player-invisible-button'/>
         </div>
@@ -136,9 +142,11 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
 AudioPlayer.defaultProps = {
   frameDuration: 50,    // Timeout between frame iterations (ms)
   beatDuration: 2000,   // Duration of each beat (ms)
-  minLapse: 2001,
-  maxLapse: 2002,
-  stoppedAmplitude: 20  // Amplitude of the beat when the player is stopped
+  minLapse: 1000,
+  maxLapse: 1500,
+  stoppedAmplitude: 20,  // Amplitude of the beat when the player is stopped
+  colorPlaying: '#FF0000',
+  colorStopped: '#0000FF'
 };
 
 AudioPlayer.propTypes = {
