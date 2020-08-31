@@ -2,10 +2,11 @@ import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {Form, Nav, Navbar, NavDropdown} from 'react-bootstrap'
+import {Nav, Navbar, NavDropdown} from 'react-bootstrap'
 import {logout} from '../../../actions/auth';
 import {toggleDevelopmentMode} from '../../../actions/development-mode';
 import './AppNavbar.css';
+import AudioRecorder from '../../recorder/AudioRecorder';
 
 const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout, toggleDevelopmentMode}) => {
   const onDevelopmentModeChange = event => {
@@ -18,12 +19,13 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
       <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          { developmentMode &&
-            <Navbar.Text>
-              <i className='fa fa-bug' title='Logout'/> Developer Mode
-            </Navbar.Text>
+          {developmentMode &&
+          <Navbar.Text>
+            <i className='fa fa-bug' title='Logout'/> Developer Mode
+          </Navbar.Text>
           }
         </Nav>
+
         <Nav>
           {!loading && isAuthenticated && user &&
           <Fragment>
@@ -41,8 +43,8 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
                          id="nav-dropdown">
               <NavDropdown.Item href={'/profile/' + user.username}>My Profile</NavDropdown.Item>
               <NavDropdown.Item onClick={onDevelopmentModeChange}>
-                { developmentMode ? 'Normal Mode' : 'Developer Mode' }
-                </NavDropdown.Item>
+                {developmentMode ? 'Normal Mode' : 'Developer Mode'}
+              </NavDropdown.Item>
               <NavDropdown.Divider/>
               <NavDropdown.Item href="#!" onClick={logout}>
                 <i className='fa fa-sign-out' title='Logout'/> Logout

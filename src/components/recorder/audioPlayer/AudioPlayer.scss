@@ -1,0 +1,31 @@
+.audio-player {
+  margin: auto;
+  position: absolute;
+  width: 100%;
+}
+
+.audio-player-button-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.audio-player-canvas {
+  width: 500px;
+  height: 300px;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 0%);
+  position: absolute;
+  z-index: 1;
+}
+
+.audio-player-invisible-button {
+  width: 75px;
+  height: 75px;
+  color: white;
+  margin: 4px 4px;
+  border-radius: 50%;
+  opacity: 0;
+}

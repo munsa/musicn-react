@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import AudioPlayer from './AudioPlayer';
+import AudioPlayer from './audioPlayer/AudioPlayer';
 import RecordingResultModal from './RecordingResultModal';
 import RecordingNotFoundModal from "./RecordingNotFoundModal";
 import {sendRecording, setRecordingData, stopPlayer} from '../../actions/recording';

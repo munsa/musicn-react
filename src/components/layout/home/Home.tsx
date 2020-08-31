@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux'
-import AudioRecorder from '../../recorder/AudioRecorder';
 import RecordingMap from '../../map/RecordingMap';
 import {getAllRecordings} from '../../../actions/recording'
 import PropTypes from 'prop-types';
@@ -22,7 +21,6 @@ const Home = ({allRecordings, getAllRecordings}) => {
           <div className='home-recording-map'>
             <RecordingMap recordingList={allRecordings}/>
           </div>
-          <AudioRecorder/>
         </div>
       </div>
     </div>

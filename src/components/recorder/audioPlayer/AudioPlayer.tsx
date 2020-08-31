@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {v4 as uuidv4} from 'uuid';
+import './AudioPlayer.css';
 
 /**
  * TODO: Refactor component.
@@ -79,7 +80,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
   const calculateFrameAmplitude = (beat, frameCounter) => {
     let increase = (Math.PI / beatFrames) * frameCounter;
     let amplitude = Math.abs(beat.maxAmplitude * Math.sin(increase) + 0.01);
-    return amplitude / 2;
+    return amplitude;
   }
 
   const simulateBeatFrame = (beat, frameCounter) => {
@@ -112,30 +113,20 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
         ctx.fillStyle = b.color;
         ctx.beginPath();
 
-        ctx.arc(75, 75, b.amplitude, 0, 2 * Math.PI);
+        ctx.arc(250, 0, b.amplitude, 0, Math.PI);
         ctx.fill();
       });
     }
   };
 
   return (
-    <div>
-      <div className='audio-player' onClick={() => onPlayCallback()}>
-        <div className='audio-player-button-container'>
-          <button className='audio-player-invisible-button'/>
-        </div>
-        <div className='audio-player-button-container'>
-          <i className='audio-player-button fa fa-2x fa-microphone'/>
-        </div>
-
-        <canvas
-          className='audio-player-canvas'
-          ref={canvasRef}
-          width='150'
-          height='150'
-        />
-      </div>
-    </div>
+    <canvas
+      onClick={() => onPlayCallback()}
+      className='audio-player-canvas'
+      ref={canvasRef}
+      width='500'
+      height='300'
+    />
   );
 };
 
