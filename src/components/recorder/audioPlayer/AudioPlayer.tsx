@@ -28,7 +28,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
 
   useEffect(() => {
     console.log('HERE: ' + amplitudes[0]);
-    amplitude.current = amplitudes[0];
+    amplitude.current = amplitudes.length > 0 ? (amplitudes.reduce((a, b) => a + b) / amplitudes.length) : 0;
   }, [amplitudes]);
 
   useEffect(() => {
