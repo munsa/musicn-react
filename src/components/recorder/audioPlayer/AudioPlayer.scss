@@ -31,11 +31,26 @@
   z-index: 2;
 }
 
+.button-label {
+  width: 500px;
+  height: 300px;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 0%);
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+}
+
 .audio-player-invisible-button {
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
   color: white;
-  margin: 4px 4px;
   border-radius: 50%;
   opacity: 0;
+  transform: translate(-50%, -50%);
+  z-index: 3;
 }

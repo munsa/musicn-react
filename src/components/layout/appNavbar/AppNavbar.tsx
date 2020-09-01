@@ -43,7 +43,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
                          id="nav-dropdown">
               <NavDropdown.Item href={'/profile/' + user.username}>My Profile</NavDropdown.Item>
               <NavDropdown.Item onClick={onDevelopmentModeChange}>
-                {developmentMode ? 'Normal Mode' : 'Developer Mode'}
+                {developmentMode ? 'User Mode' : 'Developer Mode'}
               </NavDropdown.Item>
               <NavDropdown.Divider/>
               <NavDropdown.Item href="#!" onClick={logout}>

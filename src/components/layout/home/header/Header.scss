@@ -7,6 +7,7 @@
 
 .city-image {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   max-width:100%;
+  z-index: -1;
 }
