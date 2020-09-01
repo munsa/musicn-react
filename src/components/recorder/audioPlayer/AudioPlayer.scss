@@ -21,6 +21,16 @@
   z-index: 1;
 }
 
+.audio-player-button-canvas {
+  width: 500px;
+  height: 300px;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 0%);
+  position: absolute;
+  z-index: 2;
+}
+
 .audio-player-invisible-button {
   width: 75px;
   height: 75px;

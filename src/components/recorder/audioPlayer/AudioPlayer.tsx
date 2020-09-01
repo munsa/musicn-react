@@ -16,10 +16,15 @@ import './AudioPlayer.css';
 
 const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDuration, minLapse, maxLapse, stoppedAmplitude, colorPlaying, colorStopped}) => {
   const canvasRef = useRef(null);
+  const buttonCanvasRef = useRef(null);
   const playingRef = useRef(false); // workaround, using ref as it is updated the whole time
   const beats = useRef([]);
   const amplitude = useRef(0);
   const beatFrames = beatDuration / frameDuration; // Number of frames in one beat
+
+  useEffect(() => {
+    drawButtonCanvas();
+  }, []);
 
   useEffect(() => {
     console.log('HERE: ' + amplitudes[0]);
@@ -28,6 +33,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
 
   useEffect(() => {
     playingRef.current = playing;
+    drawButtonCanvas();
     if (playing) {
       play();
     } else {
@@ -66,7 +72,9 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
   }
 
   const play = () => {
-    const currentBeat = addBeat(amplitude.current, colorPlaying);
+    const maxAmplitudeRatio = amplitude.current < 100 ? 0 : ((amplitude.current - 100) / 155);
+    const maxAmplitude = maxAmplitudeRatio * 200;
+    const currentBeat = addBeat(maxAmplitude, colorPlaying);
     simulateBeatFrame(currentBeat, 0);
 
     const beatLapse = Math.random() * (maxLapse - minLapse) + minLapse; // Lapse between beats (ms)
@@ -79,7 +87,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
 
   const calculateFrameAmplitude = (beat, frameCounter) => {
     let increase = (Math.PI / beatFrames) * frameCounter;
-    let amplitude = Math.abs(beat.maxAmplitude * Math.sin(increase) + 0.01);
+    let amplitude = 30 + Math.abs(beat.maxAmplitude * Math.sin(increase));
     return amplitude;
   }
 
@@ -106,9 +114,6 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
     if (ctx && beats.current.length > 0) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       beats.current.forEach(b => {
-        ctx.strokeStyle = b.color;
-        ctx.lineWidth = 1;
-        ctx.stroke();
         ctx.globalAlpha = 0.2;
         ctx.fillStyle = b.color;
         ctx.beginPath();
@@ -119,25 +124,53 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
     }
   };
 
+  const drawButtonCanvas = () => {
+    const canvas = buttonCanvasRef.current;
+    let ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = playingRef.current ? colorPlaying : colorStopped;
+    ctx.beginPath();
+    ctx.arc(250, 0, 30, 0, Math.PI);
+    ctx.fill();
+
+    /*ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 1;
+    ctx.stroke();*/
+
+
+  }
+
   return (
-    <canvas
-      onClick={() => onPlayCallback()}
-      className='audio-player-canvas'
-      ref={canvasRef}
-      width='500'
-      height='300'
-    />
+    <div>
+      <canvas
+        className='audio-player-canvas'
+        ref={canvasRef}
+        width='500'
+        height='300'
+      />
+      <canvas
+        onClick={() => !playingRef.current && onPlayCallback()}
+        className='audio-player-button-canvas'
+        ref={buttonCanvasRef}
+        width='500'
+        height='300'
+      />
+      <div>
+        Hey! If you like the song click me! :)
+      </div>
+    </div>
   );
 };
 
 AudioPlayer.defaultProps = {
   frameDuration: 50,    // Timeout between frame iterations (ms)
   beatDuration: 2000,   // Duration of each beat (ms)
-  minLapse: 1000,
-  maxLapse: 1500,
+  minLapse: 500,
+  maxLapse: 1000,
   stoppedAmplitude: 20,  // Amplitude of the beat when the player is stopped
-  colorPlaying: '#FF0000',
-  colorStopped: '#0000FF'
+  colorPlaying: '#e08f81',
+  colorStopped: '#627289'
 };
 
 AudioPlayer.propTypes = {
