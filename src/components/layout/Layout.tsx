@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import '../../shared/theme/bootstrap-custom.css';
 import AudioRecorder from '../recorder/AudioRecorder';
@@ -15,9 +15,7 @@ const App = ({auth: {loading, isAuthenticated, user}}) => {
       }
       <AppNavbar/>
       <AlertModal/>
-      <Switch>
-        <Route component={Routes}/>
-      </Switch>
+      <Route component={Routes}/>
     </Fragment>
   );
 };

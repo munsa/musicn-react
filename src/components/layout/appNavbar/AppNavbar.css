@@ -4,12 +4,21 @@
 }
 
 .navbar {
-  background-color: white !important;
+  background-color: rgba(255, 255, 255, 0) !important;
   z-index: 2;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: black;
 }
 
 .avatar {
   margin: 7px;
+}
+
+.brand {
+  color: #F2AF29;
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=AppNavbar.css.map */
