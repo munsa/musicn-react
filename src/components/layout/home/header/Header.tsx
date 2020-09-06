@@ -7,7 +7,12 @@ const Header = () => {
     <div className='header-container'>
       <img className='city-image' src={CityImage}/>
       <div className='header-jumbotron'>
-        Click on the happy sun and start discovering all the music you like!
+        <div>
+          Click on the happy sun and
+        </div>
+        <div>
+          start discovering all the music you like!
+        </div>
       </div>
     </div>
   );

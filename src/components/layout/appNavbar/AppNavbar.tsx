@@ -25,6 +25,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
 
   return (
     <Navbar collapseOnSelect expand="sm" bg="rgba(0,0,0,0.0)" variant="light">
+      <div className='container-md'>
       <Navbar.Brand href='#!' onClick={onHomeClick}>MUSICN</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -63,6 +64,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
           }
         </Nav>
       </Navbar.Collapse>
+      </div>
     </Navbar>
   );
 }

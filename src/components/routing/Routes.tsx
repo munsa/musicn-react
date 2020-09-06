@@ -12,7 +12,7 @@ const Routes = () => {
       <Route exact path="/register" component={Register}/>
       <Route exact path="/login" component={Login}/>
       <PrivateRoute exact path='/' component={Home}/>
-      <section className="container">
+      <section className="container-md">
         <Switch>
           <PrivateRoute exact path="/profile/:username" component={Profile}/>
         </Switch>
