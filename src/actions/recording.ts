@@ -13,7 +13,6 @@ export const sendRecording = (audioBlob) => async dispatch => {
     const config = { headers : { 'Content-Type': 'multipart/form-data' }};
     const res = await api.post('/recording/identify', formData, config);
 
-
     dispatch({
       type: ActionRecordingType.GET_RECORDING,
       payload: res.data
@@ -41,5 +40,18 @@ export const getAllRecordings = () => async dispatch => {
   dispatch({
     type: ActionRecordingType.GET_ALL_RECORDINGS,
     payload: res.data
+  });
+}
+
+export const setRecordingData = (dataFrequencyAmplitudes) => async dispatch => {
+  dispatch({
+    type: ActionRecordingType.SET_RECORDING_DATA,
+    payload: dataFrequencyAmplitudes
+  });
+}
+
+export const stopPlayer = () => async dispatch => {
+  dispatch({
+    type: ActionRecordingType.STOP_PLAYER
   });
 }

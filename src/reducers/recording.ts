@@ -1,6 +1,8 @@
 import {ActionRecordingType} from '../actions/type-enum';
 
 export const initialState = {
+  dataFrequencyAmplitudes: [],
+  playing: false,
   result: null,
   found: null,
   loading: false,
@@ -30,6 +32,18 @@ export default function (state = initialState, action) {
       return {
         ...state,
         all: payload,
+      }
+    case ActionRecordingType.SET_RECORDING_DATA:
+      return {
+        ...state,
+        recordingFrequencyData: payload,
+        playing: true
+      }
+    case ActionRecordingType.STOP_PLAYER:
+      return {
+        ...state,
+        recordingFrequencyData: [],
+        playing: false
       }
   }
   return state;

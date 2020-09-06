@@ -1,16 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import AudioPlayer from './AudioPlayer';
+import AudioPlayer from './audioPlayer/AudioPlayer';
 import RecordingResultModal from './RecordingResultModal';
 import RecordingNotFoundModal from "./RecordingNotFoundModal";
-import {sendRecording} from "../../actions/recording";
+import {sendRecording, setRecordingData, stopPlayer} from '../../actions/recording';
 import PropTypes from "prop-types";
 
 declare let MediaRecorder: any;
 
-const AudioRecorder = ({sendRecording, developmentMode}) => {
-  const [audioChunks, setAudioChunks] = React.useState([]);
-  const [circles, setCircles] = React.useState(undefined);
+const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, developmentMode}) => {
+  const [audioChunks, setAudioChunks] = useState([]);
+  const [amplitudes, setAmplitudes] = useState(new Uint8Array());
 
   const handleRecorder = async () => {
     if (developmentMode) {
@@ -40,44 +40,26 @@ const AudioRecorder = ({sendRecording, developmentMode}) => {
 
         setTimeout(() => {
           mediaRecorder.stop();
-        }, 3000);
+        }, 10000);
       });
     }
   };
 
   const dataAvailableHandler = (event, analyser) => {
+    // Push data
     audioChunks.push(event.data);
 
     // Get frequency values
     const bufferLength = 6;
-    const amplitudeArray = new Uint8Array(bufferLength);
-    analyser.getByteFrequencyData(amplitudeArray);
-
-    // Construct circle objects
-    const c = [];
-    const colours = [
-      '#581845',
-      '#900C3F',
-      '#C70039',
-      '#FF5733',
-      '#FFC300',
-      '#DAF7A6'
-    ];
-    for (let i = 0; i < bufferLength; i++) {
-      let circle = {
-        colour: colours[i],
-        radius: amplitudeArray[i]
-      };
-      c.push(circle);
-    }
-    setCircles(c);
+    const audioFrequencies = new Uint8Array(bufferLength);
+    analyser.getByteFrequencyData(audioFrequencies);
+    setAmplitudes(audioFrequencies);
+    setRecordingData(audioFrequencies[0]);
   }
 
   const processRecording = async (stream, audioContext) => {
     console.log('Stop recording');
-
-    // Reset circles
-    setCircles(undefined);
+    stopPlayer();
 
     // Stop audio tracks and context
     stream.getAudioTracks().forEach(track => {
@@ -92,7 +74,7 @@ const AudioRecorder = ({sendRecording, developmentMode}) => {
 
   return (
     <div>
-      <AudioPlayer circles={circles} onPlayCallback={handleRecorder}/>
+      <AudioPlayer amplitudes={amplitudes} onPlayCallback={handleRecorder}/>
       <RecordingResultModal/>
       <RecordingNotFoundModal/>
     </div>
@@ -108,4 +90,4 @@ const mapStateToProps = state => ({
   developmentMode: state.developmentMode
 });
 
-export default connect(mapStateToProps, {sendRecording})(AudioRecorder);
+export default connect(mapStateToProps, {setRecordingData, stopPlayer, sendRecording})(AudioRecorder);

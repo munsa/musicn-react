@@ -31,7 +31,6 @@
     "@react-google-maps/api": "^1.9.12",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
-    "google-map-react": "^2.0.4",
     "mdbreact": "^4.27.0",
     "moment": "^2.26.0",
     "react": "^16.13.1",

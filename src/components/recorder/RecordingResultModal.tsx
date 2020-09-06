@@ -42,12 +42,12 @@ const RecordingResultModal = ({recording, removeRecording}) => {
         {/* Track */}
         <div className='row'>
           <b className='col text-right'>Track</b>
-          <div className='col-9 text-left'>{track.name}</div>
+          <div className='col-9 text-left'>{track && track.name}</div>
         </div>
         {/* Album */}
         <div className='row'>
           <b className='col text-right'>Album</b>
-          <div className='col-9 text-left'>{album.name}</div>
+          <div className='col-9 text-left'>{album && album.name}</div>
         </div>
       </div>
     );

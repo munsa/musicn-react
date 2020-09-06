@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Fragment} from 'react';
 import {GoogleMap, LoadScript} from '@react-google-maps/api';
 import {GOOGLE_MAPS_API_KEY, mapStyleTheme} from '../../shared/config/googleMapsConfig';
 import './RecordingMap.css';
@@ -15,7 +15,7 @@ const RecordingMap = ({recordingList, center, zoom}) => {
   }
 
   return (
-    <div style={{height: '400px', width: '100%'}}>
+    <Fragment>
       <LoadScript
         googleMapsApiKey={GOOGLE_MAPS_API_KEY}
       >
@@ -35,7 +35,7 @@ const RecordingMap = ({recordingList, center, zoom}) => {
           {recordingList.map((r, j) => (
             r.geolocation &&
             <RecordingMarker
-              key={r.id}
+              key={j}
               openedRecordingId={openedRecording?._id}
               recording={r}
               onMarkerClickCallback={onMarkerClickCallback}
@@ -43,7 +43,7 @@ const RecordingMap = ({recordingList, center, zoom}) => {
           ))}
         </GoogleMap>
       </LoadScript>
-    </div>
+    </Fragment>
   );
 }
 

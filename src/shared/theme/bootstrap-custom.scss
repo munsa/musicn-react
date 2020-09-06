@@ -24,7 +24,7 @@ $theme-border-radius: 0;
 $border-radius: $theme-border-radius;
 
 //Body
-$body-bg: $theme-color-4;
+$body-bg: $theme-body-background;
 $body-color: $theme-color-black;
 
 // Button
@@ -35,6 +35,7 @@ $btn-border-radius-sm: $theme-border-radius;
 // Card
 $card-bg: $theme-color-1;
 
+/*
 // Navbar
 $navbar-nav-link-padding-x: 0.5rem;
 
@@ -54,6 +55,7 @@ $navbar-light-toggler-border-color: rgba($theme-color-1, 0.1) !default;
 
 $navbar-light-brand-color: $theme-color-white;
 $navbar-light-brand-hover-color: rgba($theme-color-white, 0.75);
+*/
 
 // Elements
 body {
@@ -71,11 +73,6 @@ h1 {
 .container {
   height: 100%;
   align-content: center;
-}
-
-.navbar {
-  background-color: $theme-color-5;
-  height: 6vh;
 }
 
 @import '../../../node_modules/bootstrap/scss/bootstrap';
@@ -119,38 +116,4 @@ h1 {
   input {
     padding-left: 40px;
   }
-}
-
-/* Audio Player */
-.audio-player {
-  width: 150px;
-  height: 150px;
-  margin: auto;
-  position: relative;
-}
-
-.audio-player-button-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.audio-player-button {
-  color: #900c3f;
-  cursor: pointer;
-}
-
-.audio-player-canvas {
-  width: 150px;
-  height: 150px;
-}
-
-.audio-player-invisible-button {
-  width: 75px;
-  height: 75px;
-  color: white;
-  margin: 4px 4px;
-  border-radius: 50%;
-  opacity: 0;
 }

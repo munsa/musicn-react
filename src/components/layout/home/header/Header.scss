@@ -1,0 +1,28 @@
+@import "../../../../shared/theme/theme";
+
+.header-container {
+  position: relative;
+  height: 20vw;
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+
+.city-image {
+  position: absolute;
+  bottom: 0;
+  width:100%;
+  z-index: 0;
+}
+
+.header-jumbotron {
+  font-size: $theme-font-size-3;
+  font-weight: bold;
+  color: $custom-theme-color-4;
+  -webkit-text-stroke: 0.1px black;
+  text-align: center;
+  margin: auto;
+  padding: 20px;
+  background-color:rgba(255, 255, 255, 0.6);
+  z-index: 3;
+}

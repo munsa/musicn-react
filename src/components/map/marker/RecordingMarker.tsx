@@ -7,10 +7,11 @@ import './RecordingMarker.css';
 const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) => {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
-    toggleInfoWindowById();
+    closeInfoWindowById();
   }, [openedRecordingId]);
 
   const onMarkerClick = () => {
+    openMarker();
     onMarkerClickCallback(recording);
   }
 
@@ -22,11 +23,9 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
     setIsOpen(false);
   }
 
-  const toggleInfoWindowById = () => {
+  const closeInfoWindowById = () => {
     if(openedRecordingId !== recording._id) {
       closeMarker();
-    } else {
-      openMarker();
     }
   }
 
@@ -53,7 +52,7 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
         onCloseClick={closeMarker}
         // @ts-ignore
         visible={true}
-        options={{closeBoxURL: ``, enableEventPropagation: true}}
+        options={{closeBoxURL: '', enableEventPropagation: true}}
       >
         <div className='info-box-container'>
           {recording.spotify ?

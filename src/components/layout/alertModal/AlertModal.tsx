@@ -29,7 +29,7 @@ const AlertModal = ({alerts, removeAlert}) => {
     setIsOpen(!isOpen);
   }
 
-  return (
+  return ( alerts && alerts.length >  0 &&
     <MDBContainer className='alert-modal-content'>
       <MDBModal className='alert-modal' position="top" backdrop={false} frame isOpen={isOpen} toggle={toggle}
                 inline={false} noClickableBodyWithoutBackdrop={false} overflowScroll={true}>

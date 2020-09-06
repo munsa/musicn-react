@@ -1,0 +1,24 @@
+@import '../../../shared/theme/theme';
+
+.dropdown-menu {
+  right: 0 !important;
+  left: auto !important;
+}
+
+.navbar {
+  background-color: rgba(255,255,255,0) !important;
+  z-index: 2;
+}
+
+.navbar-light .navbar-nav .nav-link{
+  color: rgba(0,0,0,1);
+}
+
+.avatar {
+  margin: 7px;
+}
+
+.brand {
+  color: $custom-theme-color-4;
+  font-weight: bold;
+}
