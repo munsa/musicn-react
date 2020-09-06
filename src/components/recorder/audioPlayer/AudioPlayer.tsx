@@ -6,11 +6,11 @@ import './AudioPlayer.css';
 
 /**
  * TODO: Refactor component.
- * It works for the moment but we could find another approach. Maybe SVG instead of canvas.
+ * It works fine for the moment but we could find another approach. Maybe SVG instead of canvas.
  * There are some problems that had to be solved with workarounds.
  * The recursive functions get the value of states an props when it first enters the function.
  * They don't get updated values.
- * It is solved using useRef as it always gets re updated values.
+ * It is solved using useRef as it always gets the updated values.
  * Create a totally independent component to publish the package in npm.
  */
 
@@ -27,7 +27,6 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
   }, []);
 
   useEffect(() => {
-    console.log('HERE: ' + amplitudes[0]);
     amplitude.current = amplitudes.length > 0 ? (amplitudes.reduce((a, b) => a + b) / amplitudes.length) : 0;
   }, [amplitudes]);
 
@@ -42,7 +41,6 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
   }, [playing]);
 
   const addBeat = (maxAmplitude, color) => {
-    console.log('New beat: ' + maxAmplitude);
     const id = uuidv4();
     const beat = {
       id: id,

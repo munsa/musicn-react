@@ -17,7 +17,7 @@ const Home = ({allRecordings, getAllRecordings}) => {
     <div>
       <Header/>
       <div className='home-body'>
-        <div className='container'>
+        <div className='container-md'>
           <div className='home-recording-map'>
             <RecordingMap recordingList={allRecordings}/>
           </div>

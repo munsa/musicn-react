@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Nav, Navbar, NavDropdown} from 'react-bootstrap'
@@ -9,13 +9,23 @@ import './AppNavbar.css';
 import AudioRecorder from '../../recorder/AudioRecorder';
 
 const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout, toggleDevelopmentMode}) => {
+  const history = useHistory();
+
   const onDevelopmentModeChange = event => {
     toggleDevelopmentMode(!developmentMode);
   }
 
+  const onProfileClick = () => {
+    history.push('/profile/' + user.username);
+  }
+
+  const onHomeClick = () => {
+    history.push('/');
+  }
+
   return (
     <Navbar collapseOnSelect expand="sm" bg="rgba(0,0,0,0.0)" variant="light">
-      <Navbar.Brand href="/">MUSICN</Navbar.Brand>
+      <Navbar.Brand href='#!' onClick={onHomeClick}>MUSICN</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
@@ -25,7 +35,6 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
           </Navbar.Text>
           }
         </Nav>
-
         <Nav>
           {!loading && isAuthenticated && user &&
           <Fragment>
@@ -41,7 +50,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
             </Link>
             <NavDropdown title={user.username}
                          id="nav-dropdown">
-              <NavDropdown.Item href={'/profile/' + user.username}>My Profile</NavDropdown.Item>
+              <NavDropdown.Item onClick={onProfileClick}>MyProfile</NavDropdown.Item>
               <NavDropdown.Item onClick={onDevelopmentModeChange}>
                 {developmentMode ? 'User Mode' : 'Developer Mode'}
               </NavDropdown.Item>

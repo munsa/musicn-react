@@ -1,6 +1,8 @@
+@import "../../../../shared/theme/theme";
+
 .header-container {
   position: relative;
-  height: 300px;
+  height: 20vw;
   display: flex;
   align-items: center;
 }
@@ -8,6 +10,15 @@
 .city-image {
   position: absolute;
   bottom: 0;
-  max-width:100%;
+  width:100%;
   z-index: -1;
+}
+
+.header-jumbotron {
+  font-size: $theme-font-size-2;
+  font-weight: bold;
+  color: black;
+  margin: auto;
+  padding: 20px;
+  background-color:rgba(255, 255, 255, 0.8);
 }

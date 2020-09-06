@@ -25,7 +25,9 @@ const App = () => {
       <Router>
         <Fragment>
           <AudioRecorder/>
-          <AppNavbar/>
+          <div className='container-md'>
+            <AppNavbar/>
+          </div>
           <AlertModal/>
           <Switch>
             <Route component={Routes}/>
