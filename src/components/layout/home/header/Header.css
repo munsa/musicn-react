@@ -14,13 +14,14 @@
 }
 
 .header-jumbotron {
-  font-size: 2vw;
+  font-size: 3vw;
   font-weight: bold;
-  color: black;
+  color: #F2AF29;
+  -webkit-text-stroke: 0.1px black;
   text-align: center;
   margin: auto;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.6);
   z-index: 3;
 }
 
