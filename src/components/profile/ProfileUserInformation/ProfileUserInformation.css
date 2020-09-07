@@ -1,0 +1,17 @@
+.user-info-container {
+  background-color: #F2AF29;
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.user-avatar {
+  border: 2px solid black;
+}
+
+.user-name {
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=ProfileUserInformation.css.map */
