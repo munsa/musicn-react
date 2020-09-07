@@ -32,3 +32,7 @@ export enum ActionProfileType {
   GET_PROFILE = 'GET_PROFILE',
   PROFILE_ERROR = 'PROFILE_ERROR'
 }
+
+export enum ActionGeolocationType {
+  GET_CURRENT_POSITION = 'GET_CURRENT_POSITION'
+}

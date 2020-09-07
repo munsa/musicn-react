@@ -49,8 +49,8 @@ const RecordingMap = ({recordingList, center, zoom}) => {
 
 RecordingMap.defaultProps = {
   center: {
-    lat: 40.46366700000001,
-    lng: -3.7492199999999998
+    lat: 0,
+    lng: 0
   },
   zoom: 16
 };

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import './Home.css';
 import Header from './header/Header';
 
-const Home = ({allRecordings, getAllRecordings}) => {
+const Home = ({allRecordings, getAllRecordings, currentPosition}) => {
   useEffect(() => {
     if (allRecordings.length === 0) {
       getAllRecordings();
@@ -19,7 +19,7 @@ const Home = ({allRecordings, getAllRecordings}) => {
       <div className='home-body'>
         <div className='container-md'>
           <div className='home-recording-map'>
-            <RecordingMap recordingList={allRecordings}/>
+            <RecordingMap recordingList={allRecordings} center={currentPosition}/>
           </div>
         </div>
       </div>
@@ -28,7 +28,8 @@ const Home = ({allRecordings, getAllRecordings}) => {
 };
 
 const mapStateToProps = state => ({
-  allRecordings: state.recording.all
+  allRecordings: state.recording.all,
+  currentPosition: state.geolocation.currentPosition
 });
 
 Home.propTypes = {

@@ -23,9 +23,9 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
   }
 
   return (
-    <Navbar collapseOnSelect expand="sm" bg="rgba(0,0,0,0.0)" variant="light">
+    <Navbar collapseOnSelect expand="sm" variant="light">
       <div className='container-md'>
-        <Navbar.Brand href='#!' onClick={onHomeClick}>
+        <Navbar.Brand href='#' onClick={onHomeClick}>
           <div className='brand'>
             MUSICN
           </div>
@@ -54,12 +54,12 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
               </Link>
               <NavDropdown title={user.username}
                            id="nav-dropdown">
-                <NavDropdown.Item onClick={onProfileClick}>MyProfile</NavDropdown.Item>
+                <NavDropdown.Item onClick={onProfileClick}>My Profile</NavDropdown.Item>
                 <NavDropdown.Item onClick={onDevelopmentModeChange}>
                   {developmentMode ? 'User Mode' : 'Developer Mode'}
                 </NavDropdown.Item>
                 <NavDropdown.Divider/>
-                <NavDropdown.Item href="#!" onClick={logout}>
+                <NavDropdown.Item href="" onClick={logout}>
                   <i className='fa fa-sign-out' title='Logout'/> Logout
                 </NavDropdown.Item>
               </NavDropdown>

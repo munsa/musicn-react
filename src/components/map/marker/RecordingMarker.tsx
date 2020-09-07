@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {InfoWindow, Marker} from '@react-google-maps/api';
-import MarkerIcon from '../../../shared/assets/icon/icons8-marker-trim.png';
+import MarkerIcon from '../../../shared/assets/icon/marker.svg';
 import {getArtistsString} from '../../../shared/utils/StringUtils';
 import './RecordingMarker.css';
+
+declare var google: any;
 
 const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,33 +41,36 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
   }
 
   return (
-    <Marker
-      onClick={onMarkerClick}
-      position={{
-        lat: Number(recording.geolocation.latitude),
-        lng: Number(recording.geolocation.longitude)
-      }}
-      icon={MarkerIcon}
-    >
-      {isOpen &&
-      <InfoWindow
-        onCloseClick={closeMarker}
-        // @ts-ignore
-        visible={true}
-        options={{closeBoxURL: '', enableEventPropagation: true}}
+      <Marker
+        icon={{
+          url:MarkerIcon,
+          scaledSize: new google.maps.Size(37.2,53.2)
+        }}
+        onClick={onMarkerClick}
+        position={{
+          lat: Number(recording.geolocation.latitude),
+          lng: Number(recording.geolocation.longitude)
+        }}
       >
-        <div className='info-box-container'>
-          {recording.spotify ?
-            <Source source={recording.spotify}/>
-            : (recording.deezer ?
-              <Source source={recording.deezer}/>
-              : (recording.acrCloud ?
-                <Source source={recording.acrCloud}/>
-                : ''))}
-        </div>
-      </InfoWindow>
-      }
-    </Marker>
+        {isOpen &&
+        <InfoWindow
+          onCloseClick={closeMarker}
+          // @ts-ignore
+          visible={true}
+          options={{closeBoxURL: '', enableEventPropagation: true}}
+        >
+          <div className='info-box-container'>
+            {recording.spotify ?
+              <Source source={recording.spotify}/>
+              : (recording.deezer ?
+                <Source source={recording.deezer}/>
+                : (recording.acrCloud ?
+                  <Source source={recording.acrCloud}/>
+                  : ''))}
+          </div>
+        </InfoWindow>
+        }
+      </Marker>
   );
 }
 
