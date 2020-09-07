@@ -1,7 +1,7 @@
 import { ActionRecordingType } from './type-enum';
 import api from "../shared/utils/api";
 
-export const sendRecording = (audioBlob) => async dispatch => {
+export const sendRecording = (audioBlob, geolocation) => async dispatch => {
   try {
     dispatch({
       type: ActionRecordingType.SEND_RECORDING
@@ -19,15 +19,7 @@ export const sendRecording = (audioBlob) => async dispatch => {
     });
 
     if( res.data?._id ) {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const body = {
-          geolocation: {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-          }
-        };
-        await api.put(`/recording/addGeolocation/${res.data._id}`, body);
-      });
+      await api.put(`/recording/addGeolocation/${res.data._id}`, geolocation);
     }
 
   } catch (err) {

@@ -54,7 +54,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
               </Link>
               <NavDropdown title={user.username}
                            id="nav-dropdown">
-                <NavDropdown.Item onClick={onProfileClick}>MyProfile</NavDropdown.Item>
+                <NavDropdown.Item onClick={onProfileClick}>My Profile</NavDropdown.Item>
                 <NavDropdown.Item onClick={onDevelopmentModeChange}>
                   {developmentMode ? 'User Mode' : 'Developer Mode'}
                 </NavDropdown.Item>

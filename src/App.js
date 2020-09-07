@@ -6,6 +6,7 @@ import './shared/theme/bootstrap-custom.css';
 import {Provider} from 'react-redux';
 import store from './store';
 import {loadUser} from './actions/auth';
+import {getCurrentGeolocationPosition} from './actions/geolocation';
 import setAuthToken from './shared/utils/setAuthToken';
 
 if (localStorage.token) {
@@ -15,6 +16,7 @@ if (localStorage.token) {
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
+    store.dispatch(getCurrentGeolocationPosition());
   }, []);
 
   return (

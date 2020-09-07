@@ -4,18 +4,20 @@ import AudioPlayer from './audioPlayer/AudioPlayer';
 import RecordingResultModal from './RecordingResultModal';
 import RecordingNotFoundModal from "./RecordingNotFoundModal";
 import {sendRecording, setRecordingData, stopPlayer} from '../../actions/recording';
+import {getCurrentGeolocationPosition} from '../../actions/geolocation';
 import PropTypes from "prop-types";
 
 declare let MediaRecorder: any;
 
-const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, developmentMode}) => {
+const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, developmentMode, currentPosition, getCurrentGeolocationPosition}) => {
   const [audioChunks, setAudioChunks] = useState([]);
   const [amplitudes, setAmplitudes] = useState(new Uint8Array());
 
   const handleRecorder = async () => {
+    getCurrentGeolocationPosition();
     if (developmentMode) {
       let blob = await fetch("./static/media/dev-mode-sample.wav").then(r => r.blob());
-      sendRecording(blob);
+      sendRecording(blob, currentPosition);
     } else {
       navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
         let mediaRecorder = new MediaRecorder(stream);
@@ -69,7 +71,7 @@ const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, development
 
     // Create Audio Blob and send to server
     const audioBlob = new Blob(audioChunks, {type: 'audio/x-wav'});
-    sendRecording(audioBlob);
+    sendRecording(audioBlob, currentPosition);
   }
 
   return (
@@ -87,7 +89,8 @@ AudioRecorder.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  developmentMode: state.developmentMode
+  developmentMode: state.developmentMode,
+  currentPosition: state.geolocation.currentPosition
 });
 
-export default connect(mapStateToProps, {setRecordingData, stopPlayer, sendRecording})(AudioRecorder);
+export default connect(mapStateToProps, {setRecordingData, stopPlayer, sendRecording, getCurrentGeolocationPosition})(AudioRecorder);
