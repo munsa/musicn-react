@@ -19,7 +19,9 @@ const Home = ({allRecordings, getAllRecordings, currentPosition}) => {
       <div className='home-body'>
         <div className='container-md'>
           <div className='home-recording-map'>
-            <RecordingMap recordingList={allRecordings} center={currentPosition} zoom={16}/>
+            <div className='map-border'>
+              <RecordingMap recordingList={allRecordings} center={currentPosition} zoom={16}/>
+            </div>
           </div>
         </div>
       </div>

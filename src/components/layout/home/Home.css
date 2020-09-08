@@ -1,11 +1,16 @@
 .home-body {
-  background-color: #F2AF29;
+  background-color: #FFA62B;
 }
 
 .home-recording-map {
   margin: auto;
   height: 400px;
   padding-top: 50px;
+}
+
+.map-border {
+  height: 100%;
+  border: 2px solid black;
 }
 
 /*# sourceMappingURL=Home.css.map */

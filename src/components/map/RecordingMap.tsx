@@ -66,10 +66,10 @@ const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
 
 RecordingMap.defaultProps = {
   center: {
-    lat: 0,
-    lng: 0
+    lat: 41.38879,
+    lng: 2.15899
   },
-  zoom: 1,
+  zoom: 2,
   useFitBounds: false
 };
 
