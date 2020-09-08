@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './ProfileContent.css';
 import SongTable from '../../song/SongTable';
 import RecordingMap from '../../map/RecordingMap';
-import {getRecordingsLatLngBounds} from '../../../shared/utils/MapUtils'
 
 const ProfileContent = ({profile}) => {
   return (
