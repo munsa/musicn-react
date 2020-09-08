@@ -10,8 +10,8 @@ const ProfileUserInformation = ({profile: {user}, isLoggedUser}) => {
         src={user.avatar}
         alt='User Avatar'
         className='rounded-circle user-avatar'
-        width='150'
-        height='150'
+        width='100'
+        height='100'
       />
       <div className='user-name'>
         {user.username}

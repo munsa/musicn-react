@@ -4,7 +4,7 @@ import MarkerIcon from '../../../shared/assets/icon/marker.svg';
 import {getArtistsString} from '../../../shared/utils/StringUtils';
 import './RecordingMarker.css';
 
-declare var google: any;
+declare let google: any;
 
 const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) => {
   const [isOpen, setIsOpen] = useState(false);

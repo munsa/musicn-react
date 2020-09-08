@@ -1,14 +1,31 @@
-import React, {useEffect, useState, Fragment} from 'react';
-import {GoogleMap, LoadScript} from '@react-google-maps/api';
+import React, {Fragment, useEffect, useRef, useState} from 'react';
+import {GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
 import {GOOGLE_MAPS_API_KEY, mapStyleTheme} from '../../shared/config/googleMapsConfig';
 import './RecordingMap.css';
 import RecordingMarker from './marker/RecordingMarker';
 
-const RecordingMap = ({recordingList, center, zoom}) => {
+const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
   const [openedRecording, setOpenedRecording] = useState(undefined);
-  useEffect(() => {
-    }, [recordingList]
-  );
+
+
+  const mapLoadedHandler = map => {
+    if(useFitBounds) {
+      fitBounds(map);
+    }
+  };
+
+  const fitBounds = map => {
+    // @ts-ignore
+    const bounds = new window.google.maps.LatLngBounds();
+    recordingList.map(r => {
+      if(r.geolocation) {
+        // @ts-ignore
+        const latLng = new window.google.maps.LatLng(r.geolocation.lat, r.geolocation.lng);
+        bounds.extend(latLng);
+      }
+    });
+    map.fitBounds(bounds);
+  };
 
   const onMarkerClickCallback = (r) => {
     setOpenedRecording(r)
@@ -31,6 +48,7 @@ const RecordingMap = ({recordingList, center, zoom}) => {
           }}
           center={center}
           zoom={zoom}
+          onLoad={mapLoadedHandler}
         >
           {recordingList.map((r, j) => (
             r.geolocation &&
@@ -52,7 +70,8 @@ RecordingMap.defaultProps = {
     lat: 0,
     lng: 0
   },
-  zoom: 16
+  zoom: 16,
+  useFitBounds: false
 };
 
 export default RecordingMap;

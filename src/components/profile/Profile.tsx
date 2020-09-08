@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import ProfileUserInformation from './ProfileUserInformation/ProfileUserInformation';
 import SongTable from '../song/SongTable';
 import {Col, Row} from 'react-bootstrap';
+import ProfileContent from './ProfileContent/ProfileContent';
 
 const Profile = ({getProfileByUsername, profile, auth, match}) => {
   useEffect(() => {
@@ -19,7 +20,7 @@ const Profile = ({getProfileByUsername, profile, auth, match}) => {
                                   isLoggedUser={auth.user._id === profile.user._id}/>
         </Col>
         <Col xs={12} md={9}>
-          <SongTable songs={profile.recordings}/>
+          <ProfileContent profile={profile}/>
         </Col>
       </Row>
     </div>
