@@ -48,8 +48,8 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
         }}
         onClick={onMarkerClick}
         position={{
-          lat: Number(recording.geolocation.latitude),
-          lng: Number(recording.geolocation.longitude)
+          lat: Number(recording.geolocation.lat),
+          lng: Number(recording.geolocation.lng)
         }}
       >
         {isOpen &&

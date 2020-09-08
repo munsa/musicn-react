@@ -6,7 +6,9 @@ import RecordingMap from '../../map/RecordingMap';
 const ProfileContent = ({profile}) => {
   return (
     <div className='profile-content-container'>
-      <RecordingMap recordingList={profile.recordings} useFitBounds={true}/>
+      <div className='profile-map'>
+        <RecordingMap recordingList={profile.recordings} useFitBounds={true}/>
+      </div>
       <SongTable songs={profile.recordings}/>
     </div>
   )
