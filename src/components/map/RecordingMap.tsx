@@ -6,9 +6,6 @@ import RecordingMarker from './marker/RecordingMarker';
 
 const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
   const [openedRecording, setOpenedRecording] = useState(undefined);
-  useEffect(() => {
-    }, [recordingList]
-  );
 
   const mapLoadedHandler = map => {
     if(useFitBounds) {
@@ -72,7 +69,7 @@ RecordingMap.defaultProps = {
     lat: 0,
     lng: 0
   },
-  zoom: 16,
+  zoom: 1,
   useFitBounds: false
 };
 
