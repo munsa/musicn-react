@@ -26,3 +26,12 @@
   background-color:rgba(255, 255, 255, 0.6);
   z-index: 1;
 }
+
+.fadeOut{
+  opacity:0;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 1.5s;
+}
+.fadeIn{
+  opacity:1;
+  transition: width 0.5s, height 0.5s, opacity 1.5s 0s;
+}
