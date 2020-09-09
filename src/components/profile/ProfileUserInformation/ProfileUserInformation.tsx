@@ -16,7 +16,7 @@ const ProfileUserInformation = ({profile: {user}, isLoggedUser}) => {
       <div className='user-name'>
         {user.username}
       </div>
-      { isLoggedUser ? 'LOGGED USER' : ''}
+      { /* isLoggedUser ? 'LOGGED USER' : '' */}
     </div>
   )
 };
