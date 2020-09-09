@@ -1,0 +1,32 @@
+.footer {
+  position: relative;
+  background-color: #435e82;
+  height: 50px;
+  bottom: 0;
+  color: white;
+}
+
+.footer-content {
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.footer-brand {
+  font-weight: bold;
+}
+
+.footer-github {
+  text-align: right;
+}
+
+.footer-github a {
+  color: white;
+}
+
+/*# sourceMappingURL=Footer.css.map */

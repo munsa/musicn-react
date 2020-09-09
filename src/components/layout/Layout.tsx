@@ -6,6 +6,7 @@ import AudioRecorder from '../recorder/AudioRecorder';
 import AppNavbar from './appNavbar/AppNavbar';
 import AlertModal from './alertModal/AlertModal';
 import Routes from '../routing/Routes';
+import Footer from './Footer/Footer';
 
 const App = ({auth: {loading, isAuthenticated, user}}) => {
   return (
@@ -16,6 +17,7 @@ const App = ({auth: {loading, isAuthenticated, user}}) => {
       <AppNavbar/>
       <AlertModal/>
       <Route component={Routes}/>
+      <Footer/>
     </Fragment>
   );
 };
