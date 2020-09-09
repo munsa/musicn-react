@@ -5,8 +5,7 @@ import SongTable from '../../song/SongTable';
 
 const ProfileContent = ({profile}) => {
   return (
-    <div>
-
+    <div className='profile-content-container'>
       <div>
         <MusicCarousel recordings={profile.recordings}/>
       </div>

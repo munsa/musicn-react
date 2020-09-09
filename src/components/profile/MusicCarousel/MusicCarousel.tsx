@@ -8,7 +8,7 @@ import getArtistsString from '../../../shared/utils/StringUtils'
 
 const MusicCarousel = ({recordings}) => {
   return (
-    <div className='my-4'>
+    <div className='carousel-container'>
       <Carousel
         additionalTransfrom={0}
         arrows
@@ -57,7 +57,7 @@ const MusicCarousel = ({recordings}) => {
       >
         {recordings.map((r, j) => (
           <div key={j}>
-            <Card style={{width: '12rem'}}>
+            <Card className='recording-card'>
               <Card.Img variant="top" />
               <Card.Body>
                 <Card.Title>{r.acrCloud?.track?.name}</Card.Title>

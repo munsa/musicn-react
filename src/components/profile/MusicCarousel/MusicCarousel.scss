@@ -1,0 +1,14 @@
+@import '../../../shared/theme/theme';
+
+.carousel-container {
+  background-color: $custom-theme-color-4;
+}
+
+.recording-card {
+  background-color: $custom-theme-color-5;
+  height: 200px;
+}
+
+button:focus {
+  outline: none;
+}

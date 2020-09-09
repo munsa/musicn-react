@@ -1,3 +1,14 @@
+.carousel-container {
+  background-color: #EDE7E3;
+}
 
+.recording-card {
+  background-color: #F6C787;
+  height: 200px;
+}
+
+button:focus {
+  outline: none;
+}
 
 /*# sourceMappingURL=MusicCarousel.css.map */

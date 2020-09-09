@@ -1,5 +1,7 @@
-.profile-map {
-  height: 250px;
+.profile-content-container {
+  width: 100%;
+  padding: 10px;
+  background-color: #FFA62B;
 }
 
-/*# sourceMappingURL=MusicCarroussel.css.map */
+/*# sourceMappingURL=ProfileContent.css.map */

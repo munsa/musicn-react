@@ -2,9 +2,6 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getProfileByUsername} from '../../actions/profile';
 import PropTypes from 'prop-types';
-import ProfileUserInformation from './ProfileUserInformation/ProfileUserInformation';
-import SongTable from '../song/SongTable';
-import {Col, Row} from 'react-bootstrap';
 import ProfileContent from './ProfileContent/ProfileContent';
 import ProfileHeader from './ProfileHeader/ProfileHeader';
 
@@ -15,11 +12,11 @@ const Profile = ({getProfileByUsername, profile, auth, match}) => {
 
   return profile && (
     <div>
-      <div >
-          <ProfileHeader profile={profile}
-                         isLoggedUser={auth.user._id === profile.user._id}/>
-      </div>
       <div>
+        <ProfileHeader profile={profile}
+                       isLoggedUser={auth.user._id === profile.user._id}/>
+      </div>
+      <div className='mt-3'>
         <ProfileContent profile={profile}/>
       </div>
     </div>
