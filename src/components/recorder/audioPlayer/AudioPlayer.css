@@ -18,7 +18,8 @@
   right: 50%;
   transform: translate(-50%, 0%);
   position: absolute;
-  z-index: 4;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .audio-player-button-canvas {
@@ -28,7 +29,8 @@
   right: 50%;
   transform: translate(-50%, 0%);
   position: absolute;
-  z-index: 4;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .button-label {
@@ -38,7 +40,7 @@
   right: 50%;
   transform: translate(-50%, 0%);
   position: absolute;
-  z-index: 4;
+  z-index: 2;
   text-align: center;
 }
 
@@ -52,7 +54,7 @@
   border-radius: 50%;
   opacity: 0;
   transform: translate(-50%, -50%);
-  z-index: 4;
+  z-index: 2;
 }
 
 /*# sourceMappingURL=AudioPlayer.css.map */

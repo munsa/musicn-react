@@ -1,0 +1,23 @@
+@import '../../../shared/theme/theme';
+
+.recording-card {
+  background-color: #5daebe !important;
+  height: 20rem;
+  min-width: 10rem;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+.recording-card-image {
+  width: 100%;
+  border: 2px solid black;
+}
+
+.recording-card-track {
+  font-weight: bold;
+  color: #061e23;
+}
+
+.recording-card-artists {
+  color: white;
+}

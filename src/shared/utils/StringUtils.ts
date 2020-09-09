@@ -1,9 +1,13 @@
 import React from 'react';
 
 export const getArtistsString = (artists) => {
-  return artists.map(a => {
-    return a['name']
-  }).join(', ')
+  let result = '';
+  if(artists) {
+    result = artists.map(a => {
+      return a['name']
+    }).join(', ')
+  }
+  return result;
 }
 
 export default getArtistsString;

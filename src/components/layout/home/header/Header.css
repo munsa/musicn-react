@@ -3,7 +3,6 @@
   height: 20vw;
   display: flex;
   align-items: center;
-  background-color: white;
 }
 
 .city-image {
@@ -16,13 +15,23 @@
 .header-jumbotron {
   font-size: 3vw;
   font-weight: bold;
-  color: #F2AF29;
+  color: #FFA62B;
   -webkit-text-stroke: 0.1px black;
   text-align: center;
   margin: auto;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.6);
   z-index: 1;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 1.5s;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: width 0.5s, height 0.5s, opacity 1.5s 0s;
 }
 
 /*# sourceMappingURL=Header.css.map */

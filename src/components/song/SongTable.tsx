@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const SongTable = ({songs}) => {
 
-  function openSpotifyTrackLink(spotifyTrackId) {
+  const openSpotifyTrackLink = spotifyTrackId => {
     let win = window.open('https://open.spotify.com/track/' + spotifyTrackId, '_blank');
     win.focus();
   }
@@ -24,8 +24,8 @@ const SongTable = ({songs}) => {
         {songs.map((s, i) => (
           <tr key={i}>
             <th scope="row">{i + 1}</th>
-            <td>{s.acoustId?.artists.map(a => a.name).toString()}</td>
-            <td>{s.acoustId?.track.name}</td>
+            <td>{s.acrCloud?.artists.map(a => a.name).toString()}</td>
+            <td>{s.acrCloud?.track.name}</td>
             <td>{(new Date(s.date)).toLocaleString()}</td>
             <td>
               {s.spotify?.track?.id ?

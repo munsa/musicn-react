@@ -155,7 +155,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
         width='500'
         height='300'
       />
-      <div style={{height: buttonSize + 'px', width: buttonSize}} className='button-label'>
+      <div style={{height: buttonSize + 'px', width: buttonSize, color: playing ? 'black' : 'white'}} className='button-label'>
         { playing ? '\n ≧◡≦' : '≖◡≖' }
       </div>
       <button onClick={() => !playing && onPlayCallback()}
@@ -170,8 +170,8 @@ AudioPlayer.defaultProps = {
   minLapse: 500,
   maxLapse: 1000,
   stoppedAmplitude: 20,  // Amplitude of the beat when the player is stopped
-  colorPlaying: '#e08f81',
-  colorStopped: '#fed49e',
+  colorPlaying: '#fec887',
+  colorStopped: '#557897',
   buttonSize: 50
 };
 

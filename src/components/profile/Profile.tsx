@@ -2,17 +2,23 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getProfileByUsername} from '../../actions/profile';
 import PropTypes from 'prop-types';
-import SongTable from "../song/SongTable";
+import ProfileContent from './ProfileContent/ProfileContent';
+import ProfileHeader from './ProfileHeader/ProfileHeader';
 
 const Profile = ({getProfileByUsername, profile, auth, match}) => {
   useEffect(() => {
     getProfileByUsername(match.params.username);
   }, [getProfileByUsername, match.params.username]);
 
-  return profile.profile && (
+  return profile && (
     <div>
-      {auth.user.id === profile.profile.user.id ? 'THIS IS THE LOGGED USER' : ''}
-      <SongTable songs={profile.profile.recordings}/>
+      <div>
+        <ProfileHeader profile={profile}
+                       isLoggedUser={auth.user._id === profile.user._id}/>
+      </div>
+      <div className='mt-3'>
+        <ProfileContent profile={profile}/>
+      </div>
     </div>
   );
 };
@@ -25,7 +31,7 @@ Profile.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile,
+  profile: state.profile.profile,
   auth: state.auth
 })
 

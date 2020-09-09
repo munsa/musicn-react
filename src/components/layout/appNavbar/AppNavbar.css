@@ -5,7 +5,7 @@
 
 .navbar {
   background-color: rgba(255, 255, 255, 0) !important;
-  z-index: 2;
+  z-index: 1;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -17,7 +17,7 @@
 }
 
 .brand {
-  color: #F2AF29;
+  color: #FFA62B;
   font-weight: bold;
 }
 

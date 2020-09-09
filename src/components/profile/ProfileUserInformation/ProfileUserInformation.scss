@@ -1,0 +1,16 @@
+@import '../../../shared/theme/theme';
+
+.user-info-container {
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+  //position: fixed;
+}
+
+.user-avatar {
+  border: 2px solid black;
+}
+
+.user-name {
+  font-weight: bold;
+}
