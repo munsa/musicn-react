@@ -11,7 +11,7 @@ const Footer = () => {
         </Col>
         <Col xs={6} className='footer-github'>
           <a href='https://github.com/munsa' target="_blank" rel="noopener noreferrer">
-              <i className='fa fa-github' title='Github'/>  github.com/munsa
+              <i className='fa fa-github' title='Github'/>
           </a>
         </Col>
       </Row>
