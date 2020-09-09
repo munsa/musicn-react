@@ -7,6 +7,7 @@ const ProfileContent = ({profile}) => {
   return (
     <div className='profile-content-container'>
       <div>
+        User songs
         <MusicCarousel recordings={profile.recordings}/>
       </div>
       <div>

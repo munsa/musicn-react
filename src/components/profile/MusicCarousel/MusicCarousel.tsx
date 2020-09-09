@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import 'react-multi-carousel/lib/styles.css';
 import getArtistsString from '../../../shared/utils/StringUtils'
+import RecordingCard from '../../song/RecordingCard/RecordingCard';
 
 const MusicCarousel = ({recordings}) => {
   return (
@@ -57,16 +58,7 @@ const MusicCarousel = ({recordings}) => {
       >
         {recordings.map((r, j) => (
           <div key={j}>
-            <Card className='recording-card'>
-              <Card.Img variant="top" />
-              <Card.Body>
-                <Card.Title>{r.acrCloud?.track?.name}</Card.Title>
-                <Card.Text>
-                  {getArtistsString(r.acrCloud?.artists)}
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
+            <RecordingCard recording={r}/>
           </div>
         ))}
       </Carousel>
@@ -74,7 +66,8 @@ const MusicCarousel = ({recordings}) => {
   )
 };
 
-MusicCarousel.propTypes = {};
+MusicCarousel.propTypes = {
+};
 
 
 export default MusicCarousel;
