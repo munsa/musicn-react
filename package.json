@@ -9,7 +9,7 @@
     "acoustic",
     "fingerprint"
   ],
-  "description": "MUSICN - Social network for music recognition - React frontend",
+  "description": "GeoTunes - Social network for music recognition - React frontend",
   "homepage": "/",
   "bugs": {
     "url": "https://github.com/munsa/musicn-react/issues"

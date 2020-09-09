@@ -1,2 +1,2 @@
-# musicn-react
-MUSICN - Social network for music recognition
+# geotunes-react
+GeoTunes - Social network for music recognition

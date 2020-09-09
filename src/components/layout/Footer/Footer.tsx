@@ -7,7 +7,7 @@ const Footer = () => {
     <div className='footer'>
       <Row className='footer-content'>
         <Col xs={6} className='footer-brand'>
-          MUSICN
+          GeoTunes
         </Col>
         <Col xs={6} className='footer-github'>
           <a href='https://github.com/munsa' target="_blank" rel="noopener noreferrer">

@@ -27,7 +27,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
       <div className='container-md'>
         <Navbar.Brand href='#' onClick={onHomeClick}>
           <div className='brand'>
-            MUSICN
+            GeoTunes
           </div>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
