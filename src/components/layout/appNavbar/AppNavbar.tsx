@@ -6,6 +6,7 @@ import {Nav, Navbar, NavDropdown} from 'react-bootstrap'
 import {logout} from '../../../actions/auth';
 import {toggleDevelopmentMode} from '../../../actions/development-mode';
 import './AppNavbar.css';
+import GeoTunes from '../../../shared/assets/image/geotunes_logo_300.png'
 
 const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout, toggleDevelopmentMode}) => {
   const history = useHistory();
@@ -26,9 +27,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
     <Navbar collapseOnSelect expand="sm" variant="light">
       <div className='container-md'>
         <Navbar.Brand href='#' onClick={onHomeClick}>
-          <div className='brand'>
-            GeoTunes
-          </div>
+          <img src={GeoTunes} className='brand-logo'/>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse id="responsive-navbar-nav">
