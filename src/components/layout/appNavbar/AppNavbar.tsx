@@ -33,9 +33,9 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             {developmentMode &&
-            <Navbar.Text>
+            <div className='developer-mode-text'>
               <i className='fa fa-bug' title='Logout'/> Developer Mode
-            </Navbar.Text>
+            </div>
             }
           </Nav>
           <Nav>
