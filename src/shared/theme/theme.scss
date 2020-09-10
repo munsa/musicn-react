@@ -1,19 +1,19 @@
 // Primary color
-$custom-theme-color-primary: #FF7F11;
+$custom-theme-color-primary: #FF6201;
 
 // Theme colors
-$custom-theme-color-1: #16697A;
-$custom-theme-color-2: #489FB5;
-$custom-theme-color-3: #82C0CC;
-$custom-theme-color-4: #EDE7E3;
-$custom-theme-color-5: #F6C787;
-
-$theme-body-background: #E8E9ED;
+$custom-theme-color-1: #3D87B8;
+$custom-theme-color-2: #C179B9;
+$custom-theme-color-3: #E8E9ED;
+$custom-theme-color-4: #FF7F11;
+$custom-theme-color-5: #DCCFEC;
 
 // Black & White
-$custom-theme-color-white: #f6f5f1;
-$custom-theme-color-black: #272932;
-$custom-theme-color-grey: #BABDBE;
+$custom-theme-color-white: #F0F6FA;
+$custom-theme-color-black: #0F212E;
+$custom-theme-color-grey: #CAC4CE;
+
+$theme-body-background: $custom-theme-color-3;
 
 // Alert colors
 $custom-theme-color-success: #66db66;
