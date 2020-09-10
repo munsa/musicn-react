@@ -1,15 +1,10 @@
-.shadow {
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-}
-
 .footer {
   position: relative;
   background-color: #0F212E;
   height: 50px;
   bottom: 0;
   color: white;
+  padding-top: 20px;
 }
 
 .footer-content {

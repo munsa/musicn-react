@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../../shared/theme/theme.scss","ProfileUserInformation.scss"],"names":[],"mappings":"AAgCA;EACE;EACA;EACA;;;ACjCF;EACE;EACA;EACA;;;AAOF;EACE","file":"ProfileUserInformation.css"}
+{"version":3,"sourceRoot":"","sources":["ProfileUserInformation.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;;;AAOF;EACE","file":"ProfileUserInformation.css"}

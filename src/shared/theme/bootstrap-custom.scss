@@ -16,7 +16,6 @@ $theme-color-5: $custom-theme-color-5;
 $theme-color-white: $custom-theme-color-white;
 $theme-color-black: $custom-theme-color-black;
 
-//$theme-font-size: $theme-font-size-1;
 @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
 
 // Radius
@@ -33,34 +32,12 @@ $btn-border-radius-lg: $theme-border-radius;
 $btn-border-radius-sm: $theme-border-radius;
 
 // Card
-$card-bg: $theme-color-1;
-
-/*
-// Navbar
-$navbar-nav-link-padding-x: 0.5rem;
-
-// Navbar: Colors for dark background
-$navbar-dark-color: rgba($theme-color-white, 0.5);
-$navbar-dark-hover-color: rgba($theme-color-white, 0.75);
-$navbar-dark-active-color: $theme-color-white;
-$navbar-dark-disabled-color: rgba($theme-color-white, 0.25);
-$navbar-dark-toggler-border-color: rgba($theme-color-white, 0.1);
-
-// Navbar: Colors for light background
-$navbar-light-color: rgba($theme-color-1, 0.5) !default;
-$navbar-light-hover-color: rgba($theme-color-1, 0.7) !default;
-$navbar-light-active-color: rgba($theme-color-1, 0.9) !default;
-$navbar-light-disabled-color: rgba($theme-color-1, 0.3) !default;
-$navbar-light-toggler-border-color: rgba($theme-color-1, 0.1) !default;
-
-$navbar-light-brand-color: $theme-color-white;
-$navbar-light-brand-hover-color: rgba($theme-color-white, 0.75);
-*/
+//$card-bg: $theme-color-1;
 
 // Elements
 body {
   font-family: 'Rubik', sans-serif !important;
-  color: $theme-color-black !important;
+  //color: $theme-color-black !important;
 }
 
 h1 {
@@ -75,20 +52,16 @@ h1 {
   align-content: center;
 }
 
-@import '../../../node_modules/bootstrap/scss/bootstrap';
+.card {
+  border-radius: 16px !important;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 2px 8px !important;
+}
 
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 /*-------------------------------------------*/
 /*----------------- Custom-------------------*/
 /*-------------------------------------------*/
 
-.index {
-  height: 94vh;
-  /*background: url('../assets/img/photos/index-hands-festival.jpg') no-repeat
-    center center/cover;*/
-  /* background: url('../assets/img/photos/planets.jpg') no-repeat center center/cover; */
-  background-repeat: no-repeat;
-  background-size: 1920px 1280px;
-}
 
 .login-card {
   width: 400px;
