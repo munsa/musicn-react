@@ -1,10 +1,8 @@
 .footer {
   position: relative;
   background-color: #0F212E;
-  height: 50px;
-  bottom: 0;
+  height: 3rem;
   color: white;
-  padding-top: 20px;
 }
 
 .footer-content {

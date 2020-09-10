@@ -4,7 +4,7 @@ import {Col, NavDropdown, Row} from 'react-bootstrap';
 
 const Footer = () => {
   return (
-    <div className='footer'>
+    <div className='footer mt-5'>
       <Row className='footer-content'>
         <Col xs={6} className='footer-brand'>
           GeoTunes

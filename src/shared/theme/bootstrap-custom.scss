@@ -35,6 +35,14 @@ $btn-border-radius-sm: $theme-border-radius;
 //$card-bg: $theme-color-1;
 
 // Elements
+html, body {
+ height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
 body {
   font-family: 'Rubik', sans-serif !important;
   //color: $theme-color-black !important;

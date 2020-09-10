@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {Fragment, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {v4 as uuidv4} from 'uuid';
@@ -142,7 +142,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
   }
 
   return (
-    <div>
+    <Fragment>
       <canvas
         className='audio-player-canvas'
         ref={canvasRef}
@@ -160,7 +160,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
       </div>
       <button onClick={() => !playing && onPlayCallback()}
               className='audio-player-invisible-button'/>
-    </div>
+    </Fragment>
   );
 };
 
