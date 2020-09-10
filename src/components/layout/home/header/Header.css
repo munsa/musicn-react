@@ -10,12 +10,13 @@
   bottom: 0;
   width: 100%;
   z-index: 0;
+  border-bottom: 1px solid #6986a1;
 }
 
 .header-jumbotron {
   font-size: 3vw;
   font-weight: bold;
-  color: #FFA62B;
+  color: #FF7F11;
   -webkit-text-stroke: 0.1px black;
   text-align: center;
   margin: auto;

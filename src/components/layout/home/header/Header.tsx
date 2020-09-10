@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import './Header.css';
 import classList from '../../../../shared/utils/classList';
-import CityDayImage from '../../../../shared/assets/image/city1920topspace.png';
+import CityDayImage from '../../../../shared/assets/image/city1920.png';
 import CityNightImage from '../../../../shared/assets/image/city_night1920.png';
 
 const Header = ({playing}) => {
