@@ -1,7 +1,6 @@
 import React from 'react';
 import './ProfileHeader.css';
 import RecordingMap from '../../map/RecordingMap';
-import {Col, Row} from 'react-bootstrap';
 import ProfileUserInformation from '../ProfileUserInformation/ProfileUserInformation';
 
 const ProfileHeader = ({profile, isLoggedUser}) => {
@@ -17,18 +16,14 @@ const ProfileHeader = ({profile, isLoggedUser}) => {
 
   return (
     <div className='profile-header-container'>
-      <Row>
-        <Col xs={12} md={3}>
-          <ProfileUserInformation profile={profile}
-                                  isLoggedUser={isLoggedUser}/>
-        </Col>
-        <Col xs={12} md={9}>
-          <div className='profile-map'>
-            <RecordingMap recordingList={profile.recordings}
-                          useFitBounds={hasGeolocationRecordings(profile.recordings)}/>
-          </div>
-        </Col>
-      </Row>
+      <div className='profile-user-info'>
+        <ProfileUserInformation profile={profile}
+                                isLoggedUser={isLoggedUser}/>
+      </div>
+      <div className='profile-map shadow'>
+        <RecordingMap recordingList={profile.recordings}
+                      useFitBounds={hasGeolocationRecordings(profile.recordings)}/>
+      </div>
     </div>
   )
 };

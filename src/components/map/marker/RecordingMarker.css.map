@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["RecordingMarker.scss","../../../shared/theme/theme.scss"],"names":[],"mappings":"AAEA;EACE,WC0BkB;EDzBlB;;;AAGF;EACE,WCsBkB;EDrBlB","file":"RecordingMarker.css"}
+{"version":3,"sourceRoot":"","sources":["../../../shared/theme/theme.scss","RecordingMarker.scss"],"names":[],"mappings":"AAgCA;EACE;EACA;EACA;;;ACjCF;EACE,WD0BkB;ECzBlB;;;AAGF;EACE,WDsBkB;ECrBlB","file":"RecordingMarker.css"}
