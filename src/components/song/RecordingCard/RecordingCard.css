@@ -1,23 +1,30 @@
-/*
 .recording-card {
-  background-color: #5daebe !important;
-  height: 20rem;
+  height: 13rem;
   min-width: 10rem;
-  padding: 10px;
-  border: 2px solid black;
+  padding: 1.5rem;
 }
-*/
+
 .recording-card-image {
   width: 50%;
   margin-left: 25%;
 }
 
+.recording-card-content {
+  margin-top: 1rem;
+  text-align: center;
+  height: 100%;
+}
+
 .recording-card-track {
+  color: #FF6201;
   font-weight: bold;
 }
 
 .recording-card-artists {
-  color: white;
+  color: #FFB485;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 /*# sourceMappingURL=RecordingCard.css.map */

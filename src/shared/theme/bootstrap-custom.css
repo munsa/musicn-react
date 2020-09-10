@@ -15,12 +15,6 @@ body {
   font-family: "Rubik", sans-serif !important;
 }
 
-h1 {
-  font-size: 4vw !important;
-  font-weight: bold !important;
-  color: #DCCFEC;
-}
-
 .container {
   height: 100%;
   align-content: center;
@@ -93,7 +87,7 @@ body {
   line-height: 1.5;
   color: #0F212E;
   text-align: left;
-  background-color: #E8E9ED;
+  background-color: #F4F4F6;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -504,7 +498,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #E8E9ED;
+  background-color: #F4F4F6;
   border: 1px solid #dee2e6;
   border-radius: 0;
   max-width: 100%;
@@ -3757,13 +3751,13 @@ input[type=button].btn-block {
   outline: none;
 }
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #E8E9ED, 0 0 0 0.2rem rgba(255, 98, 1, 0.25);
+  box-shadow: 0 0 0 1px #F4F4F6, 0 0 0 0.2rem rgba(255, 98, 1, 0.25);
 }
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #E8E9ED, 0 0 0 0.2rem rgba(255, 98, 1, 0.25);
+  box-shadow: 0 0 0 1px #F4F4F6, 0 0 0 0.2rem rgba(255, 98, 1, 0.25);
 }
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #E8E9ED, 0 0 0 0.2rem rgba(255, 98, 1, 0.25);
+  box-shadow: 0 0 0 1px #F4F4F6, 0 0 0 0.2rem rgba(255, 98, 1, 0.25);
 }
 .custom-range::-moz-focus-outer {
   border: 0;
@@ -3931,8 +3925,8 @@ input[type=button].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #E8E9ED;
-  border-color: #dee2e6 #dee2e6 #E8E9ED;
+  background-color: #F4F4F6;
+  border-color: #dee2e6 #dee2e6 #F4F4F6;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;

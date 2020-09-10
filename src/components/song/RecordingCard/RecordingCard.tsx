@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Card, Col, Row} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 import getArtistsString from '../../../shared/utils/StringUtils';
 import './RecordingCard.css'
 import RecordImage from '../../../shared/assets/image/record_400.png'
@@ -8,19 +8,17 @@ import RecordImage from '../../../shared/assets/image/record_400.png'
 const RecordingCard = ({recording}) => {
   return (
     <Card className='recording-card'>
-      <Row>
-        <Col>
-          <img className='recording-card-image' src={RecordImage}/>
-          <div className='recording-card-track recording-card-text'>
-            {recording.acrCloud?.track?.name}
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col className='recording-card-text recording-card-artists'>
+      <div>
+        <img className='recording-card-image' src={RecordImage}/>
+      </div>
+      <div className='recording-card-content'>
+        <div className='recording-card-track text-truncate'>
+          {recording.acrCloud?.track?.name}
+        </div>
+        <div className='recording-card-artists text-truncate'>
           {getArtistsString(recording.acrCloud?.artists)}
-        </Col>
-      </Row>
+        </div>
+      </div>
     </Card>
   )
 };
