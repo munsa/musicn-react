@@ -4,7 +4,7 @@ import {Button, Card} from 'react-bootstrap';
 import getArtistsString from '../../../shared/utils/StringUtils';
 import './RecordingCard.css'
 import RecordImage from '../../../shared/assets/image/record_400.png'
-import SpotifyLogo from '../../../shared/assets/image/spotify/Spotify_Logo_RGB_White.png'
+import SpotifyButton from '../../../shared/lib/buttons/SpotifyButton/SpotifyButton';
 
 const RecordingCard = ({recording}) => {
   return (
@@ -21,11 +21,7 @@ const RecordingCard = ({recording}) => {
         </div>
       </div>
       <div className='recording-card-buttons'>
-        <div className='spotify-button'>
-          <Button>
-            <img src={SpotifyLogo} className='spotify-button-logo'/>
-          </Button>
-        </div>
+        <SpotifyButton/>
       </div>
     </Card>
   )

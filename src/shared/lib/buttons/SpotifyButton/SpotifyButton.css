@@ -1,0 +1,25 @@
+.spotify-button-logo {
+  height: 1.5rem;
+}
+
+.spotify-button .btn-primary {
+  background-color: #1DB954;
+  border-color: #1DB954;
+}
+
+.spotify-button .btn:hover {
+  background-color: #191414;
+  border-color: #191414;
+}
+
+.spotify-button .btn:focus {
+  background-color: #191414;
+  border-color: #191414;
+}
+
+.spotify-button .btn:active {
+  background-color: #191414 !important;
+  border-color: #191414 !important;
+}
+
+/*# sourceMappingURL=SpotifyButton.css.map */

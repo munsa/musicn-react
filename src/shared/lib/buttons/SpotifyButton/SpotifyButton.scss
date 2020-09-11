@@ -1,0 +1,25 @@
+@import '../../../theme/theme-constants';
+
+.spotify-button-logo{
+  height: 1.5rem;
+}
+
+.spotify-button .btn-primary {
+  background-color: $color-spotify-green;
+  border-color: $color-spotify-green;
+}
+
+.spotify-button .btn:hover {
+  background-color: $color-spotify-black;
+  border-color: $color-spotify-black;
+}
+
+.spotify-button .btn:focus {
+  background-color: $color-spotify-black;
+  border-color: $color-spotify-black;
+}
+
+.spotify-button .btn:active {
+  background-color: $color-spotify-black !important;
+  border-color: $color-spotify-black !important;
+}
