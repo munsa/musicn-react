@@ -8,11 +8,11 @@ import {Source} from '../../../constants/constants';
 
 const SourceButton = ({source, onClickCallback}) => {
   return (
-    <div className={source === Source.SPOTIFY ? 'spotify-button' : (source === Source.DEEZER ? 'deezer-button' : '')}>
+    <div className={source === Source.SPOTIFY ? 'spotify-button' : (source === Source.DEEZER ? 'deezer-button' : '')}
+         onClick={onClickCallback}>
       <Button>
-        <img src={source === Source.SPOTIFY ? SpotifyLogo : (source === Source.DEEZER ? DeezerLogo : '')}
-             className={source === Source.SPOTIFY ? 'spotify-button-logo' : (source === Source.DEEZER ? 'deezer-button-logo' : '')}
-             onClick={onClickCallback}/>
+        <img alt={source + 'button'} src={source === Source.SPOTIFY ? SpotifyLogo : (source === Source.DEEZER ? DeezerLogo : '')}
+             className={source === Source.SPOTIFY ? 'spotify-button-logo' : (source === Source.DEEZER ? 'deezer-button-logo' : '')}/>
       </Button>
     </div>
   )
