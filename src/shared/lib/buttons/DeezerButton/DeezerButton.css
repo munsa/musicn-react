@@ -16,18 +16,18 @@
 }
 
 .deezer-button .btn:hover {
-  background-color: #963CAA;
-  border-color: #963CAA;
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .deezer-button .btn:focus {
-  background-color: #963CAA;
-  border-color: #963CAA;
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .deezer-button .btn:active {
-  background-color: #963CAA !important;
-  border-color: #963CAA !important;
+  background-color: #000000 !important;
+  border-color: #000000 !important;
 }
 
 /*# sourceMappingURL=DeezerButton.css.map */
