@@ -1,2 +1,2 @@
-# geotunes-react
-GeoTunes - Social network for music recognition
+# wildtunes-react
+WildTunes - Social network for music recognition

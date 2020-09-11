@@ -1,4 +1,4 @@
-@import "../../../shared/theme/theme";
+@import "../../../shared/theme/theme-constants";
 
 .footer {
   position: relative;
@@ -20,6 +20,17 @@
 
 .footer-brand-logo {
   height: 1rem;
+}
+
+.footer-message {
+  text-align: center;
+  font-family: "Lucida Console", Courier, monospace;
+  font-size: 0.7rem;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.footer-message-icon {
+  height: 2rem;
 }
 
 .footer-github {

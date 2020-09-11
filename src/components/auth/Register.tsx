@@ -41,7 +41,7 @@ const Register = ({register, isAuthenticated}) => {
             <div className='login-form'>
               <form onSubmit={e => onSubmit(e)}>
                 <div className='form-group text-center'>
-                  <h1>GeoTunes</h1>
+                  <h1>WildTunes</h1>
                 </div>
                 <div className='form-group'>
                   <div className='inner-addon left-addon'>
