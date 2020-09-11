@@ -8,7 +8,7 @@ const SpotifyButton = ({onClickCallback}) => {
   return (
     <div className='spotify-button'>
       <Button>
-        <img src={SpotifyLogo} className='spotify-button-logo'/>
+        <img src={SpotifyLogo} className='spotify-button-logo' onClick={onClickCallback}/>
       </Button>
     </div>
   )

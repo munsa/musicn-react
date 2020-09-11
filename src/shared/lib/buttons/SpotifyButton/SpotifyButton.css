@@ -1,5 +1,13 @@
+.spotify-button .btn {
+  width: 110px !important;
+  height: 38px;
+}
+
 .spotify-button-logo {
-  height: 1.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 20px;
 }
 
 .spotify-button .btn-primary {

@@ -5,6 +5,7 @@ import getArtistsString from '../../../shared/utils/StringUtils';
 import './RecordingCard.css'
 import RecordImage from '../../../shared/assets/image/record_400.png'
 import SpotifyButton from '../../../shared/lib/buttons/SpotifyButton/SpotifyButton';
+import DeezerButton from '../../../shared/lib/buttons/DeezerButton/DeezerButton';
 
 const RecordingCard = ({recording}) => {
   return (
@@ -22,6 +23,7 @@ const RecordingCard = ({recording}) => {
       </div>
       <div className='recording-card-buttons'>
         <SpotifyButton/>
+        <DeezerButton/>
       </div>
     </Card>
   )

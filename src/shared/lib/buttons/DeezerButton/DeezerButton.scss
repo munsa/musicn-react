@@ -1,0 +1,33 @@
+@import '../../../theme/theme-constants';
+
+.deezer-button .btn{
+  width: 110px !important;
+  height: 38px;
+}
+
+.deezer-button-logo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 13px;
+}
+
+.deezer-button .btn-primary {
+  background-color: $color-deezer-pink;
+  border-color: $color-deezer-pink;
+}
+
+.deezer-button .btn:hover {
+  background-color: $color-deezer-purple;
+  border-color: $color-deezer-purple;
+}
+
+.deezer-button .btn:focus {
+  background-color: $color-deezer-purple;
+  border-color: $color-deezer-purple;
+}
+
+.deezer-button .btn:active {
+  background-color: $color-deezer-purple !important;
+  border-color: $color-deezer-purple !important;
+}
