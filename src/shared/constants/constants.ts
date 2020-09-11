@@ -4,3 +4,8 @@ export const AlertType = {
   ERROR: 'ERROR'
 }
 
+export const Source = {
+  SPOTIFY: 'SPOTIFY',
+  DEEZER: 'DEEZER'
+}
+

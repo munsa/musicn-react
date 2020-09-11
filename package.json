@@ -2,14 +2,16 @@
   "name": "client",
   "version": "0.1.0",
   "keywords": [
-    "music",
+    "wildtunes",
+    "tunes",
+    "wild",
     "recognition",
     "social",
     "network",
     "acoustic",
     "fingerprint"
   ],
-  "description": "MUSICN - Social network for music recognition - React frontend",
+  "description": "WildTunes - Social network for music recognition - React frontend",
   "homepage": "/",
   "bugs": {
     "url": "https://github.com/munsa/musicn-react/issues"

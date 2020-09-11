@@ -2,10 +2,18 @@
 
 .profile-header-container {
   width: 100%;
-  padding: 10px;
-  background-color: $custom-theme-color-primary;
+  margin-bottom: 7rem;
+}
+
+.profile-user-info {
+  position: absolute;
+  z-index: 100;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  top: 235px;
 }
 
 .profile-map {
   height: 250px;
+  z-index: 1;
 }

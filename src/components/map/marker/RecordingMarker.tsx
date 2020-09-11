@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {InfoWindow, Marker} from '@react-google-maps/api';
-import MarkerIcon from '../../../shared/assets/icon/marker.svg';
+import MarkerIcon from '../../../shared/assets/icon/marker.png';
 import {getArtistsString} from '../../../shared/utils/StringUtils';
 import './RecordingMarker.css';
 

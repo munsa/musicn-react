@@ -18,7 +18,11 @@
   margin: 7px;
 }
 
-.brand {
-  color: $custom-theme-color-primary;
+.brand-logo {
+  height: 30px;
+}
+
+.developer-mode-text {
+  color: $custom-theme-color-1-light1;
   font-weight: bold;
 }

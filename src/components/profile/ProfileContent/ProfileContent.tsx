@@ -3,10 +3,11 @@ import './ProfileContent.css';
 import MusicCarousel from '../MusicCarousel/MusicCarousel';
 import SongTable from '../../song/SongTable';
 import RecordingCardMap from '../../song/RecordingCardMap/RecordingCardMap';
+import {Container} from 'react-bootstrap';
 
 const ProfileContent = ({profile}) => {
   return (
-    <div className='profile-content-container'>
+    <Container className='profile-content-container'>
       {/*
       <div>
         User songs
@@ -19,7 +20,7 @@ const ProfileContent = ({profile}) => {
       <div>
         <RecordingCardMap recordingList={profile.recordings}/>
       </div>
-    </div>
+    </Container>
   )
 };
 

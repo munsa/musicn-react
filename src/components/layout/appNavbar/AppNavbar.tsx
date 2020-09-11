@@ -6,11 +6,12 @@ import {Nav, Navbar, NavDropdown} from 'react-bootstrap'
 import {logout} from '../../../actions/auth';
 import {toggleDevelopmentMode} from '../../../actions/development-mode';
 import './AppNavbar.css';
+import WildTunes from '../../../shared/assets/image/wildtunes/logo/wildtunes_logo_orange.svg'
 
 const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout, toggleDevelopmentMode}) => {
   const history = useHistory();
 
-  const onDevelopmentModeChange = event => {
+  const onDevelopmentModeChange = () => {
     toggleDevelopmentMode(!developmentMode);
   }
 
@@ -26,17 +27,15 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
     <Navbar collapseOnSelect expand="sm" variant="light">
       <div className='container-md'>
         <Navbar.Brand href='#' onClick={onHomeClick}>
-          <div className='brand'>
-            MUSICN
-          </div>
+          <img src={WildTunes} className='brand-logo'/>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             {developmentMode &&
-            <Navbar.Text>
+            <div className='developer-mode-text'>
               <i className='fa fa-bug' title='Logout'/> Developer Mode
-            </Navbar.Text>
+            </div>
             }
           </Nav>
           <Nav>
@@ -55,7 +54,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
               <NavDropdown title={user.username}
                            id="nav-dropdown">
                 <NavDropdown.Item onClick={onProfileClick}>My Profile</NavDropdown.Item>
-                <NavDropdown.Item onClick={onDevelopmentModeChange}>
+                <NavDropdown.Item onClick={()=>onDevelopmentModeChange()}>
                   {developmentMode ? 'User Mode' : 'Developer Mode'}
                 </NavDropdown.Item>
                 <NavDropdown.Divider/>

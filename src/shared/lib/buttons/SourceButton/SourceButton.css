@@ -1,0 +1,65 @@
+.spotify-button .btn {
+  width: 110px !important;
+  height: 38px;
+}
+
+.spotify-button-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 20px;
+}
+
+.spotify-button .btn-primary {
+  background-color: #1DB954;
+  border-color: #1DB954;
+}
+
+.spotify-button .btn:hover {
+  background-color: #191414;
+  border-color: #191414;
+}
+
+.spotify-button .btn:focus {
+  background-color: #191414;
+  border-color: #191414;
+}
+
+.spotify-button .btn:active {
+  background-color: #191414 !important;
+  border-color: #191414 !important;
+}
+
+.deezer-button .btn {
+  width: 110px !important;
+  height: 38px;
+}
+
+.deezer-button-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 13px;
+}
+
+.deezer-button .btn-primary {
+  background-color: #EF5466;
+  border-color: #EF5466;
+}
+
+.deezer-button .btn:hover {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.deezer-button .btn:focus {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.deezer-button .btn:active {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+/*# sourceMappingURL=SourceButton.css.map */

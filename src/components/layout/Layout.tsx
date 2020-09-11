@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import '../../shared/theme/bootstrap-custom.css';
@@ -7,18 +7,25 @@ import AppNavbar from './appNavbar/AppNavbar';
 import AlertModal from './alertModal/AlertModal';
 import Routes from '../routing/Routes';
 import Footer from './Footer/Footer';
+import './Layout.css';
 
 const App = ({auth: {loading, isAuthenticated, user}}) => {
   return (
-    <Fragment>
+    <div className='app'>
       {!loading && isAuthenticated && user &&
       <AudioRecorder/>
       }
-      <AppNavbar/>
       <AlertModal/>
-      <Route component={Routes}/>
-      <Footer/>
-    </Fragment>
+      <div className='app-header'>
+        <AppNavbar/>
+      </div>
+      <div className='app-content'>
+        <Route component={Routes}/>
+      </div>
+      <div className='app-footer'>
+        <Footer/>
+      </div>
+    </div>
   );
 };
 

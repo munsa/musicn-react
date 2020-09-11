@@ -1,8 +1,9 @@
+@import "../../../shared/theme/theme-constants";
+
 .footer {
   position: relative;
-  background-color: #435e82;
-  height: 50px;
-  bottom: 0;
+  background-color: $custom-theme-color-black;
+  height: 3rem;
   color: white;
 }
 
@@ -17,8 +18,19 @@
   padding-right: 15px;
 }
 
-.footer-brand {
-  font-weight: bold;
+.footer-brand-logo {
+  height: 1rem;
+}
+
+.footer-message {
+  text-align: center;
+  font-family: "Lucida Console", Courier, monospace;
+  font-size: 0.7rem;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.footer-message-icon {
+  height: 2rem;
 }
 
 .footer-github {

@@ -13,11 +13,15 @@ const Home = ({allRecordings, getAllRecordings, currentPosition}) => {
     }
   }, [getAllRecordings]);
 
+  const test = () => {
+    console.log('test');
+  }
+
   return (
     <div>
       <Header/>
       <div className='home-body'>
-        <div className='container-md'>
+        <div className='container-md mt-5'>
           <div className='home-recording-map'>
             <div className='map-border'>
               <RecordingMap recordingList={allRecordings} center={currentPosition} zoom={16}/>

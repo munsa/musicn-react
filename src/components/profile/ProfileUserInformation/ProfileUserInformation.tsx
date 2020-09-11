@@ -9,7 +9,7 @@ const ProfileUserInformation = ({profile: {user}, isLoggedUser}) => {
         fluid
         src={user.avatar}
         alt='User Avatar'
-        className='rounded-circle user-avatar'
+        className='rounded-circle shadow'
         width='100'
         height='100'
       />
