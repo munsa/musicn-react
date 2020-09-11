@@ -7,6 +7,16 @@ import RecordImage from '../../../shared/assets/image/record_400.png'
 import SpotifyButton from '../../../shared/lib/buttons/SpotifyButton/SpotifyButton';
 import DeezerButton from '../../../shared/lib/buttons/DeezerButton/DeezerButton';
 
+const openSpotifyTrackLink = spotifyTrackId => {
+  let win = window.open('https://open.spotify.com/track/' + spotifyTrackId, '_blank');
+  win.focus();
+}
+
+const openDeezerTrackLink = deezerTrackId => {
+  let win = window.open('https://www.deezer.com/track/' + deezerTrackId, '_blank');
+  win.focus();
+}
+
 const RecordingCard = ({recording}) => {
   return (
     <Card className='recording-card'>
@@ -24,12 +34,16 @@ const RecordingCard = ({recording}) => {
       </div>
       <div className='recording-card-buttons mx-auto mx-2'>
         <div className='d-flex flex-wrap justify-content-center'>
+          {recording.spotify?.track?.id != null &&
           <div className='p-2'>
-            <SpotifyButton/>
+            <SpotifyButton onClickCallback={() => openSpotifyTrackLink(recording.spotify.track.id)}/>
           </div>
+          }
+          {recording.deezer?.track?.id != null &&
           <div className='p-2'>
-            <DeezerButton/>
+            <DeezerButton onClickCallback={() => openDeezerTrackLink(recording.deezer.track.id)}/>
           </div>
+          }
         </div>
       </div>
     </Card>
