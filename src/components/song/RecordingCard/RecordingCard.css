@@ -1,5 +1,5 @@
 .recording-card {
-  height: 13rem;
+  height: 16rem;
   min-width: 10rem;
   padding: 1.5rem;
 }
@@ -10,21 +10,36 @@
 }
 
 .recording-card-content {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   text-align: center;
   height: 100%;
 }
 
 .recording-card-track {
-  color: #FF6201;
+  color: #24262D;
   font-weight: bold;
 }
 
 .recording-card-artists {
-  color: #FFB485;
+  color: #5A5F72;
   height: 100%;
   overflow: hidden;
   position: relative;
+}
+
+.recording-card-buttons {
+  position: relative;
+  text-align: center;
+  bottom: 0;
+}
+
+.spotify-button {
+  height: 1.5rem;
+}
+
+.btn-primary {
+  background-color: #1DB954;
+  border-color: #1DB954;
 }
 
 /*# sourceMappingURL=RecordingCard.css.map */

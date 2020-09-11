@@ -170,8 +170,8 @@ AudioPlayer.defaultProps = {
   minLapse: 500,
   maxLapse: 1000,
   stoppedAmplitude: 20,  // Amplitude of the beat when the player is stopped
-  colorPlaying: '#fec887',
-  colorStopped: '#557897',
+  colorPlaying: '#FFB485',
+  colorStopped: '#66A3CC',
   buttonSize: 50
 };
 

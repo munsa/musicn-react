@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Card} from 'react-bootstrap';
+import {Button, Card} from 'react-bootstrap';
 import getArtistsString from '../../../shared/utils/StringUtils';
 import './RecordingCard.css'
 import RecordImage from '../../../shared/assets/image/record_400.png'
+import SpotifyLogo from '../../../shared/assets/image/spotify/Spotify_Logo_RGB_White.png'
 
 const RecordingCard = ({recording}) => {
   return (
@@ -18,6 +19,11 @@ const RecordingCard = ({recording}) => {
         <div className='recording-card-artists text-truncate'>
           {getArtistsString(recording.acrCloud?.artists)}
         </div>
+      </div>
+      <div className='recording-card-buttons'>
+        <Button>
+          <img className='spotify-button' src={SpotifyLogo}/>
+        </Button>
       </div>
     </Card>
   )

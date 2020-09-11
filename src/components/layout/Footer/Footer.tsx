@@ -5,7 +5,7 @@ import GeoTunes from '../../../shared/assets/image/logo-gt.png';
 
 const Footer = () => {
   return (
-    <div className='footer mt-5'>
+    <div className='footer'>
       <Row className='footer-content'>
         <Col xs={6} className='footer-brand'>
           <img src={GeoTunes} className='footer-brand-logo'/>
