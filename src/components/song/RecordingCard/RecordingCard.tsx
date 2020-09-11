@@ -24,10 +24,10 @@ const RecordingCard = ({recording}) => {
       </div>
       <div className='recording-card-buttons mx-auto mx-2'>
         <div className='d-flex flex-wrap justify-content-center'>
-          <div className='card-button-container p-2'>
+          <div className='p-2'>
             <SpotifyButton/>
           </div>
-          <div className='card-button-container p-2'>
+          <div className='p-2'>
             <DeezerButton/>
           </div>
         </div>

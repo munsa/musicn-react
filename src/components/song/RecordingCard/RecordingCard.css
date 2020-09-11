@@ -1,10 +1,12 @@
 .recording-card {
-  height: 19rem;
   min-width: 10rem;
 }
 
 .recording-card-container {
-  margin: 1rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 0.2rem;
 }
 
 .recording-card-image {
@@ -30,9 +32,14 @@
 
 .recording-card-buttons {
   width: 100%;
+  padding-bottom: 0.5rem;
   position: relative;
   text-align: center;
   bottom: 0;
+}
+
+.recording-card-buttons .p-2 {
+  padding: 0.2rem !important;
 }
 
 /*# sourceMappingURL=RecordingCard.css.map */
