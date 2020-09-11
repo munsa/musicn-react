@@ -9940,6 +9940,17 @@ h3 {
 /*-------------------------------------------*/
 .btn {
   border-radius: 500px;
+  min-width: 70px;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background-color: #FF6201;
+  border-color: #FF6201;
 }
 
 .login-card {

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import Layout from './components/layout/Layout';
-import './shared/theme/bootstrap-custom.css';
+import './shared/theme/theme.css';
 // Redux
 import {Provider} from 'react-redux';
 import store from './store';

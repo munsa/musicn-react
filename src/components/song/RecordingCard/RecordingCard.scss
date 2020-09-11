@@ -23,7 +23,7 @@
 }
 
 .recording-card-artists {
-  color: $custom-theme-color-4-dark2;
+  color: $custom-theme-color-1-light1;
   height: 100%;
   overflow: hidden;
   position: relative;
@@ -35,11 +35,11 @@
   bottom: 0;
 }
 
-.spotify-button {
+.spotify-button-logo{
   height: 1.5rem;
 }
 
-.btn-primary {
+.spotify-button .btn-primary {
   background-color: $color-spotify-green;
   border-color: $color-spotify-green;
 }

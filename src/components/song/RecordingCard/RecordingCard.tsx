@@ -21,9 +21,11 @@ const RecordingCard = ({recording}) => {
         </div>
       </div>
       <div className='recording-card-buttons'>
-        <Button>
-          <img className='spotify-button' src={SpotifyLogo}/>
-        </Button>
+        <div className='spotify-button'>
+          <Button>
+            <img src={SpotifyLogo} className='spotify-button-logo'/>
+          </Button>
+        </div>
       </div>
     </Card>
   )
