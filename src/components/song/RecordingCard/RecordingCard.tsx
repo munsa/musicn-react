@@ -22,8 +22,11 @@ const RecordingCard = ({recording}) => {
   return (
     <Card className='recording-card'>
       <div className='recording-card-container'>
-        <img className='recording-card-image' src={recording.spotify?.api?.album?.images[0].url}/>
-
+        {recording.spotify?.api?.album?.images[0].url ?
+          <img className='recording-card-image' src={recording.spotify?.api?.album?.images[0].url}/>
+          :
+          <img className='recording-card-image' src={RecordImage}/>
+        }
         <div className='recording-card-content'>
           <div className='recording-card-track text-truncate'>
             {recording.acrCloud?.track?.name}
