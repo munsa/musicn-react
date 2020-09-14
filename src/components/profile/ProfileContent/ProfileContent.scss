@@ -1,4 +1,7 @@
-@import '../../../shared/theme/theme';
+@import '../../../shared/theme/theme-constants';
 
-.profile-content-container {
+.loader-container {
+  width: 100%;
+  text-align: center;
+  padding-top: 3rem;
 }

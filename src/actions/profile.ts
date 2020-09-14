@@ -30,8 +30,7 @@ export const getProfileByUsername = username => async dispatch => {
     }
   } catch (err) {
     dispatch({
-      type: ActionProfileType.PROFILE_ERROR,
-      payload: {msg: err.response?.statusText, status: err.response.status}
+      type: ActionProfileType.PROFILE_ERROR
     });
   }
 };

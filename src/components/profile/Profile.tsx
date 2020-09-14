@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getProfileByUsername} from '../../actions/profile';
 import PropTypes from 'prop-types';
 import ProfileContent from './ProfileContent/ProfileContent';
 import ProfileHeader from './ProfileHeader/ProfileHeader';
 
-const Profile = ({getProfileByUsername, profile, auth, match}) => {
+const Profile = ({getProfileByUsername, profile, recordingsLoading, auth, match}) => {
   useEffect(() => {
     getProfileByUsername(match.params.username);
   }, [getProfileByUsername, match.params.username]);
@@ -15,13 +15,13 @@ const Profile = ({getProfileByUsername, profile, auth, match}) => {
   }
 
   return profile && profile.user && auth.user && (
-    <div>
+    <Fragment>
       <ProfileHeader profile={profile}
                      isLoggedUser={isLoggedUser()}/>
       <div className='mt-3'>
-        <ProfileContent profile={profile}/>
+        <ProfileContent profile={profile} recordingsLoading={recordingsLoading}/>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
@@ -34,6 +34,7 @@ Profile.propTypes = {
 
 const mapStateToProps = state => ({
   profile: state.profile.profile,
+  recordingsLoading: state.profile.recordingsLoading,
   auth: state.auth
 })
 

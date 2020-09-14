@@ -1,25 +1,20 @@
 import React from 'react';
 import './ProfileContent.css';
-import MusicCarousel from '../MusicCarousel/MusicCarousel';
-import SongTable from '../../song/SongTable';
 import RecordingCardMap from '../../song/RecordingCardMap/RecordingCardMap';
 import {Container} from 'react-bootstrap';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 
-const ProfileContent = ({profile}) => {
+const ProfileContent = ({profile, recordingsLoading}) => {
   return (
     <Container className='profile-content-container'>
-      {/*
-      <div>
-        User songs
-        <MusicCarousel recordings={profile.recordings}/>
-      </div>
-      <div>
-        <SongTable songs={profile.recordings}/>
-      </div>
-      */}
-      <div>
+      {recordingsLoading ?
+        <div className='loader-container'>
+          <FontAwesomeIcon icon={faSpinner} className='fa-spin'/>
+        </div>
+        :
         <RecordingCardMap recordingList={profile.recordings}/>
-      </div>
+      }
     </Container>
   )
 };
