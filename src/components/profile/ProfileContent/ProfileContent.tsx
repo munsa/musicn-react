@@ -2,18 +2,21 @@ import React from 'react';
 import './ProfileContent.css';
 import RecordingCardMap from '../../song/RecordingCardMap/RecordingCardMap';
 import {Container} from 'react-bootstrap';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSpinner} from '@fortawesome/free-solid-svg-icons';
+import Spinner from '../../../shared/lib/Spinners/Spinner';
 
 const ProfileContent = ({profile, recordingsLoading}) => {
   return (
     <Container className='profile-content-container'>
       {recordingsLoading ?
-        <div className='loader-container'>
-          <FontAwesomeIcon icon={faSpinner} className='fa-spin'/>
-        </div>
+        <Spinner/>
         :
-        <RecordingCardMap recordingList={profile.recordings}/>
+        (profile.recordings.length === 0 && true ?
+            <div>
+              No results
+            </div>
+            :
+            <RecordingCardMap recordingList={profile.recordings}/>
+        )
       }
     </Container>
   )
