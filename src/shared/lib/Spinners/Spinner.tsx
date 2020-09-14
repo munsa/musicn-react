@@ -3,7 +3,7 @@ import './Spinner.css';
 import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-const AppSpinner = () => {
+const Spinner = () => {
 
   return (
     <div className='spinner-container'>
@@ -12,4 +12,4 @@ const AppSpinner = () => {
   );
 };
 
-export default AppSpinner;
+export default Spinner;
