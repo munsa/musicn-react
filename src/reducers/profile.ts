@@ -10,7 +10,13 @@ export default function (state = initialState, action) {
   const {type, payload} = action;
 
   switch (type) {
-    case ActionProfileType.GET_PROFILE:
+    case ActionProfileType.GET_PROFILE_USER:
+      return {
+        ...state,
+        profile: payload,
+        loading: false
+      };
+    case ActionProfileType.GET_PROFILE_RECORDINGS:
       return {
         ...state,
         profile: payload,

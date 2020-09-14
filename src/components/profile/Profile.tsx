@@ -10,12 +10,14 @@ const Profile = ({getProfileByUsername, profile, auth, match}) => {
     getProfileByUsername(match.params.username);
   }, [getProfileByUsername, match.params.username]);
 
-  return profile && (
+  const isLoggedUser = () => {
+    return auth.user._id === profile.user._id;
+  }
+
+  return profile && profile.user && auth.user && (
     <div>
-      <div>
-        <ProfileHeader profile={profile}
-                       isLoggedUser={auth.user._id === profile.user._id}/>
-      </div>
+      <ProfileHeader profile={profile}
+                     isLoggedUser={isLoggedUser()}/>
       <div className='mt-3'>
         <ProfileContent profile={profile}/>
       </div>

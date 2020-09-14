@@ -29,7 +29,8 @@ export enum ActionDevelopmentModeType {
 }
 
 export enum ActionProfileType {
-  GET_PROFILE = 'GET_PROFILE',
+  GET_PROFILE_USER = 'GET_PROFILE_USER',
+  GET_PROFILE_RECORDINGS = 'GET_PROFILE_RECORDINGS',
   PROFILE_ERROR = 'PROFILE_ERROR'
 }
 
