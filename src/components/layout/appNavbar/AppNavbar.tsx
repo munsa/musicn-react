@@ -8,7 +8,7 @@ import {toggleDevelopmentMode} from '../../../actions/development-mode';
 import './AppNavbar.css';
 import WildTunes from '../../../shared/assets/image/wildtunes/logo/wildtunes_logo_orange.svg'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faDoorOpen} from '@fortawesome/free-solid-svg-icons';
+import {faDoorOpen, faBug} from '@fortawesome/free-solid-svg-icons';
 
 const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout, toggleDevelopmentMode}) => {
   const history = useHistory();
@@ -36,7 +36,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
           <Nav className="mr-auto">
             {developmentMode &&
             <div className='developer-mode-text'>
-              <i className='fa fa-bug' title='Logout'/> Developer Mode
+              <FontAwesomeIcon icon={faBug}/> Developer Mode
             </div>
             }
           </Nav>
