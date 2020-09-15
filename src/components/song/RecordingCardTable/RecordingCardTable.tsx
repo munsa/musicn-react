@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import {Col, Row} from 'react-bootstrap';
 import RecordingCard from '../RecordingCard/RecordingCard';
 import './RecordingCardTable.css';
+import LoadMoreButton from '../../../shared/lib/Button/LoadMoreButton/LoadMoreButton';
+import Spinner from '../../../shared/lib/Spinner/Spinner';
 
-const RecordingCardTable = ({recordingList}) => {
+const RecordingCardTable = ({recordingList, recordingsLoading}) => {
   return (
     <div className='recording-card-map-container'>
       <Row>
@@ -14,6 +16,11 @@ const RecordingCardTable = ({recordingList}) => {
           </Col>
         ))}
       </Row>
+      {recordingsLoading ?
+        <Spinner/>
+        :
+        <LoadMoreButton/>
+      }
     </div>
   )
 };
