@@ -1,0 +1,28 @@
+.no-recording-card {
+  width: 30rem;
+  max-width: 100%;
+  height: 16rem;
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-recording-card-content {
+  text-align: center;
+}
+
+.no-recording-image {
+  height: 12rem;
+}
+
+.no-recording-title {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.no-recording-text {
+  text-align: center;
+}

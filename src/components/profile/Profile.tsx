@@ -19,7 +19,7 @@ const Profile = ({getProfileByUsername, profile, recordingsLoading, auth, match}
       <ProfileHeader profile={profile}
                      isLoggedUser={isLoggedUser()}/>
       <div className='mt-3'>
-        <ProfileContent profile={profile} recordingsLoading={recordingsLoading}/>
+        <ProfileContent profile={profile} recordingsLoading={recordingsLoading} isLoggedUser={isLoggedUser()}/>
       </div>
     </Fragment>
   );
