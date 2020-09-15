@@ -1,4 +1,4 @@
-import { ActionRecordingType } from './type-enum';
+import {ActionProfileType, ActionRecordingType} from './type-enum';
 import api from "../shared/utils/api";
 
 export const sendRecording = (audioBlob, geolocation) => async dispatch => {
@@ -15,6 +15,11 @@ export const sendRecording = (audioBlob, geolocation) => async dispatch => {
 
     dispatch({
       type: ActionRecordingType.GET_RECORDING,
+      payload: res.data
+    });
+
+    dispatch({
+      type: ActionProfileType.ADD_NEW_RECORDING_TO_PROFILE,
       payload: res.data
     });
 

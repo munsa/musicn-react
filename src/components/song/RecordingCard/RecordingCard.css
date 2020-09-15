@@ -1,5 +1,6 @@
 .recording-card {
   min-width: 10rem;
+  height: 100%;
 }
 
 .recording-card-container {

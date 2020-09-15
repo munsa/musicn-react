@@ -24,6 +24,14 @@ export default function (state = initialState, action) {
         ...state,
         recordingsLoading: true
       };
+    case ActionProfileType.ADD_NEW_RECORDING_TO_PROFILE:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          recording: state.profile.recordings.unshift(payload)
+        }
+      };
     case ActionProfileType.PROFILE_ERROR:
       return initialState;
   }

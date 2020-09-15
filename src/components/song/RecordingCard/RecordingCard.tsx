@@ -7,18 +7,18 @@ import RecordImage from '../../../shared/assets/image/record_400.png'
 import {Source} from '../../../shared/constants/constants';
 import SourceButton from '../../../shared/lib/Button/SourceButtons/SourceButton';
 
-const openSourceTrackURL = (source: string, trackId:string) => {
-  let url: string;
-  if(source === Source.SPOTIFY) {
-    url = 'https://open.spotify.com/track/' + trackId;
-  } else if (source === Source.DEEZER) {
-    url = 'https://www.deezer.com/track/' + trackId;
-  }
-  let win = window.open(url, '_blank');
-  win.focus();
-}
-
 const RecordingCard = ({recording}) => {
+  const openSourceTrackURL = (source: string, trackId:string) => {
+    let url: string;
+    if(source === Source.SPOTIFY) {
+      url = 'https://open.spotify.com/track/' + trackId;
+    } else if (source === Source.DEEZER) {
+      url = 'https://www.deezer.com/track/' + trackId;
+    }
+    let win = window.open(url, '_blank');
+    win.focus();
+  }
+
   return (
     <Card className='recording-card'>
       <div className='recording-card-container'>

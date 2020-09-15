@@ -42,7 +42,7 @@ const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, development
 
         setTimeout(() => {
           mediaRecorder.stop();
-        }, 10000);
+        }, 5000);
       });
     }
   };
