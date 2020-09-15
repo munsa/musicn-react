@@ -7,6 +7,8 @@ import {logout} from '../../../actions/auth';
 import {toggleDevelopmentMode} from '../../../actions/development-mode';
 import './AppNavbar.css';
 import WildTunes from '../../../shared/assets/image/wildtunes/logo/wildtunes_logo_orange.svg'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faDoorOpen} from '@fortawesome/free-solid-svg-icons';
 
 const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout, toggleDevelopmentMode}) => {
   const history = useHistory();
@@ -59,7 +61,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
                 </NavDropdown.Item>
                 <NavDropdown.Divider/>
                 <NavDropdown.Item href="" onClick={logout}>
-                  <i className='fa fa-sign-out' title='Logout'/> Logout
+                  <FontAwesomeIcon icon={faDoorOpen} /> Logout
                 </NavDropdown.Item>
               </NavDropdown>
             </Fragment>

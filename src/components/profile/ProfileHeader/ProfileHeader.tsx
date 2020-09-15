@@ -22,7 +22,7 @@ const ProfileHeader = ({profile, isLoggedUser}) => {
       </div>
       <div className='profile-map shadow'>
         <RecordingMap recordingList={profile.recordings}
-                      useFitBounds={hasGeolocationRecordings(profile.recordings)}/>
+                      useFitBounds={profile.recordings && hasGeolocationRecordings(profile.recordings)}/>
       </div>
     </div>
   )

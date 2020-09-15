@@ -4,8 +4,8 @@ import {Card} from 'react-bootstrap';
 import getArtistsString from '../../../shared/utils/StringUtils';
 import './RecordingCard.css'
 import RecordImage from '../../../shared/assets/image/record_400.png'
-import SourceButton from '../../../shared/lib/buttons/SourceButton/SourceButton';
 import {Source} from '../../../shared/constants/constants';
+import SourceButton from '../../../shared/lib/Button/SourceButtons/SourceButton';
 
 const openSourceTrackURL = (source: string, trackId:string) => {
   let url: string;
@@ -22,8 +22,11 @@ const RecordingCard = ({recording}) => {
   return (
     <Card className='recording-card'>
       <div className='recording-card-container'>
-        <img className='recording-card-image' src={RecordImage}/>
-
+        {recording.spotify?.api?.album?.images[0].url ?
+          <img className='recording-card-image' alt='Album Cover' src={recording.spotify?.api?.album?.images[0].url}/>
+          :
+          <img className='recording-card-image' alt='Album Cover' src={RecordImage}/>
+        }
         <div className='recording-card-content'>
           <div className='recording-card-track text-truncate'>
             {recording.acrCloud?.track?.name}
