@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Col, Row} from 'react-bootstrap';
 import RecordingCard from '../RecordingCard/RecordingCard';
-import './RecordingCardMap.css';
+import './RecordingCardTable.css';
 
-const RecordingCardMap = ({recordingList}) => {
+const RecordingCardTable = ({recordingList}) => {
   return (
     <div className='recording-card-map-container'>
       <Row>
@@ -18,8 +18,8 @@ const RecordingCardMap = ({recordingList}) => {
   )
 };
 
-RecordingCardMap.propTypes = {
+RecordingCardTable.propTypes = {
   recordingList: PropTypes.array.isRequired
 };
 
-export default RecordingCardMap;
+export default RecordingCardTable;

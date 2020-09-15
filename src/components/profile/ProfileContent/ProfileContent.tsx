@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProfileContent.css';
 import PropTypes from 'prop-types'
-import RecordingCardMap from '../../song/RecordingCardMap/RecordingCardMap';
+import RecordingCardTable from '../../song/RecordingCardTable/RecordingCardTable';
 import {Container} from 'react-bootstrap';
 import Spinner from '../../../shared/lib/Spinner/Spinner';
 import NoRecordingsCard from '../../../shared/lib/InformationCards/NoRecordingsCard/NoRecordingsCard';
@@ -15,7 +15,7 @@ const ProfileContent = ({profile, recordingsLoading, isLoggedUser}) => {
         (profile.recordings.length === 0 && true ?
             <NoRecordingsCard isLoggedUser={isLoggedUser}/>
             :
-            <RecordingCardMap recordingList={profile.recordings}/>
+            <RecordingCardTable recordingList={profile.recordings}/>
         )
       }
     </Container>
