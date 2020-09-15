@@ -6,7 +6,7 @@ import './RecordingCardTable.css';
 import LoadMoreButton from '../../../shared/lib/Button/LoadMoreButton/LoadMoreButton';
 import Spinner from '../../../shared/lib/Spinner/Spinner';
 
-const RecordingCardTable = ({recordingList, recordingsLoading}) => {
+const RecordingCardTable = ({recordingList, recordingsLoading, onLoadMoreCallback}) => {
   return (
     <div className='recording-card-map-container'>
       <Row>
@@ -19,7 +19,7 @@ const RecordingCardTable = ({recordingList, recordingsLoading}) => {
       {recordingsLoading ?
         <Spinner/>
         :
-        <LoadMoreButton/>
+        <LoadMoreButton onClickCallback={() => onLoadMoreCallback()}/>
       }
     </div>
   )

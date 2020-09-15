@@ -19,6 +19,11 @@ export default function (state = initialState, action) {
         profile: payload,
         recordingsLoading: false
       };
+    case ActionProfileType.GET_MORE_PROFILE_RECORDINGS:
+      return {
+        ...state,
+        recordingsLoading: true
+      };
     case ActionProfileType.PROFILE_ERROR:
       return initialState;
   }

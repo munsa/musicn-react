@@ -34,3 +34,23 @@ export const getProfileByUsername = username => async dispatch => {
     });
   }
 };
+
+export const loadMoreProfileRecordings = (profile) => async dispatch => {
+
+  const idUser: number = profile.user._id;
+  const count: number = profile.recordings.length;
+  const last: Date = profile.recordings[0]._id;
+
+  dispatch({
+    type: ActionProfileType.GET_MORE_PROFILE_RECORDINGS
+  });
+
+  const res = await api.get(`/recording/getMore/${idUser}?count=${count}&last=${last}`);
+
+  profile.recordings = profile.recordings.concat(res.data);
+
+  dispatch({
+    type: ActionProfileType.GET_PROFILE_RECORDINGS,
+    payload: profile
+  });
+}

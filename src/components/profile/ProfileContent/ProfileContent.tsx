@@ -1,15 +1,22 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import './ProfileContent.css';
 import PropTypes from 'prop-types'
 import RecordingCardTable from '../../song/RecordingCardTable/RecordingCardTable';
 import {Container} from 'react-bootstrap';
 import NoRecordingsCard from '../../../shared/lib/InformationCards/NoRecordingsCard/NoRecordingsCard';
+import {loadMoreProfileRecordings} from '../../../actions/profile'
 
-const ProfileContent = ({profile, recordingsLoading, isLoggedUser}) => {
+const ProfileContent = ({profile, recordingsLoading, isLoggedUser, loadMoreProfileRecordings}) => {
+  const onLoadMoreCallback = () => {
+    loadMoreProfileRecordings(profile);
+  }
+
   return (
     <Container className='profile-content-container'>
       <RecordingCardTable recordingList={profile.recordings}
-                          recordingsLoading={recordingsLoading}/>
+                          recordingsLoading={recordingsLoading}
+                          onLoadMoreCallback={() => onLoadMoreCallback()}/>
       {!isLoggedUser && profile.recordings.length === 0 && true &&
           <NoRecordingsCard isLoggedUser={isLoggedUser}/>
       }
@@ -23,4 +30,9 @@ ProfileContent.propTypes = {
   isLoggedUser: PropTypes.bool
 };
 
-export default ProfileContent;
+const mapStateToProps = state => ({
+  profile: state.profile.profile,
+  recordingsLoading: state.profile.recordingsLoading
+})
+
+export default connect(mapStateToProps, {loadMoreProfileRecordings})(ProfileContent);
