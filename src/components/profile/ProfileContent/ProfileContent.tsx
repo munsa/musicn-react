@@ -5,17 +5,18 @@ import PropTypes from 'prop-types'
 import RecordingCardTable from '../../song/RecordingCardTable/RecordingCardTable';
 import {Container} from 'react-bootstrap';
 import NoRecordingsCard from '../../../shared/lib/InformationCards/NoRecordingsCard/NoRecordingsCard';
-import {loadMoreProfileRecordings} from '../../../actions/profile'
+import {getProfileRecordings} from '../../../actions/profile'
 
-const ProfileContent = ({profile, recordingsLoading, isLoggedUser, loadMoreProfileRecordings}) => {
+const ProfileContent = ({profile, recordingsLoading, isLoggedUser, getProfileRecordings}) => {
   const onLoadMoreCallback = () => {
-    loadMoreProfileRecordings(profile);
+    getProfileRecordings(profile);
   }
 
   return (
     <Container className='profile-content-container'>
-      <RecordingCardTable recordingList={profile.recordings}
+      <RecordingCardTable recordings={profile.recordings}
                           recordingsLoading={recordingsLoading}
+                          maxRecordingsCount={profile.maxRecordingsCount}
                           onLoadMoreCallback={() => onLoadMoreCallback()}/>
       {!isLoggedUser && profile.recordings.length === 0 && true &&
           <NoRecordingsCard isLoggedUser={isLoggedUser}/>
@@ -30,9 +31,4 @@ ProfileContent.propTypes = {
   isLoggedUser: PropTypes.bool
 };
 
-const mapStateToProps = state => ({
-  profile: state.profile.profile,
-  recordingsLoading: state.profile.recordingsLoading
-})
-
-export default connect(mapStateToProps, {loadMoreProfileRecordings})(ProfileContent);
+export default connect(null, {getProfileRecordings})(ProfileContent);

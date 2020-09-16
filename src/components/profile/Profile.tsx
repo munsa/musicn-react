@@ -5,21 +5,18 @@ import PropTypes from 'prop-types';
 import ProfileContent from './ProfileContent/ProfileContent';
 import ProfileHeader from './ProfileHeader/ProfileHeader';
 
-const Profile = ({getProfileByUsername, profile, auth, match}) => {
+const Profile = ({getProfileByUsername, profile, recordingsLoading, auth, match}) => {
   useEffect(() => {
-    getProfileByUsername(match.params.username);
-  }, [getProfileByUsername, match.params.username]);
+    if(auth.user != null) {
+      getProfileByUsername(match.params.username, auth.user._id);
+    }
+  }, [getProfileByUsername, match.params.username, auth.user]);
 
-  const isLoggedUser = () => {
-    return auth.user._id === profile.user._id;
-  }
-
-  return profile && profile.user && auth.user && (
+  return profile && profile.user && (
     <Fragment>
-      <ProfileHeader profile={profile}
-                     isLoggedUser={isLoggedUser()}/>
+      <ProfileHeader profile={profile}/>
       <div className='mt-3'>
-        <ProfileContent isLoggedUser={isLoggedUser()}/>
+        <ProfileContent profile={profile} recordingsLoading={recordingsLoading}/>
       </div>
     </Fragment>
   );
@@ -33,7 +30,8 @@ Profile.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile.profile,
+  profile: state.profile.currentProfile,
+  recordingsLoading: state.profile.recordingsLoading,
   auth: state.auth
 })
 

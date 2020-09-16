@@ -6,19 +6,22 @@ import './RecordingCardTable.css';
 import LoadMoreButton from '../../../shared/lib/Button/LoadMoreButton/LoadMoreButton';
 import Spinner from '../../../shared/lib/Spinner/Spinner';
 
-const RecordingCardTable = ({recordingList, recordingsLoading, onLoadMoreCallback}) => {
+const RecordingCardTable = ({recordings, recordingsLoading, maxRecordingsCount, onLoadMoreCallback}) => {
+
   return (
     <div className='recording-card-map-container'>
       <Row>
-        {recordingList.map((r, i) => (
+        {recordings.map((r, i) => (
           <Col key={i} xs={6} md={3} className='recording-map-column'>
             <RecordingCard recording={r}/>
           </Col>
         ))}
       </Row>
-      {recordingsLoading ?
+      {recordingsLoading &&
         <Spinner/>
-        :
+      }
+
+      {!recordingsLoading && maxRecordingsCount > recordings.length &&
         <LoadMoreButton onClickCallback={() => onLoadMoreCallback()}/>
       }
     </div>
@@ -26,7 +29,7 @@ const RecordingCardTable = ({recordingList, recordingsLoading, onLoadMoreCallbac
 };
 
 RecordingCardTable.propTypes = {
-  recordingList: PropTypes.array.isRequired
+  recordings: PropTypes.array.isRequired
 };
 
 export default RecordingCardTable;

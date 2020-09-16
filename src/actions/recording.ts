@@ -1,7 +1,7 @@
 import {ActionProfileType, ActionRecordingType} from './type-enum';
 import api from "../shared/utils/api";
 
-export const sendRecording = (audioBlob, geolocation) => async dispatch => {
+export const sendRecording = (audioBlob, geolocation) => async (dispatch, getState) => {
   try {
     dispatch({
       type: ActionRecordingType.SEND_RECORDING
@@ -18,10 +18,14 @@ export const sendRecording = (audioBlob, geolocation) => async dispatch => {
       payload: res.data
     });
 
-    dispatch({
-      type: ActionProfileType.ADD_NEW_RECORDING_TO_PROFILE,
-      payload: res.data
-    });
+    // Add recording to profile if the logged user profile is open
+    // @ts-ignore
+    if (getState().profile.currentUserProfile.isLoggedUser) {
+      dispatch({
+        type: ActionProfileType.ADD_NEW_RECORDING_TO_PROFILE,
+        payload: res.data
+      });
+    }
 
     if( res.data?._id ) {
       await api.put(`/recording/addGeolocation/${res.data._id}`, geolocation);

@@ -3,7 +3,7 @@ import './ProfileHeader.css';
 import RecordingMap from '../../map/RecordingMap';
 import ProfileUserInformation from '../ProfileUserInformation/ProfileUserInformation';
 
-const ProfileHeader = ({profile, isLoggedUser}) => {
+const ProfileHeader = ({profile}) => {
 
   const hasGeolocationRecordings = recordings => {
     for (let i = 0; i < recordings.length; i++) {
@@ -17,8 +17,7 @@ const ProfileHeader = ({profile, isLoggedUser}) => {
   return (
     <div className='profile-header-container'>
       <div className='profile-user-info'>
-        <ProfileUserInformation profile={profile}
-                                isLoggedUser={isLoggedUser}/>
+        <ProfileUserInformation profile={profile}/>
       </div>
       <div className='profile-map shadow'>
         <RecordingMap recordingList={profile.recordings}

@@ -2,7 +2,7 @@ import React from 'react';
 import {Image} from 'react-bootstrap';
 import './ProfileUserInformation.css';
 
-const ProfileUserInformation = ({profile: {user}, isLoggedUser}) => {
+const ProfileUserInformation = ({profile: {user}}) => {
   return user && (
     <div className='user-info-container'>
       <Image
