@@ -18,7 +18,7 @@ const ProfileContent = ({profile, recordingsLoading, isLoggedUser, getProfileRec
                           recordingsLoading={recordingsLoading}
                           maxRecordingsCount={profile.maxRecordingsCount}
                           onLoadMoreCallback={() => onLoadMoreCallback()}/>
-      {!isLoggedUser && profile.recordings.length === 0 && true &&
+      {!profile.isLoggedUser && profile.recordings.length === 0 && !recordingsLoading &&
           <NoRecordingsCard isLoggedUser={isLoggedUser}/>
       }
     </Container>

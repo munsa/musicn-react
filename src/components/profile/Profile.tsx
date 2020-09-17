@@ -1,11 +1,17 @@
 import React, {Fragment, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {getProfileByUsername} from '../../actions/profile';
+import {clearProfile, getProfileByUsername} from '../../actions/profile';
 import PropTypes from 'prop-types';
 import ProfileContent from './ProfileContent/ProfileContent';
 import ProfileHeader from './ProfileHeader/ProfileHeader';
 
-const Profile = ({getProfileByUsername, profile, recordingsLoading, auth, match}) => {
+const Profile = ({getProfileByUsername, clearProfile, profile, recordingsLoading, auth, match}) => {
+  useEffect(() => {
+    return () => {
+      clearProfile();
+    }
+  }, [])
+
   useEffect(() => {
     if(auth.user != null) {
       getProfileByUsername(match.params.username, auth.user._id);
@@ -35,4 +41,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, {getProfileByUsername})(Profile);
+export default connect(mapStateToProps, {getProfileByUsername, clearProfile})(Profile);

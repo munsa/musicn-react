@@ -1,9 +1,20 @@
 import api from '../shared/utils/api';
 import {ActionProfileType} from './type-enum';
 
+export const clearProfile = () => async dispatch => {
+  dispatch({
+    type: ActionProfileType.CLEAR_PROFILE
+  });
+}
+
 export const getProfileByUsername = (username, loggedUserId) => async dispatch => {
   try {
-    // Get profile only with the user information lo load quick the profile
+    // Clear profile state to not show the last profile info before opening a new
+    dispatch({
+      type: ActionProfileType.CLEAR_PROFILE
+    });
+
+    // Get profile only with the user information to load quick the profile
     const profileRes = await api.get(`/profile/${username}`);
 
     const isLoggedUser = profileRes.data._id === loggedUserId;

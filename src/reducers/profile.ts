@@ -37,6 +37,8 @@ export default function (state = initialState, action) {
           recording: state.currentProfile.recordings.unshift(payload)
         }
       };
+    case ActionProfileType.CLEAR_PROFILE:
+      return initialState;
     case ActionProfileType.PROFILE_ERROR:
       return initialState;
   }
