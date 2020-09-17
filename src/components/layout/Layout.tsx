@@ -17,6 +17,7 @@ const App = ({auth: {loading, isAuthenticated, user}}) => {
       }
       <AlertModal/>
       <div className='app-header'>
+
         <AppNavbar/>
       </div>
       <div className='app-content'>

@@ -146,7 +146,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
   window.addEventListener('resize', drawButtonCanvas);
 
   return (
-    <Fragment>
+    <div className='audio-player-container'>
       <canvas
         className='audio-player-canvas'
         ref={canvasRef}
@@ -160,7 +160,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
       </div>
       <button onClick={() => !playing && onPlayCallback()}
               className='audio-player-invisible-button'/>
-    </Fragment>
+    </div>
   );
 };
 
