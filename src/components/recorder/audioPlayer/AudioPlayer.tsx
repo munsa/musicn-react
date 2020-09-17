@@ -108,6 +108,8 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
   const draw = () => {
     const canvas = canvasRef.current;
     if(canvas) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
       let ctx = canvas.getContext('2d');
 
       if (ctx && beats.current.length > 0) {
@@ -117,7 +119,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
           ctx.fillStyle = b.color;
           ctx.beginPath();
 
-          ctx.arc(250, 0, b.amplitude, 0, Math.PI);
+          ctx.arc(window.innerWidth/2, 0, b.amplitude, 0, Math.PI);
           ctx.fill();
         });
       }
@@ -126,34 +128,32 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
 
   const drawButtonCanvas = () => {
     const canvas = buttonCanvasRef.current;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     let ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.globalAlpha = 1;
     ctx.fillStyle = playingRef.current ? colorPlaying : colorStopped;
     ctx.beginPath();
-    ctx.arc(250, 0, buttonSize, 0, Math.PI);
+    ctx.arc(window.innerWidth/2, 0, buttonSize, 0, Math.PI);
     ctx.fill();
 
     /*ctx.strokeStyle = '#000000';
     ctx.lineWidth = 1;
     ctx.stroke();*/
-
-
   }
+
+  window.addEventListener('resize', drawButtonCanvas);
 
   return (
     <Fragment>
       <canvas
         className='audio-player-canvas'
         ref={canvasRef}
-        width='500'
-        height='300'
       />
       <canvas
         className='audio-player-button-canvas'
         ref={buttonCanvasRef}
-        width='500'
-        height='300'
       />
       <div style={{height: buttonSize + 'px', width: buttonSize, color: playing ? 'black' : 'white'}} className='button-label'>
         { playing ? '\n ≧◡≦' : '≖◡≖' }

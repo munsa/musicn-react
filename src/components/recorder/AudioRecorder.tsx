@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {Fragment, useState} from 'react';
 import {connect} from 'react-redux';
 import AudioPlayer from './audioPlayer/AudioPlayer';
 import RecordingResultModal from './RecordingResultModal';
@@ -75,11 +75,11 @@ const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, development
   }
 
   return (
-    <div>
+    <Fragment>
       <AudioPlayer amplitudes={amplitudes} onPlayCallback={handleRecorder}/>
       <RecordingResultModal/>
       <RecordingNotFoundModal/>
-    </div>
+    </Fragment>
   );
 };
 
