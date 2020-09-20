@@ -9,6 +9,7 @@ export const sendRecording = (audioBlob, geolocation) => async (dispatch, getSta
 
     const formData = new FormData();
     formData.append('audio', audioBlob, 'blob');
+    formData.append('geolocation', JSON.stringify(geolocation));
 
     const config = { headers : { 'Content-Type': 'multipart/form-data' }};
     const res = await api.post('/recording/identify', formData, config);
@@ -20,17 +21,12 @@ export const sendRecording = (audioBlob, geolocation) => async (dispatch, getSta
 
     // Add recording to profile if the logged user profile is open
     // @ts-ignore
-    if (getState().profile.currentUserProfile.isLoggedUser) {
+    if (getState().profile.currentProfile.isLoggedUser) {
       dispatch({
         type: ActionProfileType.ADD_NEW_RECORDING_TO_PROFILE,
         payload: res.data
       });
     }
-
-    if( res.data?._id ) {
-      await api.put(`/recording/addGeolocation/${res.data._id}`, geolocation);
-    }
-
   } catch (err) {
     console.log(err.message);
   }

@@ -1,13 +1,13 @@
-@import '../../../shared/theme/theme';
+@import '../../../shared/theme/theme-constants';
 
 .user-info-container {
   height: 100%;
-  padding: 20px;
   text-align: center;
-  //position: fixed;
+  pointer-events: none;
 }
 
 .user-avatar {
+  pointer-events: none;
 }
 
 .user-name {

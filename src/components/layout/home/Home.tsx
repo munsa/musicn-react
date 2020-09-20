@@ -24,7 +24,7 @@ const Home = ({allRecordings, getAllRecordings, currentPosition}) => {
         <div className='container-md mt-5'>
           <div className='home-recording-map'>
             <div className='map-border'>
-              <RecordingMap recordingList={allRecordings} center={currentPosition} zoom={16}/>
+              <RecordingMap recordingList={allRecordings} center={currentPosition ? currentPosition : undefined} zoom={currentPosition ? 16 : undefined}/>
             </div>
           </div>
         </div>
