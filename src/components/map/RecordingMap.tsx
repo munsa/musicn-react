@@ -13,6 +13,7 @@ const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
     }
   };
 
+
   const fitBounds = map => {
     // @ts-ignore
     const bounds = new window.google.maps.LatLngBounds();
@@ -26,9 +27,15 @@ const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
     map.fitBounds(bounds);
   };
 
+  const onBoundsChanged = () => {
+    console.log('change');
+  }
+
   const onMarkerClickCallback = (r) => {
     setOpenedRecording(r)
   }
+
+
 
   return (
     <Fragment>
@@ -48,6 +55,7 @@ const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
           center={center}
           zoom={zoom}
           onLoad={mapLoadedHandler}
+          onBoundsChanged={onBoundsChanged}
         >
           {recordingList.map((r, j) => (
             r.geolocation &&

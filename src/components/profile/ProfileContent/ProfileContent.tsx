@@ -1,22 +1,25 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import './ProfileContent.css';
 import PropTypes from 'prop-types'
-import RecordingCardMap from '../../song/RecordingCardMap/RecordingCardMap';
+import RecordingCardTable from '../../song/RecordingCardTable/RecordingCardTable';
 import {Container} from 'react-bootstrap';
-import Spinner from '../../../shared/lib/Spinner/Spinner';
 import NoRecordingsCard from '../../../shared/lib/InformationCards/NoRecordingsCard/NoRecordingsCard';
+import {getProfileRecordings} from '../../../actions/profile'
 
-const ProfileContent = ({profile, recordingsLoading, isLoggedUser}) => {
+const ProfileContent = ({profile, recordingsLoading, isLoggedUser, getProfileRecordings}) => {
+  const onLoadMoreCallback = () => {
+    getProfileRecordings(profile);
+  }
+
   return (
     <Container className='profile-content-container'>
-      {recordingsLoading ?
-        <Spinner/>
-        :
-        (profile.recordings.length === 0 && true ?
-            <NoRecordingsCard isLoggedUser={isLoggedUser}/>
-            :
-            <RecordingCardMap recordingList={profile.recordings}/>
-        )
+      <RecordingCardTable recordings={profile.recordings}
+                          recordingsLoading={recordingsLoading}
+                          maxRecordingsCount={profile.maxRecordingsCount}
+                          onLoadMoreCallback={() => onLoadMoreCallback()}/>
+      {!profile.isLoggedUser && profile.recordings.length === 0 && !recordingsLoading &&
+          <NoRecordingsCard isLoggedUser={isLoggedUser}/>
       }
     </Container>
   )
@@ -28,4 +31,4 @@ ProfileContent.propTypes = {
   isLoggedUser: PropTypes.bool
 };
 
-export default ProfileContent;
+export default connect(null, {getProfileRecordings})(ProfileContent);
