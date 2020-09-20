@@ -34,7 +34,7 @@ export default function (state = initialState, action) {
         ...state,
         currentProfile: {
           ...state.currentProfile,
-          recording: state.currentProfile.recordings.unshift(payload)
+          recordings: [payload, ...state.currentProfile.recordings.slice(0, state.currentProfile.recordings.length-1)]
         }
       };
     case ActionProfileType.CLEAR_PROFILE:
