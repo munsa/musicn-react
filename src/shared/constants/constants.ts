@@ -9,3 +9,7 @@ export const Source = {
   DEEZER: 'DEEZER'
 }
 
+export const SourceIconSize = {
+  BIG: 'BIG',
+  SMALL: 'SMALL'
+}

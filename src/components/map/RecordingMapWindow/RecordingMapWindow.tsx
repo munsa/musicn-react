@@ -1,14 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './RecordingMapWindow.css';
-import RecordingCard from '../../song/RecordingCard/RecordingCard';
+import RecordingCardSmall from '../../song/RecordingCardSmall/RecordingCardSmall';
 
 const RecordingMapWindow = ({recording}) => {
-  useEffect(() => {
-    console.log(recording);
-  }, recording);
-  return(
+  return (
     <div className='recording-map-window-container'>
-      <RecordingCard recording={recording}/>
+      <RecordingCardSmall recording={recording}/>
     </div>
   );
 };

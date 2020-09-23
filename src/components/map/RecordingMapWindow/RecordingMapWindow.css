@@ -1,5 +1,6 @@
-.recording-map-window-container {
-  width: 10rem;
+.recording-map-window-container .card {
+  box-shadow: none !important;
+  border-style: none !important;
 }
 
 /*# sourceMappingURL=RecordingMapWindow.css.map */

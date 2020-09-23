@@ -31,7 +31,7 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
   }
 
   const closeInfoWindowById = () => {
-    if(openedRecordingId !== recording._id) {
+    if (openedRecordingId !== recording._id) {
       closeMarker();
     }
   }
@@ -46,18 +46,18 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
   }
 
   return (
-      <Marker
-        icon={{
-          url:MarkerIcon,
-          scaledSize: new google.maps.Size(37.2,53.2)
-        }}
-        onClick={onMarkerClick}
-        position={{
-          lat: Number(recording.geolocation.lat),
-          lng: Number(recording.geolocation.lng)
-        }}
-      >
-        {isOpen &&
+    <Marker
+      icon={{
+        url: MarkerIcon,
+        scaledSize: new google.maps.Size(37.2, 53.2)
+      }}
+      onClick={onMarkerClick}
+      position={{
+        lat: Number(recording.geolocation.lat),
+        lng: Number(recording.geolocation.lng)
+      }}
+    >
+      {isOpen &&
         <InfoWindow
           onCloseClick={closeMarker}
           // @ts-ignore
@@ -66,8 +66,8 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
         >
           <RecordingMapWindow recording={fullRecording}/>
         </InfoWindow>
-        }
-      </Marker>
+      }
+    </Marker>
   );
 }
 

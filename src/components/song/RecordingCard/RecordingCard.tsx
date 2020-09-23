@@ -4,8 +4,8 @@ import {Card} from 'react-bootstrap';
 import getArtistsString from '../../../shared/utils/StringUtils';
 import './RecordingCard.css'
 import RecordImage from '../../../shared/assets/image/record_400.png'
-import {Source} from '../../../shared/constants/constants';
-import SourceButton from '../../../shared/lib/Button/SourceButtons/SourceButton';
+import {Source, SourceIconSize} from '../../../shared/constants/constants';
+import SourceButton from '../../../shared/lib/Button/SourceButton/SourceButton';
 
 const RecordingCard = ({recording}) => {
   const openSourceTrackURL = (source: string, trackId:string) => {
@@ -40,12 +40,12 @@ const RecordingCard = ({recording}) => {
         <div className='d-flex flex-wrap justify-content-center'>
           {recording.spotify?.track?.id != null &&
           <div className='p-2'>
-            <SourceButton source={Source.SPOTIFY} onClickCallback={() => openSourceTrackURL(Source.SPOTIFY, recording.spotify.track.id)}/>
+            <SourceButton source={Source.SPOTIFY} iconSize={SourceIconSize.BIG} onClickCallback={() => openSourceTrackURL(Source.SPOTIFY, recording.spotify.track.id)}/>
           </div>
           }
           {recording.deezer?.track?.id != null &&
           <div className='p-2'>
-            <SourceButton source={Source.DEEZER} onClickCallback={() => openSourceTrackURL(Source.DEEZER, recording.deezer.track.id)}/>
+            <SourceButton source={Source.DEEZER} iconSize={SourceIconSize.BIG} onClickCallback={() => openSourceTrackURL(Source.DEEZER, recording.deezer.track.id)}/>
           </div>
           }
         </div>
