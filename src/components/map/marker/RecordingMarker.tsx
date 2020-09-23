@@ -3,16 +3,21 @@ import {InfoWindow, Marker} from '@react-google-maps/api';
 import MarkerIcon from '../../../shared/assets/icon/marker.png';
 import {getArtistsString} from '../../../shared/utils/StringUtils';
 import './RecordingMarker.css';
+import RecordingMapWindow from '../RecordingMapWindow/RecordingMapWindow';
+import api from '../../../shared/utils/api';
 
 declare let google: any;
 
 const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [fullRecording, setFullRecording] = useState(null);
   useEffect(() => {
     closeInfoWindowById();
   }, [openedRecordingId]);
 
-  const onMarkerClick = () => {
+  const onMarkerClick = async () => {
+    const res = await api.get(`/recording/${recording._id}`);
+    setFullRecording(res.data);
     openMarker();
     onMarkerClickCallback(recording);
   }
@@ -59,15 +64,7 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
           visible={true}
           options={{closeBoxURL: '', enableEventPropagation: true}}
         >
-          <div className='info-box-container'>
-            {recording.spotify ?
-              <Source source={recording.spotify}/>
-              : (recording.deezer ?
-                <Source source={recording.deezer}/>
-                : (recording.acrCloud ?
-                  <Source source={recording.acrCloud}/>
-                  : ''))}
-          </div>
+          <RecordingMapWindow recording={fullRecording}/>
         </InfoWindow>
         }
       </Marker>

@@ -51,7 +51,7 @@ export const getProfileRecordings = (profile) => async dispatch => {
     type: ActionProfileType.ACTIVATE_RECORDINGS_LOADER
   });
 
-  const res = await api.get(`/recording/${idUser}?count=${count}`);
+  const res = await api.get(`/profile/${idUser}/recordings?count=${count}`);
 
   profile.recordings = profile.recordings.concat(res.data.recordings);
   profile.maxRecordingsCount = res.data.maxCount;

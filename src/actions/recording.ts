@@ -32,8 +32,8 @@ export const sendRecording = (audioBlob, geolocation) => async (dispatch, getSta
   }
 };
 
-export const getAllRecordings = () => async dispatch => {
-  const res = await api.get('/recording/all');
+export const getAllRecordingGeolocations = () => async dispatch => {
+  const res = await api.get('/recording/allGeolocations');
   dispatch({
     type: ActionRecordingType.GET_ALL_RECORDINGS,
     payload: res.data

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux'
 import RecordingMap from '../../map/RecordingMap';
-import {getAllRecordings} from '../../../actions/recording'
+import {getAllRecordingGeolocations} from '../../../actions/recording'
 import PropTypes from 'prop-types';
 import './Home.css';
 import Header from './header/Header';
@@ -43,4 +43,4 @@ Home.propTypes = {
   allRecordings: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps, {getAllRecordings})(Home);
+export default connect(mapStateToProps, {getAllRecordings: getAllRecordingGeolocations})(Home);
