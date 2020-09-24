@@ -8,16 +8,13 @@ import DeezerLogo from '../../../assets/image/deezer/svg/Deezer_Logo_RVB_MonoWhi
 import DeezerIcon from '../../../assets/image/deezer/svg/EQ_White.svg'
 import {Source, SourceIconSize} from '../../../constants/constants';
 
-const SourceButtonSmall = ({source, iconSize, onClickCallback}) => {
+const SourceButtonSmall = ({source, onClickCallback}) => {
   return (
     <div className={source === Source.SPOTIFY ? 'spotify-button-small' : (source === Source.DEEZER ? 'deezer-button-small' : '')}
          onClick={onClickCallback}>
       <Button>
         <img alt={source + 'button'}
-             src={source === Source.SPOTIFY ?
-               (iconSize === SourceIconSize.BIG ? SpotifyLogo : SpotifyIcon)
-               :
-               (iconSize === SourceIconSize.BIG ? DeezerLogo : DeezerIcon)}
+             src={source === Source.SPOTIFY ? SpotifyIcon : DeezerIcon}
              className={source === Source.SPOTIFY ? 'spotify-button-icon' : (source === Source.DEEZER ? 'deezer-button-icon' : '')}/>
       </Button>
     </div>

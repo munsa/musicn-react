@@ -1,5 +1,95 @@
 @import '../../../shared/theme/theme-constants';
 
+.recording-map-window-container {
+  width: 8rem;
+  height: 10rem;
+}
+
+.image-flip-card {
+  margin: 0 auto;
+  width: 6rem;
+  height: 6rem;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.image-flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  color: black;
+}
+
+.flip-card-image{
+  width: 100%;
+}
+
+.flip-card-back {
+  color: black;
+  transform: rotateY(180deg);
+}
+
+
+.recording-map-window-track {
+  color: $custom-theme-color-4-dark3;
+  font-weight: bold;
+  text-align: center;
+}
+
+.recording-map-window-artists {
+  color: $custom-theme-color-1-light1;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+
+/*
+
+.recording-map-window-header {
+}
+
+.recording-card-small-image {
+  width: 100%;
+}
+
+.recording-map-window-button-container {
+  position: relative;
+  padding: 0 !important;
+}
+
+.recording-map-window-button-container .p-2{
+  padding: 0.2rem !important;
+}
+
+ */
+
+
+
+
+
+
+
+
+/*
+
 .recording-card-small {
 padding-left: 0.4rem;
 }
@@ -8,10 +98,7 @@ padding-left: 0.4rem;
   width: 7rem;
 }
 
-.recording-card-small-image {
-  width: 50%;
-  margin-left: 25%;
-}
+
 
 .recording-card-small-content {
   margin-top: 0.5rem;
@@ -36,6 +123,4 @@ padding-left: 0.4rem;
   bottom: 0;
 }
 
-.recording-card-small-buttons .p-2{
-  padding: 0.2rem !important;
-}
+ */

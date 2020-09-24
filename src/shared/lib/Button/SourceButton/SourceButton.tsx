@@ -14,10 +14,7 @@ const SourceButton = ({source, iconSize, onClickCallback}) => {
          onClick={onClickCallback}>
       <Button>
         <img alt={source + 'button'}
-             src={source === Source.SPOTIFY ?
-               (iconSize === SourceIconSize.BIG ? SpotifyLogo : SpotifyIcon)
-               :
-               (iconSize === SourceIconSize.BIG ? DeezerLogo : DeezerIcon)}
+             src={source === Source.SPOTIFY ? SpotifyLogo :  DeezerLogo}
              className={source === Source.SPOTIFY ? 'spotify-button-logo' : (source === Source.DEEZER ? 'deezer-button-logo' : '')}/>
       </Button>
     </div>
