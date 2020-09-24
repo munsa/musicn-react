@@ -1,4 +1,5 @@
-.gm-style-iw-c {
+/*
+.gm-style .gm-style-iw-c {
   padding: 0 !important;
   border-radius: 16px !important;
 }
@@ -15,5 +16,6 @@
 .gm-style .gm-style-iw-t::after {
   top: -1px;
 }
+*/
 
 /*# sourceMappingURL=RecordingMarker.css.map */

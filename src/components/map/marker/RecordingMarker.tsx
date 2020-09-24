@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {InfoWindow, Marker} from '@react-google-maps/api';
+import React, {ReactDOM, useEffect, useRef, useState} from 'react';
+import {InfoWindow, Marker, OverlayView} from '@react-google-maps/api';
 import MarkerIcon from '../../../shared/assets/icon/marker.png';
 import {getArtistsString} from '../../../shared/utils/StringUtils';
 import './RecordingMarker.css';
@@ -36,14 +36,10 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
     }
   }
 
-  const Source = source => {
-    return (
-      <div>
-        <div className='track-label'>{source.source.track?.name}</div>
-        <div className='artists-label'>{getArtistsString(source.source.artists)}</div>
-      </div>
-    )
-  }
+  const centerOverlayView = (width, height) => ({
+    x: -(width / 2),
+    y: -(height + 53.2),
+  })
 
   return (
     <Marker
@@ -58,13 +54,24 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
       }}
     >
       {isOpen &&
+        /*
+      <OverlayView
+        key={fullRecording}
+        position={{
+          lat: Number(recording.geolocation.lat),
+          lng: Number(recording.geolocation.lng)
+        }}
+        mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+        getPixelPositionOffset={centerOverlayView}
+      >
+        <RecordingMapWindow recording={fullRecording}/>
+      </OverlayView>
+        */
         <InfoWindow
           onCloseClick={closeMarker}
-          // @ts-ignore
-          visible={true}
           options={{closeBoxURL: '', enableEventPropagation: true}}
         >
-          <RecordingMapWindow recording={fullRecording}/>
+            <RecordingMapWindow recording={fullRecording}/>
         </InfoWindow>
       }
     </Marker>
