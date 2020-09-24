@@ -26,7 +26,9 @@ const RecordingNotFoundModal = ({recording, removeRecording}) => {
   };
 
   return (
-    <Modal show={isOpen} onHide={hideModal}>
+    <Modal show={isOpen}
+           onHide={hideModal}
+           centered>
       <ModalHeader closeButton={true}>
         <div className='not-found-modal-image'>
           <img className='sad-gif' alt='Album Cover' src={SadGif}/>
@@ -38,7 +40,7 @@ const RecordingNotFoundModal = ({recording, removeRecording}) => {
           <h3>This is awkward</h3>
           <div className='mt-4'>We couldn't find the song...</div>
           <div>but...</div>
-          <div className='mb-4'>Hey! Try again and we maybe find it.</div>
+          <div className='mb-4'>Hey! Try again and we maybe have better luck.</div>
         </div>
       </ModalBody>
     </Modal>
