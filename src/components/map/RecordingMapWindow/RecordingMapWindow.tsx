@@ -1,15 +1,15 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './RecordingMapWindow.css'
 import RecordImage from '../../../shared/assets/image/record_400.png'
 import {Source} from '../../../shared/constants/constants';
-import SourceButtonXS from '../../../shared/lib/Button/SourceButtonXS/SourceButtonXS';
-import SourceButton from '../../../shared/lib/Button/SourceButton/SourceButton';
 import getArtistsString from '../../../shared/utils/StringUtils';
 import {Image} from 'react-bootstrap';
 import SourceButtonS from '../../../shared/lib/Button/SourceButtonS/SourceButtonS';
 
 const RecordingCardSmall = ({recording}) => {
+  const history = useHistory();
   const openSourceTrackURL = (source: string, trackId: string) => {
     let url: string;
     if (source === Source.SPOTIFY) {
@@ -29,10 +29,15 @@ const RecordingCardSmall = ({recording}) => {
     }
   }
 
+  const openUserProfile = () => {
+    history.push('/profile/' + recording.user.username);
+  }
+
   return (
     <div className='recording-map-window-container'>
 
-      <div className='window-user-information mb-2'>
+      <div className='window-user-information d-flex pointer'
+           onClick={() => openUserProfile()}>
         <Image
           fluid
           src={recording.user.avatar}
@@ -41,7 +46,7 @@ const RecordingCardSmall = ({recording}) => {
           width='20'
           height='20'
         />
-          {recording.user.username}
+        {recording.user.username}
       </div>
 
       <div className="image-flip-card">
@@ -54,13 +59,13 @@ const RecordingCardSmall = ({recording}) => {
             {recording.spotify?.track?.id != null &&
             <div className='mr-4'>
               <SourceButtonS source={Source.SPOTIFY}
-                                 onClickCallback={() => openSourceTrackURL(Source.SPOTIFY, recording.spotify.track.id)}/>
+                             onClickCallback={() => openSourceTrackURL(Source.SPOTIFY, recording.spotify.track.id)}/>
             </div>
             }
             {recording.deezer?.track?.id != null &&
             <div className='mr-3'>
               <SourceButtonS source={Source.DEEZER}
-                                 onClickCallback={() => openSourceTrackURL(Source.DEEZER, recording.deezer.track.id)}/>
+                             onClickCallback={() => openSourceTrackURL(Source.DEEZER, recording.deezer.track.id)}/>
             </div>
             }
 
