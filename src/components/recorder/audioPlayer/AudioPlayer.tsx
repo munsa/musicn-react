@@ -128,15 +128,17 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
 
   const drawButtonCanvas = () => {
     const canvas = buttonCanvasRef.current;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.globalAlpha = 1;
-    ctx.fillStyle = playingRef.current ? colorPlaying : colorStopped;
-    ctx.beginPath();
-    ctx.arc(window.innerWidth/2, 0, buttonSize, 0, Math.PI);
-    ctx.fill();
+    if(canvas) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      let ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = playingRef.current ? colorPlaying : colorStopped;
+      ctx.beginPath();
+      ctx.arc(window.innerWidth / 2, 0, buttonSize, 0, Math.PI);
+      ctx.fill();
+    }
 
     /*ctx.strokeStyle = '#000000';
     ctx.lineWidth = 1;

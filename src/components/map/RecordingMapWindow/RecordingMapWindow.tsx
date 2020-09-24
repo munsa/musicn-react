@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import './RecordingMapWindow.css'
 import RecordImage from '../../../shared/assets/image/record_400.png'
 import {Source} from '../../../shared/constants/constants';
-import SourceButtonSmall from '../../../shared/lib/Button/SourceButtonSmall/SourceButtonSmall';
+import SourceButtonXS from '../../../shared/lib/Button/SourceButtonXS/SourceButtonXS';
 import SourceButton from '../../../shared/lib/Button/SourceButton/SourceButton';
 import getArtistsString from '../../../shared/utils/StringUtils';
+import {Image} from 'react-bootstrap';
+import SourceButtonS from '../../../shared/lib/Button/SourceButtonS/SourceButtonS';
 
 const RecordingCardSmall = ({recording}) => {
   const openSourceTrackURL = (source: string, trackId: string) => {
@@ -29,6 +31,19 @@ const RecordingCardSmall = ({recording}) => {
 
   return (
     <div className='recording-map-window-container'>
+
+      <div className='window-user-information mb-2'>
+        <Image
+          fluid
+          src={recording.user.avatar}
+          alt='User Avatar'
+          className='window-user-information-avatar rounded-circle mr-1'
+          width='20'
+          height='20'
+        />
+          {recording.user.username}
+      </div>
+
       <div className="image-flip-card">
         <div className="flip-card-inner">
           <div className="flip-card-front">
@@ -37,14 +52,14 @@ const RecordingCardSmall = ({recording}) => {
           <div className="flip-card-back d-flex flex-column justify-content-around">
 
             {recording.spotify?.track?.id != null &&
-            <div>
-              <SourceButton source={Source.SPOTIFY}
+            <div className='mr-4'>
+              <SourceButtonS source={Source.SPOTIFY}
                                  onClickCallback={() => openSourceTrackURL(Source.SPOTIFY, recording.spotify.track.id)}/>
             </div>
             }
             {recording.deezer?.track?.id != null &&
-            <div>
-              <SourceButton source={Source.DEEZER}
+            <div className='mr-3'>
+              <SourceButtonS source={Source.DEEZER}
                                  onClickCallback={() => openSourceTrackURL(Source.DEEZER, recording.deezer.track.id)}/>
             </div>
             }
@@ -61,44 +76,10 @@ const RecordingCardSmall = ({recording}) => {
           {getArtistsString(recording.acrCloud?.artists)}
         </div>
       </div>
+
     </div>
   )
-}
-/*
-  <div className='recording-card-small'>
-    <div className='recording-card-small-container'>
-
-      <div className='recording-card-small-buttons mx-auto mx-2'>
-        <div className='d-flex flex-wrap justify-content-center'>
-          {recording.spotify?.track?.id != null &&
-          <div className='p-2'>
-            <SourceButtonSmall source={Source.SPOTIFY}
-                               iconSize={SourceIconSize.SMALL}
-                               onClickCallback={() => openSourceTrackURL(Source.SPOTIFY, recording.spotify.track.id)}/>
-          </div>
-          }
-          {recording.deezer?.track?.id != null &&
-          <div className='p-2'>
-            <SourceButtonSmall source={Source.DEEZER}
-                               iconSize={SourceIconSize.SMALL}
-                               onClickCallback={() => openSourceTrackURL(Source.DEEZER, recording.deezer.track.id)}/>
-          </div>
-          }
-        </div>
-      </div>
-      <div className='recording-card-small-content'>
-        <div className='recording-card-small-track text-truncate'>
-          {recording.acrCloud?.track?.name}
-        </div>
-        <div className='recording-card-small-artists text-truncate'>
-          {getArtistsString(recording.acrCloud?.artists)}
-        </div>
-      </div>
-    </div>
-
-  </div>
-)
-*/
+};
 
 RecordingCardSmall.propTypes = {
   recording: PropTypes.object.isRequired
