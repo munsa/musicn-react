@@ -22,8 +22,8 @@ const RecordingCard = ({recording}) => {
   return (
     <Card className='recording-card'>
       <div className='recording-card-container'>
-        {recording.spotify?.api?.album?.images[0].url ?
-          <img className='recording-card-image' alt='Album Cover' src={recording.spotify?.api?.album?.images[0].url}/>
+        {recording?.spotify?.api?.album?.images[0].url ?
+          <img className='recording-card-image' alt='Album Cover' src={recording?.spotify?.api?.album?.images[0].url}/>
           :
           <img className='recording-card-image' alt='Album Cover' src={RecordImage}/>
         }
@@ -38,12 +38,12 @@ const RecordingCard = ({recording}) => {
       </div>
       <div className='recording-card-buttons mx-auto mx-2'>
         <div className='d-flex flex-wrap justify-content-center'>
-          {recording.spotify?.track?.id != null &&
+          {recording?.spotify?.track?.id != null &&
           <div className='p-2'>
             <SourceButton source={Source.SPOTIFY} iconSize={SourceIconSize.BIG} onClickCallback={() => openSourceTrackURL(Source.SPOTIFY, recording.spotify.track.id)}/>
           </div>
           }
-          {recording.deezer?.track?.id != null &&
+          {recording?.deezer?.track?.id != null &&
           <div className='p-2'>
             <SourceButton source={Source.DEEZER} iconSize={SourceIconSize.BIG} onClickCallback={() => openSourceTrackURL(Source.DEEZER, recording.deezer.track.id)}/>
           </div>

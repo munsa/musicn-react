@@ -7,7 +7,7 @@ const ProfileHeader = ({profile}) => {
 
   const hasGeolocationRecordings = recordings => {
     for (let i = 0; i < recordings.length; i++) {
-      if (recordings[i].geolocation != null) {
+      if (recordings[i] && recordings[i].geolocation != null) {
         return true;
       }
     }

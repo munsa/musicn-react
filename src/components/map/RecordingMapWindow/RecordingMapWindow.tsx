@@ -68,6 +68,11 @@ const RecordingCardSmall = ({recording}) => {
                              onClickCallback={() => openSourceTrackURL(Source.DEEZER, recording.deezer.track.id)}/>
             </div>
             }
+            {recording.spotify?.track?.id == null && recording.deezer?.track?.id == null &&
+            <div>
+              No sources for this song
+            </div>
+            }
 
           </div>
         </div>

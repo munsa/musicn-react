@@ -4,8 +4,9 @@ import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalFooter from "react-bootstrap/ModalFooter";
-import {ActionRecordingType} from "../../actions/type-enum";
+import {ActionRecordingType} from "../../../../actions/type-enum";
 import PropTypes from "prop-types";
+import RecordingCard from '../../../song/RecordingCard/RecordingCard';
 
 const RecordingResultModal = ({recording, removeRecording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -24,61 +25,13 @@ const RecordingResultModal = ({recording, removeRecording}) => {
     removeRecording();
   };
 
-  const Source = ({source: {artists, track, album}}) => {
-    return (
-      <div>
-        {/* Artists */}
-        <div className='row'>
-          <b className='col text-right'>Artists</b>
-          <div className='col-9 text-left'>
-            {artists.map((a, j) => (
-              <a key={j}>
-                {j > 0 && ', '}
-                {a.name}
-              </a>
-            ))}
-          </div>
-        </div>
-        {/* Track */}
-        <div className='row'>
-          <b className='col text-right'>Track</b>
-          <div className='col-9 text-left'>{track && track.name}</div>
-        </div>
-        {/* Album */}
-        <div className='row'>
-          <b className='col text-right'>Album</b>
-          <div className='col-9 text-left'>{album && album.name}</div>
-        </div>
-      </div>
-    );
-  };
-
   return recording.result && (
     <Modal show={isOpen} onHide={hideModal}>
       <ModalHeader closeButton={true}>
         <div className='text-right'>FOUND!</div>
       </ModalHeader>
       <ModalBody>
-        <div>
-          <div>
-            {recording.result.spotify &&
-            <div>
-              <h1>
-                <i className='fa fa-spotify'/> Spotify
-              </h1>
-              <Source source={recording.result.spotify}/>
-            </div>
-            }
-
-            {recording.result.deezer &&
-            <div>
-              <hr/>
-              <h1>Deezer</h1>
-              <Source source={recording.result.deezer}/>
-            </div>
-            }
-          </div>
-        </div>
+        <RecordingCard recording={recording}/>
       </ModalBody>
       <ModalFooter>
         <button className='btn btn-primary btn-lg btn-block' onClick={hideModal}>

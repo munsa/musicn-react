@@ -9983,4 +9983,21 @@ body {
   cursor: pointer;
 }
 
+.modal-content {
+  border-radius: 8px !important;
+  border: none;
+}
+
+.modal-header {
+  border-bottom: none !important;
+}
+
+.modal-footer {
+  border-top: none !important;
+}
+
+.close {
+  font-weight: normal !important;
+}
+
 /*# sourceMappingURL=bootstrap-custom.css.map */
