@@ -21,6 +21,7 @@ const RecordingResultModal = ({recording, recordingFound, removeRecording}) => {
 
   const showModal = () => {
     setIsOpen(true);
+    setAnimationFinished(false);
     typeText(0, '');
   };
 
