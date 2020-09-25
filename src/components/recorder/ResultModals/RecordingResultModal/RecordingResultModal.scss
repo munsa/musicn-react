@@ -1,0 +1,44 @@
+@import '../../../../shared/theme/theme-constants';
+
+.result-modal {
+  max-width: 18rem !important;
+  width: 18rem !important;
+}
+
+.result-modal .card {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.result-modal .recording-card-container {
+  margin: 0 !important;
+}
+
+.result-modal .modal-content {
+  border-radius: $custom-card-radius !important;
+  height: 18.5rem;
+}
+
+.result-modal .modal-body {
+  padding-top: 0 !important;
+  top: -1rem;
+  position: relative;
+}
+
+.result-modal-appeared-container {
+  width: 90%;
+  height: 100%;
+  background-color: white;
+  position: absolute;
+  top: 0;
+}
+
+.result-modal-animation {
+  padding-top: 5rem;
+  font-family: "Lucida Console", Courier, monospace;
+}
+
+.fadeOut{
+  opacity:0;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 1.5s;
+}

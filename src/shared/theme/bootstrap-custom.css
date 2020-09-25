@@ -9979,4 +9979,29 @@ body {
   padding-left: 40px;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
+.modal-content {
+  border-radius: 8px !important;
+  border: none;
+}
+
+.modal-header {
+  border-bottom: none !important;
+}
+
+.modal-footer {
+  border-top: none !important;
+}
+
+.modal-content .close {
+  font-weight: lighter !important;
+}
+
+.modal-content .close:focus {
+  outline: none !important;
+}
+
 /*# sourceMappingURL=bootstrap-custom.css.map */

@@ -1,9 +1,11 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
+import './RecordingNotFoundModal.css';
 import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalHeader from 'react-bootstrap/ModalHeader';
-import {ActionRecordingType} from '../../actions/type-enum';
+import {ActionRecordingType} from '../../../../actions/type-enum';
+import SadGif from '../../../../shared/assets/gif/kawaii-sad.gif';
 import PropTypes from 'prop-types';
 
 const RecordingNotFoundModal = ({recording, removeRecording}) => {
@@ -24,13 +26,21 @@ const RecordingNotFoundModal = ({recording, removeRecording}) => {
   };
 
   return (
-    <Modal show={isOpen} onHide={hideModal}>
+    <Modal show={isOpen}
+           onHide={hideModal}
+           centered>
       <ModalHeader closeButton={true}>
-        <div className='text-right'>404 Song not found :(</div>
+        <div className='not-found-modal-image'>
+          <img className='sad-gif' alt='Album Cover' src={SadGif}/>
+        </div>
       </ModalHeader>
-      <ModalBody>
-        <div>
-          Sorry, seems we couldn't find the song you are listening to.
+      <ModalBody className='not-found-modal-body'>
+
+        <div className='not-found-modal-content'>
+          <h3>This is awkward</h3>
+          <div className='mt-4'>We couldn't find the song...</div>
+          <div>but...</div>
+          <div className='mb-4'>Hey! Try again and we maybe have better luck.</div>
         </div>
       </ModalBody>
     </Modal>

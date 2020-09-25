@@ -1,8 +1,8 @@
 import React, {Fragment, useState} from 'react';
 import {connect} from 'react-redux';
 import AudioPlayer from './audioPlayer/AudioPlayer';
-import RecordingResultModal from './RecordingResultModal';
-import RecordingNotFoundModal from "./RecordingNotFoundModal";
+import RecordingResultModal from './ResultModals/RecordingResultModal/RecordingResultModal';
+import RecordingNotFoundModal from "./ResultModals/RecordingNotFoundModal/RecordingNotFoundModal";
 import {sendRecording, setRecordingData, stopPlayer} from '../../actions/recording';
 import {getCurrentGeolocationPosition} from '../../actions/geolocation';
 import PropTypes from "prop-types";

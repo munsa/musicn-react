@@ -57,7 +57,7 @@ body {
 }
 
 .card {
-  border-radius: 16px !important;
+  border-radius: $custom-card-radius !important;
   box-shadow: rgba(0, 0, 0, 0.15) 0 2px 8px !important;
 }
 
@@ -93,4 +93,34 @@ body {
   input {
     padding-left: 40px;
   }
+}
+
+// General classes
+
+.pointer {
+  cursor: pointer;
+}
+
+
+// Modal
+
+.modal-content {
+  border-radius: 8px !important;
+  border: none;
+}
+
+.modal-header {
+  border-bottom: none !important;
+}
+
+.modal-footer {
+  border-top: none !important;
+}
+
+.modal-content .close {
+  font-weight: lighter !important;
+}
+
+.modal-content .close:focus {
+  outline: none !important;
 }
