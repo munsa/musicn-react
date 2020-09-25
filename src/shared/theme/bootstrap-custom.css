@@ -9996,8 +9996,12 @@ body {
   border-top: none !important;
 }
 
-.close {
-  font-weight: normal !important;
+.modal-content .close {
+  font-weight: lighter !important;
+}
+
+.modal-content .close:focus {
+  outline: none !important;
 }
 
 /*# sourceMappingURL=bootstrap-custom.css.map */

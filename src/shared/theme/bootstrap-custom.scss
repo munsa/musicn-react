@@ -57,7 +57,7 @@ body {
 }
 
 .card {
-  border-radius: 16px !important;
+  border-radius: $custom-card-radius !important;
   box-shadow: rgba(0, 0, 0, 0.15) 0 2px 8px !important;
 }
 
@@ -117,6 +117,10 @@ body {
   border-top: none !important;
 }
 
-.close {
-  font-weight: normal !important;
+.modal-content .close {
+  font-weight: lighter !important;
+}
+
+.modal-content .close:focus {
+  outline: none !important;
 }

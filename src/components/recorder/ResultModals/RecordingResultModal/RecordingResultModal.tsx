@@ -1,23 +1,27 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import Modal from "react-bootstrap/Modal";
-import ModalBody from "react-bootstrap/ModalBody";
-import ModalHeader from "react-bootstrap/ModalHeader";
-import ModalFooter from "react-bootstrap/ModalFooter";
-import {ActionRecordingType} from "../../../../actions/type-enum";
-import PropTypes from "prop-types";
+import './RecordingResultModal.css';
+import Modal from 'react-bootstrap/Modal';
+import ModalBody from 'react-bootstrap/ModalBody';
+import ModalHeader from 'react-bootstrap/ModalHeader';
+import {ActionRecordingType} from '../../../../actions/type-enum';
+import PropTypes from 'prop-types';
 import RecordingCard from '../../../song/RecordingCard/RecordingCard';
+import classList from '../../../../shared/utils/classList';
 
-const RecordingResultModal = ({recording, removeRecording}) => {
+const RecordingResultModal = ({recording, recordingFound, removeRecording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [typedText, setTypedText] = React.useState('');
+  const [animationFinished, setAnimationFinished] = React.useState(false);
   useEffect(() => {
-    if (recording && recording.found) {
+    if (recordingFound) {
       showModal();
     }
-  }, [recording]);
+  }, [recordingFound]);
 
   const showModal = () => {
     setIsOpen(true);
+    typeText(0, '');
   };
 
   const hideModal = () => {
@@ -25,30 +29,46 @@ const RecordingResultModal = ({recording, removeRecording}) => {
     removeRecording();
   };
 
-  return recording.result && (
-    <Modal show={isOpen} onHide={hideModal}>
-      <ModalHeader closeButton={true}>
-        <div className='text-right'>FOUND!</div>
-      </ModalHeader>
+  const typeText = (i, textWritten) => {
+    const text = 'A WILDTUNE APPEARED!';
+    if (i < text.length) {
+      textWritten = textWritten + text.charAt(i);
+      setTypedText(textWritten);
+      i++;
+      setTimeout(() => {
+        typeText(i, textWritten)
+      }, 70);
+    } else {
+      setAnimationFinished(true);
+    }
+  }
+
+  return recording && (
+    <Modal show={isOpen}
+           onHide={hideModal}
+           dialogClassName='result-modal'
+           centered>
+      <ModalHeader closeButton={true}/>
       <ModalBody>
         <RecordingCard recording={recording}/>
+        <div className={classList('result-modal-appeared-container', animationFinished ? 'fadeOut':'')}>
+          <div className='result-modal-animation'
+               key={typedText}>{typedText}</div>
+        </div>
       </ModalBody>
-      <ModalFooter>
-        <button className='btn btn-primary btn-lg btn-block' onClick={hideModal}>
-          Done
-        </button>
-      </ModalFooter>
     </Modal>
   );
 };
 
 RecordingResultModal.propTypes = {
-  recording: PropTypes.object.isRequired,
+  recording: PropTypes.object,
+  recordingFound: PropTypes.bool,
   removeRecording: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-  recording: state.recording
+  recording: state.recording.result,
+  recordingFound: state.recording.found,
 });
 
 const mapDispatchToProps = dispatch => ({

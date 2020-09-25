@@ -18,7 +18,7 @@ const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
     // @ts-ignore
     const bounds = new window.google.maps.LatLngBounds();
     recordingList.map(r => {
-      if(r.geolocation) {
+      if(r?.geolocation) {
         // @ts-ignore
         const latLng = new window.google.maps.LatLng(r.geolocation.lat, r.geolocation.lng);
         bounds.extend(latLng);
@@ -58,7 +58,7 @@ const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
           onBoundsChanged={onBoundsChanged}
         >
           {recordingList.map((r, j) => (
-            r.geolocation &&
+            r?.geolocation &&
             <RecordingMarker
               key={j}
               openedRecordingId={openedRecording?._id}
