@@ -23,9 +23,11 @@ const App = ({auth: {loading, isAuthenticated, user}}) => {
       <div className='app-content'>
         <Route component={Routes}/>
       </div>
+      {!loading && isAuthenticated &&
       <div className='app-footer'>
         <Footer/>
       </div>
+      }
     </div>
   );
 };

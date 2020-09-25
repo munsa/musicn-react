@@ -13,10 +13,6 @@ const Home = ({allRecordings, getAllRecordings, currentPosition}) => {
     }
   }, [getAllRecordings]);
 
-  const test = () => {
-    console.log('test');
-  }
-
   return (
     <div>
       <Header/>

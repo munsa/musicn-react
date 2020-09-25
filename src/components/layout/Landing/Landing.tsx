@@ -1,10 +1,14 @@
 import React from 'react';
 import './Landing.css';
+import classList from '../../../shared/utils/classList';
+import CityDayImage from '../../../shared/assets/image/city1920.png';
 
 const Landing = () => {
   return (
-    <div>
-      Hello World! You are not logged in
+    <div className='landing-container'>
+      <div className='landing-header-container'>
+        <img className={classList('landing-city-image')} src={CityDayImage}/>
+      </div>
     </div>
   )
 }
