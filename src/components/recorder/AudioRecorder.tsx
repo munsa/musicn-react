@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 
 declare let MediaRecorder: any;
 
-const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, developmentMode, currentPosition, getCurrentGeolocationPosition}) => {
+const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, developmentMode, currentPosition, getCurrentGeolocationPosition, recorderMode}) => {
   const [audioChunks, setAudioChunks] = useState([]);
   const [amplitudes, setAmplitudes] = useState(new Uint8Array());
 
@@ -76,7 +76,7 @@ const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, development
 
   return (
     <Fragment>
-      <AudioPlayer amplitudes={amplitudes} onPlayCallback={handleRecorder}/>
+      <AudioPlayer amplitudes={amplitudes} onPlayCallback={handleRecorder} recorderMode={recorderMode}/>
       <RecordingResultModal/>
       <RecordingNotFoundModal/>
     </Fragment>

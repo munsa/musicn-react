@@ -12,9 +12,8 @@ import './Layout.css';
 const App = ({auth: {loading, isAuthenticated, user}}) => {
   return (
     <div className='app'>
-      {!loading && isAuthenticated && user &&
-      <AudioRecorder/>
-      }
+
+      <AudioRecorder recorderMode={!loading && isAuthenticated && user}/>
       <AlertModal/>
       <div className='app-header'>
 

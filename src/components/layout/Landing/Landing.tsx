@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './Landing.css';
-import classList from '../../../shared/utils/classList';
+import CityNightImage from '../../../shared/assets/image/city_night1920.png';
 import CityDayImage from '../../../shared/assets/image/city1920.png';
 import {Carousel} from 'react-bootstrap';
 import Slide1 from './Slide1/Slide1';
@@ -17,10 +17,10 @@ const Landing = () => {
 
   return (
     <div className='landing-container'>
-      <div className='landing-header-container'>
-        <img className={classList('landing-city-image')} src={CityDayImage}/>
-      </div>
-      <Carousel activeIndex={index} onSelect={handleSelect} className='landing-carousel'>
+      <img className={'landing-city-image'} src={CityNightImage}/>
+      <Carousel activeIndex={index}
+                onSelect={handleSelect}
+                className='landing-carousel'>
         <Carousel.Item>
           <Slide1/>
         </Carousel.Item>

@@ -3,13 +3,6 @@
   height: 100%;
 }
 
-.header-container {
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
 .landing-city-image {
   position: fixed;
   bottom: 0;
@@ -47,10 +40,19 @@
 
 .landing-item-text {
   position: absolute;
-  top: 50%;
+  top: calc(25vh);
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  width: 80%;
+}
+
+.landing-item-text h3 {
+  color: #FF6201;
+}
+
+.landing-item-text p {
+  color: black;
 }
 
 /*# sourceMappingURL=Landing.css.map */
