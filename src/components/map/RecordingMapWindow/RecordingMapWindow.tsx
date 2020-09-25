@@ -1,8 +1,8 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './RecordingMapWindow.css'
-import RecordImage from '../../../shared/assets/image/record_400.png'
+import './RecordingMapWindow.css';
+import RecordImage from '../../../shared/assets/image/record_400.png';
 import {Source} from '../../../shared/constants/constants';
 import getArtistsString from '../../../shared/utils/StringUtils';
 import {Image} from 'react-bootstrap';
