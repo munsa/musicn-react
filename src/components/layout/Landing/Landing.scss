@@ -17,3 +17,38 @@
   z-index: 0;
   border-bottom: 1px solid #6986a1;
 }
+
+.landing-carousel {
+height: 100%;
+}
+
+.landing-carousel .carousel-item {
+  height: 100%;
+}
+
+.landing-item-container{
+  position: relative;
+  height: 100%;
+}
+
+.landing-item-image {
+  position: absolute;
+  height: 40vmax;
+  bottom: 0;
+}
+
+.landing-carousel .right {
+  right: 0;
+}
+
+.landing-carousel .left {
+  left: 0;
+}
+
+.landing-item-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
