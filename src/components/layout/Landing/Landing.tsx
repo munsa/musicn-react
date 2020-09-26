@@ -46,6 +46,10 @@ const Landing = ({slideDuration}) => {
     }, slideDuration - 500)
   }
 
+  const getStarted = () => {
+    console.log('get started!');
+  }
+
   return (
     <div className='landing-container'>
       <img className={'landing-city-image'} src={CityNightImage}/>
@@ -60,16 +64,16 @@ const Landing = ({slideDuration}) => {
                 indicators={false}
                 controls={false}>
         <Carousel.Item>
-          <Slide1 active={activeSlide1}/>
+          <Slide1 active={activeSlide1} getStartedCallback={() => getStarted()}/>
         </Carousel.Item>
         <Carousel.Item>
-          <Slide2 active={activeSlide2}/>
+          <Slide2 active={activeSlide2} getStartedCallback={() => getStarted()}/>
         </Carousel.Item>
         <Carousel.Item>
-          <Slide3 active={activeSlide3}/>
+          <Slide3 active={activeSlide3} getStartedCallback={() => getStarted()}/>
         </Carousel.Item>
         <Carousel.Item>
-          <Slide4 active={activeSlide4}/>
+          <Slide4 active={activeSlide4} getStartedCallback={() => getStarted()}/>
         </Carousel.Item>
       </Carousel>
     </div>

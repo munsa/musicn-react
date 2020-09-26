@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './Slide4.css';
-import {Col, Row} from 'react-bootstrap';
+import {Button, Col, Row} from 'react-bootstrap';
 import Boy1 from '../../../../shared/assets/image/boy1.png';
 import classList from '../../../../shared/utils/classList';
 
-const Slide4 = ({active}) => {
+const Slide4 = ({active, getStartedCallback}) => {
   const [activeBefore, setActiveBefore] = useState(false);
   const [fadeIn, setFadeIn] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
@@ -25,6 +25,7 @@ const Slide4 = ({active}) => {
         <div className={classList('landing-item-text left', (fadeIn && 'animateTextIn'), (fadeOut && 'animateTextOut'))}>
           <h3>You liked the music at the club last night?</h3>
           <p>Search the club on the map. Maybe other users caught some tunes.</p>
+          <Button onClick={getStartedCallback}>GET STARTED</Button>
         </div>
       </Col>
       <Col xl={{span: 2, order: 2}} xs={{span: 12, order: 2}}>

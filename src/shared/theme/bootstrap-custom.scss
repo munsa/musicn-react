@@ -18,7 +18,8 @@ $theme-color-5: $custom-theme-color-5-dark2;
 $theme-color-white: $custom-theme-color-white;
 $theme-color-black: $custom-theme-color-black;
 
-@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+//@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 // Radius
 $theme-border-radius: 0;
@@ -46,7 +47,7 @@ html, body {
 }
 
 body {
-  font-family: 'Rubik', sans-serif !important;
+  font-family: 'Roboto', sans-serif !important;
   //color: $theme-color-black !important;
 }
 

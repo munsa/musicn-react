@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './Slide3.css';
-import {Col, Row} from 'react-bootstrap';
+import {Button, Col, Row} from 'react-bootstrap';
 import Girl1 from '../../../../shared/assets/image/girl1.png';
 import classList from '../../../../shared/utils/classList';
 
-const Slide3 = ({active}) => {
+const Slide3 = ({active, getStartedCallback}) => {
   const [activeBefore, setActiveBefore] = useState(false);
   const [fadeIn, setFadeIn] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
@@ -32,6 +32,7 @@ const Slide3 = ({active}) => {
         <div className={classList('landing-item-text right', (fadeIn && 'animateTextIn'), (fadeOut && 'animateTextOut'))}>
           <h3>New in town?</h3>
           <p>Discover the bars in the city that play the music you like.</p>
+          <Button onClick={getStartedCallback}>GET STARTED</Button>
         </div>
       </Col>
     </Row>
