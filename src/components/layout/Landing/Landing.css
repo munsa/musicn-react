@@ -24,20 +24,6 @@
   height: 100%;
 }
 
-.landing-item-image {
-  position: absolute;
-  height: 40vmax;
-  bottom: 0;
-}
-
-.landing-carousel .right {
-  right: 0;
-}
-
-.landing-carousel .left {
-  left: 0;
-}
-
 .landing-item-text {
   position: absolute;
   top: calc(25vh);
@@ -53,6 +39,71 @@
 
 .landing-item-text p {
   color: black;
+}
+
+.landing-item-text.left {
+  animation-name: leftTextAnimation;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+}
+
+.landing-item-text.right {
+  animation-name: rightTextAnimation;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+}
+
+@keyframes leftTextAnimation {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 50%;
+  }
+}
+@keyframes rightTextAnimation {
+  from {
+    left: 150%;
+  }
+  to {
+    left: 50%;
+  }
+}
+.landing-item-image {
+  position: absolute;
+  height: 40vmax;
+  bottom: 0;
+}
+
+.landing-item-image.left {
+  left: 0;
+  animation-name: leftImageAnimation;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+}
+
+.landing-item-image.right {
+  right: 0;
+  animation-name: rightImageAnimation;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+}
+
+@keyframes leftImageAnimation {
+  from {
+    left: -50vh;
+  }
+  to {
+    left: 0;
+  }
+}
+@keyframes rightImageAnimation {
+  from {
+    right: -50vh;
+  }
+  to {
+    right: 0;
+  }
 }
 
 /*# sourceMappingURL=Landing.css.map */

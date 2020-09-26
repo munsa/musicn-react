@@ -20,7 +20,9 @@ const Landing = () => {
       <img className={'landing-city-image'} src={CityNightImage}/>
       <Carousel activeIndex={index}
                 onSelect={handleSelect}
-                className='landing-carousel'>
+                className='landing-carousel'
+                slide={false}
+      interval={null}>
         <Carousel.Item>
           <Slide1/>
         </Carousel.Item>

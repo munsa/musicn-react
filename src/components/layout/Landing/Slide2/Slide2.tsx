@@ -7,7 +7,7 @@ const Slide2 = () => {
   return (
     <Row className='landing-item-container'>
       <Col xl={{span: 10, order: 1}} xs={{span: 12, order: 1}}>
-        <div className='landing-item-text'>
+        <div className='landing-item-text left'>
           <h3>Explore music near you</h3>
           <p>Find on the map what other users listen around you.</p>
         </div>

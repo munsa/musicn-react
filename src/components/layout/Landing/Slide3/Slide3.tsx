@@ -14,7 +14,7 @@ const Slide3 = () => {
         />
       </Col>
       <Col xl={{span: 10, order: 2}} xs={{span: 12, order: 1}}>
-        <div className='landing-item-text'>
+        <div className='landing-item-text right'>
           <h3>New in town?</h3>
           <p>Discover the bars in the city that play the music you like.</p>
         </div>
