@@ -1,9 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Slide4.css';
 import {Col, Row} from 'react-bootstrap';
 import Boy1 from '../../../../shared/assets/image/boy1.png';
+import classList from '../../../../shared/utils/classList';
 
-const Slide4 = () => {
+const Slide4 = ({active}) => {
+  const [activeBefore, setActiveBefore] = useState(false);
+  const [fadeIn, setFadeIn] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
+  useEffect(() => {
+    if (!activeBefore && active) {
+      setFadeIn(true);
+      setFadeOut(false);
+    } else if (activeBefore && !active) {
+      setFadeOut(true);
+      setFadeIn(false);
+    }
+    setActiveBefore(active);
+  }, [active]);
+
   return (
     <Row className='landing-item-container'>
       <Col xl={{span: 10, order: 1}} xs={{span: 12, order: 1}}>
@@ -14,7 +29,7 @@ const Slide4 = () => {
       </Col>
       <Col xl={{span: 2, order: 2}} xs={{span: 12, order: 2}}>
         <img
-          className='landing-item-image right'
+          className={classList('landing-item-image right', (fadeIn && 'animateImageIn'), (fadeOut && 'animateImageOut'))}
           src={Boy1}
           alt="First boy"
         />

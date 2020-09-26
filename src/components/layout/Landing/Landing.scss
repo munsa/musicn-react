@@ -77,7 +77,7 @@
 }
 
 
-// Slide Images
+// SLIDE IMAGES
 
 .landing-item-image {
   position: absolute;
@@ -85,34 +85,70 @@
   bottom: 0;
 }
 
-.landing-item-image.left {
-  left: 0;
-  animation-name: leftImageAnimation;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-}
-
 .landing-item-image.right {
   right: 0;
-  animation-name: rightImageAnimation;
+}
+
+.animateImageIn, .animateImageOut {
   animation-duration: 0.5s;
   animation-timing-function: linear;
 }
 
-@keyframes leftImageAnimation {
+// Left Images
+@keyframes leftImageAnimationIn {
   from {
-    left: -50vh;
+    left: -60vh;
   }
   to {
     left: 0
   }
 }
+.animateImageIn.left {
+  animation-name: leftImageAnimationIn;
+}
 
-@keyframes rightImageAnimation {
+@keyframes leftImageAnimationOut {
   from {
-    right: -50vh;
+    left: 0;
   }
   to {
-    right: 0
+    left: -60vh;
   }
 }
+.animateImageOut.left {
+  animation-name: leftImageAnimationOut;
+}
+
+
+
+// Right Images
+@keyframes rightImageAnimationIn {
+  from {
+    right: -60vh;
+  }
+  to {
+    right: 0;
+  }
+}
+.animateImageIn.right {
+  animation-name: rightImageAnimationIn;
+}
+
+@keyframes rightImageAnimationOut {
+  from {
+    right: 0;
+  }
+  to {
+    right: -60vh;
+  }
+}
+.animateImageOut.right  {
+  animation-name: rightImageAnimationOut;
+}
+
+
+
+
+
+
+
