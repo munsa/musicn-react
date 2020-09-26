@@ -15,7 +15,7 @@ const Landing = ({slideDuration}) => {
   const [activeSlide2, setActiveSlide2] = useState(false);
   const [activeSlide3, setActiveSlide3] = useState(false);
   const [activeSlide4, setActiveSlide4] = useState(false);
-  useEffect(()=>{
+  useEffect(() => {
     onSlid();
   }, []);
 
@@ -55,7 +55,10 @@ const Landing = ({slideDuration}) => {
                 className='landing-carousel'
                 slide={false}
                 interval={slideDuration}
-                pause={false}>
+                pause={false}
+                keyboard={false}
+                indicators={false}
+                controls={false}>
         <Carousel.Item>
           <Slide1 active={activeSlide1}/>
         </Carousel.Item>
@@ -74,7 +77,7 @@ const Landing = ({slideDuration}) => {
 }
 
 Landing.defaultProps = {
-  slideDuration: 5000
+  slideDuration: 7000
 }
 
 export default Landing;
