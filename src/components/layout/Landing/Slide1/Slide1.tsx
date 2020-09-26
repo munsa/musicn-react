@@ -29,7 +29,7 @@ const Slide1 = ({active}) => {
         />
       </Col>
       <Col xl={{span: 10, order: 2}} xs={{span: 12, order: 1}}>
-        <div className='landing-item-text right'>
+        <div className={classList('landing-item-text right', (fadeIn && 'animateTextIn'), (fadeOut && 'animateTextOut'))}>
           <h3>Find new tunes</h3>
           <p>Press the friendly moon when you hear something you like. Let us catch the tune.</p>
         </div>

@@ -22,7 +22,7 @@ const Slide4 = ({active}) => {
   return (
     <Row className='landing-item-container'>
       <Col xl={{span: 10, order: 1}} xs={{span: 12, order: 1}}>
-        <div className='landing-item-text left'>
+        <div className={classList('landing-item-text left', (fadeIn && 'animateTextIn'), (fadeOut && 'animateTextOut'))}>
           <h3>You liked the music at the club last night?</h3>
           <p>Search the club on the map. Maybe other users caught some tunes.</p>
         </div>

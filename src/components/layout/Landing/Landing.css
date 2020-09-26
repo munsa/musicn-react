@@ -41,19 +41,16 @@
   color: black;
 }
 
-.landing-item-text.left {
-  animation-name: leftTextAnimation;
+.landing-item-text {
   animation-duration: 0.5s;
   animation-timing-function: linear;
 }
 
-.landing-item-text.right {
-  animation-name: rightTextAnimation;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
+.animateTextIn.left {
+  animation-name: leftTextAnimationIn;
 }
 
-@keyframes leftTextAnimation {
+@keyframes leftTextAnimationIn {
   from {
     left: -100%;
   }
@@ -61,12 +58,40 @@
     left: 50%;
   }
 }
-@keyframes rightTextAnimation {
+.animateTextOut.left {
+  animation-name: leftTextAnimationOut;
+}
+
+@keyframes leftTextAnimationOut {
   from {
-    left: 150%;
+    left: 50%;
+  }
+  to {
+    left: -100%;
+  }
+}
+.animateTextIn.right {
+  animation-name: rightTextAnimationIn;
+}
+
+@keyframes rightTextAnimationIn {
+  from {
+    left: 100%;
   }
   to {
     left: 50%;
+  }
+}
+.animateTextOut.right {
+  animation-name: rightTextAnimationOut;
+}
+
+@keyframes rightTextAnimationOut {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 100%;
   }
 }
 .landing-item-image {
