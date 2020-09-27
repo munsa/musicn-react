@@ -32,7 +32,7 @@ const Slide3 = ({active, getStartedCallback}) => {
         <div className={classList('landing-item-text right', (fadeIn && 'animateTextIn'), (fadeOut && 'animateTextOut'))}>
           <h3>New in town?</h3>
           <p>Discover the bars in the city that play the music you like.</p>
-          <Button onClick={getStartedCallback}>GET STARTED</Button>
+          <Button onClick={getStartedCallback}>JOIN</Button>
         </div>
       </Col>
     </Row>

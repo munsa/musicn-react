@@ -61,7 +61,7 @@ const Landing = ({slideDuration}) => {
                 interval={slideDuration}
                 pause={false}
                 keyboard={false}
-                indicators={false}
+                indicators={true}
                 controls={false}>
         <Carousel.Item>
           <Slide1 active={activeSlide1} getStartedCallback={() => getStarted()}/>

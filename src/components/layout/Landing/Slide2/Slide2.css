@@ -1,3 +1,43 @@
+.markers-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 
+.landing-marker {
+  position: fixed;
+  width: 37.2px;
+  height: 53.2px;
+}
+
+.landing-marker.m1 {
+  left: 5vw;
+  bottom: 16vw;
+}
+
+.landing-marker.m2 {
+  left: 12vw;
+  bottom: 23vw;
+}
+
+.landing-marker.m3 {
+  left: 20vw;
+  bottom: 22vw;
+}
+
+.landing-marker.m4 {
+  left: 23vw;
+  bottom: 24vw;
+}
+
+.landing-marker.m5 {
+  left: 34vw;
+  bottom: 19.5vw;
+}
+
+.landing-marker.m6 {
+  left: 38vw;
+  bottom: 16vw;
+}
 
 /*# sourceMappingURL=Slide2.css.map */

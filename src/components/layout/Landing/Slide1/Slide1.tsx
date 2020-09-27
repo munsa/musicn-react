@@ -32,7 +32,7 @@ const Slide1 = ({active, getStartedCallback}) => {
         <div className={classList('landing-item-text right', (fadeIn && 'animateTextIn'), (fadeOut && 'animateTextOut'))}>
           <h3>Find new tunes</h3>
           <p>Press the friendly moon when you hear something you like. Let us catch the tune.</p>
-          <Button onClick={getStartedCallback}>GET STARTED</Button>
+          <Button onClick={getStartedCallback}>JOIN</Button>
         </div>
       </Col>
     </Row>
