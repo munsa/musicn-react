@@ -16,34 +16,32 @@ const Landing = ({slideDuration}) => {
   const [activeSlide3, setActiveSlide3] = useState(false);
   const [activeSlide4, setActiveSlide4] = useState(false);
   useEffect(() => {
-    onSlid();
+    onSlid(0);
   }, []);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
 
-  const onSlid = () => {
-    if (index === 0) {
-      setActiveSlide1(true);
-    } else if (index === 1) {
-      setActiveSlide2(true);
-    } else if (index === 2) {
-      setActiveSlide3(true);
-    } else if (index === 3) {
-      setActiveSlide4(true);
-    }
+  const onSlid = (index) => {
+    console.log('onSlid(' + index + ', true)');
+    setActiveSlide(index, true);
     setTimeout(() => {
-      if (index === 0) {
-        setActiveSlide1(false);
-      } else if (index === 1) {
-        setActiveSlide2(false);
-      } else if (index === 2) {
-        setActiveSlide3(false);
-      } else if (index === 3) {
-        setActiveSlide4(false);
-      }
+      console.log('onSlid(' + index + ', false)');
+      setActiveSlide(index, false);
     }, slideDuration - 500)
+  }
+
+  const setActiveSlide = (index, active) => {
+    if (index === 0) {
+      setActiveSlide1(active);
+    } else if (index === 1) {
+      setActiveSlide2(active);
+    } else if (index === 2) {
+      setActiveSlide3(active);
+    } else if (index === 3) {
+      setActiveSlide4(active);
+    }
   }
 
   const getStarted = () => {
@@ -55,14 +53,14 @@ const Landing = ({slideDuration}) => {
       <img className={'landing-city-image'} src={CityNightImage}/>
       <Carousel activeIndex={index}
                 onSelect={handleSelect}
-                onSlid={() => onSlid()}
+                onSlid={() => onSlid(index)}
                 className='landing-carousel'
                 slide={false}
                 interval={slideDuration}
                 pause={false}
                 keyboard={false}
                 indicators={true}
-                controls={false}>
+                controls={true}>
         <Carousel.Item>
           <Slide1 active={activeSlide1} getStartedCallback={() => getStarted()}/>
         </Carousel.Item>
@@ -81,7 +79,7 @@ const Landing = ({slideDuration}) => {
 }
 
 Landing.defaultProps = {
-  slideDuration: 7000
+  slideDuration: 3000
 }
 
 export default Landing;
