@@ -1,31 +1,23 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './LandingSlide.css';
 
 const LandingSlide = ({Slide, active, getStartedCallback, slideDuration}) => {
-  const [fadeIn, setFadeIn] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
+  const [animation, setAnimation] = useState('');
   const [timeoutId, setTimeoutId] = useState(undefined);
   useEffect(() => {
-    if(active) {
-      setFadeIn(true);
-      setFadeOut(false);
+    if (active) {
+      setAnimation('fade-in')
       const id = setTimeout(() => {
-        setFadeOut(true);
-        setFadeIn(false);
+        setAnimation('fade-out');
       }, slideDuration - 500);
       setTimeoutId(id);
     } else {
       clearTimeout(timeoutId);
     }
-
-
   }, [active]);
 
   return (
-    <Fragment>
-      <Slide getStartedCallback={getStartedCallback} fadeIn={fadeIn} fadeOut={fadeOut}/>
-    </Fragment>
-
+    <Slide getStartedCallback={getStartedCallback} animation={animation}/>
   );
 };
 

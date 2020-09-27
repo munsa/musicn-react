@@ -4,12 +4,12 @@ import {Button, Col, Row} from 'react-bootstrap';
 import Boy2 from '../../../../../shared/assets/image/boy2.png';
 import classList from '../../../../../shared/utils/classList';
 
-const Slide2 = ({getStartedCallback, fadeIn, fadeOut}) => {
+const Slide2 = ({getStartedCallback, animation}) => {
   return (
     <Row className='landing-item-container'>
       <Col xl={{span: 10, order: 1}} xs={{span: 12, order: 1}}>
         <div
-          className={classList('landing-item-text left', (fadeIn && 'animateTextIn'), (fadeOut && 'animateTextOut'))}>
+          className={classList('landing-item-text left', animation)}>
           <h3>Explore music near you</h3>
           <p>Find on the map what other users listen around you.</p>
           <Button onClick={getStartedCallback}>JOIN</Button>
@@ -17,7 +17,7 @@ const Slide2 = ({getStartedCallback, fadeIn, fadeOut}) => {
       </Col>
       <Col xl={{span: 2, order: 2}} xs={{span: 12, order: 2}}>
         <img
-          className={classList('landing-item-image right', (fadeIn && 'animateImageIn'), (fadeOut && 'animateImageOut'))}
+          className={classList('landing-item-image right', animation)}
           src={Boy2}
           alt="First boy"
         />
