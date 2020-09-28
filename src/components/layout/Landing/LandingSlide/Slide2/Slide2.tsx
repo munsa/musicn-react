@@ -12,14 +12,13 @@ const Slide2 = ({getStartedCallback, animation}) => {
           className={classList('landing-item-text left', animation)}>
           <h3>Explore music near you</h3>
           <p>Find on the map what other users listen around you.</p>
-          <Button onClick={getStartedCallback}>JOIN</Button>
+          <Button variant='secondary' onClick={getStartedCallback}>JOIN</Button>
         </div>
       </Col>
       <Col xl={{span: 2, order: 2}} xs={{span: 12, order: 2}}>
-        <img
-          className={classList('landing-item-image right', animation)}
-          src={Boy2}
-          alt="First boy"
+        <img className={classList('landing-item-image right', animation)}
+             src={Boy2}
+             alt="First boy"
         />
       </Col>
       {/*

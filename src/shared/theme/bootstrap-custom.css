@@ -9921,8 +9921,23 @@ h3 {
 }
 
 .btn-primary {
-  background-color: #FF6201;
-  border-color: #FF6201;
+  background-color: #ff6201;
+  border-color: #ff6201;
+}
+
+.btn-primary:active {
+  background-color: #3D87B8;
+  border-color: #3D87B8;
+}
+
+.btn-secondary {
+  background-color: #3D87B8 !important;
+  border-color: #3D87B8 !important;
+}
+
+.btn-secondary:hover {
+  background-color: #2E658A !important;
+  border-color: #2E658A !important;
 }
 
 /*-------------------------------------------*/

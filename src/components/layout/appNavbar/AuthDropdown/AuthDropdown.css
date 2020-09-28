@@ -1,0 +1,20 @@
+.login-button {
+  font-weight: bold !important;
+  color: #ff6201 !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.login-button.btn-primary:not(:disabled):not(.disabled):active:focus, .login-button.btn-primary:not(:disabled):not(.disabled).active:focus, .show > .login-button.btn-primary.dropdown-toggle:focus {
+  box-shadow: transparent !important;
+}
+
+.login-button.dropdown-toggle::after {
+  display: none;
+}
+
+.login-button.btn-primary:not(:disabled):not(.disabled):active:focus, .login-button.btn-primary:not(:disabled):not(.disabled).active:focus, .show > .login-button.btn-primary.dropdown-toggle:focus {
+  box-shadow: none !important;
+}
+
+/*# sourceMappingURL=AuthDropdown.css.map */

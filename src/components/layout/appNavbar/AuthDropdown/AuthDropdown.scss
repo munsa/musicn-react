@@ -1,0 +1,22 @@
+@import '../../../../shared/theme/theme-constants';
+
+.login-button {
+  font-weight: bold !important;
+  color: $custom-theme-color-1 !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.login-button.btn-primary:not(:disabled):not(.disabled):active:focus, .login-button.btn-primary:not(:disabled):not(.disabled).active:focus, .show > .login-button.btn-primary.dropdown-toggle:focus {
+  box-shadow: transparent !important;
+  //box-shadow: 0 0 0 0.2rem rgba(255, 98, 1, 0.5) !important;
+}
+
+.login-button.dropdown-toggle::after {
+  display: none;
+}
+
+.login-button.btn-primary:not(:disabled):not(.disabled):active:focus, .login-button.btn-primary:not(:disabled):not(.disabled).active:focus, .show > .login-button.btn-primary.dropdown-toggle:focus {
+  box-shadow: none !important;
+}
+

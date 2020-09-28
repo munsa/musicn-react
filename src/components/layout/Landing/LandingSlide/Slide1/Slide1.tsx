@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './Slide1.css';
 import {Button, Col, Row} from 'react-bootstrap';
 import Girl2 from '../../../../../shared/assets/image/girl2.png';
@@ -8,10 +8,9 @@ const Slide1 = ({getStartedCallback, animation}) => {
   return (
     <Row className='landing-item-container'>
       <Col xl={{span: 2, order: 1}} xs={{span: 12, order: 2}}>
-        <img
-          className={classList('landing-item-image left', animation)}
-          src={Girl2}
-          alt="First girl"
+        <img className={classList('landing-item-image left', animation)}
+             src={Girl2}
+             alt="First girl"
         />
       </Col>
       <Col xl={{span: 10, order: 2}} xs={{span: 12, order: 1}}>
@@ -19,7 +18,7 @@ const Slide1 = ({getStartedCallback, animation}) => {
           className={classList('landing-item-text right', animation)}>
           <h3>Find new tunes</h3>
           <p>Press the friendly moon when you hear something you like and start catching tunes.</p>
-          <Button onClick={getStartedCallback}>JOIN</Button>
+          <Button variant='secondary' onClick={getStartedCallback}>JOIN</Button>
         </div>
       </Col>
     </Row>

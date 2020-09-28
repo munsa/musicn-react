@@ -14,3 +14,18 @@
   background-color: $custom-theme-color-1;
   border-color: $custom-theme-color-1;
 }
+
+.btn-primary:active {
+  background-color: $custom-theme-color-2;
+  border-color: $custom-theme-color-2;
+}
+
+.btn-secondary {
+  background-color: $custom-theme-color-2 !important;
+  border-color: $custom-theme-color-2 !important;
+}
+
+.btn-secondary:hover {
+  background-color: $custom-theme-color-2-dark1 !important;
+  border-color: $custom-theme-color-2-dark1 !important;
+}
