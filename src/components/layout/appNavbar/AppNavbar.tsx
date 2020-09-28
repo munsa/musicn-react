@@ -2,13 +2,13 @@ import React, {Fragment} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {Button, Nav, Navbar, NavDropdown} from 'react-bootstrap'
+import {Nav, Navbar, NavDropdown} from 'react-bootstrap'
 import {logout} from '../../../actions/auth';
 import {toggleDevelopmentMode} from '../../../actions/development-mode';
 import './AppNavbar.css';
 import WildTunes from '../../../shared/assets/image/wildtunes/logo/wildtunes_logo_orange.svg'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBug, faDoorOpen} from '@fortawesome/free-solid-svg-icons';
+import {faBug} from '@fortawesome/free-solid-svg-icons';
 import AuthDropdown from './AuthDropdown/AuthDropdown';
 
 const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, logout, toggleDevelopmentMode}) => {
@@ -62,7 +62,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
                   </NavDropdown.Item>
                   <NavDropdown.Divider/>
                   <NavDropdown.Item href="" onClick={logout}>
-                    <FontAwesomeIcon icon={faDoorOpen}/> Logout
+                    Logout
                   </NavDropdown.Item>
                 </NavDropdown>
               </Fragment>

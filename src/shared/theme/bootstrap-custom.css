@@ -9925,9 +9925,20 @@ h3 {
   border-color: #ff6201;
 }
 
+.btn-primary:hover {
+  background-color: #CC4E00 !important;
+  border-color: #CC4E00 !important;
+}
+
 .btn-primary:active {
-  background-color: #3D87B8;
-  border-color: #3D87B8;
+  background-color: #CC4E00 !important;
+  border-color: #CC4E00 !important;
+}
+
+.btn-primary:focus {
+  background-color: #CC4E00 !important;
+  border-color: #CC4E00 !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 98, 1, 0.5) !important;
 }
 
 .btn-secondary {

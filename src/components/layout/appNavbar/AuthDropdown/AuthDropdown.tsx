@@ -1,24 +1,41 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {connect} from 'react-redux';
 import './AuthDropdown.css';
-import {Button, Dropdown} from 'react-bootstrap';
+import AuthDropdownForm, {MODE_LOGIN, MODE_REGISTER} from './AuthDropdownForm/AuthDropdownForm';
+import {Dropdown} from 'react-bootstrap';
+import {login, register} from '../../../../actions/auth';
 
-const AuthDropdown = () => {
+const AuthDropdown = ({login, register}) => {
+  const [mode, setMode] = useState(MODE_LOGIN);
+
+  const onModeChange = (e) => {
+    if (mode === MODE_LOGIN) {
+      setMode(MODE_REGISTER);
+    } else if (mode === MODE_REGISTER) {
+      setMode(MODE_LOGIN);
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(mode === MODE_LOGIN) {
+      login(e.target.username.value, e.target.password.value);
+    } else if (mode === MODE_REGISTER) {
+      register(e.target.username.value, e.target.email.value, e.target.password.value)
+    }
+  }
+
   return (
     <Dropdown>
       <Dropdown.Toggle id="dropdown-custom-components" className='login-button'>
-        Login
+        Log in
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item eventKey="1">Red</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
-        <Dropdown.Item eventKey="3" active>
-          Orange
-        </Dropdown.Item>
-        <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+        <AuthDropdownForm mode={mode} handleModeChange={onModeChange} handleSubmit={handleSubmit}/>
       </Dropdown.Menu>
     </Dropdown>
   );
 };
 
-export default AuthDropdown;
+export default connect(null, {login, register})(AuthDropdown);

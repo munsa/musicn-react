@@ -17,4 +17,21 @@
   box-shadow: none !important;
 }
 
+.login-button.btn-primary:hover {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: #FF8E47 !important;
+}
+
+.login-button.btn-primary:active {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.login-button.btn-primary:focus {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
 /*# sourceMappingURL=AuthDropdown.css.map */
