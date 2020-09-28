@@ -15,7 +15,6 @@ const AuthDropdownForm = ({mode, handleModeChange, handleSubmit}) => {
     passwordRepeat: ''
   };
   const [formData, setFormData] = useState(formInitialState);
-
   const {username, email, password, passwordRepeat} = formData;
 
   const onModeChange = (e) => {
