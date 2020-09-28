@@ -18,15 +18,15 @@ const AuthDropdown = ({login, register}) => {
     }
   }, []);
 
-  const onToggle = (e) => {
-    setIsOpen(e.isOpen);
+  const onToggle = (show) => {
+    setIsOpen(show);
   }
 
   const showAuthDropdown = (msg, data) => {
     setIsOpen(true);
     setMode(MODE_REGISTER);
   };
-  
+
   const onModeChange = (e) => {
     if (mode === MODE_LOGIN) {
       setMode(MODE_REGISTER);
