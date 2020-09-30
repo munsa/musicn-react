@@ -47,31 +47,29 @@ const AuthDropdownRegister = ({handleModeChange, handleSubmit}) => {
   }
 
   const onChange = (event) => {
-    setFormData({...formData, [event.target.name]: event.target.value});
+    setFormData({...formData, [event.target.name]: event.target.value.trim()});
+    setErrors({...formData, [event.target.name]: ''});
   }
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     const form = event.currentTarget;
-    const valid: boolean = validateForm(form);
+    validateForm(form);
 
-    if (valid) {
-      // do submit
-    } else {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+    //if not valid:
+    event.preventDefault();
+    event.stopPropagation();
+    //else
+    handleSubmit(event);
 
-    if (false) {
-      handleSubmit(event);
-    }
   };
 
-  const validateForm = (form): boolean => {
+  const validateForm = (form) => {
     let valid: boolean;
 
     valid = form.checkValidity();
     setFormValidationMessages(form);
 
+    // Validate passwords
     if (form.passwordControl.validationMessage) {
       setFormData({...formData, passwordConfirmation: ''});
     } else {
@@ -81,14 +79,12 @@ const AuthDropdownRegister = ({handleModeChange, handleSubmit}) => {
       }
     }
 
-
     setErrors({
       username: form.usernameControl.validationMessage,
       email: form.emailControl.validationMessage,
       password: form.passwordControl.validationMessage,
       passwordConfirmation: form.passwordConfirmationControl.validationMessage
     });
-
 
     setValidated(true);
 
@@ -101,11 +97,11 @@ const AuthDropdownRegister = ({handleModeChange, handleSubmit}) => {
         <Form.Group controlId="usernameControl">
           <InputGroup>
             <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroupPrepend"><FontAwesomeIcon icon={faUser}/></InputGroup.Text>
+              <InputGroup.Text id="usernamePrepend"><FontAwesomeIcon icon={faUser}/></InputGroup.Text>
             </InputGroup.Prepend>
             <Form.Control type="username"
                           placeholder="Username"
-                          aria-describedby="inputGroupPrepend"
+                          aria-describedby="usernamePrepend"
                           name='username'
                           value={username}
                           onChange={onChange}
@@ -118,10 +114,11 @@ const AuthDropdownRegister = ({handleModeChange, handleSubmit}) => {
         <Form.Group controlId="emailControl">
           <InputGroup>
             <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroupPrepend"><FontAwesomeIcon icon={faEnvelope}/></InputGroup.Text>
+              <InputGroup.Text id="emailPrepend"><FontAwesomeIcon icon={faEnvelope}/></InputGroup.Text>
             </InputGroup.Prepend>
             <Form.Control type="email"
                           placeholder="Email"
+                          aria-describedby="emailPrepend"
                           name='email'
                           value={email}
                           onChange={onChange}
@@ -133,10 +130,11 @@ const AuthDropdownRegister = ({handleModeChange, handleSubmit}) => {
         <Form.Group controlId="passwordControl">
           <InputGroup>
             <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroupPrepend"><FontAwesomeIcon icon={faKey}/></InputGroup.Text>
+              <InputGroup.Text id="passwordPrepend"><FontAwesomeIcon icon={faKey}/></InputGroup.Text>
             </InputGroup.Prepend>
             <Form.Control type="password"
                           placeholder="Password"
+                          aria-describedby="passwordPrepend"
                           name='password'
                           value={password}
                           onChange={onChange}
@@ -149,10 +147,11 @@ const AuthDropdownRegister = ({handleModeChange, handleSubmit}) => {
         <Form.Group controlId="passwordConfirmationControl">
           <InputGroup>
             <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroupPrepend"><FontAwesomeIcon icon={faKey}/></InputGroup.Text>
+              <InputGroup.Text id="passwordConfirmationPrepend"><FontAwesomeIcon icon={faKey}/></InputGroup.Text>
             </InputGroup.Prepend>
             <Form.Control type="password"
                           placeholder="Confirm password"
+                          aria-describedby="passwordConfirmationPrepend"
                           name='passwordConfirmation'
                           value={passwordConfirmation}
                           onChange={onChange}
