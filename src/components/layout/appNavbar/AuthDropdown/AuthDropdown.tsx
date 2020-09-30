@@ -1,24 +1,28 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import './AuthDropdown.css';
-import AuthDropdownForm, {MODE_LOGIN, MODE_REGISTER} from './AuthDropdownForm/AuthDropdownForm';
+import AuthDropdownRegister from './AuthDropdownRegister/AuthDropdownRegister';
 import {Dropdown} from 'react-bootstrap';
 import {login, register} from '../../../../actions/auth';
 import PubSub from 'pubsub-js';
+import AuthDropdownLogin from './AuthDropdownLogin/AuthDropdownLogin';
 
-export const SUB_SHOW_AUTH_DROPDOWN = 'SUB_SHOW_AUTH_DROPDOWN';
+export const MODE_LOGIN = 'mode_login';
+export const MODE_REGISTER = 'mode_register';
+
+export const EVENT_SHOW_AUTH_DROPDOWN = 'EVENT_SHOW_AUTH_DROPDOWN';
 
 const AuthDropdown = ({login, register}) => {
-  const [mode, setMode] = useState(MODE_LOGIN);
+  const [mode, setMode] = useState(MODE_REGISTER);
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
-    let token = PubSub.subscribe(SUB_SHOW_AUTH_DROPDOWN, showAuthDropdown);
+    let token = PubSub.subscribe(EVENT_SHOW_AUTH_DROPDOWN, showAuthDropdown);
     return () => {
       PubSub.unsubscribe(token);
     }
   }, []);
 
-  const onToggle = (show) => {
+  const onToggle = (show, event, metadata) => {
     setIsOpen(show);
   }
 
@@ -40,7 +44,11 @@ const AuthDropdown = ({login, register}) => {
     if (mode === MODE_LOGIN) {
       login(e.target.username.value, e.target.password.value);
     } else if (mode === MODE_REGISTER) {
-      register(e.target.username.value, e.target.email.value, e.target.password.value)
+      register({
+        username: e.target.username.value,
+        email: e.target.email.value,
+        password: e.target.password.value
+      })
     }
   }
 
@@ -52,9 +60,14 @@ const AuthDropdown = ({login, register}) => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <AuthDropdownForm mode={mode}
-                          handleModeChange={onModeChange}
-                          handleSubmit={handleSubmit}/>
+        {mode === MODE_LOGIN &&
+        <AuthDropdownLogin handleModeChange={onModeChange}
+                           handleSubmit={handleSubmit}/>
+        }
+        {mode === MODE_REGISTER &&
+        <AuthDropdownRegister handleModeChange={onModeChange}
+                              handleSubmit={handleSubmit}/>
+        }
       </Dropdown.Menu>
     </Dropdown>
   );

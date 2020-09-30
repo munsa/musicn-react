@@ -8,7 +8,7 @@ import Slide1 from './LandingSlide/Slide1/Slide1';
 import Slide2 from './LandingSlide/Slide2/Slide2';
 import Slide3 from './LandingSlide/Slide3/Slide3';
 import Slide4 from './LandingSlide/Slide4/Slide4';
-import {SUB_SHOW_AUTH_DROPDOWN} from '../appNavbar/AuthDropdown/AuthDropdown';
+import {EVENT_SHOW_AUTH_DROPDOWN} from '../appNavbar/AuthDropdown/AuthDropdown';
 
 const Landing = ({slideDuration}) => {
   const [index, setIndex] = useState(0);
@@ -18,7 +18,7 @@ const Landing = ({slideDuration}) => {
   };
 
   const getStarted = () => {
-    PubSub.publish(SUB_SHOW_AUTH_DROPDOWN, true);
+    PubSub.publish(EVENT_SHOW_AUTH_DROPDOWN, true);
   }
 
   /**
