@@ -48,7 +48,7 @@ const AuthDropdownRegister = ({handleModeChange, handleSubmit}) => {
 
   const onChange = (event) => {
     setFormData({...formData, [event.target.name]: event.target.value.trim()});
-    setErrors({...formData, [event.target.name]: ''});
+    setErrors({...errors, [event.target.name]: ''});
   }
 
   const onSubmit = async (event) => {
