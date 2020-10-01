@@ -42,7 +42,7 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
             }
           </Nav>
           <Nav>
-            {!loading && isAuthenticated && user ?
+            {!loading && isAuthenticated && user &&
               <Fragment>
                 <Link to={'/profile/' + user.username}
                       className='avatar'>
@@ -66,11 +66,11 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
                   </NavDropdown.Item>
                 </NavDropdown>
               </Fragment>
-              :
+            }
+            { !isAuthenticated &&
               <div>
                 <AuthDropdown/>
               </div>
-
             }
           </Nav>
         </Navbar.Collapse>

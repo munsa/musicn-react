@@ -57,7 +57,7 @@ const AuthDropdown = ({authLoading, login, register}) => {
     <Dropdown show={isOpen}
               onToggle={onToggle}>
       <Dropdown.Toggle id="dropdown-custom-components" className='login-button'>
-        Log in {authLoading.toString()}
+        Log in
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
