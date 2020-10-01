@@ -11,7 +11,8 @@ export enum ActionAuthType {
   LOGIN_SUCCESS = 'LOGIN_SUCCESS',
   LOGIN_FAIL = 'LOGIN_FAIL',
   LOGOUT = 'LOGOUT',
-  LOGOUT_FAIL = 'LOGOUT_FAIL'
+  LOGOUT_FAIL = 'LOGOUT_FAIL',
+  AUTH_LOADING = 'AUTH_LOADING'
 }
 
 export enum ActionRecordingType {

@@ -31,6 +31,8 @@ export const register = ({ username, email, password }) => async dispatch => {
   const body = JSON.stringify({ username, email, password });
 
   try {
+    dispatch({ type: ActionAuthType.AUTH_LOADING });
+
     const res = await api.post('/auth/register', body);
 
     dispatch({
@@ -54,6 +56,8 @@ export const login = (email, password) => async dispatch => {
   const body = JSON.stringify({ email, password });
 
   try {
+    dispatch({ type: ActionAuthType.AUTH_LOADING });
+
     const res = await api.post('/auth/login', body);
 
     dispatch({

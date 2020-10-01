@@ -6,13 +6,14 @@ import {Dropdown} from 'react-bootstrap';
 import {login, register} from '../../../../actions/auth';
 import PubSub from 'pubsub-js';
 import AuthDropdownLogin from './AuthDropdownLogin/AuthDropdownLogin';
+import Loader from '../../../../shared/lib/Loaders/Loader/Loader';
 
 export const MODE_LOGIN = 'mode_login';
 export const MODE_REGISTER = 'mode_register';
 
 export const EVENT_SHOW_AUTH_DROPDOWN = 'EVENT_SHOW_AUTH_DROPDOWN';
 
-const AuthDropdown = ({login, register}) => {
+const AuthDropdown = ({authLoading, login, register}) => {
   const [mode, setMode] = useState(MODE_REGISTER);
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
@@ -56,7 +57,7 @@ const AuthDropdown = ({login, register}) => {
     <Dropdown show={isOpen}
               onToggle={onToggle}>
       <Dropdown.Toggle id="dropdown-custom-components" className='login-button'>
-        Log in
+        Log in {authLoading.toString()}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
@@ -68,9 +69,14 @@ const AuthDropdown = ({login, register}) => {
         <AuthDropdownRegister handleModeChange={onModeChange}
                               handleSubmit={handleSubmit}/>
         }
+        {authLoading && <Loader/>}
       </Dropdown.Menu>
     </Dropdown>
   );
 };
 
-export default connect(null, {login, register})(AuthDropdown);
+const mapStateToProps = state => ({
+  authLoading: state.auth.loading
+});
+
+export default connect(mapStateToProps, {login, register})(AuthDropdown);
