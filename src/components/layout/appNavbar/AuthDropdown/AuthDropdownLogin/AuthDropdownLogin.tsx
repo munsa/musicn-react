@@ -4,16 +4,28 @@ import './AuthDropdownLogin.css';
 import {Button, Form, InputGroup} from 'react-bootstrap';
 import {EVENT_SHOW_AUTH_DROPDOWN} from '../AuthDropdown';
 import PubSub from 'pubsub-js';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faKey, faUser} from '@fortawesome/free-solid-svg-icons';
+import FormControlFeedback from '../../../../../shared/lib/Form/FormControlFeedback/FormControlFeedback';
+import {setFormValidationMessages} from '../../../../../shared/utils/validation';
+import {EVENT_SHOW_REGISTER_ERRORS} from '../AuthDropdownRegister/AuthDropdownRegister';
 
 const AuthDropdownLogin = ({handleModeChange, handleSubmit}) => {
   const formInitialState = {
     username: '',
     password: ''
   };
+  const formErrorsInitialState = {
+    username: '',
+    password: ''
+  };
   const [formData, setFormData] = useState(formInitialState);
   const [validated, setValidated] = useState(false);
+  const [errors, setErrors] = useState(formErrorsInitialState);
   useEffect(() => {
-    let token = PubSub.subscribe(EVENT_SHOW_AUTH_DROPDOWN, showBackendErrors);
+    let token = PubSub.subscribe(EVENT_SHOW_REGISTER_ERRORS, (data => {
+      console.log(data);
+    }));
     return () => {
       PubSub.unsubscribe(token);
     }
@@ -32,61 +44,70 @@ const AuthDropdownLogin = ({handleModeChange, handleSubmit}) => {
   }
 
   const onChange = (event) => {
-    setFormData({...formData, [event.target.name]: event.target.value});
+    setFormData({...formData, [event.target.name]: event.target.value.trim()});
+    setErrors({...errors, [event.target.name]: ''});
   }
 
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     const form = event.currentTarget;
-    const valid = validateForm(form);
+    validateForm(form);
 
-    event.preventDefault();
-    event.stopPropagation();
-
-    if(valid) {
+    if(form.checkValidity()) {
       handleSubmit(event);
+    } else {
+      event.preventDefault();
+      event.stopPropagation();
     }
   };
 
-  const validateForm = (form): boolean => {
-    let valid: boolean = true;
+  const validateForm = (form) => {
+    setFormValidationMessages(form);
 
-    // Custom validity
-
-    // Check validity
-    if (form.checkValidity() === false) {
-      valid = false;
-    } else {
-      valid = valid && true;
-    }
+    setErrors({
+      username: form.usernameControl.validationMessage,
+      password: form.passwordControl.validationMessage
+    });
 
     setValidated(true);
-
-    return valid;
-  }
-
-  const showBackendErrors = () => {
-
   }
 
   return (
     <div className='auth-dropdown-form-container'>
       <Form noValidate validated={validated} onSubmit={onSubmit}>
-        <Form.Group controlId="username">
-          <Form.Control type="username"
-                        placeholder="Username / Email"
-                        name='username'
-                        value={username}
-                        onChange={onChange}
-                        required/>
+        <Form.Group controlId="usernameControl">
+          <InputGroup>
+            <InputGroup.Prepend>
+              <InputGroup.Text id="usernamePrepend"><FontAwesomeIcon icon={faUser}/></InputGroup.Text>
+            </InputGroup.Prepend>
+            <Form.Control type="username"
+                          placeholder="Username"
+                          aria-describedby="usernamePrepend"
+                          name='username'
+                          value={username}
+                          onChange={onChange}
+                          required
+                          minLength={3}
+            />
+            <FormControlFeedback feedback={errors.username}/>
+          </InputGroup>
         </Form.Group>
-        <Form.Group controlId="password">
-          <Form.Control type="password"
-                        placeholder="Password"
-                        name='password'
-                        value={password}
-                        onChange={onChange}
-                        required/>
+        <Form.Group controlId="passwordControl">
+          <InputGroup>
+            <InputGroup.Prepend>
+              <InputGroup.Text id="passwordPrepend"><FontAwesomeIcon icon={faKey}/></InputGroup.Text>
+            </InputGroup.Prepend>
+            <Form.Control type="password"
+                          placeholder="Password"
+                          aria-describedby="passwordPrepend"
+                          name='password'
+                          value={password}
+                          onChange={onChange}
+                          required
+                          minLength={6}
+            />
+            <FormControlFeedback feedback={errors.password}/>
+          </InputGroup>
         </Form.Group>
         <Button variant='primary'
                 type="submit"

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './AuthDropdownRegister.css';
 import {Button, Form, InputGroup} from 'react-bootstrap';
 import PubSub from 'pubsub-js';
@@ -9,25 +9,31 @@ import FormControlFeedback from '../../../../../shared/lib/Form/FormControlFeedb
 
 export const EVENT_SHOW_REGISTER_ERRORS = 'EVENT_SHOW_REGISTER_ERRORS';
 
+const formInitialState = {
+  username: 'munsa',
+  email: 'mmonserrat90@gmail.com',
+  password: 'clapas08',
+  passwordConfirmation: 'clapas08'
+};
+const formErrorsInitialState = {
+  username: '',
+  email: '',
+  password: '',
+  passwordConfirmation: ''
+};
+
 const AuthDropdownRegister = ({handleModeChange, handleSubmit}) => {
-  const formInitialState = {
-    username: '',
-    email: '',
-    password: '',
-    passwordConfirmation: ''
-  };
-  const formErrorsInitialState = {
-    username: '',
-    email: '',
-    password: '',
-    passwordConfirmation: ''
-  };
   const [formData, setFormData] = useState(formInitialState);
   const [validated, setValidated] = useState(false);
   const [errors, setErrors] = useState(formErrorsInitialState);
+  const formRef = useRef(null);
   useEffect(() => {
-    let token = PubSub.subscribe(EVENT_SHOW_REGISTER_ERRORS, (data => {
-      console.log(data);
+    let token = PubSub.subscribe(EVENT_SHOW_REGISTER_ERRORS, ((name, errors) => {
+      errors.forEach(e => {
+        formRef.current[e.param].setCustomValidity(e.msg);
+      });
+
+      setErrorMessages(formRef.current);
     }));
     return () => {
       PubSub.unsubscribe(token);
@@ -55,18 +61,15 @@ const AuthDropdownRegister = ({handleModeChange, handleSubmit}) => {
     const form = event.currentTarget;
     validateForm(form);
 
-    //if not valid:
-    event.preventDefault();
-    event.stopPropagation();
-    //else
-    handleSubmit(event);
-
+    if (form.checkValidity()) {
+      handleSubmit(event);
+    } else {
+      event.preventDefault();
+      event.stopPropagation();
+    }
   };
 
   const validateForm = (form) => {
-    let valid: boolean;
-
-    valid = form.checkValidity();
     setFormValidationMessages(form);
 
     // Validate passwords
@@ -79,21 +82,23 @@ const AuthDropdownRegister = ({handleModeChange, handleSubmit}) => {
       }
     }
 
+    setErrorMessages(form);
+
+    setValidated(true);
+  }
+
+  const setErrorMessages = (form) => {
     setErrors({
       username: form.usernameControl.validationMessage,
       email: form.emailControl.validationMessage,
       password: form.passwordControl.validationMessage,
       passwordConfirmation: form.passwordConfirmationControl.validationMessage
     });
-
-    setValidated(true);
-
-    return valid;
   }
 
   return (
     <div className='auth-dropdown-form-container'>
-      <Form noValidate validated={validated} onSubmit={onSubmit}>
+      <Form noValidate validated={validated} onSubmit={onSubmit} ref={formRef}>
         <Form.Group controlId="usernameControl">
           <InputGroup>
             <InputGroup.Prepend>
