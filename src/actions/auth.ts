@@ -2,7 +2,10 @@ import api from '../shared/utils/api';
 import { ActionAuthType } from './type-enum';
 import { setAlert } from './alert';
 import setAuthToken from '../shared/utils/setAuthToken';
-import { AlertType } from '../shared/constants/constants'
+import { AlertType } from '../shared/constants/constants';
+import PubSub from 'pubsub-js';
+import {EVENT_SHOW_REGISTER_ERRORS} from '../components/layout/appNavbar/AuthDropdown/AuthDropdownRegister/AuthDropdownRegister';
+import {EVENT_SHOW_LOGIN_ERRORS} from '../components/layout/appNavbar/AuthDropdown/AuthDropdownLogin/AuthDropdownLogin';
 
 // Load User
 export const loadUser = () => async dispatch => {
@@ -29,6 +32,8 @@ export const register = ({ username, email, password }) => async dispatch => {
   const body = JSON.stringify({ username, email, password });
 
   try {
+    dispatch({ type: ActionAuthType.AUTH_LOADING });
+
     const res = await api.post('/auth/register', body);
 
     dispatch({
@@ -41,17 +46,19 @@ export const register = ({ username, email, password }) => async dispatch => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach(error => dispatch(setAlert({ type: AlertType.ERROR, msg: error.msg })));
+      PubSub.publish(EVENT_SHOW_REGISTER_ERRORS, errors);
     }
     dispatch({ type: ActionAuthType.REGISTER_FAIL });
   }
 };
 
 // Login User
-export const login = (email, password) => async dispatch => {
-  const body = JSON.stringify({ email, password });
+export const login = (username, password) => async dispatch => {
+  const body = JSON.stringify({ username, password });
 
   try {
+    dispatch({ type: ActionAuthType.AUTH_LOADING });
+
     const res = await api.post('/auth/login', body);
 
     dispatch({
@@ -64,7 +71,7 @@ export const login = (email, password) => async dispatch => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach(error => dispatch(setAlert({ type: AlertType.ERROR, msg: error.msg })));
+      PubSub.publish(EVENT_SHOW_LOGIN_ERRORS, errors);
     }
     dispatch({ type: ActionAuthType.LOGIN_FAIL });
   }

@@ -1,0 +1,19 @@
+@import "../../../theme/theme-constants";
+
+.loader-container {
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.5);
+  position: absolute;
+  text-align: center;
+  border-radius: $custom-card-radius;
+  top: 0;
+  z-index: 4;
+}
+
+.loader {
+  width: 1.5rem !important;
+  top: calc(50% - 1.5rem);
+  position: relative;
+  color: $custom-theme-color-grey;
+}

@@ -2,7 +2,7 @@
 
 .header-container {
   position: relative;
-  height: 22vw;
+  height: calc(100vh - 3.6rem);
   display: flex;
   align-items: center;
 }

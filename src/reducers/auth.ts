@@ -3,7 +3,7 @@ import {ActionAuthType} from '../actions/type-enum';
 const initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
-  loading: true,
+  loading: false,
   user: null
 };
 
@@ -11,6 +11,11 @@ export default function (state = initialState, action) {
   const {type, payload} = action;
 
   switch (type) {
+    case ActionAuthType.AUTH_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
     case ActionAuthType.USER_LOADED:
       return {
         ...state,

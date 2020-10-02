@@ -1,4 +1,8 @@
-@import "../../../shared/theme/theme";
+@import "../../../shared/theme/theme-constants";
+
+.container.alert-modal-content {
+  position: absolute;
+}
 
 .alert-modal-content {
   .modal-content {
@@ -56,6 +60,7 @@
 .close-modal-button {
   color: $custom-theme-color-black;
   position: absolute;
-  right: 0.4rem;
-  padding-top: 3px;
+  right: 0.7rem;
+  top: 11px;
+  cursor: pointer;
 }

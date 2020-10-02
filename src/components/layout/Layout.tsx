@@ -12,9 +12,8 @@ import './Layout.css';
 const App = ({auth: {loading, isAuthenticated, user}}) => {
   return (
     <div className='app'>
-      {!loading && isAuthenticated && user &&
-      <AudioRecorder/>
-      }
+
+      <AudioRecorder recorderMode={!loading && isAuthenticated && user}/>
       <AlertModal/>
       <div className='app-header'>
 
@@ -23,9 +22,11 @@ const App = ({auth: {loading, isAuthenticated, user}}) => {
       <div className='app-content'>
         <Route component={Routes}/>
       </div>
+      {!loading && isAuthenticated &&
       <div className='app-footer'>
         <Footer/>
       </div>
+      }
     </div>
   );
 };

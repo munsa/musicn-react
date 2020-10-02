@@ -14,8 +14,22 @@
   color: rgba(0,0,0,1);
 }
 
+.dropdown-item:hover {
+  background-color: transparent !important;
+  color: $custom-theme-color-2 !important;
+}
+
+.dropdown-item:active {
+  background-color: transparent !important;
+  color: $custom-theme-color-1 !important;
+}
+
+.navbar-expand .navbar-nav .dropdown-menu {
+  border-radius: $custom-card-radius;
+}
+
 .avatar {
-  margin: 7px;
+  margin-top: 7px;
 }
 
 .brand-logo {

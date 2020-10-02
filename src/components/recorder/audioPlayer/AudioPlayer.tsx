@@ -1,8 +1,9 @@
-import React, {Fragment, useEffect, useRef} from 'react';
+import React, {Fragment, useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {v4 as uuidv4} from 'uuid';
 import './AudioPlayer.css';
+import classList from '../../../shared/utils/classList';
 
 /**
  * TODO: Refactor component.
@@ -14,7 +15,10 @@ import './AudioPlayer.css';
  * Create a totally independent component to publish the package in npm.
  */
 
-const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDuration, minLapse, maxLapse, stoppedAmplitude, colorPlaying, colorStopped, buttonSize}) => {
+const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDuration, minLapse, maxLapse, stoppedAmplitude, colorPlaying, colorStopped, buttonSize, recorderMode}) => {
+  const [typedText, setTypedText] = React.useState('');
+  const [textAnimationFinished, setTextAnimationFinished] = React.useState(true);
+
   const canvasRef = useRef(null);
   const buttonCanvasRef = useRef(null);
   const playingRef = useRef(false); // workaround, using ref as it is updated the whole time
@@ -145,6 +149,25 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
     ctx.stroke();*/
   }
 
+  const startTextAnimation = () => {
+    setTextAnimationFinished(false);
+    typeText(0, '')
+  }
+
+  const typeText = (i, textWritten) => {
+    const text = 'Login to use me! :)';
+    if (i < text.length) {
+      textWritten = textWritten + text.charAt(i);
+      setTypedText(textWritten);
+      i++;
+      setTimeout(() => {
+        typeText(i, textWritten)
+      }, 20);
+    } else {
+      setTextAnimationFinished(true);
+    }
+  }
+
   window.addEventListener('resize', drawButtonCanvas);
 
   return (
@@ -160,8 +183,13 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
       <div style={{height: buttonSize + 'px', width: buttonSize, color: playing ? 'black' : 'white'}} className='button-label'>
         { playing ? '\n ≧◡≦' : '≖◡≖' }
       </div>
-      <button onClick={() => !playing && onPlayCallback()}
+      <button onClick={() => !playing && recorderMode ? onPlayCallback() : (textAnimationFinished && startTextAnimation())}
               className='audio-player-invisible-button'/>
+      <div className='audio-player-login-message-container'>
+        <div className={classList('audio-player-login-message', textAnimationFinished ? 'fadeOut':'')}>
+          {typedText}
+        </div>
+      </div>
     </div>
   );
 };
@@ -174,7 +202,8 @@ AudioPlayer.defaultProps = {
   stoppedAmplitude: 20,  // Amplitude of the beat when the player is stopped
   colorPlaying: '#FFB485',
   colorStopped: '#66A3CC',
-  buttonSize: 50
+  buttonSize: 50,
+  recorderMode: true
 };
 
 AudioPlayer.propTypes = {

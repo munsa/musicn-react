@@ -12,8 +12,22 @@
   color: black;
 }
 
+.dropdown-item:hover {
+  background-color: transparent !important;
+  color: #3D87B8 !important;
+}
+
+.dropdown-item:active {
+  background-color: transparent !important;
+  color: #ff6201 !important;
+}
+
+.navbar-expand .navbar-nav .dropdown-menu {
+  border-radius: 16px;
+}
+
 .avatar {
-  margin: 7px;
+  margin-top: 7px;
 }
 
 .brand-logo {

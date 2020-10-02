@@ -63,3 +63,20 @@
   transform: translate(-50%, -50%);
   z-index: 2;
 }
+
+.audio-player-login-message-container {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  pointer-events: none;
+  transform: rotate(20deg);
+}
+
+.audio-player-login-message {
+  position: absolute;
+  top: 0.8rem;
+  left: calc(50% + 1.2rem);
+  font-family: "Lucida Console", Courier, monospace;
+  font-size: calc(0.5rem + 1vw);
+}

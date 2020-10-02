@@ -10,16 +10,6 @@ const Header = ({playing}) => {
     <div className='header-container'>
       <img className={classList('city-image', playing ? 'fadeIn':'fadeOut')} src={CityDayImage}/>
       <img className={classList('city-image', playing ? 'fadeOut':'fadeIn')} src={CityNightImage}/>
-      {/*
-      <div className='header-jumbotron'>
-        <div>
-          Click on the happy sun and
-        </div>
-        <div>
-          start discovering all the music you like!
-        </div>
-      </div>
-      */}
     </div>
   );
 }

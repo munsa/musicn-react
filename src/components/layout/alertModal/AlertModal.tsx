@@ -6,6 +6,8 @@ import {AlertType} from '../../../shared/constants/constants';
 import classList from '../../../shared/utils/classList';
 import {removeAlert} from '../../../actions/alert';
 import PropTypes from "prop-types";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faTimes} from '@fortawesome/free-solid-svg-icons';
 
 const AlertModal = ({alerts, removeAlert}) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -49,7 +51,7 @@ const AlertModal = ({alerts, removeAlert}) => {
                 {a.msg}
               </div>
               <a onClick={() => removeAlert(a.id)}>
-                <i className={classList('fa', 'fa-times', 'close-modal-button')}/>
+                <FontAwesomeIcon icon={faTimes} className='close-modal-button'/>
               </a>
             </div>
           ))}

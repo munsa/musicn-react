@@ -1,0 +1,31 @@
+@import '../../../shared/theme/theme-constants';
+
+.landing-container {
+  position: relative;
+  height: 100%;
+}
+
+.landing-city-image {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+  border-bottom: 1px solid #6986a1;
+}
+
+.landing-carousel {
+  height: 100%;
+}
+
+.landing-carousel .carousel-item {
+  height: 100%;
+}
+
+.landing-item-container {
+  position: relative;
+  height: 100%;
+}
+
+
+
+

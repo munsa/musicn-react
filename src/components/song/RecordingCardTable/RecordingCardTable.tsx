@@ -4,7 +4,7 @@ import {Col, Row} from 'react-bootstrap';
 import RecordingCard from '../RecordingCard/RecordingCard';
 import './RecordingCardTable.css';
 import LoadMoreButton from '../../../shared/lib/Button/LoadMoreButton/LoadMoreButton';
-import Spinner from '../../../shared/lib/Spinner/Spinner';
+import Spinner from '../../../shared/lib/Loaders/Spinner/Spinner';
 
 const RecordingCardTable = ({recordings, recordingsLoading, maxRecordingsCount, onLoadMoreCallback}) => {
 
