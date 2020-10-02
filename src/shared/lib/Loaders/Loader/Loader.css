@@ -6,6 +6,7 @@
   text-align: center;
   border-radius: 16px;
   top: 0;
+  z-index: 4;
 }
 
 .loader {

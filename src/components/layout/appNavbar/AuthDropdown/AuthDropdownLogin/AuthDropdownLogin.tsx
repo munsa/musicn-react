@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import './AuthDropdownLogin.css';
 import {Button, Form, InputGroup} from 'react-bootstrap';
@@ -8,23 +8,31 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faKey, faUser} from '@fortawesome/free-solid-svg-icons';
 import FormControlFeedback from '../../../../../shared/lib/Form/FormControlFeedback/FormControlFeedback';
 import {setFormValidationMessages} from '../../../../../shared/utils/validation';
-import {EVENT_SHOW_REGISTER_ERRORS} from '../AuthDropdownRegister/AuthDropdownRegister';
+
+export const EVENT_SHOW_LOGIN_ERRORS = 'EVENT_SHOW_LOGIN_ERRORS';
+
+const formInitialState = {
+  username: 'munsa',
+  password: 'clapas08'
+};
+const formErrorsInitialState = {
+  username: '',
+  password: ''
+};
 
 const AuthDropdownLogin = ({handleModeChange, handleSubmit}) => {
-  const formInitialState = {
-    username: '',
-    password: ''
-  };
-  const formErrorsInitialState = {
-    username: '',
-    password: ''
-  };
   const [formData, setFormData] = useState(formInitialState);
   const [validated, setValidated] = useState(false);
   const [errors, setErrors] = useState(formErrorsInitialState);
+  const formRef = useRef(null);
   useEffect(() => {
-    let token = PubSub.subscribe(EVENT_SHOW_REGISTER_ERRORS, (data => {
-      console.log(data);
+    let token = PubSub.subscribe(EVENT_SHOW_LOGIN_ERRORS, ((name, errors) => {
+      errors.forEach(e => {
+        formRef.current[e.param].setCustomValidity(e.msg);
+      });
+
+      setFormData({...formData, password: ''});
+      setErrorMessages(formRef.current);
     }));
     return () => {
       PubSub.unsubscribe(token);
@@ -46,8 +54,8 @@ const AuthDropdownLogin = ({handleModeChange, handleSubmit}) => {
   const onChange = (event) => {
     setFormData({...formData, [event.target.name]: event.target.value.trim()});
     setErrors({...errors, [event.target.name]: ''});
+    setValidated(false);
   }
-
 
   const onSubmit = async (event) => {
     const form = event.currentTarget;
@@ -63,18 +71,20 @@ const AuthDropdownLogin = ({handleModeChange, handleSubmit}) => {
 
   const validateForm = (form) => {
     setFormValidationMessages(form);
+    setErrorMessages(form);
+    setValidated(true);
+  }
 
+  const setErrorMessages = (form) => {
     setErrors({
       username: form.usernameControl.validationMessage,
       password: form.passwordControl.validationMessage
     });
-
-    setValidated(true);
   }
 
   return (
     <div className='auth-dropdown-form-container'>
-      <Form noValidate validated={validated} onSubmit={onSubmit}>
+      <Form noValidate validated={validated} onSubmit={onSubmit} ref={formRef}>
         <Form.Group controlId="usernameControl">
           <InputGroup>
             <InputGroup.Prepend>
@@ -87,7 +97,6 @@ const AuthDropdownLogin = ({handleModeChange, handleSubmit}) => {
                           value={username}
                           onChange={onChange}
                           required
-                          minLength={3}
             />
             <FormControlFeedback feedback={errors.username}/>
           </InputGroup>
@@ -104,7 +113,6 @@ const AuthDropdownLogin = ({handleModeChange, handleSubmit}) => {
                           value={password}
                           onChange={onChange}
                           required
-                          minLength={6}
             />
             <FormControlFeedback feedback={errors.password}/>
           </InputGroup>

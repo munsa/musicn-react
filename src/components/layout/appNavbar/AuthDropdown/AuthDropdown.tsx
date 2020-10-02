@@ -14,7 +14,7 @@ export const MODE_REGISTER = 'mode_register';
 export const EVENT_SHOW_AUTH_DROPDOWN = 'EVENT_SHOW_AUTH_DROPDOWN';
 
 const AuthDropdown = ({authLoading, login, register}) => {
-  const [mode, setMode] = useState(MODE_REGISTER);
+  const [mode, setMode] = useState(MODE_LOGIN);
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     let token = PubSub.subscribe(EVENT_SHOW_AUTH_DROPDOWN, showAuthDropdown);

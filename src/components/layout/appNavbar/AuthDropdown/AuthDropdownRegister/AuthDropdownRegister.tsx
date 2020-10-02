@@ -10,10 +10,10 @@ import FormControlFeedback from '../../../../../shared/lib/Form/FormControlFeedb
 export const EVENT_SHOW_REGISTER_ERRORS = 'EVENT_SHOW_REGISTER_ERRORS';
 
 const formInitialState = {
-  username: 'munsa',
-  email: 'mmonserrat90@gmail.com',
-  password: 'clapas08',
-  passwordConfirmation: 'clapas08'
+  username: '',
+  email: '',
+  password: '',
+  passwordConfirmation: ''
 };
 const formErrorsInitialState = {
   username: '',
@@ -55,6 +55,7 @@ const AuthDropdownRegister = ({handleModeChange, handleSubmit}) => {
   const onChange = (event) => {
     setFormData({...formData, [event.target.name]: event.target.value.trim()});
     setErrors({...errors, [event.target.name]: ''});
+    setValidated(false);
   }
 
   const onSubmit = async (event) => {
