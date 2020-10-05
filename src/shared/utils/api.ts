@@ -6,11 +6,12 @@ import {setAlert} from '../../actions/alert';
 import {AlertType} from '../constants/constants';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
     'Content-Type': 'application/json'
   }
 });
+
 
 /**
  intercept any error responses from the api
