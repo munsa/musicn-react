@@ -1,8 +1,9 @@
 import React, {Fragment, useEffect, useRef, useState} from 'react';
 import {GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
-import {GOOGLE_MAPS_API_KEY, mapStyleTheme} from '../../shared/config/googleMapsConfig';
 import './RecordingMap.css';
 import RecordingMarker from './marker/RecordingMarker';
+import {mapStyleTheme} from '../../shared/theme/custom-google-maps'
+
 
 const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
   const [openedRecording, setOpenedRecording] = useState(undefined);
@@ -40,7 +41,7 @@ const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
   return (
     <Fragment>
       <LoadScript
-        googleMapsApiKey={GOOGLE_MAPS_API_KEY}
+        googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
       >
         <GoogleMap
           mapContainerStyle={{width: '100%', height: '100%'}}
