@@ -12,8 +12,8 @@ import {setFormValidationMessages} from '../../../../../shared/utils/validation'
 export const EVENT_SHOW_LOGIN_ERRORS = 'EVENT_SHOW_LOGIN_ERRORS';
 
 const formInitialState = {
-  username: 'munsa',
-  password: 'clapas08'
+  username: '',
+  password: ''
 };
 const formErrorsInitialState = {
   username: '',
