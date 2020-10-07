@@ -1,6 +1,5 @@
 import {ActionProfileType, ActionRecordingType} from './type-enum';
-import api from "../shared/utils/api";
-import downloadAudio from '../shared/utils/AudioUtils';
+import api from '../shared/utils/api';
 
 export const sendRecording = (audioBlob, geolocation) => async (dispatch, getState) => {
   try {
@@ -8,13 +7,11 @@ export const sendRecording = (audioBlob, geolocation) => async (dispatch, getSta
       type: ActionRecordingType.SEND_RECORDING
     });
 
-    downloadAudio(audioBlob);
-
     const formData = new FormData();
     formData.append('audio', audioBlob, 'blob');
     formData.append('geolocation', JSON.stringify(geolocation));
 
-    const config = { headers : { 'Content-Type': 'multipart/form-data' }};
+    const config = {headers: {'Content-Type': 'multipart/form-data'}};
     const res = await api.post('/recording/identify', formData, config);
 
     dispatch({

@@ -36,15 +36,6 @@ const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, development
         analyser.fftSize = 256;
         source.connect(analyser);
 
-        audioContext.destination.channelCount = 2;
-
-        // Filter
-        /*let filter = audioContext.createBiquadFilter();
-        analyser.connect(filter);
-        //filter.connect(audioContext.destination);
-        filter.type = 'highpass';
-        filter.frequency.value = 1100;*/
-
         // Start recording
         mediaRecorder.start(10);
         console.log('Start recording');

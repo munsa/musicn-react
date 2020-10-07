@@ -38,6 +38,7 @@
   background-color: white;
   position: absolute;
   top: 0;
+  pointer-events: none;
 }
 
 .result-modal-animation {
