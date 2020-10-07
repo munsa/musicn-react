@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Landing.css';
 import PubSub from 'pubsub-js';
 import CityNightImage from '../../../shared/assets/image/city_night1920.png';
@@ -11,8 +11,12 @@ import {EVENT_SHOW_AUTH_DROPDOWN} from '../appNavbar/AuthDropdown/AuthDropdown';
 
 const Landing = ({slideDuration}) => {
   const [index, setIndex] = useState(-1);
+  const timeoutId = useRef(null);
   useEffect(() => {
     nextSlide(0);
+    return () => {
+      clearTimeout(timeoutId.current);
+    }
   }, [])
 
   const getStarted = () => {
@@ -20,20 +24,17 @@ const Landing = ({slideDuration}) => {
   }
 
   const nextSlide = (index) => {
+    let timer: NodeJS.Timeout;
     setIndex(index)
-    setTimeout(() => {
+    timer = setTimeout(() => {
       const i = index < 3 ? index + 1 : 0;
-      console.log(i);
       nextSlide(i);
-    }, slideDuration)
+    }, slideDuration);
+    timeoutId.current = timer;
   }
 
   /**
-   * Controls are disabled because the Carousel component doesnt stop the timer if you change the slide.
-   * ie: If the interval is 5000 and the active slide is 1.
-   * If you move to the next slide at the moment 3000, slide 2 will only show for 2000ms.
-   * This makes very unpredictable when to initiate the fade out and causes errors.
-   * TODO: Make a custom Carousel
+   * TODO: Improve custom carousel with arrows for next and previous slides + bottom controls
    */
   return (
     <div className='landing-container' key={index}>
