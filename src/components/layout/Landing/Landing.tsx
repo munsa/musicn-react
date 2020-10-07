@@ -32,25 +32,19 @@ const Landing = ({slideDuration}) => {
     timeoutId.current = timer;
   }
 
+  const slides = [
+    <Slide1 getStartedCallback={getStarted}/>,
+    <Slide2 getStartedCallback={getStarted}/>,
+    <Slide3 getStartedCallback={getStarted}/>,
+    <Slide4 getStartedCallback={getStarted}/>
+  ]
   /**
    * TODO: Improve custom carousel with arrows for next and previous slides + bottom controls
    */
   return (
     <div className='landing-container' key={index}>
       <img className={'landing-city-image'} src={CityNightImage} alt='Background city'/>
-      {index === 0 &&
-      <Slide1 getStartedCallback={() => getStarted()}/>
-      }
-      {index === 1 &&
-      <Slide2 getStartedCallback={() => getStarted()}/>
-      }
-      {index === 2 &&
-      <Slide3
-        getStartedCallback={() => getStarted()}/>
-      }
-      {index === 3 &&
-      <Slide4 getStartedCallback={() => getStarted()}/>
-      }
+      {slides[index]}
     </div>
   )
 }
