@@ -7,13 +7,13 @@ import classList from '../../../../../shared/utils/classList';
 const Slide3 = ({getStartedCallback, animation}) => {
   return (
     <Row className='landing-item-container'>
-      <Col xl={{span: 2, order: 1}} xs={{span: 12, order: 2}}>
+      <Col xl={{span: 3, order: 1}} xs={{span: 12, order: 2}}>
         <img className={classList('landing-item-image left', animation)}
              src={Girl1}
              alt="First girl"
         />
       </Col>
-      <Col xl={{span: 10, order: 2}} xs={{span: 12, order: 1}}>
+      <Col xl={{span: 9, order: 2}} xs={{span: 12, order: 1}}>
         <div
           className={classList('landing-item-text right', animation)}>
           <h3>New in town?</h3>

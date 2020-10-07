@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Landing.css';
 import PubSub from 'pubsub-js';
 import CityNightImage from '../../../shared/assets/image/city_night1920.png';
-import {Carousel} from 'react-bootstrap';
 import LandingSlide from './LandingSlide/LandingSlide';
 import Slide1 from './LandingSlide/Slide1/Slide1';
 import Slide2 from './LandingSlide/Slide2/Slide2';
@@ -11,14 +10,22 @@ import Slide4 from './LandingSlide/Slide4/Slide4';
 import {EVENT_SHOW_AUTH_DROPDOWN} from '../appNavbar/AuthDropdown/AuthDropdown';
 
 const Landing = ({slideDuration}) => {
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
+  const [index, setIndex] = useState(-1);
+  useEffect(() => {
+    nextSlide(0);
+  }, [])
 
   const getStarted = () => {
     PubSub.publish(EVENT_SHOW_AUTH_DROPDOWN, true);
+  }
+
+  const nextSlide = (index) => {
+    setIndex(index)
+    setTimeout(() => {
+      const i = index < 3 ? index + 1 : 0;
+      console.log(i);
+      nextSlide(i);
+    }, slideDuration)
   }
 
   /**
@@ -29,42 +36,32 @@ const Landing = ({slideDuration}) => {
    * TODO: Make a custom Carousel
    */
   return (
-    <div className='landing-container'>
-      <img className={'landing-city-image'} src={CityNightImage}/>
-      <Carousel activeIndex={index}
-                onSelect={handleSelect}
-                className='landing-carousel'
-                slide={false}
-                interval={slideDuration}
-                pause={false}
-                controls={false}
-                indicators={false}
-                keyboard={false}>
-        <Carousel.Item>
-          <LandingSlide Slide={Slide1}
-                        active={index === 0}
-                        getStartedCallback={() => getStarted()}
-                        slideDuration={slideDuration}/>
-        </Carousel.Item>
-        <Carousel.Item>
-          <LandingSlide Slide={Slide2}
-                        active={index === 1}
-                        getStartedCallback={() => getStarted()}
-                        slideDuration={slideDuration}/>
-        </Carousel.Item>
-        <Carousel.Item>
-          <LandingSlide Slide={Slide3}
-                        active={index === 2}
-                        getStartedCallback={() => getStarted()}
-                        slideDuration={slideDuration}/>
-        </Carousel.Item>
-        <Carousel.Item>
-          <LandingSlide Slide={Slide4}
-                        active={index === 3}
-                        getStartedCallback={() => getStarted()}
-                        slideDuration={slideDuration}/>
-        </Carousel.Item>
-      </Carousel>
+    <div className='landing-container' key={index}>
+      <img className={'landing-city-image'} src={CityNightImage} alt='Background city'/>
+      {index === 0 &&
+      <LandingSlide Slide={Slide1}
+                    active={index === 0}
+                    getStartedCallback={() => getStarted()}
+                    slideDuration={slideDuration}/>
+      }
+      {index === 1 &&
+      <LandingSlide Slide={Slide2}
+                    active={index === 1}
+                    getStartedCallback={() => getStarted()}
+                    slideDuration={slideDuration}/>
+      }
+      {index === 2 &&
+      <LandingSlide Slide={Slide3}
+                    active={index === 2}
+                    getStartedCallback={() => getStarted()}
+                    slideDuration={slideDuration}/>
+      }
+      {index === 3 &&
+      <LandingSlide Slide={Slide4}
+                    active={index === 3}
+                    getStartedCallback={() => getStarted()}
+                    slideDuration={slideDuration}/>
+      }
     </div>
   )
 }
