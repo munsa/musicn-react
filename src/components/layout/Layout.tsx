@@ -12,11 +12,9 @@ import './Layout.css';
 const App = ({auth: {loading, isAuthenticated, user}}) => {
   return (
     <div className='app'>
-
       <AudioRecorder recorderMode={!loading && isAuthenticated && user}/>
       <AlertModal/>
       <div className='app-header'>
-
         <AppNavbar/>
       </div>
       <div className='app-content'>
