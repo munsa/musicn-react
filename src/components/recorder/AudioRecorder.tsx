@@ -19,7 +19,13 @@ const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, development
       let blob = await fetch("./static/media/dev-mode-sample.wav").then(r => r.blob());
       sendRecording(blob, currentPosition);
     } else {
-      navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
+      const constraints = {
+        audio: {
+          noiseSuppression: false,
+          echoCancellation: false
+        }
+      }
+      navigator.mediaDevices.getUserMedia(constraints).then(stream => {
         let mediaRecorder = new MediaRecorder(stream);
         setAudioChunks([]);
 
@@ -29,6 +35,15 @@ const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, development
         const analyser = audioContext.createAnalyser();
         analyser.fftSize = 256;
         source.connect(analyser);
+
+        audioContext.destination.channelCount = 2;
+
+        // Filter
+        /*let filter = audioContext.createBiquadFilter();
+        analyser.connect(filter);
+        //filter.connect(audioContext.destination);
+        filter.type = 'highpass';
+        filter.frequency.value = 1100;*/
 
         // Start recording
         mediaRecorder.start(10);
@@ -42,7 +57,7 @@ const AudioRecorder = ({setRecordingData, stopPlayer, sendRecording, development
 
         setTimeout(() => {
           mediaRecorder.stop();
-        }, 5000);
+        }, 8000);
       });
     }
   };

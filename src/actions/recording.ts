@@ -1,11 +1,14 @@
 import {ActionProfileType, ActionRecordingType} from './type-enum';
 import api from "../shared/utils/api";
+import downloadAudio from '../shared/utils/AudioUtils';
 
 export const sendRecording = (audioBlob, geolocation) => async (dispatch, getState) => {
   try {
     dispatch({
       type: ActionRecordingType.SEND_RECORDING
     });
+
+    downloadAudio(audioBlob);
 
     const formData = new FormData();
     formData.append('audio', audioBlob, 'blob');
