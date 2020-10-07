@@ -11,7 +11,7 @@ const Footer = () => {
     <div className='footer'>
       <div className='footer-content'>
         <div className='footer-message'>
-          <FontAwesomeIcon icon={faWrench}/> WildTunes is in continuous development. This is just a demo. Click on the stack button to see the source code.
+          <FontAwesomeIcon icon={faWrench}/> WildTunes is in construction. This is a demo. Click on the stack button to see the source code.
         </div>
         <div className='stack-button'>
           <a href='https://github.com/munsa' target="_blank" rel="noopener noreferrer">

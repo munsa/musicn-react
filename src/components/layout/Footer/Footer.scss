@@ -50,6 +50,30 @@
   90% { opacity: 0; }
   100% { opacity: 1; }
 }
+@-o-keyframes flickerAnimation{
+  0% { opacity: 1; }
+  15% { opacity: 1; }
+  25% { opacity: 0; }
+  75% { opacity: 0; }
+  90% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes flickerAnimation{
+  0% { opacity: 1; }
+  15% { opacity: 1; }
+  25% { opacity: 0; }
+  75% { opacity: 0; }
+  90% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-webkit-keyframes flickerAnimation{
+  0% { opacity: 1; }
+  15% { opacity: 1; }
+  25% { opacity: 0; }
+  75% { opacity: 0; }
+  90% { opacity: 0; }
+  100% { opacity: 1; }
+}
 
 .animate-item {
   opacity: 0;
