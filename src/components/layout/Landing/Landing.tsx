@@ -2,11 +2,10 @@ import React, {useEffect, useRef, useState} from 'react';
 import './Landing.css';
 import PubSub from 'pubsub-js';
 import CityNightImage from '../../../shared/assets/image/city_night1920.png';
-import LandingSlide from './LandingSlide/LandingSlide';
-import Slide1 from './LandingSlide/Slide1/Slide1';
-import Slide2 from './LandingSlide/Slide2/Slide2';
-import Slide3 from './LandingSlide/Slide3/Slide3';
-import Slide4 from './LandingSlide/Slide4/Slide4';
+import Slide1 from './Slide1/Slide1';
+import Slide2 from './Slide2/Slide2';
+import Slide3 from './Slide3/Slide3';
+import Slide4 from './Slide4/Slide4';
 import {EVENT_SHOW_AUTH_DROPDOWN} from '../appNavbar/AuthDropdown/AuthDropdown';
 
 const Landing = ({slideDuration}) => {
@@ -40,28 +39,17 @@ const Landing = ({slideDuration}) => {
     <div className='landing-container' key={index}>
       <img className={'landing-city-image'} src={CityNightImage} alt='Background city'/>
       {index === 0 &&
-      <LandingSlide Slide={Slide1}
-                    active={index === 0}
-                    getStartedCallback={() => getStarted()}
-                    slideDuration={slideDuration}/>
+      <Slide1 getStartedCallback={() => getStarted()}/>
       }
       {index === 1 &&
-      <LandingSlide Slide={Slide2}
-                    active={index === 1}
-                    getStartedCallback={() => getStarted()}
-                    slideDuration={slideDuration}/>
+      <Slide2 getStartedCallback={() => getStarted()}/>
       }
       {index === 2 &&
-      <LandingSlide Slide={Slide3}
-                    active={index === 2}
-                    getStartedCallback={() => getStarted()}
-                    slideDuration={slideDuration}/>
+      <Slide3
+        getStartedCallback={() => getStarted()}/>
       }
       {index === 3 &&
-      <LandingSlide Slide={Slide4}
-                    active={index === 3}
-                    getStartedCallback={() => getStarted()}
-                    slideDuration={slideDuration}/>
+      <Slide4 getStartedCallback={() => getStarted()}/>
       }
     </div>
   )
