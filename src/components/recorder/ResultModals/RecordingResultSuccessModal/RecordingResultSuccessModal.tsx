@@ -1,23 +1,24 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import './RecordingResultModal.css';
+import './RecordingResultSuccessModal.css';
 import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalHeader from 'react-bootstrap/ModalHeader';
-import {ActionRecordingType} from '../../../../actions/type-enum';
 import PropTypes from 'prop-types';
 import RecordingCard from '../../../song/RecordingCard/RecordingCard';
 import classList from '../../../../shared/utils/classList';
 
-const RecordingResultModal = ({recording, recordingFound, removeRecording}) => {
+export const EVENT_SHOW_RESULT_SUCCESS_MODAL = 'EVENT_SHOW_RESULT_SUCCESS_MODAL';
+
+const RecordingResultSuccessModal = ({recording, removeRecording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [typedText, setTypedText] = React.useState('');
   const [animationFinished, setAnimationFinished] = React.useState(false);
   useEffect(() => {
-    if (recordingFound) {
+    if (false) {
       showModal();
     }
-  }, [recordingFound]);
+  }, []);
 
   const showModal = () => {
     setIsOpen(true);
@@ -52,7 +53,7 @@ const RecordingResultModal = ({recording, recordingFound, removeRecording}) => {
       <ModalHeader closeButton={true}/>
       <ModalBody>
         <RecordingCard recording={recording}/>
-        <div className={classList('result-modal-appeared-container', animationFinished ? 'fadeOut':'')}>
+        <div className={classList('result-modal-appeared-container', animationFinished ? 'fadeOut' : '')}>
           <div className='result-modal-animation'
                key={typedText}>{typedText}</div>
         </div>
@@ -61,19 +62,13 @@ const RecordingResultModal = ({recording, recordingFound, removeRecording}) => {
   );
 };
 
-RecordingResultModal.propTypes = {
+RecordingResultSuccessModal.propTypes = {
   recording: PropTypes.object,
-  recordingFound: PropTypes.bool,
-  removeRecording: PropTypes.func.isRequired
+  removeRecording: PropTypes.func
 }
 
 const mapStateToProps = state => ({
-  recording: state.recording.result,
-  recordingFound: state.recording.found,
+  recording: state.recording.current.result,
 });
 
-const mapDispatchToProps = dispatch => ({
-  removeRecording: () => dispatch({type: ActionRecordingType.CLOSE_RECORDING_RESULT_MODAL})
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(RecordingResultModal);
+export default connect(mapStateToProps)(RecordingResultSuccessModal);

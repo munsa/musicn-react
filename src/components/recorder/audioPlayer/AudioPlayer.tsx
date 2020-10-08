@@ -35,6 +35,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
   }, [amplitudes]);
 
   useEffect(() => {
+    console.log('playing: ' + playing);
     playingRef.current = playing;
     drawButtonCanvas();
     if (playing) {
@@ -211,7 +212,7 @@ AudioPlayer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  playing: state.recording.playing
+  playing: state.recording.current.playing
 })
 
 export default connect(mapStateToProps)(AudioPlayer);

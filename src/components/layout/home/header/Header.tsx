@@ -15,7 +15,7 @@ const Header = ({playing}) => {
 }
 
 const mapStateToProps = state => ({
-  playing: state.recording.playing
+  playing: state.recording.current.playing
 });
 
 export default connect(mapStateToProps)(Header);

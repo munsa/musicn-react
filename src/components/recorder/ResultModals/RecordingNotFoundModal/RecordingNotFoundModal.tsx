@@ -1,20 +1,20 @@
 import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
 import './RecordingNotFoundModal.css';
 import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalHeader from 'react-bootstrap/ModalHeader';
-import {ActionRecordingType} from '../../../../actions/type-enum';
 import SadGif from '../../../../shared/assets/gif/kawaii-sad.gif';
 import PropTypes from 'prop-types';
 
-const RecordingNotFoundModal = ({recording, removeRecording}) => {
+export const EVENT_SHOW_RESULT_NOT_FOUND_MODAL = 'EVENT_SHOW_RESULT_NOT_FOUND_MODAL';
+
+const RecordingNotFoundModal = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   useEffect(() => {
-    if (recording && recording.found === false) {
+    if (false) {
       showModal();
     }
-  }, [recording]);
+  }, []);
 
   const showModal = () => {
     setIsOpen(true);
@@ -22,7 +22,6 @@ const RecordingNotFoundModal = ({recording, removeRecording}) => {
 
   const hideModal = () => {
     setIsOpen(false);
-    removeRecording();
   };
 
   return (
@@ -48,16 +47,7 @@ const RecordingNotFoundModal = ({recording, removeRecording}) => {
 };
 
 RecordingNotFoundModal.propTypes = {
-  recording: PropTypes.object.isRequired,
-  removeRecording: PropTypes.func.isRequired
+  removeRecording: PropTypes.func
 }
 
-const mapStateToProps = state => ({
-  recording: state.recording,
-});
-
-const mapDispatchToProps = dispatch => ({
-  removeRecording: () => dispatch({type: ActionRecordingType.CLOSE_RECORDING_RESULT_MODAL})
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(RecordingNotFoundModal);
+export default RecordingNotFoundModal;
