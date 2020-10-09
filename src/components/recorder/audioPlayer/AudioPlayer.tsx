@@ -183,7 +183,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
       <div style={{height: buttonSize + 'px', width: buttonSize, color: playing ? 'black' : 'white'}} className='button-label'>
         { playing ? '\n ≧◡≦' : '≖◡≖' }
       </div>
-      <button onClick={() => !playing && recorderMode ? onPlayCallback() : (textAnimationFinished && startTextAnimation())}
+      <button onClick={() => recorderMode && !playing ? onPlayCallback() : (!recorderMode && textAnimationFinished && startTextAnimation())}
               className='audio-player-invisible-button'/>
       <div className='audio-player-login-message-container'>
         <div className={classList('audio-player-login-message', textAnimationFinished ? 'fadeOut':'')}>
