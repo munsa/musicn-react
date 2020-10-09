@@ -35,7 +35,6 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
   }, [amplitudes]);
 
   useEffect(() => {
-    console.log('playing: ' + playing);
     playingRef.current = playing;
     drawButtonCanvas();
     if (playing) {

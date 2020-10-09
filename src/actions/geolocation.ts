@@ -15,7 +15,7 @@ export const getCurrentGeolocationPosition = () => dispatch => {
   }
 
   const geolocationError = err => {
-    console.log(err.toString());
+    console.log('Geolocation error: ' + err.message);
     // Do nothing
   }
 

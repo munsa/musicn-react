@@ -5,14 +5,18 @@ import ModalBody from 'react-bootstrap/ModalBody';
 import ModalHeader from 'react-bootstrap/ModalHeader';
 import SadGif from '../../../../shared/assets/gif/kawaii-sad.gif';
 import PropTypes from 'prop-types';
+import PubSub from 'pubsub-js';
 
 export const EVENT_SHOW_RESULT_NOT_FOUND_MODAL = 'EVENT_SHOW_RESULT_NOT_FOUND_MODAL';
 
 const RecordingNotFoundModal = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   useEffect(() => {
-    if (false) {
+    let token = PubSub.subscribe(EVENT_SHOW_RESULT_NOT_FOUND_MODAL, () => {
       showModal();
+    });
+    return () => {
+      PubSub.unsubscribe(token);
     }
   }, []);
 

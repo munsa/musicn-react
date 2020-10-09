@@ -7,16 +7,20 @@ import ModalHeader from 'react-bootstrap/ModalHeader';
 import PropTypes from 'prop-types';
 import RecordingCard from '../../../song/RecordingCard/RecordingCard';
 import classList from '../../../../shared/utils/classList';
+import PubSub from 'pubsub-js';
 
 export const EVENT_SHOW_RESULT_SUCCESS_MODAL = 'EVENT_SHOW_RESULT_SUCCESS_MODAL';
 
-const RecordingResultSuccessModal = ({recording, removeRecording}) => {
+const RecordingResultSuccessModal = ({recording}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [typedText, setTypedText] = React.useState('');
   const [animationFinished, setAnimationFinished] = React.useState(false);
   useEffect(() => {
-    if (false) {
+    let token = PubSub.subscribe(EVENT_SHOW_RESULT_SUCCESS_MODAL, () => {
       showModal();
+    });
+    return () => {
+      PubSub.unsubscribe(token);
     }
   }, []);
 
@@ -28,7 +32,6 @@ const RecordingResultSuccessModal = ({recording, removeRecording}) => {
 
   const hideModal = () => {
     setIsOpen(false);
-    removeRecording();
   };
 
   const typeText = (i, textWritten) => {
@@ -63,8 +66,7 @@ const RecordingResultSuccessModal = ({recording, removeRecording}) => {
 };
 
 RecordingResultSuccessModal.propTypes = {
-  recording: PropTypes.object,
-  removeRecording: PropTypes.func
+  recording: PropTypes.object
 }
 
 const mapStateToProps = state => ({

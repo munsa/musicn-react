@@ -37,11 +37,11 @@ export const sendSample = (audioChunks, geolocation, isLastTry) => async (dispat
         payload: res.data
       });
       PubSub.publish(EVENT_SHOW_RESULT_SUCCESS_MODAL);
-      console.log('result success');
     } else {
-      // Result not found
-      PubSub.publish(EVENT_SHOW_RESULT_NOT_FOUND_MODAL);
-      console.log('result fail');
+      //Result not found
+      if(isLastTry) {
+        PubSub.publish(EVENT_SHOW_RESULT_NOT_FOUND_MODAL);
+      }
     }
 
     // Add recording to profile if the logged user profile is open

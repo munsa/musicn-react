@@ -29,7 +29,7 @@ const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
   };
 
   const onBoundsChanged = () => {
-    console.log('change');
+    console.log('bounds changed');
   }
 
   const onMarkerClickCallback = (r) => {

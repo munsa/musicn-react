@@ -1,22 +1,34 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useEffect, useRef, useState} from 'react';
 import {connect} from 'react-redux';
 import AudioPlayer from './audioPlayer/AudioPlayer';
-import RecordingResultModal from './ResultModals/RecordingResultSuccessModal/RecordingResultSuccessModal';
-import RecordingNotFoundModal from "./ResultModals/RecordingNotFoundModal/RecordingNotFoundModal";
+import RecordingResultModal, {EVENT_SHOW_RESULT_SUCCESS_MODAL} from './ResultModals/RecordingResultSuccessModal/RecordingResultSuccessModal';
+import RecordingNotFoundModal from './ResultModals/RecordingNotFoundModal/RecordingNotFoundModal';
 import {sendSample, startRecording} from '../../actions/recording';
 import {getCurrentGeolocationPosition} from '../../actions/geolocation';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import PubSub from 'pubsub-js';
 
 declare let MediaRecorder: any;
 
-const AudioRecorder = ({setRecordingData, startRecording, sendSample, developmentMode, currentPosition, getCurrentGeolocationPosition, recorderMode, sampleDuration, maxSamples}) => {
+const AudioRecorder = ({startRecording, sendSample, developmentMode, currentPosition, getCurrentGeolocationPosition, recorderMode, sampleDuration, maxSamples}) => {
   const [audioChunks, setAudioChunks] = useState([]);
   const [amplitudes, setAmplitudes] = useState(new Uint8Array());
+  const timeoutId = useRef(null);
+  const stream = useRef(null);
+  const audioContext = useRef(null);
+  useEffect(() => {
+    let token = PubSub.subscribe(EVENT_SHOW_RESULT_SUCCESS_MODAL, () => {
+      stopRecording()
+    });
+    return () => {
+      PubSub.unsubscribe(token);
+    }
+  }, [])
 
   const handleRecorder = async () => {
     getCurrentGeolocationPosition();
     if (developmentMode) {
-      let blob = await fetch("./static/media/dev-mode-sample.wav").then(r => r.blob());
+      let blob = await fetch('./static/media/dev-mode-sample.wav').then(r => r.blob());
       sendSample(blob, currentPosition);
     } else {
       const constraints = {
@@ -25,26 +37,26 @@ const AudioRecorder = ({setRecordingData, startRecording, sendSample, developmen
           echoCancellation: false
         }
       }
-      navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-        let mediaRecorder = new MediaRecorder(stream);
+      navigator.mediaDevices.getUserMedia(constraints).then(s => {
+        stream.current = s;
+        let mediaRecorder = new MediaRecorder(stream.current);
         setAudioChunks([]);
 
         // Initialize audio context
-        const audioContext = new AudioContext();
-        const source = audioContext.createMediaStreamSource(stream);
-        const analyser = audioContext.createAnalyser();
+        audioContext.current = new AudioContext();
+        const source = audioContext.current.createMediaStreamSource(stream.current);
+        const analyser = audioContext.current.createAnalyser();
         analyser.fftSize = 256;
         source.connect(analyser);
 
         // Start recording
-        mediaRecorder.start(10);
-        console.log('Start recording');
+        mediaRecorder.start(50);
 
         // Data available event
         mediaRecorder.addEventListener('dataavailable', event => dataAvailableHandler(event, analyser));
 
         // Stop recording event
-        mediaRecorder.addEventListener('stop', () => stopRecording(stream, audioContext));
+        mediaRecorder.addEventListener('stop', () => stopRecording());
 
         // Start recording
         startRecording();
@@ -54,12 +66,13 @@ const AudioRecorder = ({setRecordingData, startRecording, sendSample, developmen
   };
 
   const recordSample = (samplesLeft, mediaRecorder) => {
-    if(samplesLeft > 0) {
-      setTimeout((samplesLeft, mediaRecorder) => {
-          console.log('sampleNumber: ' + samplesLeft);
-          sendSample(audioChunks, currentPosition, samplesLeft === 1);
-          recordSample(samplesLeft - 1, mediaRecorder);
-      }, sampleDuration, samplesLeft, mediaRecorder)
+    if (samplesLeft > 0) {
+      timeoutId.current = setTimeout((samplesLeft, mediaRecorder) => {
+        sendSample(audioChunks, currentPosition, samplesLeft === 1);
+        recordSample(samplesLeft - 1, mediaRecorder);
+      }, sampleDuration, samplesLeft, mediaRecorder);;
+    } else {
+      mediaRecorder.stop();
     }
   }
 
@@ -74,13 +87,17 @@ const AudioRecorder = ({setRecordingData, startRecording, sendSample, developmen
     setAmplitudes(audioFrequencies);
   }
 
-  const stopRecording = async (stream, audioContext) => {
+  const stopRecording = () => {
+    // Stop Timeout
+    clearTimeout(timeoutId.current);
+
     // Stop audio tracks and context
-    console.log('here')
-    stream.getAudioTracks().forEach(track => {
+    stream.current.getAudioTracks().forEach(track => {
       track.stop();
     });
-    audioContext.close();
+    if(audioContext.current.state !== 'closed') {
+      audioContext.current.close();
+    }
   }
 
   return (
@@ -93,7 +110,7 @@ const AudioRecorder = ({setRecordingData, startRecording, sendSample, developmen
 };
 
 AudioRecorder.propTypes = {
-  sendRecording: PropTypes.func.isRequired,
+  sendSample: PropTypes.func,
   developmentMode: PropTypes.bool,
   sampleDuration: PropTypes.number,
   maxSamples: PropTypes.number
