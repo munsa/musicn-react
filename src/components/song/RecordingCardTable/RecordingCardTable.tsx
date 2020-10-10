@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Col, Row} from 'react-bootstrap';
 import RecordingCard from '../RecordingCard/RecordingCard';
@@ -7,6 +7,9 @@ import LoadMoreButton from '../../../shared/lib/Button/LoadMoreButton/LoadMoreBu
 import Spinner from '../../../shared/lib/Loaders/Spinner/Spinner';
 
 const RecordingCardTable = ({recordings, recordingsLoading, maxRecordingsCount, onLoadMoreCallback}) => {
+  useEffect(() => {
+    console.log(recordings);
+  }, [recordings])
 
   return (
     <div className='recording-card-map-container'>

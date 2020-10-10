@@ -32,24 +32,26 @@ export const sendSample = (audioChunks, geolocation, isLastTry) => async (dispat
 
     if(res.data) {
       // Result success
+      console.log('found song');
       dispatch({
         type: ActionRecordingType.GET_RECORDING_RESULT_SUCCESS,
         payload: res.data
       });
       PubSub.publish(EVENT_SHOW_RESULT_SUCCESS_MODAL);
+
+      // Add recording to profile if the logged user profile is open
+      if (getState().profile.currentProfile.isLoggedUser) {
+        dispatch({
+          type: ActionProfileType.ADD_NEW_RECORDING_TO_PROFILE,
+          payload: res.data
+        });
+      }
     } else {
+      console.log('not found song');
       //Result not found
       if(isLastTry) {
         PubSub.publish(EVENT_SHOW_RESULT_NOT_FOUND_MODAL);
       }
-    }
-
-    // Add recording to profile if the logged user profile is open
-    if (getState().profile.currentProfile.isLoggedUser) {
-      dispatch({
-        type: ActionProfileType.ADD_NEW_RECORDING_TO_PROFILE,
-        payload: res.data
-      });
     }
   } catch (err) {
     console.log(err.message);
