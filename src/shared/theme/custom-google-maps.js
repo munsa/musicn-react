@@ -4,7 +4,7 @@ export const mapStyleTheme = [
     'elementType': 'geometry',
     'stylers': [
       {
-        'color': '#66A3CC'
+        'color': '#3e597d'
       }
     ]
   },
@@ -31,7 +31,7 @@ export const mapStyleTheme = [
     'elementType': 'labels.text.stroke',
     'stylers': [
       {
-        'weight': '0.96'
+        'weight': '1.3'
       },
       {
         'saturation': '9'
@@ -64,7 +64,7 @@ export const mapStyleTheme = [
         'saturation': '9'
       },
       {
-        'color': '#A3C8E0'
+        'color': '#3e597d'
       }
     ]
   },
@@ -115,7 +115,7 @@ export const mapStyleTheme = [
     'elementType': 'geometry.fill',
     'stylers': [
       {
-        'color': '#19384D'
+        'color': '#a2b9ce'
       }
     ]
   },
