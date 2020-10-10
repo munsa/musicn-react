@@ -13,9 +13,10 @@ const Routes = ({isAuthenticated, loading}) => {
     <Fragment>
       <Route exact path="/register" component={Register}/>
       <Route exact path="/login" component={Login}/>
-      {!isAuthenticated ?
-        <Route excact path='/' component={Landing}/>
-        :
+      {!isAuthenticated && !loading &&
+      <Route excact path='/' component={Landing}/>
+      }
+      {isAuthenticated && !loading &&
         <PrivateRoute exact path='/' component={Home}/>
       }
       <section>
