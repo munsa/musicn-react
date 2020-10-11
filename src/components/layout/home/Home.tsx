@@ -22,6 +22,7 @@ const Home = ({allRecordings, getAllRecordingGeolocations, currentPosition}) => 
 
   const getTop10FromGenre = async (genre) => {
     const res = await api.get(`/recording/genre/${genre}?limit=10`);
+    console.log(res.data);
     const trendingTunes = {
       genreName: genre,
       top10: res.data
