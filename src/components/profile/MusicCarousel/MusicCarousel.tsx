@@ -32,7 +32,7 @@ const MusicCarousel = ({recordings}) => {
               max: 3000,
               min: 1024
             },
-            items: 4,
+            items: 6,
             partialVisibilityGutter: 40
           },
           mobile: {
@@ -40,7 +40,7 @@ const MusicCarousel = ({recordings}) => {
               max: 464,
               min: 0
             },
-            items: 1,
+            items: 2,
             partialVisibilityGutter: 30
           },
           tablet: {
@@ -48,7 +48,7 @@ const MusicCarousel = ({recordings}) => {
               max: 1024,
               min: 464
             },
-            items: 2,
+            items: 3,
             partialVisibilityGutter: 30
           }
         }}

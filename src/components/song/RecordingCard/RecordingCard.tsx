@@ -6,6 +6,7 @@ import './RecordingCard.css'
 import RecordImage from '../../../shared/assets/image/record_400.png'
 import {Source, SourceIconSize} from '../../../shared/constants/constants';
 import SourceButton from '../../../shared/lib/Button/SourceButton/SourceButton';
+import SourceButtonS from '../../../shared/lib/Button/SourceButtonS/SourceButtonS';
 
 const RecordingCard = ({recording}) => {
   const openSourceTrackURL = (source: string, trackId:string) => {
@@ -19,37 +20,54 @@ const RecordingCard = ({recording}) => {
     win.focus();
   }
 
+  const getCoverImage = () => {
+    if (recording.spotify?.api?.album?.images[0].url) {
+      return recording.spotify?.api?.album?.images[0].url
+    } else {
+      return RecordImage;
+    }
+  }
+
   return (
     <Card className='recording-card'>
-      <div className='recording-card-container'>
-        {recording?.spotify?.api?.album?.images[0].url ?
-          <img className='recording-card-image' alt='Album Cover' src={recording?.spotify?.api?.album?.images[0].url}/>
-          :
-          <img className='recording-card-image' alt='Album Cover' src={RecordImage}/>
-        }
-        <div className='recording-card-content'>
-          <div className='recording-card-track text-truncate'>
-            {recording.acrCloud?.track?.name}
+      <div className="image-flip-card">
+        <div className="flip-card-inner">
+          <div className="flip-card-front">
+            <img className='flip-card-image' alt='Album Cover' src={getCoverImage()}/>
           </div>
-          <div className='recording-card-artists text-truncate'>
-            {getArtistsString(recording.acrCloud?.artists)}
+          <div className="flip-card-back d-flex flex-column justify-content-around">
+
+            {recording.spotify?.track?.id != null &&
+            <div className='mr-4'>
+              <SourceButtonS source={Source.SPOTIFY}
+                             onClickCallback={() => openSourceTrackURL(Source.SPOTIFY, recording.spotify.track.id)}/>
+            </div>
+            }
+            {recording.deezer?.track?.id != null &&
+            <div className='mr-3'>
+              <SourceButtonS source={Source.DEEZER}
+                             onClickCallback={() => openSourceTrackURL(Source.DEEZER, recording.deezer.track.id)}/>
+            </div>
+            }
+            {recording.spotify?.track?.id == null && recording.deezer?.track?.id == null &&
+            <div>
+              No sources for this song
+            </div>
+            }
+
           </div>
         </div>
       </div>
-      <div className='recording-card-buttons mx-auto mx-2'>
-        <div className='d-flex flex-wrap justify-content-center'>
-          {recording?.spotify?.track?.id != null &&
-          <div className='p-2'>
-            <SourceButton source={Source.SPOTIFY} iconSize={SourceIconSize.BIG} onClickCallback={() => openSourceTrackURL(Source.SPOTIFY, recording.spotify.track.id)}/>
-          </div>
-          }
-          {recording?.deezer?.track?.id != null &&
-          <div className='p-2'>
-            <SourceButton source={Source.DEEZER} iconSize={SourceIconSize.BIG} onClickCallback={() => openSourceTrackURL(Source.DEEZER, recording.deezer.track.id)}/>
-          </div>
-          }
+
+      <div className='mt-1'>
+        <div className='recording-map-window-track text-truncate'>
+          {recording.acrCloud?.track?.name}
+        </div>
+        <div className='recording-map-window-artists text-truncate'>
+          {getArtistsString(recording.acrCloud?.artists)}
         </div>
       </div>
+
     </Card>
   )
 };
