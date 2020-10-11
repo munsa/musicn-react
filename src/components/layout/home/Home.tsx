@@ -1,23 +1,26 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux'
 import RecordingMap from '../../map/RecordingMap';
-import {getAllRecordingGeolocations} from '../../../actions/recording'
+import {getAllRecordingGeolocations, getTop10FromGenre} from '../../../actions/recording'
 import PropTypes from 'prop-types';
 import './Home.css';
 import Header from './header/Header';
+import MusicCarousel from '../../profile/MusicCarousel/MusicCarousel';
 
-const Home = ({allRecordings, getAllRecordings, currentPosition}) => {
+const Home = ({allRecordings, getAllRecordingGeolocations, getTop10FromGenre, currentPosition}) => {
   useEffect(() => {
     if (allRecordings.length === 0) {
-      getAllRecordings();
+      getAllRecordingGeolocations();
+      getTop10FromGenre('Hip Hop');
     }
-  }, [getAllRecordings]);
+  }, []);
 
   return (
     <div>
       <Header/>
       <div className='home-body'>
         <div className='container-md mt-5'>
+          <MusicCarousel recordings={allRecordings}/>
           <div className='home-recording-map'>
             <div className='map-border'>
               <RecordingMap recordingList={allRecordings} center={currentPosition ? currentPosition : undefined} zoom={currentPosition ? 16 : undefined}/>
@@ -35,8 +38,8 @@ const mapStateToProps = state => ({
 });
 
 Home.propTypes = {
-  getAllRecordings: PropTypes.func.isRequired,
+  getAllRecordingGeolocations: PropTypes.func.isRequired,
   allRecordings: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps, {getAllRecordings: getAllRecordingGeolocations})(Home);
+export default connect(mapStateToProps, {getAllRecordingGeolocations, getTop10FromGenre})(Home);

@@ -13,12 +13,13 @@ const MusicCarousel = ({recordings}) => {
       <Carousel
         additionalTransfrom={0}
         arrows
-        centerMode={true}
+        autoPlaySpeed={3000}
+        centerMode={false}
         className=""
         containerClass="container"
         dotListClass=""
         draggable
-        focusOnSelect={true}
+        focusOnSelect={false}
         infinite={false}
         itemClass=""
         keyBoardControl
@@ -31,7 +32,7 @@ const MusicCarousel = ({recordings}) => {
               max: 3000,
               min: 1024
             },
-            items: 3,
+            items: 4,
             partialVisibilityGutter: 40
           },
           mobile: {
