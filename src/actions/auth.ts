@@ -9,13 +9,18 @@ import {EVENT_SHOW_LOGIN_ERRORS} from '../components/layout/appNavbar/AuthDropdo
 import {EVENT_OPEN_WELCOME_MODAL} from '../components/layout/GeneralModals/WelcomeModal/WelcomeModal';
 
 // Load User
-export const loadUser = () => async dispatch => {
+export const loadUser = (isFirstLogin = false) => async dispatch => {
   if(localStorage.token) {
     setAuthToken(localStorage.token)
   }
 
   try {
     const res = await api.get('/auth/user');
+
+    //TODO: uncomment when commit
+    //if(isFirstLogin) {
+      PubSub.publish(EVENT_OPEN_WELCOME_MODAL, res.data);
+    //}
 
     dispatch({
       type: ActionAuthType.USER_LOADED,
@@ -42,9 +47,7 @@ export const register = ({ username, email, password }) => async dispatch => {
       payload: res.data
     });
 
-    PubSub.publish(EVENT_OPEN_WELCOME_MODAL);
-
-    dispatch(loadUser());
+    dispatch(loadUser(true));
   } catch (err) {
     const errors = err.response.data.errors;
 

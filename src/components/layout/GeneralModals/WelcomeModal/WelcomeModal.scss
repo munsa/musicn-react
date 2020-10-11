@@ -1,0 +1,30 @@
+@import "../../../../shared/theme/theme-constants";
+
+.welcome-modal {
+  text-align: center;
+  max-width: none !important;
+  width: 20rem !important;
+}
+
+.welcome-modal .modal-content {
+  border-radius: 0 !important;
+  height: 25rem;
+}
+
+@media (min-width: 0px) {
+  .welcome-modal.modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+
+  .welcome-modal.modal-dialog {
+    margin: 1.75rem auto;
+  }
+}
+
+.welcome-modal-title {
+  color: $custom-theme-color-1;
+}
+
+.welcome-modal-logo {
+  height: 2rem;
+}
