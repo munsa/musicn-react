@@ -7,9 +7,12 @@ import './Home.css';
 import Header from './header/Header';
 import MusicCarousel from '../../profile/MusicCarousel/MusicCarousel';
 import api from '../../../shared/utils/api';
+import Loader from '../../../shared/lib/Loaders/Loader/Loader';
+import Spinner from '../../../shared/lib/Loaders/Spinner/Spinner';
 
 const Home = ({allRecordings, getAllRecordingGeolocations, currentPosition}) => {
   const [trendingTunesList, setTrendingTunesList] = useState([]);
+  const [trendingTunesLoader, setTrendingTunesLoader] = useState(0);
   useEffect(() => {
     if (allRecordings.length === 0) {
       getAllRecordingGeolocations();
@@ -21,7 +24,10 @@ const Home = ({allRecordings, getAllRecordingGeolocations, currentPosition}) => 
   }, []);
 
   const getTop10FromGenre = async (genre) => {
+    setTrendingTunesLoader(trendingTunesLoader + 1);
     const res = await api.get(`/recording/genre/${genre}?limit=10`);
+    setTrendingTunesLoader(trendingTunesLoader - 1);
+
     console.log(res.data);
     const trendingTunes = {
       genreName: genre,
@@ -43,6 +49,9 @@ const Home = ({allRecordings, getAllRecordingGeolocations, currentPosition}) => 
               <MusicCarousel recordings={t.top10}/>
             </div>
           ))}
+          { trendingTunesLoader > 0 &&
+            <Spinner/>
+          }
           <div className='home-recording-map mt-5'>
             <div className='map-border'>
               <RecordingMap recordingList={allRecordings} center={currentPosition ? currentPosition : undefined}
