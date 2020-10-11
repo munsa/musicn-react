@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import '../../shared/theme/bootstrap-custom.css';
@@ -8,9 +8,11 @@ import AlertModal from './alertModal/AlertModal';
 import Routes from '../routing/Routes';
 import Footer from './Footer/Footer';
 import './Layout.css';
+import GeneralModals from './GeneralModals/GeneralModals';
 
 const App = ({auth: {loading, isAuthenticated, user}}) => {
   return (
+    <Fragment>
     <div className='app'>
       <AudioRecorder recorderMode={!loading && isAuthenticated && user}/>
       <AlertModal/>
@@ -26,6 +28,8 @@ const App = ({auth: {loading, isAuthenticated, user}}) => {
       </div>
       }
     </div>
+      <GeneralModals/>
+    </Fragment>
   );
 };
 

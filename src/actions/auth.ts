@@ -6,6 +6,7 @@ import { AlertType } from '../shared/constants/constants';
 import PubSub from 'pubsub-js';
 import {EVENT_SHOW_REGISTER_ERRORS} from '../components/layout/appNavbar/AuthDropdown/AuthDropdownRegister/AuthDropdownRegister';
 import {EVENT_SHOW_LOGIN_ERRORS} from '../components/layout/appNavbar/AuthDropdown/AuthDropdownLogin/AuthDropdownLogin';
+import {EVENT_OPEN_WELCOME_MODAL} from '../components/layout/GeneralModals/WelcomeModal/WelcomeModal';
 
 // Load User
 export const loadUser = () => async dispatch => {
@@ -40,6 +41,8 @@ export const register = ({ username, email, password }) => async dispatch => {
       type: ActionAuthType.REGISTER_SUCCESS,
       payload: res.data
     });
+
+    PubSub.publish(EVENT_OPEN_WELCOME_MODAL);
 
     dispatch(loadUser());
   } catch (err) {
