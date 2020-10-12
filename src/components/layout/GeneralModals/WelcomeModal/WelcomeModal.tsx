@@ -8,6 +8,7 @@ import WildTunes from '../../../../shared/assets/image/wildtunes/logo/wildtunes_
 import {Carousel} from 'react-bootstrap';
 import RecordingCard from '../../../song/RecordingCard/RecordingCard';
 import AudioPlayer from '../../../recorder/audioPlayer/AudioPlayer';
+import Moon from '../../../../shared/assets/image/moon.png';
 
 export const EVENT_OPEN_WELCOME_MODAL = 'EVENT_OPEN_WELCOME_MODAL';
 
@@ -62,9 +63,6 @@ const WelcomeModal = () => {
            centered
     >
       <ModalBody>
-        <div className='moon'>
-          <AudioPlayer amplitudes={[]}/>
-        </div>
         <Carousel activeIndex={index} onSelect={handleSelect}>
           <Carousel.Item>
             <div className='welcome-modal-carousel-item'>
@@ -75,22 +73,21 @@ const WelcomeModal = () => {
               <div className='mt-5'>
                 <ProfileUserInformation profile={{user}}/>
               </div>
-              <div className='text-blue mt-5'>
-                We have given you a new identity. We hope you like it.
-              </div>
+              <p className='text-orange mt-5'>
+                I have given you a new identity. I hope you like it.
+              </p>
             </div>
           </Carousel.Item>
           <Carousel.Item>
+            <img className='moon' src={Moon}/>
             <div className='welcome-modal-carousel-item'>
-
-
-              <p className='text-orange'>
-                Hey! I am your new friend. Yes, I am a moon... and sometimes a sun.
+              <p className='text-blue'>
+                By the way, I am your new friend. Yes... I am a moon...
               </p>
               <p className='text-blue'>
-                I will help you to identify the songs you are listening to.
+                I will help you to identify songs.
               </p>
-              <p className='text-orange'>
+              <p className='text-blue'>
                 You can always find me chilling on top of the page.
               </p>
               <p className='text-blue'>
@@ -102,16 +99,16 @@ const WelcomeModal = () => {
             <div className='welcome-modal-carousel-item'>
               <RecordingCard recording={tuneExample}/>
               <p className='text-orange mt-3'>
-                This is how a Tune looks like. Please, let's not speak about our music taste.
+                This is how a Tune looks like. Let's not speak about our music taste.
               </p>
-              <p className='text-blue'>
-                Hover or click over the image to access to the source buttons.
+              <p className='text-orange'>
+                Hover or click over the cover image to access to the source buttons.
               </p>
             </div>
           </Carousel.Item>
           <Carousel.Item>
             <div className='welcome-modal-carousel-item'>
-              <p className='text-orange'>
+              <p className='text-blue'>
                 Scroll down the home page to explore the trending tunes and the map.
               </p>
             </div>
