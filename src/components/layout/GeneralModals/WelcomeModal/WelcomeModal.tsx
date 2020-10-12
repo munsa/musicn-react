@@ -66,6 +66,11 @@ const WelcomeModal = () => {
         <Carousel activeIndex={index} onSelect={handleSelect}>
           <Carousel.Item>
             <div className='welcome-modal-carousel-item'>
+              <svg>
+                <path d="M0,76.22C0,34.13,34.13,0,76.22,0s76.22,34.13,76.22,76.22c0,79.68-76.22,162.22-76.22,162.22S0,155.91,0,76.22 z"/>
+                <circle className="st1" cx="76.22" cy="72.66" r="43.96"/>
+              </svg>
+
               <div className='welcome-modal-title'>
                 Welcome to
               </div>
@@ -80,7 +85,7 @@ const WelcomeModal = () => {
           </Carousel.Item>
           <Carousel.Item>
             <img className='moon' src={Moon}/>
-            <div className='welcome-modal-carousel-item'>
+            <div className='welcome-modal-carousel-item mt-3'>
               <p className='text-blue'>
                 By the way, I am your new friend. Yes... I am a moon...
               </p>
@@ -99,10 +104,10 @@ const WelcomeModal = () => {
             <div className='welcome-modal-carousel-item'>
               <RecordingCard recording={tuneExample}/>
               <p className='text-orange mt-3'>
-                This is how a Tune looks like. Let's not speak about our music taste.
+                This is how a Tune looks like. Let's not speak about my music taste...
               </p>
               <p className='text-orange'>
-                Hover or click over the cover image to access to the source buttons.
+                Click or hover over the cover image to access to the source links.
               </p>
             </div>
           </Carousel.Item>
