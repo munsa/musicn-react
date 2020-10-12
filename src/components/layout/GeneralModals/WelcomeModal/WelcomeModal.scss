@@ -10,6 +10,12 @@
     height: 25rem;
   }
 
+  .modal-header {
+    position: absolute;
+    right: 0.5rem;
+    z-index: 3;
+  }
+
   .modal-body {
     padding: 0;
   }

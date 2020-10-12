@@ -7,8 +7,8 @@ import ProfileUserInformation from '../../../profile/ProfileUserInformation/Prof
 import WildTunes from '../../../../shared/assets/image/wildtunes/logo/wildtunes_logo_orange.svg';
 import {Carousel} from 'react-bootstrap';
 import RecordingCard from '../../../song/RecordingCard/RecordingCard';
-import AudioPlayer from '../../../recorder/audioPlayer/AudioPlayer';
 import Moon from '../../../../shared/assets/image/moon.png';
+import ModalHeader from 'react-bootstrap/ModalHeader';
 
 export const EVENT_OPEN_WELCOME_MODAL = 'EVENT_OPEN_WELCOME_MODAL';
 
@@ -16,7 +16,7 @@ const WelcomeModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [index, setIndex] = useState(0);
-  const [previousIndex, setPreviousIndex] = useState(0);
+  const [completed, setCompleted] = useState(false);
   useEffect(() => {
     let token = PubSub.subscribe(EVENT_OPEN_WELCOME_MODAL, ((name, user) => {
       setUser(user);
@@ -38,8 +38,11 @@ const WelcomeModal = () => {
   const handleSelect = (selectedIndex, e) => {
     if (!(index === 3 && selectedIndex === 0) &&
       !(index === 0 && selectedIndex === 3)) {
-      setPreviousIndex(index);
       setIndex(selectedIndex);
+
+      if(selectedIndex === 3) {
+        setCompleted(true);
+      }
     }
   };
 
@@ -57,20 +60,15 @@ const WelcomeModal = () => {
            show={isOpen}
            onHide={hideModal}
            dialogClassName='welcome-modal'
-           indicators={false}
            backdrop="static"
-           interval={null}
+           interval={6000}
            centered
     >
+      <ModalHeader closeButton={completed}/>
       <ModalBody>
         <Carousel activeIndex={index} onSelect={handleSelect}>
           <Carousel.Item>
             <div className='welcome-modal-carousel-item'>
-              <svg>
-                <path d="M0,76.22C0,34.13,34.13,0,76.22,0s76.22,34.13,76.22,76.22c0,79.68-76.22,162.22-76.22,162.22S0,155.91,0,76.22 z"/>
-                <circle className="st1" cx="76.22" cy="72.66" r="43.96"/>
-              </svg>
-
               <div className='welcome-modal-title'>
                 Welcome to
               </div>
@@ -87,7 +85,7 @@ const WelcomeModal = () => {
             <img className='moon' src={Moon}/>
             <div className='welcome-modal-carousel-item mt-3'>
               <p className='text-blue'>
-                By the way, I am your new friend. Yes... I am a moon...
+                By the way, I am your new friend. Yes... I am a moon... The creator didnt have money for a graphic designer...
               </p>
               <p className='text-blue'>
                 I will help you to identify songs.
@@ -96,7 +94,7 @@ const WelcomeModal = () => {
                 You can always find me chilling on top of the page.
               </p>
               <p className='text-blue'>
-                Don't be scared to navigate through the website while I try to guess the song. I won't pause.
+                Don't be scared to navigate through the website while I try to catch Tunes. I won't pause.
               </p>
             </div>
           </Carousel.Item>
@@ -104,7 +102,7 @@ const WelcomeModal = () => {
             <div className='welcome-modal-carousel-item'>
               <RecordingCard recording={tuneExample}/>
               <p className='text-orange mt-3'>
-                This is how a Tune looks like. Let's not speak about my music taste...
+                This is how a Tune looks like. Let's not talk about my music taste...
               </p>
               <p className='text-orange'>
                 Click or hover over the cover image to access to the source links.
