@@ -1,8 +1,6 @@
 import api from '../shared/utils/api';
-import { ActionAuthType } from './type-enum';
-import { setAlert } from './alert';
+import {ActionAuthType, RootType} from './type-enum';
 import setAuthToken from '../shared/utils/setAuthToken';
-import { AlertType } from '../shared/constants/constants';
 import PubSub from 'pubsub-js';
 import {EVENT_SHOW_REGISTER_ERRORS} from '../components/layout/appNavbar/AuthDropdown/AuthDropdownRegister/AuthDropdownRegister';
 import {EVENT_SHOW_LOGIN_ERRORS} from '../components/layout/appNavbar/AuthDropdown/AuthDropdownLogin/AuthDropdownLogin';
@@ -10,14 +8,14 @@ import {EVENT_OPEN_WELCOME_MODAL} from '../components/layout/GeneralModals/Welco
 
 // Load User
 export const loadUser = (isFirstLogin = false) => async dispatch => {
-  if(localStorage.token) {
+  if (localStorage.token) {
     setAuthToken(localStorage.token)
   }
 
   try {
     const res = await api.get('/auth/user');
 
-    if(isFirstLogin) {
+    if (isFirstLogin) {
       PubSub.publish(EVENT_OPEN_WELCOME_MODAL, res.data);
     }
 
@@ -33,11 +31,11 @@ export const loadUser = (isFirstLogin = false) => async dispatch => {
 };
 
 // Register User
-export const register = ({ username, email, password, history }) => async dispatch => {
-  const body = JSON.stringify({ username, email, password });
+export const register = ({username, email, password, history}) => async dispatch => {
+  const body = JSON.stringify({username, email, password});
 
   try {
-    dispatch({ type: ActionAuthType.AUTH_LOADING });
+    dispatch({type: ActionAuthType.AUTH_LOADING});
 
     const res = await api.post('/auth/register', body);
 
@@ -55,16 +53,16 @@ export const register = ({ username, email, password, history }) => async dispat
     if (errors) {
       PubSub.publish(EVENT_SHOW_REGISTER_ERRORS, errors);
     }
-    dispatch({ type: ActionAuthType.REGISTER_FAIL });
+    dispatch({type: ActionAuthType.REGISTER_FAIL});
   }
 };
 
 // Login User
 export const login = (username, password) => async dispatch => {
-  const body = JSON.stringify({ username, password });
+  const body = JSON.stringify({username, password});
 
   try {
-    dispatch({ type: ActionAuthType.AUTH_LOADING });
+    dispatch({type: ActionAuthType.AUTH_LOADING});
 
     const res = await api.post('/auth/login', body);
 
@@ -80,11 +78,12 @@ export const login = (username, password) => async dispatch => {
     if (errors) {
       PubSub.publish(EVENT_SHOW_LOGIN_ERRORS, errors);
     }
-    dispatch({ type: ActionAuthType.LOGIN_FAIL });
+    dispatch({type: ActionAuthType.LOGIN_FAIL});
   }
 };
 
 // Logout
 export const logout = () => dispatch => {
-  dispatch({ type: ActionAuthType.LOGOUT });
+  dispatch({type: ActionAuthType.LOGOUT});
+  dispatch({type: RootType.DESTROY_SESSION})
 };

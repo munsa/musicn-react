@@ -65,11 +65,3 @@ export const getAllRecordingGeolocations = () => async dispatch => {
     payload: res.data
   });
 }
-
-export const getTop10FromGenre = (genreName) => async dispatch => {
-  const res = await api.get(`/recording/genre/${genreName}?limit=10`);
-  dispatch({
-    type: ActionRecordingType.GET_ALL_RECORDINGS,
-    payload: res.data
-  });
-}
