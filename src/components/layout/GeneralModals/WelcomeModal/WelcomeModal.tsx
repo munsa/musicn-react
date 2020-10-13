@@ -20,7 +20,7 @@ const WelcomeModal = () => {
   useEffect(() => {
     let token = PubSub.subscribe(EVENT_OPEN_WELCOME_MODAL, ((name, user) => {
       setUser(user);
-      showModal()
+      showModal();
     }));
     return () => {
       PubSub.unsubscribe(token);
@@ -40,7 +40,7 @@ const WelcomeModal = () => {
       !(index === 0 && selectedIndex === 3)) {
       setIndex(selectedIndex);
 
-      if(selectedIndex === 3) {
+      if (selectedIndex === 3) {
         setCompleted(true);
       }
     }
@@ -56,17 +56,15 @@ const WelcomeModal = () => {
   };
 
   return (user &&
-    <Modal activeIndex={index}
-           show={isOpen}
+    <Modal show={isOpen}
            onHide={hideModal}
            dialogClassName='welcome-modal'
            backdrop="static"
-           interval={6000}
            centered
     >
       <ModalHeader closeButton={completed}/>
       <ModalBody>
-        <Carousel activeIndex={index} onSelect={handleSelect}>
+        <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
           <Carousel.Item>
             <div className='welcome-modal-carousel-item'>
               <div className='welcome-modal-title'>
@@ -85,13 +83,11 @@ const WelcomeModal = () => {
             <img className='moon' src={Moon}/>
             <div className='welcome-modal-carousel-item mt-3'>
               <p className='text-blue'>
-                By the way, I am your new friend. Yes... I am a moon... The creator didnt have money for a graphic designer...
+                By the way, I am your new friend. Yes... I am a moon... The creator didnt have money for a graphic
+                designer...
               </p>
               <p className='text-blue'>
-                I will help you to identify songs.
-              </p>
-              <p className='text-blue'>
-                You can always find me chilling on top of the page.
+                I will help you to identify songs. You can always find me chilling on top of the page.
               </p>
               <p className='text-blue'>
                 Don't be scared to navigate through the website while I try to catch Tunes. I won't pause.

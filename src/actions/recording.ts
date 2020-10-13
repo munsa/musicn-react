@@ -1,4 +1,4 @@
-import {ActionProfileType, ActionRecordingType} from './type-enum';
+  import {ActionProfileType, ActionRecordingType} from './type-enum';
 import api from '../shared/utils/api';
 import {v4 as uuidv4} from 'uuid';
 import PubSub from 'pubsub-js';

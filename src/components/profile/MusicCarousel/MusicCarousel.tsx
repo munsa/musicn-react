@@ -1,10 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './MusicCarousel.css';
 import Carousel from 'react-multi-carousel';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import 'react-multi-carousel/lib/styles.css';
-import getArtistsString from '../../../shared/utils/StringUtils'
 import RecordingCard from '../../song/RecordingCard/RecordingCard';
 
 const MusicCarousel = ({recordings}) => {
@@ -67,8 +64,7 @@ const MusicCarousel = ({recordings}) => {
   )
 };
 
-MusicCarousel.propTypes = {
-};
+MusicCarousel.propTypes = {};
 
 
 export default MusicCarousel;

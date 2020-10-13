@@ -17,10 +17,9 @@ export const loadUser = (isFirstLogin = false) => async dispatch => {
   try {
     const res = await api.get('/auth/user');
 
-    //TODO: uncomment when commit
-    //if(isFirstLogin) {
+    if(isFirstLogin) {
       PubSub.publish(EVENT_OPEN_WELCOME_MODAL, res.data);
-    //}
+    }
 
     dispatch({
       type: ActionAuthType.USER_LOADED,
@@ -34,7 +33,7 @@ export const loadUser = (isFirstLogin = false) => async dispatch => {
 };
 
 // Register User
-export const register = ({ username, email, password }) => async dispatch => {
+export const register = ({ username, email, password, history }) => async dispatch => {
   const body = JSON.stringify({ username, email, password });
 
   try {
@@ -48,6 +47,8 @@ export const register = ({ username, email, password }) => async dispatch => {
     });
 
     dispatch(loadUser(true));
+
+    history.push('/');
   } catch (err) {
     const errors = err.response.data.errors;
 
