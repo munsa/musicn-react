@@ -3,6 +3,7 @@ import {ActionProfileType} from '../actions/type-enum';
 const initialState = {
   currentProfile: {
     user: null,
+    allGeolocations: [],
     recordings: [],
     maxRecordingsCount: 0,
     isLoggedUser: false

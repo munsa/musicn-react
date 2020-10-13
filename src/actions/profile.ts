@@ -21,6 +21,7 @@ export const getProfileByUsername = (username, loggedUserId) => async dispatch =
 
     const profile = {
       user: profileRes.data,
+      allGeolocations: [],
       recordings: [],
       maxCount: 0,
       isLoggedUser: isLoggedUser
@@ -55,6 +56,7 @@ export const getProfileRecordings = (profile) => async dispatch => {
 
   profile.recordings = profile.recordings.concat(res.data.recordings);
   profile.maxRecordingsCount = res.data.maxCount;
+  profile.allGeolocations = res.data.allGeolocations;
 
   dispatch({
     type: ActionProfileType.GET_PROFILE_RECORDINGS,

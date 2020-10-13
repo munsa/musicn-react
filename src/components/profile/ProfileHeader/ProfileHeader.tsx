@@ -5,23 +5,14 @@ import ProfileUserInformation from '../ProfileUserInformation/ProfileUserInforma
 
 const ProfileHeader = ({profile}) => {
 
-  const hasGeolocationRecordings = recordings => {
-    for (let i = 0; i < recordings.length; i++) {
-      if (recordings[i] && recordings[i].geolocation != null) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   return (
     <div className='profile-header-container'>
       <div className='profile-user-info'>
         <ProfileUserInformation profile={profile}/>
       </div>
       <div className='profile-map shadow'>
-        <RecordingMap recordingList={profile.recordings}
-                      useFitBounds={profile.recordings && hasGeolocationRecordings(profile.recordings)}/>
+        <RecordingMap recordingList={profile.allGeolocations}
+                      useFitBounds={true}/>
       </div>
     </div>
   )

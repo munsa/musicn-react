@@ -10,13 +10,26 @@ import CurrentPositionMarker from './marker/CustomaMarker/CurrentPositionMarker'
 
 const RecordingMap = ({currentPosition, user, recordingList, center, zoom, useFitBounds}) => {
   const [openedRecording, setOpenedRecording] = useState(undefined);
+  const mapRef = useRef(null);
+  useEffect(() => {
+    if(useFitBounds && hasGeolocationRecordings(recordingList)) {
+      fitBounds(mapRef.current);
+    }
+  }, [recordingList]);
 
   const mapLoadedHandler = map => {
-    if(useFitBounds) {
-      fitBounds(map);
-    }
+    mapRef.current = map;
   };
 
+  const hasGeolocationRecordings = recordings => {
+    if(recordings && recordings.length > 0)
+    for (let i = 0; i < recordings.length; i++) {
+      if (recordings[i] && recordings[i].geolocation != null) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   const fitBounds = map => {
     // @ts-ignore
@@ -38,8 +51,6 @@ const RecordingMap = ({currentPosition, user, recordingList, center, zoom, useFi
   const onMarkerClickCallback = (r) => {
     setOpenedRecording(r)
   }
-
-
 
   return (
     <Fragment>
