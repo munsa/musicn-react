@@ -81,7 +81,7 @@ const RecordingMap = ({currentPosition, user, recordingList, center, zoom, useFi
               onMarkerClickCallback={onMarkerClickCallback}
             />
           ))}
-          { currentPosition &&
+          { currentPosition && user &&
             <CurrentPositionMarker user={user} position={currentPosition}/>
           }
         </GoogleMap>

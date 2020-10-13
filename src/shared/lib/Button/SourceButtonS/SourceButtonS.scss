@@ -34,40 +34,40 @@
     border-color: $color-spotify-black !important;
     box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5) !important;
   }
+}
 
-  //DEEZER
-  .deezer-button-logo-s{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 0.6rem;
+//DEEZER
+.deezer-button-logo-s {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 0.6rem;
+}
+
+.deezer-button-s {
+  .btn {
+    width: 6rem !important;
+    height: 2rem;
   }
 
-  .deezer-button-s {
-    .btn{
-      width: 6rem !important;
-      height: 2rem;
-    }
+  .btn-primary {
+    background-color: $color-deezer-pink !important;
+    border-color: $color-deezer-pink !important;
+  }
 
-    .btn-primary {
-      background-color: $color-deezer-pink !important;
-      border-color: $color-deezer-pink !important;
-    }
+  .btn:hover {
+    background-color: $color-deezer-black !important;
+    border-color: $color-deezer-black !important;
+  }
 
-    .btn:hover {
-      background-color: $color-deezer-black !important;
-      border-color: $color-deezer-black !important;
-    }
+  .btn:focus {
+    background-color: $color-deezer-black !important;
+    border-color: $color-deezer-black !important;
+  }
 
-    .btn:focus {
-      background-color: $color-deezer-black !important;
-      border-color: $color-deezer-black !important;
-    }
-
-    .btn:active {
-      background-color: $color-deezer-black !important;
-      border-color: $color-deezer-black !important;
-      box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5) !important;
-    }
+  .btn:active {
+    background-color: $color-deezer-black !important;
+    border-color: $color-deezer-black !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5) !important;
   }
 }

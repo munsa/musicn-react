@@ -26,29 +26,31 @@
   border-color: #191414 !important;
   box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5) !important;
 }
-.spotify-button-s .deezer-button-logo-s {
+
+.deezer-button-logo-s {
   display: block;
   margin-left: auto;
   margin-right: auto;
   height: 0.6rem;
 }
-.spotify-button-s .deezer-button-s .btn {
+
+.deezer-button-s .btn {
   width: 6rem !important;
   height: 2rem;
 }
-.spotify-button-s .deezer-button-s .btn-primary {
+.deezer-button-s .btn-primary {
   background-color: #EF5466 !important;
   border-color: #EF5466 !important;
 }
-.spotify-button-s .deezer-button-s .btn:hover {
+.deezer-button-s .btn:hover {
   background-color: #000000 !important;
   border-color: #000000 !important;
 }
-.spotify-button-s .deezer-button-s .btn:focus {
+.deezer-button-s .btn:focus {
   background-color: #000000 !important;
   border-color: #000000 !important;
 }
-.spotify-button-s .deezer-button-s .btn:active {
+.deezer-button-s .btn:active {
   background-color: #000000 !important;
   border-color: #000000 !important;
   box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5) !important;
