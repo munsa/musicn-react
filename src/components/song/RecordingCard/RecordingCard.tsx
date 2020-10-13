@@ -21,8 +21,8 @@ const RecordingCard = ({recording}) => {
   }
 
   const getCoverImage = () => {
-    if (recording.spotify?.api?.album?.images[0].url) {
-      return recording.spotify?.api?.album?.images[0].url
+    if (recording.spotify?.api?.album?.images[1].url) {
+      return recording.spotify?.api?.album?.images[1].url
     } else {
       return RecordImage;
     }
@@ -54,7 +54,6 @@ const RecordingCard = ({recording}) => {
               No sources for this song
             </div>
             }
-
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-  import {ActionProfileType, ActionRecordingType} from './type-enum';
+import {ActionProfileType, ActionRecordingType} from './type-enum';
 import api from '../shared/utils/api';
 import {v4 as uuidv4} from 'uuid';
 import PubSub from 'pubsub-js';
@@ -15,7 +15,7 @@ export const startRecording = () => async (dispatch) => {
 
 export const sendSample = (audioChunks, geolocation, isLastTry) => async (dispatch, getState) => {
   try {
-    if(isLastTry) {
+    if (isLastTry) {
       dispatch({
         type: ActionRecordingType.STOP_PLAYER
       });
@@ -30,7 +30,7 @@ export const sendSample = (audioChunks, geolocation, isLastTry) => async (dispat
     const config = {headers: {'Content-Type': 'multipart/form-data'}};
     const res = await api.post('/recording/identify', formData, config);
 
-    if(res.data) {
+    if (res.data) {
       // Result success
       console.log('found song');
       dispatch({
@@ -49,7 +49,7 @@ export const sendSample = (audioChunks, geolocation, isLastTry) => async (dispat
     } else {
       console.log('not found song');
       //Result not found
-      if(isLastTry) {
+      if (isLastTry) {
         PubSub.publish(EVENT_SHOW_RESULT_NOT_FOUND_MODAL);
       }
     }
@@ -63,5 +63,16 @@ export const getAllRecordingGeolocations = () => async dispatch => {
   dispatch({
     type: ActionRecordingType.GET_ALL_RECORDINGS,
     payload: res.data
+  });
+}
+
+export const getTop10FromGenre = (genreName, genreAttributeName) => async dispatch => {
+  const res = await api.get(`/recording/genre/${genreName}?limit=10`);
+  dispatch({
+    type: ActionRecordingType.GET_TRENDING_LIST,
+    payload: {
+      genreName: genreAttributeName,
+      data: res.data
+    }
   });
 }

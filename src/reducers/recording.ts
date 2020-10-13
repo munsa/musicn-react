@@ -10,7 +10,8 @@ const initialCurrent = {
 
 export const initialState = {
   current: initialCurrent,
-  all: []
+  all: [],
+  trending: null
 };
 
 export default function (state = initialState, action) {
@@ -43,6 +44,14 @@ export default function (state = initialState, action) {
       return {
         ...state,
         all: payload,
+      }
+    case ActionRecordingType.GET_TRENDING_LIST:
+      return {
+        ...state,
+        trending: {
+          ...state.trending,
+          [payload.genreName]: payload.data
+        },
       }
     case ActionRecordingType.STOP_PLAYER:
       return {
