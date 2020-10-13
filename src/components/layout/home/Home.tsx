@@ -28,7 +28,7 @@ const Home = ({allRecordings, trending, getTop10FromGenre, getAllRecordingGeoloc
           <div className='home-recording-map mt-5'>
             <div className='map-border'>
               <RecordingMap recordingList={allRecordings} center={currentPosition ? currentPosition : undefined}
-                            zoom={currentPosition ? 16 : undefined}/>
+                            zoom={currentPosition ? 20 : undefined}/>
             </div>
           </div>
           <div className='mt-5'>

@@ -42,20 +42,8 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
     y: -(height + 53.2),
   })
 
-  const testMarker = () =>{
-    return (
-      <div>
-        <img src={MarkerIcon}/>
-      </div>
-    )
-  }
-
   const svgPathMarker = () => {
     return "M0,76.22C0,34.13,34.13,0,76.22,0s76.22,34.13,76.22,76.22c0,79.68-76.22,162.22-76.22,162.22S0,155.91,0,76.22 z"
-  }
-
-  const test = () => {
-    darkenHexColor(recording.user.avatarColor, 20)
   }
 
   return (
@@ -66,7 +54,7 @@ const RecordingMarker = ({openedRecordingId, recording, onMarkerClickCallback}) 
         fillColor: '#' + recording.user.avatarColor,
         fillOpacity: 0.8,
         strokeWeight: 0.2,
-        strokeColor: test(),
+        strokeColor: darkenHexColor(recording.user.avatarColor, 20),
         strokeOpacity: 1,
         anchor: new google.maps.Point(76.225, 238.45)
       }}
