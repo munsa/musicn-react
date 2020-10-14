@@ -52,9 +52,12 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
                 />}
                              id="nav-dropdown">
                   <NavDropdown.Item onClick={onProfileClick}>My Profile</NavDropdown.Item>
-                  <NavDropdown.Item onClick={() => onDevelopmentModeChange()}>
-                    {developmentMode ? 'User Mode' : 'Developer Mode'}
-                  </NavDropdown.Item>
+                  { process.env.NODE_ENV == 'development' &&
+                    <NavDropdown.Item onClick={() => onDevelopmentModeChange()}>
+                      {developmentMode ? 'User Mode' : 'Developer Mode'}
+                    </NavDropdown.Item>
+                  }
+
                   <NavDropdown.Divider/>
                   <NavDropdown.Item href="" onClick={logout}>
                     Logout

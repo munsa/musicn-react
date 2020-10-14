@@ -101,7 +101,7 @@ const WelcomeModal = () => {
                 This is how a Tune looks like. Let's not talk about my music taste...
               </p>
               <p className='text-orange'>
-                Click or hover over the cover image to access to the source links.
+                Click or hover over the cover image to access the source links.
               </p>
             </div>
           </Carousel.Item>
