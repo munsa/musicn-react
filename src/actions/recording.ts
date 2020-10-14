@@ -26,6 +26,7 @@ export const sendSample = (audioChunks, geolocation, isLastTry) => async (dispat
     const audioBlob = new Blob(audioChunks, {type: 'audio/x-wav'});
     formData.append('audio', audioBlob, 'blob');
     formData.append('geolocation', JSON.stringify(geolocation));
+    formData.append('transientId', getState().recording.current.transientId);
 
     const config = {headers: {'Content-Type': 'multipart/form-data'}};
     const res = await api.post('/recording/identify', formData, config);

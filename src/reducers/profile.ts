@@ -35,7 +35,10 @@ export default function (state = initialState, action) {
         ...state,
         currentProfile: {
           ...state.currentProfile,
-          recordings: [payload, ...state.currentProfile.recordings.slice(0, state.currentProfile.recordings.length-1)]
+          recordings: state.currentProfile.recordings.length > 0
+          && state.currentProfile.recordings.length % 20 === 0
+            ? [payload, ...state.currentProfile.recordings.slice(0, state.currentProfile.recordings.length-1)]
+            : [payload, ...state.currentProfile.recordings]
         }
       };
     case ActionProfileType.CLEAR_PROFILE:
