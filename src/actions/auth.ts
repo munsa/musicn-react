@@ -84,6 +84,6 @@ export const login = (username, password) => async dispatch => {
 
 // Logout
 export const logout = () => dispatch => {
+  dispatch({type: RootType.DESTROY_SESSION});
   dispatch({type: ActionAuthType.LOGOUT});
-  dispatch({type: RootType.DESTROY_SESSION})
 };

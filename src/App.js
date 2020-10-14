@@ -17,7 +17,6 @@ const App = () => {
   useEffect(() => {
     viewportTrick();
     store.dispatch(loadUser());
-    store.dispatch(getCurrentGeolocationPosition());
   }, []);
 
   // Viewport trick. For mobile, resize when the screen size changes (when scrolls and hides de header of the browser)

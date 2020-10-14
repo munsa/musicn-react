@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import '../../shared/theme/bootstrap-custom.css';
@@ -9,8 +9,14 @@ import Routes from '../routing/Routes';
 import Footer from './Footer/Footer';
 import './Layout.css';
 import GeneralModals from './GeneralModals/GeneralModals';
+import store from '../../store';
+import {getCurrentGeolocationPosition} from '../../actions/geolocation';
 
-const App = ({auth: {loading, isAuthenticated, user}}) => {
+const App = ({auth: {loading, isAuthenticated, user}, getCurrentGeolocationPosition}) => {
+  useEffect(() => {
+    getCurrentGeolocationPosition();
+  });
+
   return (
     <Fragment>
     <div className='app'>
@@ -38,4 +44,4 @@ const mapStateToProps = state => ({
   developmentMode: state.developmentMode
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {getCurrentGeolocationPosition})(App);
