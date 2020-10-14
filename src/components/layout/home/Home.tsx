@@ -1,22 +1,19 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux'
 import RecordingMap from '../../map/RecordingMap';
-import {getAllRecordingGeolocations, getTop10FromGenre} from '../../../actions/recording'
+import {getAllRecordingGeolocations, getTrendingTunes} from '../../../actions/recording'
 import PropTypes from 'prop-types';
 import './Home.css';
 import Header from './header/Header';
 import MusicCarousel from '../../profile/MusicCarousel/MusicCarousel';
 
-const Home = ({allRecordings, trending, getTop10FromGenre, getAllRecordingGeolocations, currentPosition}) => {
+const Home = ({allRecordings, trending, getTrendingTunes, getAllRecordingGeolocations, currentPosition}) => {
   useEffect(() => {
     if (allRecordings.length === 0) {
       getAllRecordingGeolocations();
     }
     if(!trending) {
-      getTop10FromGenre('Hip Hop', 'hipHop');
-      getTop10FromGenre('Indie Rock', 'indieRock');
-      getTop10FromGenre('Electro', 'electronic');
-      getTop10FromGenre('Alternative', 'alternative');
+      getTrendingTunes();
     }
   }, []);
 
@@ -81,4 +78,4 @@ Home.propTypes = {
   trending: PropTypes.object
 };
 
-export default connect(mapStateToProps, {getAllRecordingGeolocations, getTop10FromGenre})(Home);
+export default connect(mapStateToProps, {getAllRecordingGeolocations, getTrendingTunes})(Home);

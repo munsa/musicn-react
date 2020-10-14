@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import './GeneralModals.css';
 import WelcomeModal from './WelcomeModal/WelcomeModal';
+import ErrorModal from './ErrorModal/ErrorModal';
 
 const GeneralModals = () => {
   return (
-    <WelcomeModal/>
+    <Fragment>
+      <WelcomeModal/>
+      <ErrorModal/>
+    </Fragment>
   )
 }
 

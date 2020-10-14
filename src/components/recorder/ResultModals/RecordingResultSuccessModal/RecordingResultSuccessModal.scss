@@ -5,16 +5,16 @@
   width: 18rem !important;
 }
 
-  @media (min-width: 0px) {
-    .result-modal.modal-dialog-centered {
-      min-height: calc(100% - 3.5rem);
-    }
-
-    .result-modal.modal-dialog {
-      //max-width: 500px;
-      margin: 1.75rem auto;
-    }
+@media (min-width: 0px) {
+  .result-modal.modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
   }
+
+  .result-modal.modal-dialog {
+    //max-width: 500px;
+    margin: 1.75rem auto;
+  }
+}
 
 .result-modal .card {
   border: none !important;
@@ -50,7 +50,7 @@
   font-family: "Lucida Console", Courier, monospace;
 }
 
-.fadeOut{
-  opacity:0;
+.fadeOut {
+  opacity: 0;
   transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 1.5s;
 }

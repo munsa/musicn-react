@@ -67,13 +67,22 @@ export const getAllRecordingGeolocations = () => async dispatch => {
   });
 }
 
-export const getTop10FromGenre = (genreName, genreAttributeName) => async dispatch => {
-  const res = await api.get(`/recording/genre/${genreName}?limit=10`);
-  dispatch({
-    type: ActionRecordingType.GET_TRENDING_LIST,
-    payload: {
-      genreName: genreAttributeName,
-      data: res.data
-    }
-  });
+export const getTrendingTunes = () => async dispatch => {
+  const genreList = [
+    {genreName: 'Alternative', genreAttributeName: 'alternative'},
+    {genreName: 'Hip Hop', genreAttributeName: 'hipHop'},
+    {genreName: 'Indie Rock', genreAttributeName: 'indieRock'},
+    {genreName: 'Electro', genreAttributeName: 'electronic'},
+  ];
+
+  for (const genre of genreList) {
+    const res = await api.get(`/recording/genre/${genre.genreName}?limit=10`);
+    dispatch({
+      type: ActionRecordingType.GET_TRENDING_LIST,
+      payload: {
+        genreName: genre.genreAttributeName,
+        data: res.data
+      }
+    });
+  }
 }
