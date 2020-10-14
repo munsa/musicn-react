@@ -43,18 +43,13 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
           </Nav>
           <Nav>
             {!loading && isAuthenticated && user &&
-              <Fragment>
-                <Link to={'/profile/' + user.username}
-                      className='avatar'>
-                  <img
-                    src={user.avatar}
-                    alt='User Avatar'
-                    className='rounded-circle'
-                    width='26'
-                    height='26'
-                  />
-                </Link>
-                <NavDropdown title={user.username}
+                <NavDropdown title={<img
+                  src={user.avatar}
+                  alt={user.username}
+                  className='rounded-circle'
+                  width='26'
+                  height='26'
+                />}
                              id="nav-dropdown">
                   <NavDropdown.Item onClick={onProfileClick}>My Profile</NavDropdown.Item>
                   <NavDropdown.Item onClick={() => onDevelopmentModeChange()}>
@@ -65,7 +60,6 @@ const AppNavbar = ({auth: {loading, isAuthenticated, user}, developmentMode, log
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>
-              </Fragment>
             }
             { !isAuthenticated &&
               <div>
