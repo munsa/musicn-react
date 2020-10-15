@@ -1,15 +1,47 @@
-.sad-gif {
-  width: 8rem;
-  top: 3.4rem;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+@import '../../../../shared/theme/theme-constants';
 
-.not-found-modal-body {
-  text-align: center;
+.not-found-modal {
+  max-width: none !important;
+  width: 18rem;
+
+  .modal-content {
+    height: 13rem;
+  }
+
+  .modal-header {
+    position: absolute;
+    right: 0.5rem;
+    z-index: 3;
+  }
+
+  .modal-body {
+    text-align: center;
+  }
+
+  .text-404 {
+    color: $custom-theme-color-1;
+  }
+
+  .text-tune-not-found {
+    color: $custom-theme-color-1-light1;
+  }
 }
 
 .not-found-modal-content {
-  margin-top: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+@media (min-width: 0px) {
+  .not-found-modal.modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+
+  .not-found-modal.modal-dialog {
+    //max-width: 500px;
+    margin: 1.75rem auto;
+  }
 }

@@ -24,8 +24,11 @@
   box-shadow: none !important;
 }
 .result-modal .recording-card {
-  min-width: 13rem;
-  top: 0.6rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
 
 @media (min-width: 0px) {

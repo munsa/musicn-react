@@ -3,7 +3,6 @@ import './RecordingNotFoundModal.css';
 import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalHeader from 'react-bootstrap/ModalHeader';
-import SadGif from '../../../../shared/assets/gif/kawaii-sad.gif';
 import PropTypes from 'prop-types';
 import PubSub from 'pubsub-js';
 
@@ -31,17 +30,14 @@ const RecordingNotFoundModal = () => {
   return (
     <Modal show={isOpen}
            onHide={hideModal}
-           centered>
-      <ModalHeader closeButton={true}>
-        <div className='not-found-modal-image'>
-          <img className='sad-gif' alt='Album Cover' src={SadGif}/>
-        </div>
-      </ModalHeader>
-      <ModalBody className='not-found-modal-body'>
-
+           centered
+           dialogClassName='not-found-modal'>
+      <ModalHeader closeButton={true}/>
+      <ModalBody>
         <div className='not-found-modal-content'>
-          <h3>We couldn't catch any Tune.</h3>
-          <p className='mt-4'>Let's try again!</p>
+          <h3 className='text-404'>404 :(</h3>
+          <h4 className='text-tune-not-found'>Tune Not Found</h4>
+          <p>Let's try again!</p>
         </div>
       </ModalBody>
     </Modal>
