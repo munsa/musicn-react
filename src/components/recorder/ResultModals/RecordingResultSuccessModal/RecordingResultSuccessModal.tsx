@@ -6,7 +6,6 @@ import ModalBody from 'react-bootstrap/ModalBody';
 import ModalHeader from 'react-bootstrap/ModalHeader';
 import PropTypes from 'prop-types';
 import RecordingCard from '../../../song/RecordingCard/RecordingCard';
-import classList from '../../../../shared/utils/classList';
 import PubSub from 'pubsub-js';
 
 export const EVENT_SHOW_RESULT_SUCCESS_MODAL = 'EVENT_SHOW_RESULT_SUCCESS_MODAL';
@@ -26,8 +25,8 @@ const RecordingResultSuccessModal = ({recording}) => {
 
   const showModal = () => {
     setIsOpen(true);
-    setAnimationFinished(false);
-    typeText(0, '');
+    //setAnimationFinished(false);
+    //typeText(0, '');
   };
 
   const hideModal = () => {
@@ -56,10 +55,12 @@ const RecordingResultSuccessModal = ({recording}) => {
       <ModalHeader closeButton={true}/>
       <ModalBody>
         <RecordingCard recording={recording}/>
+        {/*
         <div className={classList('result-modal-appeared-container', animationFinished ? 'fadeOut' : '')}>
           <div className='result-modal-animation'
                key={typedText}>{typedText}</div>
         </div>
+        */}
       </ModalBody>
     </Modal>
   );

@@ -2,7 +2,38 @@
 
 .result-modal {
   max-width: none !important;
-  width: 18rem !important;
+  width: 13rem !important;
+
+  .modal-content {
+    border-radius: $custom-card-radius !important;
+    height: 14rem;
+  }
+
+  .modal-header {
+    position: absolute;
+    right: 0.5rem;
+    z-index: 3;
+    padding: 0.2rem;
+  }
+
+  .modal-body {
+    position: relative;
+    padding: 0 !important;
+  }
+
+  .recording-card-container {
+    margin: 0 !important;
+  }
+
+  .card {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .recording-card {
+    min-width: 13rem;
+    top: 0.6rem;
+  }
 }
 
 @media (min-width: 0px) {
@@ -14,26 +45,6 @@
     //max-width: 500px;
     margin: 1.75rem auto;
   }
-}
-
-.result-modal .card {
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.result-modal .recording-card-container {
-  margin: 0 !important;
-}
-
-.result-modal .modal-content {
-  border-radius: $custom-card-radius !important;
-  height: 18.5rem;
-}
-
-.result-modal .modal-body {
-  padding-top: 0 !important;
-  top: -1rem;
-  position: relative;
 }
 
 .result-modal-appeared-container {

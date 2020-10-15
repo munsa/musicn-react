@@ -14,8 +14,10 @@ import {getCurrentGeolocationPosition} from '../../actions/geolocation';
 
 const App = ({auth: {loading, isAuthenticated, user}, getCurrentGeolocationPosition}) => {
   useEffect(() => {
-    getCurrentGeolocationPosition();
-  });
+    if(isAuthenticated) {
+      getCurrentGeolocationPosition();
+    }
+  }, [isAuthenticated]);
 
   return (
     <Fragment>
