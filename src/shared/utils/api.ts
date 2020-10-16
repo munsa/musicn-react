@@ -30,7 +30,9 @@ api.interceptors.response.use(
     } else if (err.response.data?.hasOwnProperty('status') && err.response.data.status === 'error') {
       // handle rest of the errors -> show error message
       if(process.env.NODE_ENV == 'production') {
-        PubSub.publish(EVENT_OPEN_ERROR_MODAL);
+        // PubSub.publish(EVENT_OPEN_ERROR_MODAL);
+        console.log(err.response.toString())
+        // TODO: Not show error message in production for the moment
       } else {
         store.dispatch(setAlert({msg: err.response.data.message, type: AlertType.ERROR}));
       }

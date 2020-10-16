@@ -33,7 +33,6 @@ export const sendSample = (audioChunks, geolocation, isLastTry) => async (dispat
 
     if (res.data) {
       // Result success
-      console.log('found song');
       dispatch({
         type: ActionRecordingType.GET_RECORDING_RESULT_SUCCESS,
         payload: res.data
@@ -48,14 +47,12 @@ export const sendSample = (audioChunks, geolocation, isLastTry) => async (dispat
         });
       }
     } else {
-      console.log('not found song');
       //Result not found
       if (isLastTry) {
         PubSub.publish(EVENT_SHOW_RESULT_NOT_FOUND_MODAL);
       }
     }
   } catch (err) {
-    console.log(err.message);
   }
 };
 

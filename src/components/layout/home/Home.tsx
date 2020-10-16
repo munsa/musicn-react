@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux'
 import RecordingMap from '../../map/RecordingMap';
 import {getAllRecordingGeolocations, getTrendingTunes} from '../../../actions/recording'
@@ -8,6 +8,7 @@ import Header from './header/Header';
 import MusicCarousel from '../../profile/MusicCarousel/MusicCarousel';
 
 const Home = ({allRecordings, trending, getTrendingTunes, getAllRecordingGeolocations, currentPosition}) => {
+  const [mapCenter, setMapCenter] = useState(undefined);
   useEffect(() => {
     if (allRecordings.length === 0) {
       getAllRecordingGeolocations();
@@ -17,6 +18,12 @@ const Home = ({allRecordings, trending, getTrendingTunes, getAllRecordingGeoloca
     }
   }, []);
 
+  useEffect(() => {
+    if(currentPosition && !mapCenter) {
+      setMapCenter(currentPosition);
+    }
+  }, [currentPosition]);
+
   return (
     <div>
       <Header/>
@@ -24,8 +31,9 @@ const Home = ({allRecordings, trending, getTrendingTunes, getAllRecordingGeoloca
         <div className='container-md'>
           <div className='home-recording-map mt-5'>
             <div className='map-border'>
-              <RecordingMap recordingList={allRecordings} center={currentPosition ? currentPosition : undefined}
-                            zoom={currentPosition ? 20 : undefined}/>
+              <RecordingMap recordingList={allRecordings}
+                            center={mapCenter}
+                            zoom={mapCenter ? 20 : undefined}/>
             </div>
           </div>
           <div className='mt-5'>

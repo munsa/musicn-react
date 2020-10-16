@@ -44,10 +44,6 @@ const RecordingMap = ({currentPosition, user, recordingList, center, zoom, useFi
     map.fitBounds(bounds);
   };
 
-  const onBoundsChanged = () => {
-    console.log('bounds changed');
-  }
-
   const onMarkerClickCallback = (r) => {
     setOpenedRecording(r)
   }
@@ -70,7 +66,6 @@ const RecordingMap = ({currentPosition, user, recordingList, center, zoom, useFi
           center={center}
           zoom={zoom}
           onLoad={mapLoadedHandler}
-          onBoundsChanged={onBoundsChanged}
         >
           {recordingList.map((r, j) => (
             r?.geolocation &&
