@@ -1,20 +1,23 @@
 import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
 import './RecordingNotFoundModal.css';
 import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalHeader from 'react-bootstrap/ModalHeader';
-import {ActionRecordingType} from '../../../../actions/type-enum';
-import SadGif from '../../../../shared/assets/gif/kawaii-sad.gif';
 import PropTypes from 'prop-types';
+import PubSub from 'pubsub-js';
 
-const RecordingNotFoundModal = ({recording, removeRecording}) => {
+export const EVENT_SHOW_RESULT_NOT_FOUND_MODAL = 'EVENT_SHOW_RESULT_NOT_FOUND_MODAL';
+
+const RecordingNotFoundModal = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   useEffect(() => {
-    if (recording && recording.found === false) {
+    let token = PubSub.subscribe(EVENT_SHOW_RESULT_NOT_FOUND_MODAL, () => {
       showModal();
+    });
+    return () => {
+      PubSub.unsubscribe(token);
     }
-  }, [recording]);
+  }, []);
 
   const showModal = () => {
     setIsOpen(true);
@@ -22,25 +25,19 @@ const RecordingNotFoundModal = ({recording, removeRecording}) => {
 
   const hideModal = () => {
     setIsOpen(false);
-    removeRecording();
   };
 
   return (
     <Modal show={isOpen}
            onHide={hideModal}
-           centered>
-      <ModalHeader closeButton={true}>
-        <div className='not-found-modal-image'>
-          <img className='sad-gif' alt='Album Cover' src={SadGif}/>
-        </div>
-      </ModalHeader>
-      <ModalBody className='not-found-modal-body'>
-
+           centered
+           dialogClassName='not-found-modal'>
+      <ModalHeader closeButton={true}/>
+      <ModalBody>
         <div className='not-found-modal-content'>
-          <h3>This is awkward</h3>
-          <div className='mt-4'>We couldn't find the song...</div>
-          <div>but...</div>
-          <div className='mb-4'>Hey! Try again and we maybe have better luck.</div>
+          <h3 className='text-404'>404 :(</h3>
+          <h4 className='text-tune-not-found'>Tune Not Found</h4>
+          <p>Let's try again!</p>
         </div>
       </ModalBody>
     </Modal>
@@ -48,16 +45,7 @@ const RecordingNotFoundModal = ({recording, removeRecording}) => {
 };
 
 RecordingNotFoundModal.propTypes = {
-  recording: PropTypes.object.isRequired,
-  removeRecording: PropTypes.func.isRequired
+  removeRecording: PropTypes.func
 }
 
-const mapStateToProps = state => ({
-  recording: state.recording,
-});
-
-const mapDispatchToProps = dispatch => ({
-  removeRecording: () => dispatch({type: ActionRecordingType.CLOSE_RECORDING_RESULT_MODAL})
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(RecordingNotFoundModal);
+export default RecordingNotFoundModal;

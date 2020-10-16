@@ -11,12 +11,9 @@ export const getCurrentGeolocationPosition = () => dispatch => {
       type: ActionGeolocationType.GET_CURRENT_POSITION,
       payload: currentPosition
     });
-    console.log('New position:\nlat(' + position.coords.latitude + ')\nlng(' + position.coords.longitude + ')')
   }
 
   const geolocationError = err => {
-    console.log(err.toString());
-    // Do nothing
   }
 
   const options = {

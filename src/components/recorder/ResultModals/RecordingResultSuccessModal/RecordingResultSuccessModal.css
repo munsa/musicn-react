@@ -1,0 +1,62 @@
+.result-modal {
+  max-width: none !important;
+  width: 13rem !important;
+}
+.result-modal .modal-content {
+  border-radius: 16px !important;
+  height: 14rem;
+}
+.result-modal .modal-header {
+  position: absolute;
+  right: 0.5rem;
+  z-index: 3;
+  padding: 0.2rem;
+}
+.result-modal .modal-body {
+  position: relative;
+  padding: 0 !important;
+}
+.result-modal .recording-card-container {
+  margin: 0 !important;
+}
+.result-modal .card {
+  border: none !important;
+  box-shadow: none !important;
+}
+.result-modal .recording-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+@media (min-width: 0px) {
+  .result-modal.modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+
+  .result-modal.modal-dialog {
+    margin: 1.75rem auto;
+  }
+}
+.result-modal-appeared-container {
+  width: 90%;
+  height: 100%;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+}
+
+.result-modal-animation {
+  padding-top: 5rem;
+  font-family: "Lucida Console", Courier, monospace;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 1.5s;
+}
+
+/*# sourceMappingURL=RecordingResultSuccessModal.css.map */

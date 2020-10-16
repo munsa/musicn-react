@@ -1,0 +1,70 @@
+@import '../../../../shared/theme/theme-constants';
+
+.result-modal {
+  max-width: none !important;
+  width: 13rem !important;
+
+  .modal-content {
+    border-radius: $custom-card-radius !important;
+    height: 14rem;
+  }
+
+  .modal-header {
+    position: absolute;
+    right: 0.5rem;
+    z-index: 3;
+    padding: 0.2rem;
+  }
+
+  .modal-body {
+    position: relative;
+    padding: 0 !important;
+  }
+
+  .recording-card-container {
+    margin: 0 !important;
+  }
+
+  .card {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .recording-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+}
+
+@media (min-width: 0px) {
+  .result-modal.modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+
+  .result-modal.modal-dialog {
+    //max-width: 500px;
+    margin: 1.75rem auto;
+  }
+}
+
+.result-modal-appeared-container {
+  width: 90%;
+  height: 100%;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+}
+
+.result-modal-animation {
+  padding-top: 5rem;
+  font-family: "Lucida Console", Courier, monospace;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 1.5s;
+}

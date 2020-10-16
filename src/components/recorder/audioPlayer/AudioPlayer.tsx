@@ -7,12 +7,13 @@ import classList from '../../../shared/utils/classList';
 
 /**
  * TODO: Refactor component.
- * It works fine for the moment but we could find another approach. Maybe SVG instead of canvas.
+ * Use requestAnimationFrame
+ * It works fine for the moment but we could find another approach.
  * There are some problems that had to be solved with workarounds.
- * The recursive functions get the value of states an props when it first enters the function.
+ * The recursive functions get the value of states and props when it first enters the function.
  * They don't get updated values.
  * It is solved using useRef as it always gets the updated values.
- * Create a totally independent component to publish the package in npm.
+ * Create a totally independent component to publish it in npm.
  */
 
 const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDuration, minLapse, maxLapse, stoppedAmplitude, colorPlaying, colorStopped, buttonSize, recorderMode}) => {
@@ -183,7 +184,7 @@ const AudioPlayer = ({amplitudes, playing, onPlayCallback, frameDuration, beatDu
       <div style={{height: buttonSize + 'px', width: buttonSize, color: playing ? 'black' : 'white'}} className='button-label'>
         { playing ? '\n ≧◡≦' : '≖◡≖' }
       </div>
-      <button onClick={() => !playing && recorderMode ? onPlayCallback() : (textAnimationFinished && startTextAnimation())}
+      <button onClick={() => recorderMode && !playing ? onPlayCallback() : (!recorderMode && textAnimationFinished && startTextAnimation())}
               className='audio-player-invisible-button'/>
       <div className='audio-player-login-message-container'>
         <div className={classList('audio-player-login-message', textAnimationFinished ? 'fadeOut':'')}>
@@ -211,7 +212,7 @@ AudioPlayer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  playing: state.recording.playing
+  playing: state.recording.current.playing
 })
 
 export default connect(mapStateToProps)(AudioPlayer);

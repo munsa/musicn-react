@@ -1,12 +1,7 @@
-@import '../../../shared/theme/theme';
+@import '../../../shared/theme/theme-constants';
 
-.carousel-container {
-  background-color: $custom-theme-color-4;
-}
-
-.recording-card {
-  background-color: $custom-theme-color-5;
-  height: 200px;
+.carousel-container .recording-card {
+  box-shadow: 0 0 0 !important;;
 }
 
 button:focus {

@@ -3,8 +3,12 @@
   left: auto !important;
 }
 
+.navbar .dropdown-toggle::after {
+  display: none;
+}
+
 .navbar {
-  background-color: rgba(255, 255, 255, 0) !important;
+  background-color: transparent !important;
   z-index: 1;
 }
 
@@ -30,8 +34,9 @@
   margin-top: 7px;
 }
 
-.brand-logo {
-  height: 30px;
+.navbar-brand {
+  width: 25%;
+  max-width: 7rem;
 }
 
 .developer-mode-text {

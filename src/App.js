@@ -15,9 +15,19 @@ if (localStorage.token) {
 
 const App = () => {
   useEffect(() => {
+    viewportTrick();
     store.dispatch(loadUser());
-    store.dispatch(getCurrentGeolocationPosition());
   }, []);
+
+  // Viewport trick. For mobile, resize when the screen size changes (when scrolls and hides de header of the browser)
+  window.addEventListener('resize', () => {
+    viewportTrick();
+  });
+
+  const viewportTrick = () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
 
   return (
     <Provider store={store}>

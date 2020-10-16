@@ -1,19 +1,35 @@
 import React, {Fragment, useEffect, useRef, useState} from 'react';
+import {connect} from 'react-redux';
 import {GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
 import './RecordingMap.css';
 import RecordingMarker from './marker/RecordingMarker';
 import {mapStyleTheme} from '../../shared/theme/custom-google-maps'
+import CurrentPositionMarker from './marker/CustomaMarker/CurrentPositionMarker';
 
 
-const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
+
+const RecordingMap = ({currentPosition, user, recordingList, center, zoom, useFitBounds}) => {
   const [openedRecording, setOpenedRecording] = useState(undefined);
+  const mapRef = useRef(null);
+  useEffect(() => {
+    if(useFitBounds && hasGeolocationRecordings(recordingList)) {
+      fitBounds(mapRef.current);
+    }
+  }, [recordingList]);
 
   const mapLoadedHandler = map => {
-    if(useFitBounds) {
-      fitBounds(map);
-    }
+    mapRef.current = map;
   };
 
+  const hasGeolocationRecordings = recordings => {
+    if(recordings && recordings.length > 0)
+    for (let i = 0; i < recordings.length; i++) {
+      if (recordings[i] && recordings[i].geolocation != null) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   const fitBounds = map => {
     // @ts-ignore
@@ -28,15 +44,9 @@ const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
     map.fitBounds(bounds);
   };
 
-  const onBoundsChanged = () => {
-    console.log('change');
-  }
-
   const onMarkerClickCallback = (r) => {
     setOpenedRecording(r)
   }
-
-
 
   return (
     <Fragment>
@@ -56,7 +66,6 @@ const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
           center={center}
           zoom={zoom}
           onLoad={mapLoadedHandler}
-          onBoundsChanged={onBoundsChanged}
         >
           {recordingList.map((r, j) => (
             r?.geolocation &&
@@ -67,6 +76,9 @@ const RecordingMap = ({recordingList, center, zoom, useFitBounds}) => {
               onMarkerClickCallback={onMarkerClickCallback}
             />
           ))}
+          { currentPosition && user &&
+            <CurrentPositionMarker user={user} position={currentPosition}/>
+          }
         </GoogleMap>
       </LoadScript>
     </Fragment>
@@ -82,4 +94,9 @@ RecordingMap.defaultProps = {
   useFitBounds: false
 };
 
-export default RecordingMap;
+const mapStateToProps = state => ({
+  currentPosition: state.geolocation.currentPosition,
+  user: state.auth.user
+});
+
+export default connect(mapStateToProps)(RecordingMap);

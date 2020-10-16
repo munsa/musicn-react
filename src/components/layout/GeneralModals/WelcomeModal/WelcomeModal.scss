@@ -1,0 +1,108 @@
+@import "../../../../shared/theme/theme-constants";
+
+.welcome-modal {
+  text-align: center;
+  width: 23rem !important;
+  max-width: 100%;
+
+  .modal-content {
+    border-radius: 0 !important;
+    height: 25rem;
+  }
+
+  .modal-header {
+    position: absolute;
+    right: 0.5rem;
+    z-index: 3;
+  }
+
+  .modal-body {
+    padding: 0;
+  }
+
+  .carousel {
+    height: 100%;
+  }
+
+  .carousel-indicators {
+    display: none;
+  }
+
+  .carousel-item {
+    height: 100%;
+  }
+
+  .recording-card {
+    width: 10rem;
+    margin: auto;
+  }
+
+  .text-orange {
+    color: $custom-theme-color-1-light1;
+  }
+
+  .text-blue {
+    color: $custom-theme-color-2-light1;
+  }
+
+  .moon {
+    margin: auto;
+    width: 110px;
+    top: 0;
+  }
+
+  .disable-control-next {
+    .carousel-control-next {
+      display: none !important;
+    }
+  }
+
+  .disable-control-prev {
+    .carousel-control-prev {
+      display: none !important;
+    }
+  }
+}
+
+.welcome-modal-hide-control {
+  background-image: none !important;
+}
+
+.welcome-modal-carousel-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 17rem;
+}
+
+@media (min-width: 0px) {
+  .welcome-modal.modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+
+  .welcome-modal.modal-dialog {
+    margin: 1.75rem auto;
+  }
+}
+
+.welcome-modal-title {
+  font-size: 1.5rem;
+  color: $custom-theme-color-1;
+}
+
+.welcome-modal-logo {
+  height: 2.3rem;
+}
+
+.map-screenshot {
+  width: 100%;
+  bottom: 0;
+}
+
+.text-ready {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 3.5rem;
+}

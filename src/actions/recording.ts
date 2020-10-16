@@ -1,34 +1,58 @@
 import {ActionProfileType, ActionRecordingType} from './type-enum';
-import api from "../shared/utils/api";
+import api from '../shared/utils/api';
+import {v4 as uuidv4} from 'uuid';
+import PubSub from 'pubsub-js';
+import {EVENT_SHOW_RESULT_NOT_FOUND_MODAL} from '../components/recorder/ResultModals/RecordingNotFoundModal/RecordingNotFoundModal';
+import {EVENT_SHOW_RESULT_SUCCESS_MODAL} from '../components/recorder/ResultModals/RecordingResultSuccessModal/RecordingResultSuccessModal';
 
-export const sendRecording = (audioBlob, geolocation) => async (dispatch, getState) => {
+export const startRecording = () => async (dispatch) => {
+  const id = uuidv4();
+  dispatch({
+    type: ActionRecordingType.START_RECORDING,
+    payload: id
+  });
+}
+
+export const sendSample = (audioChunks, geolocation, isLastTry) => async (dispatch, getState) => {
   try {
-    dispatch({
-      type: ActionRecordingType.SEND_RECORDING
-    });
-
-    const formData = new FormData();
-    formData.append('audio', audioBlob, 'blob');
-    formData.append('geolocation', JSON.stringify(geolocation));
-
-    const config = { headers : { 'Content-Type': 'multipart/form-data' }};
-    const res = await api.post('/recording/identify', formData, config);
-
-    dispatch({
-      type: ActionRecordingType.GET_RECORDING,
-      payload: res.data
-    });
-
-    // Add recording to profile if the logged user profile is open
-    // @ts-ignore
-    if (getState().profile.currentProfile.isLoggedUser) {
+    if (isLastTry) {
       dispatch({
-        type: ActionProfileType.ADD_NEW_RECORDING_TO_PROFILE,
-        payload: res.data
+        type: ActionRecordingType.STOP_PLAYER
       });
     }
+
+    // Send data
+    const formData = new FormData();
+    const audioBlob = new Blob(audioChunks, {type: 'audio/x-wav'});
+    formData.append('audio', audioBlob, 'blob');
+    formData.append('geolocation', JSON.stringify(geolocation));
+    formData.append('transientId', getState().recording.current.transientId);
+
+    const config = {headers: {'Content-Type': 'multipart/form-data'}};
+    const res = await api.post('/recording/identify', formData, config);
+
+    if (res.data) {
+      // Result success
+      dispatch({
+        type: ActionRecordingType.GET_RECORDING_RESULT_SUCCESS,
+        payload: res.data
+      });
+      PubSub.publish(EVENT_SHOW_RESULT_SUCCESS_MODAL);
+
+      // Add recording to profile if the logged user profile is open
+      if (getState().profile.currentProfile.isLoggedUser) {
+        dispatch({
+          type: ActionProfileType.ADD_NEW_RECORDING_TO_PROFILE,
+          payload: res.data
+        });
+      }
+    } else {
+      //Result not found
+      if (isLastTry) {
+        PubSub.publish(EVENT_SHOW_RESULT_NOT_FOUND_MODAL);
+      }
+    }
   } catch (err) {
-    console.log(err.message);
   }
 };
 
@@ -40,15 +64,22 @@ export const getAllRecordingGeolocations = () => async dispatch => {
   });
 }
 
-export const setRecordingData = (dataFrequencyAmplitudes) => async dispatch => {
-  dispatch({
-    type: ActionRecordingType.SET_RECORDING_DATA,
-    payload: dataFrequencyAmplitudes
-  });
-}
+export const getTrendingTunes = () => async dispatch => {
+  const genreList = [
+    {genreName: 'Alternative', genreAttributeName: 'alternative'},
+    {genreName: 'Hip Hop', genreAttributeName: 'hipHop'},
+    {genreName: 'Indie Rock', genreAttributeName: 'indieRock'},
+    {genreName: 'Electro', genreAttributeName: 'electronic'},
+  ];
 
-export const stopPlayer = () => async dispatch => {
-  dispatch({
-    type: ActionRecordingType.STOP_PLAYER
-  });
+  for (const genre of genreList) {
+    const res = await api.get(`/recording/genre/${genre.genreName}?limit=10`);
+    dispatch({
+      type: ActionRecordingType.GET_TRENDING_LIST,
+      payload: {
+        genreName: genre.genreAttributeName,
+        data: res.data
+      }
+    });
+  }
 }

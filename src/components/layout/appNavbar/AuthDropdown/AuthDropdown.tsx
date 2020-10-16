@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 import './AuthDropdown.css';
 import AuthDropdownRegister from './AuthDropdownRegister/AuthDropdownRegister';
 import {Dropdown} from 'react-bootstrap';
@@ -14,6 +15,7 @@ export const MODE_REGISTER = 'mode_register';
 export const EVENT_SHOW_AUTH_DROPDOWN = 'EVENT_SHOW_AUTH_DROPDOWN';
 
 const AuthDropdown = ({authLoading, login, register}) => {
+  const history = useHistory();
   const [mode, setMode] = useState(MODE_LOGIN);
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
@@ -48,7 +50,8 @@ const AuthDropdown = ({authLoading, login, register}) => {
       register({
         username: e.target.username.value,
         email: e.target.email.value,
-        password: e.target.password.value
+        password: e.target.password.value,
+        history
       })
     }
   }

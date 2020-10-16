@@ -1,0 +1,31 @@
+.error-modal {
+  max-width: none !important;
+  width: 23rem !important;
+}
+
+@media (min-width: 0px) {
+  .error-modal.modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+
+  .error-modal.modal-dialog {
+    margin: 1.75rem auto;
+  }
+}
+.sad-gif {
+  width: 8rem;
+  top: 3.4rem;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.error-modal-body {
+  text-align: center;
+}
+
+.error-modal-content {
+  margin-top: 3rem;
+}
+
+/*# sourceMappingURL=ErrorModal.css.map */

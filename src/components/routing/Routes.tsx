@@ -13,13 +13,14 @@ const Routes = ({isAuthenticated, loading}) => {
     <Fragment>
       <Route exact path="/register" component={Register}/>
       <Route exact path="/login" component={Login}/>
-      {!isAuthenticated ?
-        <Route excact path='/' component={Landing}/>
-        :
-        <PrivateRoute exact path='/' component={Home}/>
-      }
-      <section>
+      <section style={{height: '100%'}}>
         <Switch>
+          {!isAuthenticated && !loading &&
+          <Route excact path='/' component={Landing}/>
+          }
+          {isAuthenticated && !loading &&
+          <PrivateRoute exact path='/' component={Home}/>
+          }
           <PrivateRoute exact path="/profile/:username" component={Profile}/>
         </Switch>
       </section>
