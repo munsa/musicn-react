@@ -50,6 +50,18 @@
     width: 110px;
     top: 0;
   }
+
+  .disable-control-next {
+    .carousel-control-next {
+      display: none !important;
+    }
+  }
+
+  .disable-control-prev {
+    .carousel-control-prev {
+      display: none !important;
+    }
+  }
 }
 
 .welcome-modal-hide-control {
@@ -81,4 +93,16 @@
 
 .welcome-modal-logo {
   height: 2.3rem;
+}
+
+.map-screenshot {
+  width: 100%;
+  bottom: 0;
+}
+
+.text-ready {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 3.5rem;
 }

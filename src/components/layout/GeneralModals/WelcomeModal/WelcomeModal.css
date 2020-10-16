@@ -39,6 +39,12 @@
   width: 110px;
   top: 0;
 }
+.welcome-modal .disable-control-next .carousel-control-next {
+  display: none !important;
+}
+.welcome-modal .disable-control-prev .carousel-control-prev {
+  display: none !important;
+}
 
 .welcome-modal-hide-control {
   background-image: none !important;
@@ -68,6 +74,18 @@
 
 .welcome-modal-logo {
   height: 2.3rem;
+}
+
+.map-screenshot {
+  width: 100%;
+  bottom: 0;
+}
+
+.text-ready {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 3.5rem;
 }
 
 /*# sourceMappingURL=WelcomeModal.css.map */

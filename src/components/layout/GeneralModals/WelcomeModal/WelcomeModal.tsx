@@ -5,10 +5,12 @@ import ModalBody from 'react-bootstrap/ModalBody';
 import Modal from 'react-bootstrap/Modal';
 import ProfileUserInformation from '../../../profile/ProfileUserInformation/ProfileUserInformation';
 import WildTunes from '../../../../shared/assets/image/wildtunes/logo/wildtunes_logo_orange.svg';
-import {Carousel} from 'react-bootstrap';
+import {Button, Carousel} from 'react-bootstrap';
 import RecordingCard from '../../../song/RecordingCard/RecordingCard';
 import Moon from '../../../../shared/assets/image/moon.png';
+import MapImage from '../../../../shared/assets/image/map.jpg';
 import ModalHeader from 'react-bootstrap/ModalHeader';
+import classList from '../../../../shared/utils/classList';
 
 export const EVENT_OPEN_WELCOME_MODAL = 'EVENT_OPEN_WELCOME_MODAL';
 
@@ -36,11 +38,11 @@ const WelcomeModal = () => {
   };
 
   const handleSelect = (selectedIndex, e) => {
-    if (!(index === 3 && selectedIndex === 0) &&
-      !(index === 0 && selectedIndex === 3)) {
+    if (!(index === 4 && selectedIndex === 0) &&
+      !(index === 0 && selectedIndex === 4)) {
       setIndex(selectedIndex);
 
-      if (selectedIndex === 3) {
+      if (selectedIndex === 4) {
         setCompleted(true);
       }
     }
@@ -64,7 +66,10 @@ const WelcomeModal = () => {
     >
       <ModalHeader closeButton={completed}/>
       <ModalBody>
-        <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
+        <Carousel activeIndex={index}
+                  onSelect={handleSelect}
+                  interval={null}
+                  className={classList(index === 0 && 'disable-control-prev', index === 4 && 'disable-control-next')}>
           <Carousel.Item>
             <div className='welcome-modal-carousel-item'>
               <div className='welcome-modal-title'>
@@ -107,9 +112,20 @@ const WelcomeModal = () => {
           </Carousel.Item>
           <Carousel.Item>
             <div className='welcome-modal-carousel-item'>
-              <p className='text-blue'>
-                Scroll down the home page to explore the trending tunes and the map.
-              </p>
+              <p className='text-blue'>Scroll down to explore the trending tunes and map.</p>
+              <img src={MapImage}
+                   alt='Map'
+                   className='map-screenshot pb-4'/>
+              <p className='text-blue'>This bar seems a good place to have a drink and listen to good music.</p>
+            </div>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className='moon' src={Moon}/>
+            <div className='text-ready'>
+              You are ready to go!
+            </div>
+            <div className='welcome-modal-carousel-item'>
+              <Button onClick={hideModal}>Start</Button>
             </div>
           </Carousel.Item>
         </Carousel>
