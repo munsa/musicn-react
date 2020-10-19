@@ -5,7 +5,7 @@ import {ActionAuthType} from '../../actions/type-enum';
 import {setAlert} from '../../actions/alert';
 import {AlertType} from '../constants/constants';
 import PubSub from 'pubsub-js';
-import {EVENT_OPEN_ERROR_MODAL} from '../../components/layout/GeneralModals/ErrorModal/ErrorModal';
+import {EVENT_OPEN_ERROR_MODAL} from '../../components/Layout/GeneralModals/ErrorModal/ErrorModal';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,

@@ -2,9 +2,9 @@ import api from '../shared/utils/api';
 import {ActionAuthType, RootType} from './type-enum';
 import setAuthToken from '../shared/utils/setAuthToken';
 import PubSub from 'pubsub-js';
-import {EVENT_SHOW_REGISTER_ERRORS} from '../components/layout/appNavbar/AuthDropdown/AuthDropdownRegister/AuthDropdownRegister';
-import {EVENT_SHOW_LOGIN_ERRORS} from '../components/layout/appNavbar/AuthDropdown/AuthDropdownLogin/AuthDropdownLogin';
-import {EVENT_OPEN_WELCOME_MODAL} from '../components/layout/GeneralModals/WelcomeModal/WelcomeModal';
+import {EVENT_SHOW_REGISTER_ERRORS} from '../components/Layout/AppNavbar/AuthDropdown/AuthDropdownRegister/AuthDropdownRegister';
+import {EVENT_SHOW_LOGIN_ERRORS} from '../components/Layout/AppNavbar/AuthDropdown/AuthDropdownLogin/AuthDropdownLogin';
+import {EVENT_OPEN_WELCOME_MODAL} from '../components/Layout/GeneralModals/WelcomeModal/WelcomeModal';
 
 // Load User
 export const loadUser = (isFirstLogin = false) => async dispatch => {
@@ -13,7 +13,7 @@ export const loadUser = (isFirstLogin = false) => async dispatch => {
   }
 
   try {
-    const res = await api.get('/auth/user');
+    const res = await api.get('/Auth/user');
 
     if (isFirstLogin) {
       PubSub.publish(EVENT_OPEN_WELCOME_MODAL, res.data);
@@ -37,7 +37,7 @@ export const register = ({username, email, password, history}) => async dispatch
   try {
     dispatch({type: ActionAuthType.AUTH_LOADING});
 
-    const res = await api.post('/auth/register', body);
+    const res = await api.post('/Auth/register', body);
 
     dispatch({
       type: ActionAuthType.REGISTER_SUCCESS,
@@ -64,7 +64,7 @@ export const login = (username, password) => async dispatch => {
   try {
     dispatch({type: ActionAuthType.AUTH_LOADING});
 
-    const res = await api.post('/auth/login', body);
+    const res = await api.post('/Auth/login', body);
 
     dispatch({
       type: ActionAuthType.LOGIN_SUCCESS,

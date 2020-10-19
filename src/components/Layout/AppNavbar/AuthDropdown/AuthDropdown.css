@@ -1,0 +1,36 @@
+.login-button {
+  color: #ff6201 !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.login-button.btn-primary:not(:disabled):not(.disabled):active:focus, .login-button.btn-primary:not(:disabled):not(.disabled).active:focus, .show > .login-button.btn-primary.dropdown-toggle:focus {
+  box-shadow: transparent !important;
+}
+
+.login-button.dropdown-toggle::after {
+  display: none;
+}
+
+.login-button.btn-primary:not(:disabled):not(.disabled):active:focus, .login-button.btn-primary:not(:disabled):not(.disabled).active:focus, .show > .login-button.btn-primary.dropdown-toggle:focus {
+  box-shadow: none !important;
+}
+
+.login-button.btn-primary:hover {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: #FF8E47 !important;
+}
+
+.login-button.btn-primary:active {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.login-button.btn-primary:focus {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/*# sourceMappingURL=AuthDropdown.css.Map */
