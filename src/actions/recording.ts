@@ -2,8 +2,8 @@ import {ActionProfileType, ActionRecordingType} from './type-enum';
 import api from '../shared/utils/api';
 import {v4 as uuidv4} from 'uuid';
 import PubSub from 'pubsub-js';
-import {EVENT_SHOW_RESULT_NOT_FOUND_MODAL} from '../components/recorder/ResultModals/RecordingNotFoundModal/RecordingNotFoundModal';
-import {EVENT_SHOW_RESULT_SUCCESS_MODAL} from '../components/recorder/ResultModals/RecordingResultSuccessModal/RecordingResultSuccessModal';
+import {EVENT_SHOW_RESULT_NOT_FOUND_MODAL} from '../components/Recorder/ResultModals/RecordingNotFoundModal/RecordingNotFoundModal';
+import {EVENT_SHOW_RESULT_SUCCESS_MODAL} from '../components/Recorder/ResultModals/RecordingResultSuccessModal/RecordingResultSuccessModal';
 
 export const startRecording = () => async (dispatch) => {
   const id = uuidv4();
@@ -39,7 +39,7 @@ export const sendSample = (audioChunks, geolocation, isLastTry) => async (dispat
       });
       PubSub.publish(EVENT_SHOW_RESULT_SUCCESS_MODAL);
 
-      // Add recording to profile if the logged user profile is open
+      // Add recording to Profile if the logged user Profile is open
       if (getState().profile.currentProfile.isLoggedUser) {
         dispatch({
           type: ActionProfileType.ADD_NEW_RECORDING_TO_PROFILE,

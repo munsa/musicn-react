@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
-import Layout from './components/layout/Layout';
+import Layout from './components/Layout/Layout';
 import './shared/theme/bootstrap-custom.css';
 // Redux
 import {Provider} from 'react-redux';
@@ -19,7 +19,7 @@ const App = () => {
     store.dispatch(loadUser());
   }, []);
 
-  // Viewport trick. For mobile, resize when the screen size changes (when scrolls and hides de header of the browser)
+  // Viewport trick. For mobile, resize when the screen size changes (when scrolls and hides de Header of the browser)
   window.addEventListener('resize', () => {
     viewportTrick();
   });

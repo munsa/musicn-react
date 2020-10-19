@@ -1,0 +1,15 @@
+.user-info-container {
+  height: 100%;
+  text-align: center;
+  pointer-events: none;
+}
+
+.user-avatar {
+  pointer-events: none;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=ProfileUserInformation.css.Map */

@@ -1,0 +1,47 @@
+.dropdown-menu {
+  right: 0 !important;
+  left: auto !important;
+}
+
+.navbar .dropdown-toggle::after {
+  display: none;
+}
+
+.navbar {
+  background-color: transparent !important;
+  z-index: 1;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+}
+
+.dropdown-item:hover {
+  background-color: transparent !important;
+  color: #3D87B8 !important;
+}
+
+.dropdown-item:active {
+  background-color: transparent !important;
+  color: #ff6201 !important;
+}
+
+.navbar-expand .navbar-nav .dropdown-menu {
+  border-radius: 16px;
+}
+
+.avatar {
+  margin-top: 7px;
+}
+
+.navbar-brand {
+  width: 25%;
+  max-width: 7rem;
+}
+
+.developer-mode-text {
+  color: #FFB485;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=AppNavbar.css.Map */

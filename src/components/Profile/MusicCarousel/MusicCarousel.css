@@ -1,0 +1,9 @@
+.carousel-container .recording-card {
+  box-shadow: 0 0 0 !important;
+}
+
+button:focus {
+  outline: none;
+}
+
+/*# sourceMappingURL=MusicCarousel.css.Map */

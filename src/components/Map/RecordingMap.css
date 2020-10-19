@@ -1,0 +1,19 @@
+/*
+.gmnoprint a, .gmnoprint span {
+  display:none;
+}
+.gmnoprint div {
+  background:none !important;
+}
+ */
+.info-box {
+  left: -50px !important;
+  bottom: -100px !important;
+}
+
+.info-box-container {
+  opacity: 0.75;
+  padding: 12px;
+}
+
+/*# sourceMappingURL=RecordingMap.css.Map */

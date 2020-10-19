@@ -1,0 +1,33 @@
+.loading-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #ff6201;
+}
+
+.loading-page-logo {
+  width: 8rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes loading-logo-animation {
+  0% {
+    width: 10rem;
+  }
+  50% {
+    width: 11rem;
+  }
+  100% {
+    width: 10rem;
+  }
+}
+
+/*# sourceMappingURL=LoadingPage.css.Map */

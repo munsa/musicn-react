@@ -1,0 +1,88 @@
+.welcome-modal {
+  text-align: center;
+  width: 23rem !important;
+  max-width: 100%;
+}
+.welcome-modal .modal-content {
+  border-radius: 0 !important;
+  height: 25rem;
+}
+.welcome-modal .modal-header {
+  position: absolute;
+  right: 0.5rem;
+  z-index: 3;
+}
+.welcome-modal .modal-body {
+  padding: 0;
+}
+.welcome-modal .carousel-indicators {
+  display: none;
+}
+.welcome-modal .carousel-item {
+  height: 25rem !important;
+}
+.welcome-modal .recording-card {
+  width: 10rem;
+  margin: auto;
+}
+.welcome-modal .text-orange {
+  color: #FFB485;
+}
+.welcome-modal .text-blue {
+  color: #94BFDB;
+}
+.welcome-modal .moon {
+  margin: auto;
+  width: 110px;
+  top: 0;
+}
+.welcome-modal .disable-control-next .carousel-control-next {
+  display: none !important;
+}
+.welcome-modal .disable-control-prev .carousel-control-prev {
+  display: none !important;
+}
+
+.welcome-modal-hide-control {
+  background-image: none !important;
+}
+
+.welcome-modal-carousel-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 17rem;
+}
+
+@media (min-width: 0px) {
+  .welcome-modal.modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+
+  .welcome-modal.modal-dialog {
+    margin: 1.75rem auto;
+  }
+}
+.welcome-modal-title {
+  font-size: 1.5rem;
+  color: #ff6201;
+}
+
+.welcome-modal-logo {
+  height: 2.3rem;
+}
+
+.map-screenshot {
+  width: 100%;
+  bottom: 0;
+}
+
+.text-ready {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 3.5rem;
+}
+
+/*# sourceMappingURL=WelcomeModal.css.Map */

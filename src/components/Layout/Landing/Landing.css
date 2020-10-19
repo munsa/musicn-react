@@ -1,0 +1,322 @@
+.landing-container {
+  max-height: 100vh;
+  height: 100%;
+  width: 100%;
+}
+
+.landing-city-image {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+  border-bottom: 1px solid #6986a1;
+}
+
+.landing-item-container.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.landing-item-container {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.landing-item-text {
+  position: absolute;
+  top: calc(25vh);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 80%;
+  -webkit-animation-duration: 7s;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-duration: 7s;
+  -moz-animation-timing-function: linear;
+  -o-animation-duration: 7s;
+  -o-animation-timing-function: linear;
+  animation-duration: 7s;
+  animation-timing-function: linear;
+}
+
+.landing-item-text h3 {
+  color: #3D87B8;
+  font-weight: bold;
+}
+
+.landing-item-text p {
+  color: black;
+}
+
+.landing-item-text.left {
+  -webkit-animation-name: leftTextAnimationIn;
+  -moz-animation-name: leftTextAnimationIn;
+  -o-animation-name: leftTextAnimationIn;
+  animation-name: leftTextAnimationIn;
+  left: -100%;
+}
+
+@-webkit-keyframes leftTextAnimationIn {
+  0% {
+    left: -100%;
+  }
+  10% {
+    left: 50%;
+  }
+  90% {
+    left: 50%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+@-moz-keyframes leftTextAnimationIn {
+  0% {
+    left: -100%;
+  }
+  10% {
+    left: 50%;
+  }
+  90% {
+    left: 50%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+@-o-keyframes leftTextAnimationIn {
+  0% {
+    left: -100%;
+  }
+  10% {
+    left: 50%;
+  }
+  90% {
+    left: 50%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+@keyframes leftTextAnimationIn {
+  0% {
+    left: -100%;
+  }
+  10% {
+    left: 50%;
+  }
+  90% {
+    left: 50%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+.landing-item-text.right {
+  -webkit-animation-name: rightTextAnimationIn;
+  -moz-animation-name: rightTextAnimationIn;
+  -o-animation-name: rightTextAnimationIn;
+  animation-name: rightTextAnimationIn;
+  left: 200%;
+}
+
+@-webkit-keyframes rightTextAnimationIn {
+  0% {
+    left: 200%;
+  }
+  10% {
+    left: 50%;
+  }
+  90% {
+    left: 50%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+@-moz-keyframes rightTextAnimationIn {
+  0% {
+    left: 200%;
+  }
+  10% {
+    left: 50%;
+  }
+  90% {
+    left: 50%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+@-o-keyframes rightTextAnimationIn {
+  0% {
+    left: 200%;
+  }
+  10% {
+    left: 50%;
+  }
+  90% {
+    left: 50%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+@keyframes rightTextAnimationIn {
+  0% {
+    left: 200%;
+  }
+  10% {
+    left: 50%;
+  }
+  90% {
+    left: 50%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+.landing-item-image {
+  position: absolute;
+  height: 40vmax;
+  bottom: 0;
+  -webkit-animation-duration: 7s;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-duration: 7s;
+  -moz-animation-timing-function: linear;
+  -o-animation-duration: 7s;
+  -o-animation-timing-function: linear;
+  animation-duration: 7s;
+  animation-timing-function: linear;
+}
+
+@-webkit-keyframes leftImageAnimationIn {
+  0% {
+    left: -70vh;
+  }
+  10% {
+    left: 0;
+  }
+  90% {
+    left: 0;
+  }
+  100% {
+    left: -70vh;
+  }
+}
+@-moz-keyframes leftImageAnimationIn {
+  0% {
+    left: -70vh;
+  }
+  10% {
+    left: 0;
+  }
+  90% {
+    left: 0;
+  }
+  100% {
+    left: -70vh;
+  }
+}
+@-o-keyframes leftImageAnimationIn {
+  0% {
+    left: -70vh;
+  }
+  10% {
+    left: 0;
+  }
+  90% {
+    left: 0;
+  }
+  100% {
+    left: -70vh;
+  }
+}
+@keyframes leftImageAnimationIn {
+  0% {
+    left: -70vh;
+  }
+  10% {
+    left: 0;
+  }
+  90% {
+    left: 0;
+  }
+  100% {
+    left: -70vh;
+  }
+}
+.landing-item-image.left {
+  -webkit-animation-name: leftImageAnimationIn;
+  -moz-animation-name: leftImageAnimationIn;
+  -o-animation-name: leftImageAnimationIn;
+  animation-name: leftImageAnimationIn;
+  left: -70vh;
+}
+
+@-webkit-keyframes rightImageAnimationIn {
+  0% {
+    right: -70vh;
+  }
+  10% {
+    right: 0;
+  }
+  90% {
+    right: 0;
+  }
+  100% {
+    right: -70vh;
+  }
+}
+@-moz-keyframes rightImageAnimationIn {
+  0% {
+    right: -70vh;
+  }
+  10% {
+    right: 0;
+  }
+  90% {
+    right: 0;
+  }
+  100% {
+    right: -70vh;
+  }
+}
+@-o-keyframes rightImageAnimationIn {
+  0% {
+    right: -70vh;
+  }
+  10% {
+    right: 0;
+  }
+  90% {
+    right: 0;
+  }
+  100% {
+    right: -70vh;
+  }
+}
+@keyframes rightImageAnimationIn {
+  0% {
+    right: -70vh;
+  }
+  10% {
+    right: 0;
+  }
+  90% {
+    right: 0;
+  }
+  100% {
+    right: -70vh;
+  }
+}
+.landing-item-image.right {
+  -webkit-animation-name: rightImageAnimationIn;
+  -moz-animation-name: rightImageAnimationIn;
+  -o-animation-name: rightImageAnimationIn;
+  animation-name: rightImageAnimationIn;
+  right: -70vh;
+}
+
+/*# sourceMappingURL=Landing.css.Map */
