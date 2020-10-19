@@ -2,8 +2,8 @@ import api from '../shared/utils/api';
 import {ActionAuthType, RootType} from './type-enum';
 import setAuthToken from '../shared/utils/setAuthToken';
 import PubSub from 'pubsub-js';
-import {EVENT_SHOW_REGISTER_ERRORS} from '../components/Layout/AppNavbar/AuthDropdown/AuthDropdownRegister/AuthDropdownRegister';
-import {EVENT_SHOW_LOGIN_ERRORS} from '../components/Layout/AppNavbar/AuthDropdown/AuthDropdownLogin/AuthDropdownLogin';
+import {EVENT_SHOW_REGISTER_ERRORS} from '../components/layout/AppNavbar/AuthDropdown/AuthDropdownRegister/AuthDropdownRegister';
+import {EVENT_SHOW_LOGIN_ERRORS} from '../components/layout/AppNavbar/AuthDropdown/AuthDropdownLogin/AuthDropdownLogin';
 import {EVENT_OPEN_WELCOME_MODAL} from '../components/Layout/GeneralModals/WelcomeModal/WelcomeModal';
 
 // Load User

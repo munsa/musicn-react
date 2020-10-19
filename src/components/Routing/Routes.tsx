@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Register from '../Auth/Register';
 import Login from '../Auth/Login';
-import Home from '../Layout/Home/Home';
+import Home from '../layout/Home/Home';
 import Profile from '../Profile/Profile';
 import PrivateRoute from './/PrivateRoute';
 import Landing from '../Layout/Landing/Landing';
