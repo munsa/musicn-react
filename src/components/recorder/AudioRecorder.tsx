@@ -26,42 +26,47 @@ const AudioRecorder = ({startRecording, sendSample, developmentMode, currentPosi
   }, [])
 
   const handleRecorder = async () => {
-    getCurrentGeolocationPosition();
-    if (developmentMode) {
-      let blob = await fetch('./static/media/dev-mode-sample.wav').then(r => r.blob());
-      sendSample(blob, currentPosition);
+    // @ts-ignore
+    if (!window.MediaRecorder) {
+      alert('WildTunes recorder is not available for Safari and Internet Explorer. Use another browser');
     } else {
-      const constraints = {
-        audio: {
-          noiseSuppression: false,
-          echoCancellation: false
+      getCurrentGeolocationPosition();
+      if (developmentMode) {
+        let blob = await fetch('./static/media/dev-mode-sample.wav').then(r => r.blob());
+        sendSample(blob, currentPosition);
+      } else {
+        const constraints = {
+          audio: {
+            noiseSuppression: false,
+            echoCancellation: false
+          }
         }
+        navigator.mediaDevices.getUserMedia(constraints).then(s => {
+          stream.current = s;
+          let mediaRecorder = new MediaRecorder(stream.current);
+          setAudioChunks([]);
+
+          // Initialize audio context
+          audioContext.current = new AudioContext();
+          const source = audioContext.current.createMediaStreamSource(stream.current);
+          const analyser = audioContext.current.createAnalyser();
+          analyser.fftSize = 256;
+          source.connect(analyser);
+
+          // Start recording
+          mediaRecorder.start(50);
+
+          // Data available event
+          mediaRecorder.addEventListener('dataavailable', event => dataAvailableHandler(event, analyser));
+
+          // Stop recording event
+          mediaRecorder.addEventListener('stop', () => stopRecording());
+
+          // Start recording
+          startRecording();
+          recordSample(maxSamples, mediaRecorder);
+        });
       }
-      navigator.mediaDevices.getUserMedia(constraints).then(s => {
-        stream.current = s;
-        let mediaRecorder = new MediaRecorder(stream.current);
-        setAudioChunks([]);
-
-        // Initialize audio context
-        audioContext.current = new AudioContext();
-        const source = audioContext.current.createMediaStreamSource(stream.current);
-        const analyser = audioContext.current.createAnalyser();
-        analyser.fftSize = 256;
-        source.connect(analyser);
-
-        // Start recording
-        mediaRecorder.start(50);
-
-        // Data available event
-        mediaRecorder.addEventListener('dataavailable', event => dataAvailableHandler(event, analyser));
-
-        // Stop recording event
-        mediaRecorder.addEventListener('stop', () => stopRecording());
-
-        // Start recording
-        startRecording();
-        recordSample(maxSamples, mediaRecorder);
-      });
     }
   };
 
