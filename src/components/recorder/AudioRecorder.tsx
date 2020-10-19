@@ -28,7 +28,7 @@ const AudioRecorder = ({startRecording, sendSample, developmentMode, currentPosi
   const handleRecorder = async () => {
     // @ts-ignore
     if (!window.MediaRecorder) {
-      alert('WildTunes recorder is not available for Safari and Internet Explorer. Use another browser');
+      alert('WildTunes recorder is not available in your browser.');
     } else {
       getCurrentGeolocationPosition();
       if (developmentMode) {
