@@ -42,7 +42,7 @@ const Landing = ({slideDuration}) => {
    * TODO: Improve custom carousel with arrows for next and previous slides + bottom controls
    */
   return (
-    <div className='landing-container' key={index}>
+    <div className='landing-container'>
       <img className={'landing-city-image'} src={CityNightImage} alt='Background city'/>
       {slides[index]}
     </div>
