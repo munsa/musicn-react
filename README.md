@@ -1,2 +1,5 @@
 # wildtunes-react
-WildTunes - Social network for music recognition
+WildTunes
+Music social network with audio fingerprint recognition.
+
+In construction

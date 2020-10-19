@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "wildtunes-react",
   "version": "0.1.0",
   "keywords": [
     "wildtunes",
@@ -11,16 +11,16 @@
     "acoustic",
     "fingerprint"
   ],
-  "description": "WildTunes - Social network for music recognition - React frontend",
+  "description": "WildTunes - Music social network with audio fingerprint recognition.",
   "homepage": "/",
   "bugs": {
-    "url": "https://github.com/munsa/musicn-react/issues"
+    "url": "https://github.com/munsa/wildtunes-react/issues"
   },
   "license": "LGPL-3.0-only",
   "author": "Marc Monserrat Núñez <mmonserrat90@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/munsa/musicn-react.git"
+    "url": "git+https://github.com/munsa/wildtunes-react.git"
   },
   "scripts": {
     "start": "serve -s build",
