@@ -15,14 +15,11 @@
 .welcome-modal .modal-body {
   padding: 0;
 }
-.welcome-modal .carousel {
-  height: 100%;
-}
 .welcome-modal .carousel-indicators {
   display: none;
 }
 .welcome-modal .carousel-item {
-  height: 100%;
+  height: 25rem !important;
 }
 .welcome-modal .recording-card {
   width: 10rem;
