@@ -37,7 +37,7 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@popperjs/core": "^2.4.2",
     "@react-google-maps/api": "^1.9.12",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
     "mdbreact": "^4.27.0",
     "moment": "^2.26.0",
